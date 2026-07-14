@@ -5,10 +5,9 @@
 
 body {
   font-family: 'Montserrat', 'sans-serif';
-  color: white;
+  color: #000;
   font-weight: 500;
 
-  background-color: rgb(15, 22, 36);
 }
 
   .nunito {
@@ -26,16 +25,43 @@ body {
   } */
 
   .greeting-text {
-  background: linear-gradient(121.57deg, rgb(255, 255, 255) 18.77%, rgba(255, 255, 255, 0.66) 60.15%) text;
+  background: linear-gradient(121.57deg, rgb(0, 0, 0) 18.77%, rgba(68, 68, 68, 0.66) 60.15%) text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 16px;
-  padding: 0px 0px 16px;
+  padding: 0;
 }
 .divider {
 background: linear-gradient(270deg, #D34A32 0%, #EC8134 100%);
 border-radius: 10px;
 }
 
+.project-img {
+  height: 250px;
+  width: 250px;
+  opacity: 1;
+  object-fit: cover;
+  border-radius: 8px; /* Optional for rounded corners */
+  transition: opacity 0.5s ease;
+}
+.project-item {
+  box-shadow: rgba(80, 78, 78, 0.5) 3px 3px 20px;
+  border-radius: 8px;
+  padding-bottom: 16px;
+  cursor: pointer;
+  transition: transform 0.7s ease ;
+}
+.project-img:hover {
+  opacity: 1;
+}
+.project-item:hover {
+  transform: translateY(-10px);
+}
+.project-title {
+  transition: color 0.3s ease-in-out; 
+}
+.project-item:hover .project-title {
+  color: #ffbf47;
+}
 
 /* green: #366A35
 orange: #EC8134
