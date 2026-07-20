@@ -25,7 +25,7 @@ body {
   } */
 
   .greeting-text {
-  background: linear-gradient(121.57deg, rgb(0, 0, 0) 18.77%, rgba(68, 68, 68, 0.66) 60.15%) text;
+  background: linear-gradient(121.57deg, rgb(0, 0, 0) 18.77%, rgba(168, 14, 14, 0.66) 60.15%) text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 16px;
   padding: 0;
