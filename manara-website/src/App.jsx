@@ -1,7 +1,7 @@
 import './index.css' 
 import HomePage from './views/HomePage'
 import Navigation from './components/navigation/Navigation'
-import Footer from './components/footer/Footer'
+import Footer from './components/footer/footer'
 import NotFound from './components/404 Page/NotFound'
 import { Routes, Route, Outlet } from 'react-router-dom'
 
