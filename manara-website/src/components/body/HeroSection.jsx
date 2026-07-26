@@ -4,7 +4,7 @@ import { FaGlobe, FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 const PROJECTS = [
   {
     title: "Curious Minds",
-    tagline: "Knowledge Foundations",
+    tagline: "Knowledge Foundation",
     headline: "We connect people, ideas, and resources to create new perspectives together.",
     desc: "Building schools and providing digital learning infrastructure to remote mountain villages across Nepal.",
     bgColor: "#366A35", // Green

@@ -4,7 +4,7 @@ import SectionHeader from "../reusableComp/SectionHeader";
 
 import CuriousMinds from "../../assets/images/CuriousMinds.jpg";
 import Project28Img from "../../assets/images/Project28Img.jpg";
-import CECSImg from "../../assets/images/CECSImg.PNG";
+import CECSImg from "../../assets/images/CECSImg.png";
 import OtherActivitiesImg from "../../assets/images/OtherActivitiesImg.png";
 
 const projects = [
