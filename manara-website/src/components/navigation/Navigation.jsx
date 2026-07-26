@@ -25,7 +25,7 @@ const PROJECTS = [
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
-  
+
   // Dropdown States
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [projectsDropdownOpen, setProjectsDropdownOpen] = useState(false);
@@ -37,6 +37,7 @@ const Navigation = () => {
   // Click Outside Refs
   const projectsRef = useRef(null);
   const langRef = useRef(null);
+  const mobileLangRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,7 +63,12 @@ const Navigation = () => {
       if (projectsRef.current && !projectsRef.current.contains(event.target)) {
         setProjectsDropdownOpen(false);
       }
-      if (langRef.current && !langRef.current.contains(event.target)) {
+      if (
+        langRef.current &&
+        !langRef.current.contains(event.target) &&
+        mobileLangRef.current &&
+        !mobileLangRef.current.contains(event.target)
+      ) {
         setLangDropdownOpen(false);
       }
     };
@@ -118,7 +124,7 @@ const Navigation = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EC8134] transition-all duration-300 group-hover:w-full" />
             </a>
 
-            {/* CLICKABLE PROJECTS DROPDOWN (Standard Link Style) */}
+            {/* CLICKABLE PROJECTS DROPDOWN */}
             <div className="relative" ref={projectsRef}>
               <button
                 onClick={() => {
@@ -201,13 +207,34 @@ const Navigation = () => {
 
           {/* MOBILE TOGGLE & CONTROLS */}
           <div className="flex lg:hidden items-center gap-3">
-            <button
-              onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-              className="flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-2.5 py-1 text-xs font-bold"
-            >
-              <span>{selectedLang.flag}</span>
-              <span className="uppercase">{selectedLang.code}</span>
-            </button>
+            {/* MOBILE LANGUAGE DROPDOWN WRAPPER */}
+            <div className="relative" ref={mobileLangRef}>
+              <button
+                onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+                className="flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-2.5 py-1 text-xs font-bold cursor-pointer"
+              >
+                <span>{selectedLang.flag}</span>
+                <span className="uppercase">{selectedLang.code}</span>
+                <FaChevronDown className={`text-[10px] transition-transform duration-200 ${langDropdownOpen ? "rotate-180" : ""}`} />
+              </button>
+
+              {langDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-36 bg-[#404040]/95 border border-white/15 rounded-xl shadow-2xl backdrop-blur-md overflow-hidden py-1 z-50">
+                  {LANGUAGES.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => handleLanguageChange(lang.code)}
+                      className={`w-full flex items-center gap-3 px-4 py-2.5 text-xs font-medium text-left hover:bg-white/10 transition ${
+                        currentLang === lang.code ? "text-[#EC8134] font-bold bg-white/10" : "text-white/80"
+                      }`}
+                    >
+                      <span>{lang.flag}</span>
+                      <span>{lang.label}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
 
             <button
               onClick={() => setMobileDrawerOpen(true)}
