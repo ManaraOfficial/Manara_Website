@@ -20,32 +20,45 @@ const PROJECTS = [
   },
   {
     title: "Project 28",
-    tagline: "Global Cooperation",
-    headline: "Empowering community leaders with sustainable international partnerships.",
-    desc: "Connecting local leaders with global resources for long-term ecological and economic growth.",
+    tagline: "Menstrual Dignity",
+    headline: "Promoting menstrual dignity, education, and health for women across Nepal.",
+    desc: "Breaking taboos and delivering sustainable hygiene solutions so women can fully participate in daily life all 28 days of their cycle.",
     bgColor: "#D34A32", // Red
     image: "https://image.jimcdn.com/app/cms/image/transf/none/path/sf1c2e8936baa157c/image/i6c19cf6e7a8ea749/version/1730550822/image.jpg"
   }
 ];
 
-// Typewriter Text Component
-const TypewriterText = ({ text, speed = 50 }) => {
+// Typewriter Text Component - drives slide progression after pauseDuration
+const TypewriterText = ({ text, speed = 35, pauseDuration = 8000, onComplete }) => {
   const [displayed, setDisplayed] = useState("");
 
   useEffect(() => {
-    let i = 0;
+    let charIndex = 0;
+    let typeInterval = null;
+    let pauseTimeout = null;
+
     setDisplayed("");
-    const timer = setInterval(() => {
-      if (i < text.length) {
-        setDisplayed(text.slice(0, i + 1));
-        i++;
+
+    typeInterval = setInterval(() => {
+      if (charIndex < text.length) {
+        setDisplayed(text.slice(0, charIndex + 1));
+        charIndex++;
       } else {
-        clearInterval(timer);
+        // Stop typing once completed
+        clearInterval(typeInterval);
+
+        // Pause for pauseDuration, then trigger onComplete (advances slide)
+        pauseTimeout = setTimeout(() => {
+          if (onComplete) onComplete();
+        }, pauseDuration);
       }
     }, speed);
 
-    return () => clearInterval(timer);
-  }, [text, speed]);
+    return () => {
+      if (typeInterval) clearInterval(typeInterval);
+      if (pauseTimeout) clearTimeout(pauseTimeout);
+    };
+  }, [text, speed, pauseDuration, onComplete]);
 
   return (
     <span>
@@ -57,14 +70,6 @@ const TypewriterText = ({ text, speed = 50 }) => {
 
 export default function HomePage() {
   const [currentIdx, setCurrentIdx] = useState(0);
-
-  // Auto-rotate background and carousel track together
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIdx((prev) => (prev + 1) % PROJECTS.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, []);
 
   const handlePrev = () => {
     setCurrentIdx((prev) => (prev === 0 ? PROJECTS.length - 1 : prev - 1));
@@ -96,27 +101,70 @@ export default function HomePage() {
       {/* 2. CENTERED RESPONSIVE CONTENT CONTAINER */}
       <div className="relative z-10 w-full max-w-[1400px] mx-auto flex flex-col justify-center items-center text-center px-4 sm:px-8 py-20 lg:py-24">
         
-        {/* Top Region Badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-1.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-sm mb-4 sm:mb-6">
-          <FaGlobe className="text-[#EC8134] text-xs sm:text-sm shrink-0 animate-pulse" />
-          <span className="text-[clamp(0.65rem,0.75vw,0.875rem)] font-black tracking-widest uppercase text-white/90">
-            Nepal • Germany • USA
-          </span>
-        </div>
+        {/* Top Region Badge with Animated Blowing Flags */}
+<div className="inline-flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-1.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-sm mb-4 sm:mb-6">
+  {/* Inline Animated Flag Styles */}
+  <style>{`
+    @keyframes blowInWind {
+      0%, 100% {
+        transform: rotate(0deg) skewY(0deg) scale(1);
+      }
+      25% {
+        transform: rotate(4deg) skewY(3deg) scale(1.05);
+      }
+      50% {
+        transform: rotate(-2deg) skewY(-2deg) scale(0.98);
+      }
+      75% {
+        transform: rotate(3deg) skewY(2deg) scale(1.02);
+      }
+    }
+    .flag-wave-1 {
+      display: inline-block;
+      animation: blowInWind 2.8s ease-in-out infinite;
+      transform-origin: left center;
+    }
+    .flag-wave-2 {
+      display: inline-block;
+      animation: blowInWind 3.2s ease-in-out infinite 0.4s;
+      transform-origin: left center;
+    }
+  `}</style>
 
-        {/* Dynamic Typewriter Headline (Fluid Font Sizing) */}
+  {/* Nepal Flag */}
+  <span className="flag-wave-1 text-sm sm:text-base leading-none" role="img" aria-label="Nepal Flag">
+    🇳🇵
+  </span>
+
+  <span className="text-[clamp(0.65rem,0.75vw,0.875rem)] font-black tracking-widest uppercase text-white/90">
+    Nepal • Germany
+  </span>
+
+  {/* Germany Flag */}
+  <span className="flag-wave-2 text-sm sm:text-base leading-none" role="img" aria-label="Germany Flag">
+    🇩🇪
+  </span>
+</div>
+
+        {/* Dynamic Typewriter Headline */}
         <div className="min-h-[80px] sm:min-h-[110px] md:min-h-[140px] flex items-center justify-center max-w-5xl mb-3 sm:mb-4">
           <h1 className="text-[clamp(1.25rem,2.8vw,3.25rem)] font-black tracking-tight leading-snug sm:leading-tight text-white uppercase">
-            <TypewriterText text={activeProject.headline} speed={35} />
+            <TypewriterText 
+              key={currentIdx} 
+              text={activeProject.headline} 
+              speed={50} 
+              pauseDuration={8000} // <-- Adjust pause duration here (in milliseconds)
+              onComplete={handleNext}
+            />
           </h1>
         </div>
 
-        {/* Active Project Description (Fluid Font Sizing) */}
+        {/* Active Project Description */}
         <p className="text-white/80 text-[clamp(0.75rem,1.1vw,1.125rem)] max-w-3xl mb-6 sm:mb-8 font-medium transition-opacity duration-500 leading-relaxed px-2">
           {activeProject.desc}
         </p>
 
-        {/* TRIPLE-CIRCLE CAROUSEL TRACK (Fluid Sizing & Positioning) */}
+        {/* TRIPLE-CIRCLE CAROUSEL TRACK */}
         <div className="relative w-full max-w-2xl h-[120px] sm:h-[160px] md:h-[190px] lg:h-[210px] flex items-center justify-center overflow-visible my-2">
           {PROJECTS.map((item, idx) => {
             const isActive = idx === currentIdx;
@@ -127,15 +175,12 @@ export default function HomePage() {
             let dynamicStyle = {};
 
             if (isActive) {
-              // Active Main Center Circle
               circleClasses = "w-[100px] h-[100px] sm:w-[130px] sm:h-[130px] md:w-[160px] md:h-[160px] lg:w-[180px] lg:h-[180px] opacity-100 translate-x-0 z-20 shadow-2xl shadow-black/50 text-white scale-100 border-2 border-white/30";
               dynamicStyle = { backgroundColor: item.bgColor };
             } else if (isNext) {
-              // Right Preview Circle
               circleClasses = "w-[70px] h-[70px] sm:w-[95px] sm:h-[95px] md:w-[115px] md:h-[115px] lg:w-[130px] lg:h-[130px] translate-x-[90px] sm:translate-x-[140px] md:translate-x-[180px] lg:translate-x-[220px] z-10 cursor-pointer scale-100 hover:scale-105 border border-white/20";
               dynamicStyle = { backgroundColor: item.bgColor, opacity: 0.45, color: "#FFFFFF" };
             } else if (isPrevious) {
-              // Left Preview Circle
               circleClasses = "w-[70px] h-[70px] sm:w-[95px] sm:h-[95px] md:w-[115px] md:h-[115px] lg:w-[130px] lg:h-[130px] translate-x-[-90px] sm:translate-x-[-140px] md:translate-x-[-180px] lg:translate-x-[-220px] z-10 cursor-pointer scale-100 hover:scale-105 border border-white/20";
               dynamicStyle = { backgroundColor: item.bgColor, opacity: 0.45, color: "#FFFFFF" };
             }

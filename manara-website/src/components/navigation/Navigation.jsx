@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/images/recolored_logo.svg";
 import {
   FaInstagram,
@@ -17,9 +18,9 @@ const LANGUAGES = [
 ];
 
 const PROJECTS = [
-  { name: "CURIOUS MINDS", href: "#curious-minds" },
-  { name: "PROJECT 28", href: "#project-28" },
-  { name: "SPONSORSHIP", href: "#sponsorship" },
+  { name: "CURIOUS MINDS", path: "/curious-minds" },
+  { name: "PROJECT 28", path: "/project-28" },
+  { name: "SPONSORSHIP", path: "/sponsorship" },
 ];
 
 const Navigation = () => {
@@ -98,23 +99,23 @@ const Navigation = () => {
         <div className="max-w-7xl mx-auto flex justify-between items-center text-white">
           
           {/* 1. BRAND LOGO */}
-          <a href="/" className="flex items-center gap-3 group shrink-0">
+          <Link to="/" className="flex items-center gap-3 group shrink-0">
             <img
               src={logo}
               className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               alt="Menschen im Dialog e.V. Logo"
             />
-          </a>
+          </Link>
 
           {/* 2. DESKTOP NAVIGATION LINKS */}
           <div className="hidden lg:flex items-center gap-8 text-xs xl:text-sm font-bold uppercase tracking-wider">
-            <a 
-              href="#home" 
+            <Link 
+              to="/" 
               className="relative py-1 hover:text-[#EC8134] transition-colors duration-200 group"
             >
               Home
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EC8134] transition-all duration-300 group-hover:w-full" />
-            </a>
+            </Link>
 
             <a 
               href="#about" 
@@ -140,14 +141,14 @@ const Navigation = () => {
               {projectsDropdownOpen && (
                 <div className="absolute left-0 mt-3 w-48 bg-[#404040]/95 border border-white/15 rounded-xl shadow-2xl backdrop-blur-md overflow-hidden py-1.5 z-50">
                   {PROJECTS.map((project, idx) => (
-                    <a
+                    <Link
                       key={idx}
-                      href={project.href}
+                      to={project.path}
                       onClick={() => setProjectsDropdownOpen(false)}
                       className="block px-4 py-2.5 text-xs font-bold text-white/80 hover:text-[#366A35] hover:bg-white/10 transition-colors duration-200"
                     >
                       {project.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
@@ -280,13 +281,13 @@ const Navigation = () => {
 
         {/* Drawer Links */}
         <div className="flex-1 overflow-y-auto px-6 py-4 flex flex-col">
-          <a
-            href="#home"
+          <Link
+            to="/"
             onClick={() => setMobileDrawerOpen(false)}
             className="py-4 text-base font-bold border-b border-white/15 text-white hover:text-[#EC8134] transition-colors"
           >
             Home
-          </a>
+          </Link>
           <a
             href="#about"
             onClick={() => setMobileDrawerOpen(false)}
@@ -307,14 +308,17 @@ const Navigation = () => {
             {mobileProjectsOpen && (
               <div className="pl-4 pb-3 space-y-2">
                 {PROJECTS.map((project, idx) => (
-                  <a
+                  <Link
                     key={idx}
-                    href={project.href}
-                    onClick={() => setMobileDrawerOpen(false)}
+                    to={project.path}
+                    onClick={() => {
+                      setMobileDrawerOpen(false);
+                      setMobileProjectsOpen(false);
+                    }}
                     className="block py-2 text-sm font-bold text-white/80 hover:text-[#366A35] transition-colors"
                   >
                     • {project.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             )}
