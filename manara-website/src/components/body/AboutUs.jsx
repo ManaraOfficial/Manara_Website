@@ -40,7 +40,7 @@ const cards = [
 
 const AboutUs = () => {
   return (
-    <div className="bg-[#F8FAFC] pb-20">
+    <div className="bg-[#F8FAFC] pb-20" id="about-us">
     <div className="max-w-6xl mx-auto text-left   ">
       <SectionHeader title="Who We Are" subtitle= "The minds, mission, and vision driving our journey." />
 
