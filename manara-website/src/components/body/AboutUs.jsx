@@ -1,7 +1,7 @@
 import React from "react";
 import SectionHeader from "../reusableComp/SectionHeader";
 import whoWeAreImg from "../../assets/images/WhoWeAre.png";
-
+import { Link } from "react-router-dom";
 const cards = [
   {
     id: 1,
@@ -73,11 +73,12 @@ const AboutUs = () => {
                 community-centered approach ensures local participation,
                 inclusion, and long-term impact in everything we do.
               </p>
-
-              <button className="mt-10 inline-flex items-center gap-3 bg-[#366A35] hover:bg-[#2E5A2D] transition duration-300 text-white px-8 py-4 rounded-xl font-semibold shadow-lg">
+<Link to="/about-us">
+              <button className="mt-10 inline-flex items-center gap-3 bg-[#366A35] hover:bg-[#2E5A2D] hover:cursor-pointer transition duration-300 text-white px-8 py-4 rounded-xl font-semibold shadow-lg">
                 <span className="text-xl">👥</span>
                 Learn More About Us
               </button>
+              </Link>
             </div>
           </div>
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom'
 import {
   FaSchool,
   FaGraduationCap,
@@ -9,6 +10,9 @@ import {
   FaArrowRight,
   FaCheckCircle,
   FaUser,
+   FaExternalLinkAlt,
+  FaEnvelope,
+  FaPhoneAlt 
 } from "react-icons/fa";
 
 // Image assets
@@ -401,6 +405,36 @@ const CuriousMindDetail = () => {
             </div>
           </div>
         </div>
+         <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="text-center sm:text-left space-y-1">
+                    <h4 className="font-bold text-gray-900 text-sm font-['Montserrat',sans-serif]">
+                      Inquire More About Curious Minds
+                    </h4>
+                    <p className="text-xs text-gray-600">
+                      Get in touch to review our annual transparency reports.
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap items-center justify-center gap-2">
+                    <Link
+  to="/reports"
+  className="inline-flex items-center gap-1.5 bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-bold px-3.5 py-2 rounded-xl border border-gray-200 transition"
+>
+  <FaExternalLinkAlt /> Transparency
+</Link>
+                    <a
+                      href="mailto:info@menschen-dialog.de"
+                      className="inline-flex items-center gap-1.5 bg-[#EC8134] hover:bg-[#d4702b] text-white text-xs font-bold px-3.5 py-2 rounded-xl transition"
+                    >
+                      <FaEnvelope /> Email Us
+                    </a>
+                    <a
+                      href="tel:+49000000000"
+                      className="inline-flex items-center gap-1.5 bg-[#366A35] hover:bg-[#2e592d] text-white text-xs font-bold px-3.5 py-2 rounded-xl transition"
+                    >
+                      <FaPhoneAlt /> Call Us
+                    </a>
+                  </div>
+                </div>
 
       </div>
     </div>

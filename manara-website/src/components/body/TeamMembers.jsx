@@ -136,7 +136,7 @@ export default function EditorialTeam() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-screen bg-white text-slate-800 py-20 px-6 sm:px-12 flex flex-col items-center select-none overflow-hidden font-sans"
+      className="relative w-full min-h-screen bg-white text-slate-800 py-20 px-6 sm:px-12 flex flex-col items-center select-none overflow-hidden "
     >
       <div className="w-full max-w-7xl relative z-10 flex flex-col">
         {/* SECTION HEADER */}

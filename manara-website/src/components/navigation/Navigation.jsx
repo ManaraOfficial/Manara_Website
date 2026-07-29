@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/images/recolored_logo.svg";
+// import logo from "../../assets/images/recolored_logo.svg";
+import logo from "../../assets/images/logo2.png";
 import {
   FaInstagram,
   FaFacebook,
@@ -20,7 +21,7 @@ const LANGUAGES = [
 const PROJECTS = [
   { name: "CURIOUS MINDS", path: "/curious-minds" },
   { name: "PROJECT 28", path: "/project-28" },
-  { name: "SPONSORSHIP", path: "/sponsorship" },
+  { name: "SPONSORSHIPS", path: "/sponsorship" },
 ];
 
 const Navigation = () => {
@@ -117,13 +118,13 @@ const Navigation = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EC8134] transition-all duration-300 group-hover:w-full" />
             </Link>
 
-            <a 
-              href="#about" 
+            <Link 
+              to="about-us" 
               className="relative py-1 hover:text-[#EC8134] transition-colors duration-200 group"
             >
               About Us
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EC8134] transition-all duration-300 group-hover:w-full" />
-            </a>
+            </Link>
 
             {/* CLICKABLE PROJECTS DROPDOWN */}
             <div className="relative" ref={projectsRef}>
@@ -162,13 +163,13 @@ const Navigation = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D34A32] transition-all duration-300 group-hover:w-full" />
             </a>
 
-            <a 
-              href="#contact" 
-              className="relative py-1 hover:text-[#EC8134] transition-colors duration-200 group"
-            >
-              Contact
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EC8134] transition-all duration-300 group-hover:w-full" />
-            </a>
+            <Link 
+  to="/contact" 
+  className="relative py-1 hover:text-[#EC8134] transition-colors duration-200 group"
+>
+  Contact
+  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EC8134] transition-all duration-300 group-hover:w-full" />
+</Link>
           </div>
 
           {/* 3. DESKTOP LANGUAGE SELECTOR */}
@@ -317,7 +318,7 @@ const Navigation = () => {
                     }}
                     className="block py-2 text-sm font-bold text-white/80 hover:text-[#366A35] transition-colors"
                   >
-                    • {project.name}
+                    {project.name}
                   </Link>
                 ))}
               </div>

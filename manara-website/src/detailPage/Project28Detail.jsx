@@ -8,7 +8,10 @@ import {
   FaUsers,
   FaGraduationCap,
   FaLeaf,
-  FaFemale
+  FaFemale, 
+  FaExternalLinkAlt,
+  FaEnvelope,
+  FaPhoneAlt   
 } from "react-icons/fa";
 
 // Image assets
@@ -411,16 +414,16 @@ const Project28Detail = () => {
       </section>
 
       {/* OTHER ACTIVITIES NAVIGATION */}
-      <section className="bg-gray-50 py-16 px-6 border-t border-gray-100">
-        <div className="max-w-6xl px-8 mx-auto">
+      <section className="bg-gray-50 py-16 px-6 border-t border-gray-100 ">
+        <div className="max-w-6xl px-8 mx-auto space-y-16 ">
           <h3 className="text-lg font-bold text-gray-800 mb-6 font-['Montserrat',sans-serif]">
             Explore Other Core Focus Areas
           </h3>
 
-          <div className="grid sm:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-3 gap-6  ">
             <div
               onClick={() => navigate("/curious-minds")}
-              className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer group"
+              className=" bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:border-[#366A35]/50 transition cursor-pointer group"
             >
               <span className="text-xs font-bold text-[#366A35] uppercase tracking-wider font-['Montserrat',sans-serif]">
                 Education Focus
@@ -438,7 +441,7 @@ const Project28Detail = () => {
 
             <div
               onClick={() => navigate("/cecs")}
-              className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer group"
+              className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:border-[#D34A32]/50 transition cursor-pointer group"
             >
               <span className="text-xs font-bold text-[#EC8134] uppercase tracking-wider font-['Montserrat',sans-serif]">
                 Medical Alliances
@@ -456,7 +459,7 @@ const Project28Detail = () => {
 
             <div
               onClick={() => navigate("/others")}
-              className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer group"
+              className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:border-[#366A35]/50 transition cursor-pointer group"
             >
               <span className="text-xs font-bold text-[#366A35] uppercase tracking-wider font-['Montserrat',sans-serif]">
                 Community Livelihoods
@@ -471,9 +474,46 @@ const Project28Detail = () => {
                 View Program <FaArrowRight className="text-[10px]" />
               </span>
             </div>
+
+            
           </div>
+          {/* TRANSPARENCY & CONTACT FOOTER CALLOUT */}
+              <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="text-center sm:text-left space-y-1">
+                  <h4 className="font-bold text-gray-900 text-sm font-['Montserrat',sans-serif]">
+                    Inquire More About Project 28
+                  </h4>
+                  <p className="text-xs text-gray-600">
+                    Get in touch to review our annual transparency reports.
+                  </p>
+                </div>
+                <div className="flex flex-wrap items-center justify-center gap-2">
+                  <a
+                    href="https://www.menschen-im-dialog.de/transparenz/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-bold px-3.5 py-2 rounded-xl border border-gray-200 transition"
+                  >
+                    <FaExternalLinkAlt /> Transparency
+                  </a>
+                  <a
+                    href="mailto:info@menschen-dialog.de"
+                    className="inline-flex items-center gap-1.5 bg-[#EC8134] hover:bg-[#d4702b] text-white text-xs font-bold px-3.5 py-2 rounded-xl transition"
+                  >
+                    <FaEnvelope /> Email Us
+                  </a>
+                  <a
+                    href="tel:+49000000000"
+                    className="inline-flex items-center gap-1.5 bg-[#366A35] hover:bg-[#2e592d] text-white text-xs font-bold px-3.5 py-2 rounded-xl transition"
+                  >
+                    <FaPhoneAlt /> Call Us
+                  </a>
+                </div>
+              </div>
         </div>
       </section>
+
+      
 
     </div>
   );

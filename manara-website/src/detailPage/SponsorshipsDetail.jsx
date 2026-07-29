@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom'
 import {
   FaGraduationCap,
   FaShieldAlt,
@@ -12,6 +14,7 @@ import {
   FaBookReader,
   FaUsers,
   FaChartLine,
+  FaArrowRight,
 } from "react-icons/fa";
 
 const SPONSORSHIP_BREAKDOWN = [
@@ -48,6 +51,7 @@ const REFINED_FAQS = [
 ];
 
 const SponsorshipsDetailPage = () => {
+  const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState(null);
 
   const toggleFaq = (index) => {
@@ -312,35 +316,103 @@ const SponsorshipsDetailPage = () => {
           </div>
         </div>
 
-        {/* TRANSPARENCY & CONTACT CALLOUT */}
-        <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm text-center space-y-6">
-          <div className="space-y-2 max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-900 font-['Montserrat',sans-serif]">Transparency & Inquiries</h2>
-            <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-              Following the motto "Good deeds need good data," annual activity reports are regularly published to detail project developments, field milestones, and program reach.
+        {/* ==========================================
+            EXPLORE OTHER CORE FOCUS AREAS
+        ========================================== */}
+        
+                {/* NAVIGATION TO OTHER CORE ACTIVITIES */}
+                <div className="space-y-6">
+                  <h3 className="text-xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
+                    Explore Other Core Focus Areas
+                  </h3>
+        
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div
+                                  onClick={() => navigate("/curious-minds")}
+                                  className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:border-[#366A35]/50 transition cursor-pointer group"
+                                >
+                                  <span className="text-xs font-bold text-[#366A35] uppercase tracking-wider font-['Montserrat',sans-serif]">
+                                    Education Focus
+                                  </span>
+                                  <h4 className="text-base font-bold text-gray-900 mt-2 group-hover:text-[#366A35] transition font-['Montserrat',sans-serif]">
+                                    CURIOUS MINDS
+                                  </h4>
+                                  <p className="text-xs text-gray-500 mt-1">
+                                    Fostering digital literacy and ICT access for rural schools across Nepal.
+                                  </p>
+                                  <span className="inline-flex items-center gap-1 text-xs font-bold text-[#366A35] mt-4">
+                                    View Program <FaArrowRight className="text-[10px]" />
+                                  </span>
+                                </div>
+        
+                    {/* Health-NOW (Orange #EC8134) */}
+                    <div
+                      onClick={() => navigate("/project-28")}
+                      className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:border-[#EC8134]/50 transition cursor-pointer group space-y-2"
+                    >
+                      <span className="text-xs font-bold text-[#EC8134] uppercase tracking-wider font-['Montserrat',sans-serif]">
+                        Health-NOW (Health)
+                      </span>
+                      <h4 className="text-base font-bold text-gray-900 group-hover:text-[#EC8134] transition font-['Montserrat',sans-serif]">
+                        PROJECT 28
+                      </h4>
+                      <p className="text-xs text-gray-500 leading-relaxed">
+                        Promoting menstrual health, dignity, and active care across remote communities in Nepal.
+                      </p>
+                      <span className="inline-flex items-center gap-1 text-xs font-bold text-[#EC8134] pt-2">
+                        View Program <FaArrowRight className="text-[10px]" />
+                      </span>
+                    </div>
+        
+                    {/* Let's Learn (Green #366A35) */}
+                    <div
+                      onClick={() => navigate("/others")}
+                      className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:border-[#366A35]/50 transition cursor-pointer group space-y-2"
+                    >
+                      <span className="text-xs font-bold text-[#366A35] uppercase tracking-wider font-['Montserrat',sans-serif]">
+                        Let's Learn (Education)
+                      </span>
+                      <h4 className="text-base font-bold text-gray-900 group-hover:text-[#366A35] transition font-['Montserrat',sans-serif]">
+                        OTHER ACTIVITIES
+                      </h4>
+                      <p className="text-xs text-gray-500 leading-relaxed">
+                        Fostering environmental education, community livelihoods, and disaster preparedness.
+                      </p>
+                      <span className="inline-flex items-center gap-1 text-xs font-bold text-[#366A35] pt-2">
+                        View Program <FaArrowRight className="text-[10px]" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+        {/* TRANSPARENCY & CONTACT FOOTER CALLOUT */}
+        <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="text-center sm:text-left space-y-1">
+            <h4 className="font-bold text-gray-900 text-sm font-['Montserrat',sans-serif]">
+              Inquire More About Sponsorships
+            </h4>
+            <p className="text-xs text-gray-600">
+              Get in touch to review our annual transparency reports.
             </p>
           </div>
-
-          <div className="flex flex-wrap justify-center items-center gap-4 pt-2">
-            <a
-              href="https://www.menschen-im-dialog.de/transparenz/"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold px-5 py-2.5 rounded-xl text-xs sm:text-sm border border-gray-200 transition"
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            <Link
+              to="/reports"
+              className="inline-flex items-center gap-1.5 bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-bold px-3.5 py-2 rounded-xl border border-gray-200 transition"
             >
-              <FaExternalLinkAlt /> Transparency Report
-            </a>
+              <FaExternalLinkAlt /> Transparency
+            </Link>
             <a
               href="mailto:info@menschen-dialog.de"
-              className="inline-flex items-center gap-2 bg-[#EC8134] hover:bg-[#d4702b] text-white font-bold px-5 py-2.5 rounded-xl text-xs sm:text-sm transition shadow-sm"
+              className="inline-flex items-center gap-1.5 bg-[#EC8134] hover:bg-[#d4702b] text-white text-xs font-bold px-3.5 py-2 rounded-xl transition"
             >
               <FaEnvelope /> Email Us
             </a>
             <a
               href="tel:+49000000000"
-              className="inline-flex items-center gap-2 bg-[#366A35] hover:bg-[#2e592d] text-white font-bold px-5 py-2.5 rounded-xl text-xs sm:text-sm transition shadow-sm"
+              className="inline-flex items-center gap-1.5 bg-[#366A35] hover:bg-[#2e592d] text-white text-xs font-bold px-3.5 py-2 rounded-xl transition"
             >
-              <FaPhoneAlt /> Contact Team
+              <FaPhoneAlt /> Call Us
             </a>
           </div>
         </div>

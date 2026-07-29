@@ -7,6 +7,9 @@ import CuriousMindDetail from './detailPage/CuriousMindsDetail'
 import Project28Detail from './detailPage/Project28Detail'
 import SponsorshipDetail from './detailPage/SponsorshipsDetail'
 import CategoryGalleryPage from './components/body/CategoryGalleryPage'
+import ReportsPage from './views/reportsPage'
+import ContactUs from './views/ContactUs'
+import AboutUsDetail from './detailPage/AboutUsDetail'
 import { Routes, Route, Outlet, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 
@@ -43,6 +46,9 @@ function App() {
 
         {/* Dynamic Gallery Route */}
         <Route path="/gallery/:category" element={<CategoryGalleryPage />} />
+        <Route path="/reports" element={<ReportsPage />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/about-us" element={<AboutUsDetail />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />

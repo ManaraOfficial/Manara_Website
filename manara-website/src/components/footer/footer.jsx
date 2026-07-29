@@ -1,7 +1,8 @@
 import { memo } from 'react';
 import { FaLinkedinIn, FaInstagram, FaFacebookF, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import logo from "../../assets/images/recolored_logo.svg";
+import { Link } from 'react-router-dom';
+import logo from "../../assets/images/logo2.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -69,15 +70,40 @@ const Footer = () => {
 
         {/* Column 2: Navigation Links */}
         <div className="flex flex-col items-start text-left space-y-4">
-          <h4 className="text-xs font-black text-white tracking-widest uppercase">Quick Links</h4>
-          <ul className="space-y-3 text-xs font-medium text-white/60">
-            <li><a href="#home" className="hover:text-[#EC8134] transition-colors duration-200">Home</a></li>
-            <li><a href="#about" className="hover:text-[#EC8134] transition-colors duration-200">About Us</a></li>
-            <li><a href="#curious-minds" className="hover:text-[#366A35] transition-colors duration-200">Curious Minds</a></li>
-            <li><a href="#project-28" className="hover:text-[#D34A32] transition-colors duration-200">Project 28</a></li>
-            <li><a href="#contact" className="hover:text-[#EC8134] transition-colors duration-200">Contact Us</a></li>
-          </ul>
-        </div>
+  <h4 className="text-xs font-black text-white tracking-widest uppercase">Quick Links</h4>
+  <ul className="space-y-3 text-xs font-medium text-white/60">
+    <li>
+      <Link to="/" className="hover:text-[#EC8134] transition-colors duration-200">
+        Home
+      </Link>
+    </li>
+    <li>
+      <Link to="/about" className="hover:text-[#EC8134] transition-colors duration-200">
+        About Us
+      </Link>
+    </li>
+    <li>
+      <Link to="/curious-minds" className="hover:text-[#366A35] transition-colors duration-200">
+        Curious Minds
+      </Link>
+    </li>
+    <li>
+      <Link to="/project-28" className="hover:text-[#D34A32] transition-colors duration-200">
+        Project 28
+      </Link>
+    </li>
+    <li>
+      <Link to="/sponsorships" className="hover:text-[#D34A32] transition-colors duration-200">
+        Sponsorships
+      </Link>
+    </li>
+    <li>
+      <Link to="/contact" className="hover:text-[#EC8134] transition-colors duration-200">
+        Contact Us
+      </Link>
+    </li>
+  </ul>
+</div>
 
         {/* Column 3: Direct Contact Information */}
         <div className="flex flex-col items-start text-left space-y-4">
@@ -93,7 +119,7 @@ const Footer = () => {
             </li>
             <li className="flex items-start gap-3 leading-relaxed">
               <FaMapMarkerAlt className="text-[#D34A32] text-[13px] mt-0.5 shrink-0" />
-              <span>Germany • Nepal • USA</span>
+              <span>Germany • Nepal</span>
             </li>
           </ul>
         </div>
