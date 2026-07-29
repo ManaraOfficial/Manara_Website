@@ -259,6 +259,7 @@ const Navigation = () => {
       />
 
       {/* MOBILE SIDE NAVIGATION DRAWER */}
+      {/* MOBILE SIDE NAVIGATION DRAWER */}
       <aside
         className={`fixed top-0 left-0 h-full w-[80%] max-w-[320px] bg-[#404040] text-white z-50 shadow-2xl transition-transform duration-300 ease-in-out flex flex-col lg:hidden ${
           mobileDrawerOpen ? "translate-x-0" : "-translate-x-full"
@@ -289,13 +290,13 @@ const Navigation = () => {
           >
             Home
           </Link>
-          <a
-            href="#about"
+          <Link
+            to="/about-us"
             onClick={() => setMobileDrawerOpen(false)}
             className="py-4 text-base font-bold border-b border-white/15 text-white hover:text-[#EC8134] transition-colors"
           >
             About Us
-          </a>
+          </Link>
 
           {/* Mobile Accordion for Projects */}
           <div className="border-b border-white/15">
@@ -325,23 +326,23 @@ const Navigation = () => {
             )}
           </div>
 
-          <a
-            href="#work"
+          <Link
+            to="/work"
             onClick={() => setMobileDrawerOpen(false)}
             className="py-4 text-base font-bold border-b border-white/15 text-white hover:text-[#D34A32] transition-colors"
           >
             Our Work
-          </a>
-          <a
-            href="#contact"
+          </Link>
+          <Link
+            to="/contact"
             onClick={() => setMobileDrawerOpen(false)}
             className="py-4 text-base font-bold border-b border-white/15 text-white hover:text-[#EC8134] transition-colors"
           >
             Contact
-          </a>
+          </Link>
         </div>
 
-        {/* Drawer Social Icons */}
+        {/* Drawer Social Icons (Kept as <a> tags for external routing) */}
         <div className="p-6 border-t border-white/15 flex items-center justify-around text-white/80">
           <a
             href="https://www.instagram.com/MenschenDialog/"
