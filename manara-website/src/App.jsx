@@ -10,6 +10,7 @@ import CategoryGalleryPage from './components/body/CategoryGalleryPage'
 import ReportsPage from './views/reportsPage'
 import ContactUs from './views/ContactUs'
 import AboutUsDetail from './detailPage/AboutUsDetail'
+import OtherActivities from './detailPage/OtherActivities'
 import { Routes, Route, Outlet, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 
@@ -49,6 +50,7 @@ function App() {
         <Route path="/reports" element={<ReportsPage />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/about-us" element={<AboutUsDetail />} />
+        <Route path="/other-activities" element={<OtherActivities />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />
