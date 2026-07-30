@@ -22,6 +22,7 @@ const PROJECTS = [
   { name: "CURIOUS MINDS", path: "/curious-minds" },
   { name: "PROJECT 28", path: "/project-28" },
   { name: "SPONSORSHIPS", path: "/sponsorship" },
+  { name: "Other Activities", path: "/other-activities" },
 ];
 
 const Navigation = () => {
