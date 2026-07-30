@@ -44,7 +44,7 @@ const projects = [
     description:
       "Supporting communities through environmental conservation, livelihoods, disaster response, and social development.",
     image: OtherActivitiesImg,
-    path: "/others",
+    path: "/other-activities",
     category: "Community",
     color: "green",
   },

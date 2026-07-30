@@ -371,7 +371,7 @@ const OtherActivitiesDetail = () => {
             Discover all our active projects across sanitation construction, health awareness campaigns, classroom weatherproofing, and early education support.
           </p>
           <Link 
-            to="/activities"
+            to="/other-activities"
             className="inline-flex items-center gap-2 bg-[#EC8134] text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-[#d9732b] transition font-['Montserrat',sans-serif]"
           >
             Explore All Activities
