@@ -67,7 +67,7 @@ export default function EditorialTeam() {
 
   // High-power continuous corner confetti loop (4 seconds)
   const startContinuousConfetti = () => {
-    const duration = 2 * 1000;
+    const duration = 0.8 * 1000;
     const animationEnd = Date.now() + duration;
 
     const colors = ["#e5005a", "#3b82f6", "#10b981", "#f59e0b", "#ec4899"];
