@@ -106,17 +106,17 @@ const CORE_VALUES = [
 
 const TEAM = [
   {
-    name: "Jane Doe",
+    name: "Random Doe",
     role: "Executive Director",
     image: "https://i.pravatar.cc/300?img=47", 
   },
   {
-    name: "John Smith",
+    name: "Random Smith",
     role: "Head of Operations (Munich)",
     image: "https://i.pravatar.cc/300?img=11",
   },
   {
-    name: "Aayush Sharma",
+    name: "Random Sharma",
     role: "Project Manager (Kathmandu)",
     image: "https://i.pravatar.cc/300?img=12",
   },
@@ -453,7 +453,7 @@ const AboutUsPage = () => {
             Want to be part of the change?
           </h2>
           <p className="text-orange-100 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-            Whether you are looking to volunteer, partner, or just want to learn more about Project-28, our inbox is always open.
+            Whether you are looking to volunteer, partner, or just want to learn more about our projects, our inbox is always open.
           </p>
           <Link 
             to="/contact" 

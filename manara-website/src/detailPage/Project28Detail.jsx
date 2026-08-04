@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import {
   FaShieldAlt,
   FaMapMarkerAlt,
@@ -8,14 +8,20 @@ import {
   FaUsers,
   FaGraduationCap,
   FaLeaf,
-  FaFemale, 
+  FaFemale,
   FaExternalLinkAlt,
   FaEnvelope,
-  FaPhoneAlt   
+  FaPhoneAlt,
+  FaTag,
+  FaGlobe,
+  FaShareAlt,
+  FaHeart,
+  FaDownload,
+  FaBookOpen
 } from "react-icons/fa";
 
 // Image assets
-import Project28Hero from "../assets/images/Project28Img.jpg"; 
+import Project28Hero from "../assets/images/Project28Img.jpg";
 import Phase1Img from "../assets/images/Project28Img.jpg";
 import Phase2Img from "../assets/images/Project28Img.jpg";
 import Phase3Img from "../assets/images/Project28Img.jpg";
@@ -34,7 +40,7 @@ const useCountUp = (endValue, duration = 2000, startAnimating = false) => {
       if (!startTime) startTime = timestamp;
       const progress = timestamp - startTime;
       const rate = Math.min(progress / duration, 1);
-      
+
       const easeOut = 1 - Math.pow(1 - rate, 3);
       setCount(Math.floor(easeOut * endValue));
 
@@ -132,12 +138,12 @@ const Project28Detail = () => {
     },
   ];
 
-  // Pillar Data matching image exact text & structure
+  // Pillar Data
   const projectPillars = [
     {
       id: "pillar-1",
       badgeText: "SHORT-TERM ACTION",
-      borderBg: "bg-[#B03A2E]", 
+      borderBg: "bg-[#B03A2E]",
       icon: <FaGraduationCap className="text-lg text-white" />,
       title: "Education & Awareness",
       subTitle: "BREAKING TABOOS THROUGH KNOWLEDGE",
@@ -147,13 +153,13 @@ const Project28Detail = () => {
       points: [
         "Deliver clear biological education to girls & women",
         "Dispel cultural myths, taboos, and social isolation",
-        "Encourage open dialogue within village communities"
-      ]
+        "Encourage open dialogue within village communities",
+      ],
     },
     {
       id: "pillar-2",
       badgeText: "PRACTICAL IMPLEMENTATION",
-      borderBg: "bg-[#E66B19]", 
+      borderBg: "bg-[#E66B19]",
       icon: <FaLeaf className="text-lg text-white" />,
       title: "Ecological & Economical Solutions",
       subTitle: "SUSTAINABLE HYGIENE DISTRIBUTION",
@@ -163,13 +169,13 @@ const Project28Detail = () => {
       points: [
         "Distribute reusable menstrual cups (€100 reaches 20–30 women)",
         "Cover workshop costs: trainer fees, permits, food & travel",
-        "Offer practical guidance for safe hygiene management"
-      ]
+        "Offer practical guidance for safe hygiene management",
+      ],
     },
     {
       id: "pillar-3",
       badgeText: "LONG-TERM IMPACT",
-      borderBg: "bg-[#1E5622]", 
+      borderBg: "bg-[#1E5622]",
       icon: <FaShieldAlt className="text-lg text-white" />,
       title: "Full Participation & Stigma Reduction",
       subTitle: "EMPOWERMENT ACROSS EVERY CYCLE",
@@ -179,16 +185,15 @@ const Project28Detail = () => {
       points: [
         "Ensure uninterrupted access to school and daily work",
         "Combat menstrual stigma across all 28 days of the cycle",
-        "Strengthen local partnerships (MRDS Nepal & MiD)"
-      ]
-    }
+        "Strengthen local partnerships (MRDS Nepal & MiD)",
+      ],
+    },
   ];
 
   return (
     <div className="w-full bg-white text-[#404040] font-['Nunito_Sans',sans-serif]">
-      
       {/* HERO SECTION */}
-      <section className="bg-gradient-to-b from-red-50/40 via-white to-white pt-28 pb-16 px-6 border-b border-gray-100">
+      <section className="bg-gradient-to-b from-red-50/40 via-white to-white pt-28 pb-12 px-6 border-b border-gray-100">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-4xl mx-auto mb-12">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#D34A32]/10 text-[#D34A32] text-xs font-extrabold uppercase tracking-widest mb-4 font-['Montserrat',sans-serif]">
@@ -196,11 +201,13 @@ const Project28Detail = () => {
             </div>
 
             <h1 className="text-4xl sm:text-6xl font-black text-gray-900 tracking-tight leading-tight mb-6 font-['Montserrat',sans-serif]">
-              Menstrual Dignity & Health for Women in Nepal: <span className="text-[#D34A32]">PROJECT 28</span>
+              Menstrual Dignity & Health for Women in Nepal:{" "}
+              <span className="text-[#D34A32]">PROJECT 28</span>
             </h1>
 
             <p className="text-base sm:text-xl text-gray-600 leading-relaxed font-normal max-w-3xl mx-auto mb-8">
-              Helping ensure menstruating people can participate in daily life with dignity, safety, and without limitations throughout all 28 days of their cycle.
+              Helping ensure menstruating people can participate in daily life
+              with dignity, safety, and without limitations throughout all 28 days of their cycle.
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm text-gray-600">
@@ -239,6 +246,172 @@ const Project28Detail = () => {
         </div>
       </section>
 
+      {/* NEW SECTION: OVERVIEW, QUICK INFO & DOCUMENTATION GRID */}
+      <section className="max-w-6xl mx-auto px-6 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          
+          {/* LEFT COLUMN: Overview & Detailed Breakdown (Spans 2 cols) */}
+          <div className="lg:col-span-2 space-y-8">
+            
+            {/* Program Overview Card */}
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm space-y-4">
+              <h2 className="text-2xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
+                Program Overview
+              </h2>
+              <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
+                Our initiative takes a holistic approach to improving menstrual health and dignity in rural communities across Nepal. By combining comprehensive biological education with the distribution of sustainable, ecological hygiene products like reusable menstrual cups, we help ensure women and young girls can study, work, and thrive without monthly limitations.
+              </p>
+            </div>
+
+            {/* Detailed Project Breakdown Header */}
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 font-['Montserrat',sans-serif] mb-6">
+                Detailed Project Breakdown
+              </h3>
+
+              {/* Breakdown Card 1 */}
+              <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-emerald-50 rounded-2xl text-[#366A35] shrink-0">
+                    <FaBookOpen className="text-2xl" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
+                      1. Menstrual Hygiene & Biological Education
+                    </h4>
+                  </div>
+                </div>
+
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Breaking long-standing social taboos starts with accurate knowledge. We conduct interactive village workshops that educate adolescent girls, women, and community leaders on basic reproductive health and hygienic management practices.
+                </p>
+
+                {/* Key Highlights & Actions Box */}
+                <div className="bg-gray-50/80 p-5 sm:p-6 rounded-2xl border border-gray-100 space-y-3">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 font-['Montserrat',sans-serif] block mb-2">
+                    KEY HIGHLIGHTS & ACTIONS TAKEN:
+                  </span>
+                  <div className="grid sm:grid-cols-2 gap-3 text-xs sm:text-sm text-gray-700 font-semibold">
+                    <div className="flex items-start gap-2.5">
+                      <FaCheckCircle className="text-[#366A35] shrink-0 mt-0.5" />
+                      <span>Interactive village workshops & biological instruction</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <FaCheckCircle className="text-[#366A35] shrink-0 mt-0.5" />
+                      <span>Distribution of eco-friendly, reusable menstrual cups</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <FaCheckCircle className="text-[#366A35] shrink-0 mt-0.5" />
+                      <span>Community dialogue to eliminate monthly isolation taboos</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <FaCheckCircle className="text-[#366A35] shrink-0 mt-0.5" />
+                      <span>Trainer support, local permits, and participant meals</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* RIGHT COLUMN: Quick Info & Download Callout (Spans 1 col) */}
+          <div className="space-y-6">
+            
+            {/* Quick Info Card */}
+            <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm space-y-6">
+              <h3 className="text-xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
+                Quick Info
+              </h3>
+
+              <div className="space-y-4">
+                {/* Info Item 1 */}
+                <div className="flex items-start gap-3">
+                  <FaTag className="text-[#EC8134] text-sm shrink-0 mt-1" />
+                  <div>
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block font-['Montserrat',sans-serif]">
+                      FOCUS AREAS
+                    </span>
+                    <span className="text-xs sm:text-sm font-bold text-gray-800">
+                      Menstrual Health, Eco Hygiene, Stigma Reduction & Education
+                    </span>
+                  </div>
+                </div>
+
+                {/* Info Item 2 */}
+                <div className="flex items-start gap-3">
+                  <FaMapMarkerAlt className="text-blue-500 text-sm shrink-0 mt-1" />
+                  <div>
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block font-['Montserrat',sans-serif]">
+                      LOCATION
+                    </span>
+                    <span className="text-xs sm:text-sm font-bold text-gray-800">
+                      Rural Communities & Schools, Nepal
+                    </span>
+                  </div>
+                </div>
+
+                {/* Info Item 3 */}
+                <div className="flex items-start gap-3">
+                  <FaGlobe className="text-[#366A35] text-sm shrink-0 mt-1" />
+                  <div>
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block font-['Montserrat',sans-serif]">
+                      ORGANIZER
+                    </span>
+                    <span className="text-xs sm:text-sm font-bold text-gray-800">
+                      MRDS Nepal & Menschen im Dialog
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="space-y-2.5 pt-2">
+                <button
+                  onClick={() => {
+                    if (navigator.share) {
+                      navigator.share({ title: "Project 28 Nepal", url: window.location.href });
+                    } else {
+                      navigator.clipboard.writeText(window.location.href);
+                      alert("Link copied to clipboard!");
+                    }
+                  }}
+                  className="w-full py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold rounded-xl flex items-center justify-center gap-2 transition font-['Montserrat',sans-serif]"
+                >
+                  <FaShareAlt /> Share Project
+                </button>
+
+                <a
+                  href="mailto:info@menschen-dialog.de?subject=Support%20Project%2028"
+                  className="w-full py-3 bg-[#366A35] hover:bg-[#2d582c] text-white text-xs font-bold rounded-xl flex items-center justify-center gap-2 transition font-['Montserrat',sans-serif]"
+                >
+                  <FaHeart /> Support This Cause
+                </a>
+              </div>
+            </div>
+
+            {/* Full Program Documentation Card */}
+            <div className="bg-gradient-to-br from-[#EC8134] to-[#D34A32] text-white p-6 sm:p-7 rounded-3xl shadow-md space-y-4">
+              <h3 className="text-xl font-bold font-['Montserrat',sans-serif]">
+                Full Program Documentation
+              </h3>
+              <p className="text-xs text-red-50 leading-relaxed">
+                Download the complete field report detailing workshop structures, reusable cup distribution metrics, and educational impact logs.
+              </p>
+
+              <a
+                href="#download-report"
+                className="w-full py-3 bg-white text-[#D34A32] hover:bg-gray-50 text-xs font-extrabold rounded-xl flex items-center justify-center gap-2 transition shadow-sm font-['Montserrat',sans-serif]"
+              >
+                <FaDownload /> Download Report PDF
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
       {/* ANIMATED METRICS STRIP */}
       <section ref={metricsRef} className="bg-gray-50 border-y border-gray-100 py-10 px-6">
         <div className="max-w-6xl px-8 mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -271,10 +444,9 @@ const Project28Detail = () => {
         </div>
       </section>
 
-      {/* EXACT IMAGE REPLICATION - PILLARS SECTION */}
+      {/* PILLARS SECTION */}
       <section className="bg-gray-50/50 py-16 px-4 sm:px-6 border-y border-gray-100">
         <div className="max-w-6xl mx-auto">
-          
           {/* SECTION HEADER & TITLE */}
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="inline-block px-3.5 py-1 rounded-full bg-[#D34A32]/10 text-[#D34A32] text-xs font-black uppercase tracking-widest mb-3 font-['Montserrat',sans-serif]">
@@ -295,29 +467,25 @@ const Project28Detail = () => {
                 key={pillar.id}
                 className="bg-white rounded-[28px] border border-gray-200/70 shadow-sm overflow-hidden flex flex-col transition-all duration-300 hover:shadow-md"
               >
-                {/* Header Image Box with Overlay Text */}
+                {/* Header Image Box */}
                 <div className="relative h-[250px] w-full overflow-hidden">
                   <img
                     src={pillar.image}
                     alt={pillar.title}
                     className="w-full h-full object-cover"
                   />
-                  {/* Dark gradient for text readability */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
 
-                  {/* Top White Pill Badge */}
                   <div className="absolute top-5 left-5">
                     <span className="bg-white text-gray-900 text-[11px] font-black uppercase tracking-wider px-4 py-1.5 rounded-full shadow-sm font-['Montserrat',sans-serif]">
                       {pillar.badgeText}
                     </span>
                   </div>
 
-                  {/* Right Floating Dark Icon Badge */}
                   <div className="absolute bottom-6 right-5 w-11 h-11 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center shadow-md">
                     {pillar.icon}
                   </div>
 
-                  {/* Image Bottom Titles */}
                   <div className="absolute bottom-5 left-5 right-18 text-white pr-2">
                     <span className="text-[10px] font-extrabold uppercase tracking-widest text-gray-300 block mb-0.5 font-['Montserrat',sans-serif]">
                       {pillar.subTitle}
@@ -327,18 +495,15 @@ const Project28Detail = () => {
                     </h3>
                   </div>
 
-                  {/* Bottom Border Accent Line */}
                   <div className={`absolute bottom-0 inset-x-0 h-1 ${pillar.borderBg}`} />
                 </div>
 
                 {/* Card Content */}
                 <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
-                  {/* Main Paragraph */}
                   <p className="text-xs sm:text-[13px] text-gray-500 leading-relaxed font-medium mb-8">
                     {pillar.description}
                   </p>
 
-                  {/* Core Deliverables List */}
                   <div>
                     <div className="pt-5 border-t border-gray-100">
                       <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 block mb-4 font-['Montserrat',sans-serif]">
@@ -356,7 +521,6 @@ const Project28Detail = () => {
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
             ))}
@@ -414,16 +578,16 @@ const Project28Detail = () => {
       </section>
 
       {/* OTHER ACTIVITIES NAVIGATION */}
-      <section className="bg-gray-50 py-16 px-6 border-t border-gray-100 ">
-        <div className="max-w-6xl px-8 mx-auto space-y-16 ">
+      <section className="bg-gray-50 py-16 px-6 border-t border-gray-100">
+        <div className="max-w-6xl px-8 mx-auto space-y-16">
           <h3 className="text-lg font-bold text-gray-800 mb-6 font-['Montserrat',sans-serif]">
             Explore Other Core Focus Areas
           </h3>
 
-          <div className="grid sm:grid-cols-3 gap-6  ">
+          <div className="grid sm:grid-cols-3 gap-6">
             <div
               onClick={() => navigate("/curious-minds")}
-              className=" bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:border-[#366A35]/50 transition cursor-pointer group"
+              className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:border-[#366A35]/50 transition cursor-pointer group"
             >
               <span className="text-xs font-bold text-[#366A35] uppercase tracking-wider font-['Montserrat',sans-serif]">
                 Education Focus
@@ -474,47 +638,41 @@ const Project28Detail = () => {
                 View Program <FaArrowRight className="text-[10px]" />
               </span>
             </div>
-
-            
           </div>
+
           {/* TRANSPARENCY & CONTACT FOOTER CALLOUT */}
-              <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="text-center sm:text-left space-y-1">
-                  <h4 className="font-bold text-gray-900 text-sm font-['Montserrat',sans-serif]">
-                    Inquire More About Project 28
-                  </h4>
-                  <p className="text-xs text-gray-600">
-                    Get in touch to review our annual transparency reports.
-                  </p>
-                </div>
-                <div className="flex flex-wrap items-center justify-center gap-2">
-                  <a
-                    href="https://www.menschen-im-dialog.de/transparenz/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-bold px-3.5 py-2 rounded-xl border border-gray-200 transition"
-                  >
-                    <FaExternalLinkAlt /> Transparency
-                  </a>
-                  <a
-                    href="mailto:info@menschen-dialog.de"
-                    className="inline-flex items-center gap-1.5 bg-[#EC8134] hover:bg-[#d4702b] text-white text-xs font-bold px-3.5 py-2 rounded-xl transition"
-                  >
-                    <FaEnvelope /> Email Us
-                  </a>
-                  <a
-                    href="tel:+49000000000"
-                    className="inline-flex items-center gap-1.5 bg-[#366A35] hover:bg-[#2e592d] text-white text-xs font-bold px-3.5 py-2 rounded-xl transition"
-                  >
-                    <FaPhoneAlt /> Call Us
-                  </a>
-                </div>
-              </div>
+          <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="text-center sm:text-left space-y-1">
+              <h4 className="font-bold text-gray-900 text-sm font-['Montserrat',sans-serif]">
+                Inquire More About Project 28
+              </h4>
+              <p className="text-xs text-gray-600">
+                Get in touch to review our annual transparency reports.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <Link
+                to="/reports"
+                className="inline-flex items-center gap-1.5 bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-bold px-3.5 py-2 rounded-xl border border-gray-200 transition"
+              >
+                <FaExternalLinkAlt /> Transparency
+              </Link>
+              <a
+                href="mailto:info@menschen-dialog.de"
+                className="inline-flex items-center gap-1.5 bg-[#EC8134] hover:bg-[#d4702b] text-white text-xs font-bold px-3.5 py-2 rounded-xl transition"
+              >
+                <FaEnvelope /> Email Us
+              </a>
+              <a
+                href="tel:+49000000000"
+                className="inline-flex items-center gap-1.5 bg-[#366A35] hover:bg-[#2e592d] text-white text-xs font-bold px-3.5 py-2 rounded-xl transition"
+              >
+                <FaPhoneAlt /> Call Us
+              </a>
+            </div>
+          </div>
         </div>
       </section>
-
-      
-
     </div>
   );
 };

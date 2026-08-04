@@ -15,10 +15,14 @@ import {
   FaChevronLeft,
   FaChevronRight,
   FaQuoteLeft,
-  FaLightbulb
+  FaTag,
+  FaGlobe,
+  FaShareAlt,
+  FaDownload,
+  FaLaptopCode
 } from "react-icons/fa";
 
-// Image assets (Replace or keep your local imports)
+// Image assets
 import CuriousMindsHero from "../assets/images/CuriousMinds.jpg";
 import Phase1Img from "../assets/images/CuriousMinds.jpg";
 import Phase2Img from "../assets/images/CuriousMinds.jpg";
@@ -29,7 +33,7 @@ const galleryImages = [
   {
     src: CuriousMindsHero,
     title: "Digital Classroom Launch",
-    subtitle: "Empowering rural schools in Kavre & Sindhupalchok with interactive ICT labs."
+    subtitle: "Empowering rural schools in Gorkha & Sindhupalchok with interactive ICT labs."
   },
   {
     src: Phase1Img,
@@ -226,7 +230,7 @@ const CuriousMindDetail = () => {
 
             <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm text-gray-700 pt-2">
               <span className="inline-flex items-center gap-2 bg-white border border-gray-200 shadow-xs px-4 py-2 rounded-full font-semibold">
-                <FaMapMarkerAlt className="text-[#EC8134]" /> Kavre & Sindhupalchok, Nepal
+                <FaMapMarkerAlt className="text-[#EC8134]" /> Gorkha & Sindhupalchok, Nepal
               </span>
               <span className="bg-[#366A35]/10 text-[#366A35] border border-[#366A35]/30 px-4 py-2 rounded-full font-bold">
                 Active Initiative
@@ -308,6 +312,179 @@ const CuriousMindDetail = () => {
 
         </div>
 
+        {/* ========================================================================= */}
+        {/* NEW SECTION: PROGRAM OVERVIEW, QUICK INFO & FULL PROGRAM DOCS */}
+        {/* ========================================================================= */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          {/* LEFT COLUMN: Overview & Detailed Breakdown (8 Columns) */}
+          <div className="lg:col-span-8 space-y-8">
+            
+            {/* Program Overview Card */}
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm space-y-4">
+              <h2 className="text-xl sm:text-2xl font-black text-gray-900 font-['Montserrat',sans-serif]">
+                Program Overview
+              </h2>
+              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                Our initiative takes a holistic approach to improving school life in rural communities. By combining physical infrastructure enhancements—like interactive ICT computer labs and solar power support—with long-term teacher training and early digital learning resources, we help ensure every child studies in a safe, inspiring, and forward-looking environment.
+              </p>
+            </div>
+
+            {/* Detailed Project Breakdown */}
+            <div className="space-y-4">
+              <h2 className="text-xl sm:text-2xl font-black text-gray-900 font-['Montserrat',sans-serif]">
+                Core Program Deliverables
+              </h2>
+
+              <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm space-y-6">
+                
+                {/* Header with Badge Icon */}
+                <div className="flex items-start gap-4">
+                  <div className="p-3.5 bg-green-50 text-[#366A35] rounded-2xl flex-shrink-0">
+                    <FaLaptopCode className="text-2xl" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
+                      1. Digital Infrastructure & ICT Lab Setup
+                    </h3>
+                  </div>
+                </div>
+
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                  Establishing modern, solar-assisted digital classrooms ensures students gain direct hands-on experience with ICT tools and offline e-learning software. We build safe, dust-free laptop stations, configure network access, and provide durable educational software suited for remote learning environments.
+                </p>
+
+                {/* Key Highlights & Actions Box */}
+                <div className="bg-slate-50 p-5 sm:p-6 rounded-2xl border border-slate-100 space-y-3">
+                  <span className="text-[11px] font-black uppercase tracking-wider text-gray-500 font-['Montserrat',sans-serif]">
+                    KEY HIGHLIGHTS & ACTIONS TAKEN:
+                  </span>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm font-semibold text-gray-700">
+                    <div className="flex items-start gap-2.5">
+                      <FaCheckCircle className="text-[#366A35] text-base mt-0.5 flex-shrink-0" />
+                      <span>Installed energy-efficient computers & solar battery backups</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <FaCheckCircle className="text-[#366A35] text-base mt-0.5 flex-shrink-0" />
+                      <span>Deployed offline e-learning servers & interactive curriculum</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <FaCheckCircle className="text-[#366A35] text-base mt-0.5 flex-shrink-0" />
+                      <span>Constructed secure, dust-free laptop stations & work desks</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <FaCheckCircle className="text-[#366A35] text-base mt-0.5 flex-shrink-0" />
+                      <span>Trained local IT guardians for ongoing system maintenance</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          {/* RIGHT COLUMN: Quick Info & Documentation Downloads (4 Columns) */}
+          <div className="lg:col-span-4 space-y-6">
+            
+            {/* Quick Info Card */}
+            <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm space-y-6">
+              <h3 className="text-lg font-black text-gray-900 font-['Montserrat',sans-serif]">
+                Quick Info
+              </h3>
+
+              <div className="space-y-4 text-xs sm:text-sm">
+                
+                {/* Focus Areas */}
+                <div className="flex items-start gap-3">
+                  <FaTag className="text-[#EC8134] text-base mt-0.5 flex-shrink-0" />
+                  <div>
+                    <span className="block text-[10px] font-bold uppercase tracking-wider text-gray-400 font-['Montserrat',sans-serif]">
+                      FOCUS AREAS
+                    </span>
+                    <span className="font-extrabold text-gray-800">
+                      ICT Equipment, E-Learning Software, Teacher Mentorship & Solar Power
+                    </span>
+                  </div>
+                </div>
+
+                {/* Location */}
+                <div className="flex items-start gap-3">
+                  <FaMapMarkerAlt className="text-blue-500 text-base mt-0.5 flex-shrink-0" />
+                  <div>
+                    <span className="block text-[10px] font-bold uppercase tracking-wider text-gray-400 font-['Montserrat',sans-serif]">
+                      LOCATION
+                    </span>
+                    <span className="font-extrabold text-gray-800">
+                      Gorkha & Sindhupalchok Schools, Nepal
+                    </span>
+                  </div>
+                </div>
+
+                {/* Organizer */}
+                <div className="flex items-start gap-3">
+                  <FaGlobe className="text-[#366A35] text-base mt-0.5 flex-shrink-0" />
+                  <div>
+                    <span className="block text-[10px] font-bold uppercase tracking-wider text-gray-400 font-['Montserrat',sans-serif]">
+                      ORGANIZER
+                    </span>
+                    <span className="font-extrabold text-gray-800">
+                      Let's Learn & Digital Outreach Team
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Action Buttons */}
+              <div className="space-y-2.5 pt-2">
+                <button
+                  onClick={() => {
+                    if (navigator.share) {
+                      navigator.share({ title: "Curious Minds Initiative", url: window.location.href });
+                    } else {
+                      navigator.clipboard.writeText(window.location.href);
+                      alert("Link copied to clipboard!");
+                    }
+                  }}
+                  className="w-full flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 py-3 rounded-2xl text-xs font-bold transition"
+                >
+                  <FaShareAlt /> Share Project
+                </button>
+
+                <a
+                  href="mailto:info@menschen-dialog.de?subject=Support%20Curious%20Minds"
+                  className="w-full flex items-center justify-center gap-2 bg-[#366A35] hover:bg-[#2d582c] text-white py-3 rounded-2xl text-xs font-bold transition shadow-sm"
+                >
+                  <FaHandshake className="text-base" /> Support This Cause
+                </a>
+              </div>
+
+            </div>
+
+            {/* Full Program Documentation Card */}
+            <div className="bg-[#EC8134] text-white p-6 sm:p-7 rounded-3xl shadow-lg space-y-4">
+              <h3 className="text-lg font-black font-['Montserrat',sans-serif] leading-tight">
+                Full Program Documentation
+              </h3>
+              
+              <p className="text-xs text-white/90 leading-relaxed">
+                Download the complete field report detailing computer hardware specifications, e-learning software logs, teacher mentorship guides, and school deployment timelines.
+              </p>
+
+              <a
+                href="/reports"
+                className="inline-flex items-center justify-center gap-2 w-full bg-white text-[#EC8134] hover:bg-slate-50 font-black text-xs py-3.5 px-4 rounded-xl transition shadow-sm font-['Montserrat',sans-serif]"
+              >
+                <FaDownload /> Download Report PDF
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
         {/* METRICS STRIP */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {metrics.map((item) => (
@@ -357,7 +534,7 @@ const CuriousMindDetail = () => {
               <button
                 key={idx}
                 onClick={() => setActivePhase(idx)}
-                className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold font-['Montserrat',sans-serif] transition-all duration-300 ${
+                className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold font-['Montserrat',sans-serif] transition-all duration-300 ease-in-out transform ${
                   activePhase === idx
                     ? "bg-[#366A35] text-white shadow-md scale-105"
                     : "bg-white text-gray-600 border border-gray-200 hover:bg-slate-100"
@@ -502,7 +679,7 @@ const CuriousMindDetail = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             <div className="bg-[#437942] p-6 rounded-2xl space-y-3 hover:bg-[#4b854a] transition duration-300">
               <FaCheckCircle className="text-2xl text-[#EC8134]" />
-              <h4 className="font-extrabold text-base text-white font-[#Montserrat',sans-serif]">
+              <h4 className="font-extrabold text-base text-white font-['Montserrat',sans-serif]">
                 Teacher Empowerment
               </h4>
               <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
