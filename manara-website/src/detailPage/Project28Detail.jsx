@@ -383,7 +383,7 @@ const Project28Detail = () => {
 
                 <Link
                   to='/contact'
-                  className="w-full py-3 bg-[deeppink] hover:bg-[hotpink] text-white text-xs font-bold rounded-xl flex items-center justify-center gap-2 transition font-['Montserrat',sans-serif]"
+                  className="w-full py-3 bg-gradient-to-br from-[#D34A32] to-[#ff1493] hover:bg-[deeppink] text-white text-xs font-bold rounded-xl flex items-center justify-center gap-2 transition font-['Montserrat',sans-serif]"
                 >
                   <FaHeart /> Become a Volunteer
                 </Link>
