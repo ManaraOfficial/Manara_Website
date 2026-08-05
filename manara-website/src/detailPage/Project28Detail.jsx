@@ -221,7 +221,7 @@ const Project28Detail = () => {
           </div>
 
           <div className="relative max-w-5xl mx-auto">
-            <div className="absolute -inset-1 bg-gradient-to-r from-[#ff1493]/20 via-[#EC8134]/20 to-[#366A35]/20 rounded-3xl blur-lg" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#ff1493]/20 via-[#EC8134]/20 to-[#ff1493]/20 rounded-3xl blur-lg" />
             <div className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-200 bg-white">
               <img
                 src={Project28Hero}
@@ -272,7 +272,7 @@ const Project28Detail = () => {
               {/* Breakdown Card 1 */}
               <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-emerald-50 rounded-2xl text-[#366A35] shrink-0">
+                  <div className="p-3 bg-[#ffd2d9] rounded-2xl text-[#ff1493] shrink-0">
                     <FaBookOpen className="text-2xl" />
                   </div>
                   <div>
@@ -293,19 +293,19 @@ const Project28Detail = () => {
                   </span>
                   <div className="grid sm:grid-cols-2 gap-3 text-xs sm:text-sm text-gray-700 font-semibold">
                     <div className="flex items-start gap-2.5">
-                      <FaCheckCircle className="text-[#366A35] shrink-0 mt-0.5" />
+                      <FaCheckCircle className="text-[#ff1493] shrink-0 mt-0.5" />
                       <span>Interactive village workshops & biological instruction</span>
                     </div>
                     <div className="flex items-start gap-2.5">
-                      <FaCheckCircle className="text-[#366A35] shrink-0 mt-0.5" />
+                      <FaCheckCircle className="text-[#ff1493] shrink-0 mt-0.5" />
                       <span>Distribution of eco-friendly, reusable menstrual cups</span>
                     </div>
                     <div className="flex items-start gap-2.5">
-                      <FaCheckCircle className="text-[#366A35] shrink-0 mt-0.5" />
+                      <FaCheckCircle className="text-[#ff1493] shrink-0 mt-0.5" />
                       <span>Community dialogue to eliminate monthly isolation taboos</span>
                     </div>
                     <div className="flex items-start gap-2.5">
-                      <FaCheckCircle className="text-[#366A35] shrink-0 mt-0.5" />
+                      <FaCheckCircle className="text-[#ff1493] shrink-0 mt-0.5" />
                       <span>Trainer support, local permits, and participant meals</span>
                     </div>
                   </div>
@@ -353,7 +353,7 @@ const Project28Detail = () => {
 
                 {/* Info Item 3 */}
                 <div className="flex items-start gap-3">
-                  <FaGlobe className="text-[#366A35] text-sm shrink-0 mt-1" />
+                  <FaGlobe className="text-[#ff1493] text-sm shrink-0 mt-1" />
                   <div>
                     <span className="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block font-['Montserrat',sans-serif]">
                       ORGANIZER
@@ -381,12 +381,12 @@ const Project28Detail = () => {
                   <FaShareAlt /> Share Project
                 </button>
 
-                <a
-                  href="mailto:info@menschen-dialog.de?subject=Support%20Project%2028"
-                  className="w-full py-3 bg-[#366A35] hover:bg-[#2d582c] text-white text-xs font-bold rounded-xl flex items-center justify-center gap-2 transition font-['Montserrat',sans-serif]"
+                <Link
+                  to='/contact'
+                  className="w-full py-3 bg-[deeppink] hover:bg-[hotpink] text-white text-xs font-bold rounded-xl flex items-center justify-center gap-2 transition font-['Montserrat',sans-serif]"
                 >
-                  <FaHeart /> Support This Cause
-                </a>
+                  <FaHeart /> Become a Volunteer
+                </Link>
               </div>
             </div>
 
@@ -512,7 +512,7 @@ const Project28Detail = () => {
                       <div className="space-y-3">
                         {pillar.points.map((pt, idx) => (
                           <div key={idx} className="flex items-start gap-3">
-                            <FaCheckCircle className="text-[#366A35] text-xs shrink-0 mt-0.5" />
+                            <FaCheckCircle className="text-[#ff1493] text-xs shrink-0 mt-0.5" />
                             <span className="text-xs text-gray-600 font-semibold leading-tight">
                               {pt}
                             </span>
@@ -588,18 +588,18 @@ const Project28Detail = () => {
           <div className="grid sm:grid-cols-3 gap-6">
             <div
               onClick={() => navigate("/curious-minds")}
-              className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:border-[#366A35]/50 transition cursor-pointer group"
+              className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:border-[#ff1493]/50 transition cursor-pointer group"
             >
-              <span className="text-xs font-bold text-[#366A35] uppercase tracking-wider font-['Montserrat',sans-serif]">
+              <span className="text-xs font-bold text-[#ff1493] uppercase tracking-wider font-['Montserrat',sans-serif]">
                 Education Focus
               </span>
-              <h4 className="text-base font-bold text-gray-900 mt-2 group-hover:text-[#366A35] transition font-['Montserrat',sans-serif]">
+              <h4 className="text-base font-bold text-gray-900 mt-2 group-hover:text-[#ff1493] transition font-['Montserrat',sans-serif]">
                 CURIOUS MINDS
               </h4>
               <p className="text-xs text-gray-500 mt-1">
                 Fostering digital literacy and ICT access for rural schools across Nepal.
               </p>
-              <span className="inline-flex items-center gap-1 text-xs font-bold text-[#366A35] mt-4">
+              <span className="inline-flex items-center gap-1 text-xs font-bold text-[#ff1493] mt-4">
                 View Program <FaArrowRight className="text-[10px]" />
               </span>
             </div>
@@ -624,18 +624,18 @@ const Project28Detail = () => {
 
             <div
               onClick={() => navigate("/other-activities")}
-              className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:border-[#366A35]/50 transition cursor-pointer group"
+              className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:border-[#ff1493]/50 transition cursor-pointer group"
             >
-              <span className="text-xs font-bold text-[#366A35] uppercase tracking-wider font-['Montserrat',sans-serif]">
+              <span className="text-xs font-bold text-[#ff1493] uppercase tracking-wider font-['Montserrat',sans-serif]">
                 Community Livelihoods
               </span>
-              <h4 className="text-base font-bold text-gray-900 mt-2 group-hover:text-[#366A35] transition font-['Montserrat',sans-serif]">
+              <h4 className="text-base font-bold text-gray-900 mt-2 group-hover:text-[#ff1493] transition font-['Montserrat',sans-serif]">
                 OTHER ACTIVITIES
               </h4>
               <p className="text-xs text-gray-500 mt-1">
                 Fostering environmental education, community resilience, and local empowerment.
               </p>
-              <span className="inline-flex items-center gap-1 text-xs font-bold text-[#366A35] mt-4">
+              <span className="inline-flex items-center gap-1 text-xs font-bold text-[#ff1493] mt-4">
                 View Program <FaArrowRight className="text-[10px]" />
               </span>
             </div>

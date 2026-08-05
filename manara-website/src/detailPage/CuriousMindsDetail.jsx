@@ -19,7 +19,8 @@ import {
   FaGlobe,
   FaShareAlt,
   FaDownload,
-  FaLaptopCode
+  FaLaptopCode,
+  FaHeart
 } from "react-icons/fa";
 
 // Image assets
@@ -124,10 +125,10 @@ const MetricCard = ({ item }) => {
 
 const CuriousMindDetail = () => {
   const navigate = useNavigate();
-  
+
   // Gallery Pagination State
   const [currentSlide, setCurrentSlide] = useState(0);
-  
+
   // Phase Tab Pagination State
   const [activePhase, setActivePhase] = useState(0);
 
@@ -213,7 +214,7 @@ const CuriousMindDetail = () => {
 
         {/* HERO SECTION: Centered Editorial Header */}
         <div className="space-y-10">
-          
+
           <div className="text-center max-w-4xl mx-auto space-y-4">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#366A35]/10 text-[#366A35] border border-[#366A35]/20 text-xs font-black uppercase tracking-widest font-['Montserrat',sans-serif]">
               Education Program | Let's Learn
@@ -240,14 +241,13 @@ const CuriousMindDetail = () => {
 
           {/* INTERACTIVE PAGINATED HERO IMAGE CAROUSEL */}
           <div className="relative w-full h-[340px] sm:h-[460px] lg:h-[500px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-2xl group">
-            
+
             {/* Gallery Images with Transition */}
             {galleryImages.map((img, idx) => (
               <div
                 key={idx}
-                className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                  idx === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-                }`}
+                className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${idx === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+                  }`}
               >
                 <img
                   src={img.src}
@@ -255,7 +255,7 @@ const CuriousMindDetail = () => {
                   className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-1000 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
-                
+
                 {/* Image Overlay Content */}
                 <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8 text-white space-y-2">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#366A35] text-white text-[11px] font-bold uppercase tracking-wider">
@@ -300,9 +300,8 @@ const CuriousMindDetail = () => {
                 <button
                   key={idx}
                   onClick={() => setCurrentSlide(idx)}
-                  className={`h-2.5 rounded-full transition-all duration-300 ${
-                    idx === currentSlide ? "w-8 bg-[#EC8134]" : "w-2.5 bg-white/60 hover:bg-white"
-                  }`}
+                  className={`h-2.5 rounded-full transition-all duration-300 ${idx === currentSlide ? "w-8 bg-[#EC8134]" : "w-2.5 bg-white/60 hover:bg-white"
+                    }`}
                   aria-label={`Go to slide ${idx + 1}`}
                 />
               ))}
@@ -316,10 +315,10 @@ const CuriousMindDetail = () => {
         {/* NEW SECTION: PROGRAM OVERVIEW, QUICK INFO & FULL PROGRAM DOCS */}
         {/* ========================================================================= */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
+
           {/* LEFT COLUMN: Overview & Detailed Breakdown (8 Columns) */}
           <div className="lg:col-span-8 space-y-8">
-            
+
             {/* Program Overview Card */}
             <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm space-y-4">
               <h2 className="text-xl sm:text-2xl font-black text-gray-900 font-['Montserrat',sans-serif]">
@@ -337,7 +336,7 @@ const CuriousMindDetail = () => {
               </h2>
 
               <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm space-y-6">
-                
+
                 {/* Header with Badge Icon */}
                 <div className="flex items-start gap-4">
                   <div className="p-3.5 bg-green-50 text-[#366A35] rounded-2xl flex-shrink-0">
@@ -359,7 +358,7 @@ const CuriousMindDetail = () => {
                   <span className="text-[11px] font-black uppercase tracking-wider text-gray-500 font-['Montserrat',sans-serif]">
                     KEY HIGHLIGHTS & ACTIONS TAKEN:
                   </span>
-                  
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm font-semibold text-gray-700">
                     <div className="flex items-start gap-2.5">
                       <FaCheckCircle className="text-[#366A35] text-base mt-0.5 flex-shrink-0" />
@@ -387,7 +386,7 @@ const CuriousMindDetail = () => {
 
           {/* RIGHT COLUMN: Quick Info & Documentation Downloads (4 Columns) */}
           <div className="lg:col-span-4 space-y-6">
-            
+
             {/* Quick Info Card */}
             <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm space-y-6">
               <h3 className="text-lg font-black text-gray-900 font-['Montserrat',sans-serif]">
@@ -395,7 +394,7 @@ const CuriousMindDetail = () => {
               </h3>
 
               <div className="space-y-4 text-xs sm:text-sm">
-                
+
                 {/* Focus Areas */}
                 <div className="flex items-start gap-3">
                   <FaTag className="text-[#EC8134] text-base mt-0.5 flex-shrink-0" />
@@ -453,12 +452,12 @@ const CuriousMindDetail = () => {
                   <FaShareAlt /> Share Project
                 </button>
 
-                <a
-                  href="mailto:info@menschen-dialog.de?subject=Support%20Curious%20Minds"
-                  className="w-full flex items-center justify-center gap-2 bg-[#366A35] hover:bg-[#2d582c] text-white py-3 rounded-2xl text-xs font-bold transition shadow-sm"
+                <Link
+                  to='/contact'
+                  className="w-full py-3 bg-[#366A35] hover:bg-[#2d582c] text-white text-xs font-bold rounded-xl flex items-center justify-center gap-2 transition font-['Montserrat',sans-serif]"
                 >
-                  <FaHandshake className="text-base" /> Support This Cause
-                </a>
+                  <FaHeart /> Become a Volunteer
+                </Link>
               </div>
 
             </div>
@@ -468,7 +467,7 @@ const CuriousMindDetail = () => {
               <h3 className="text-lg font-black font-['Montserrat',sans-serif] leading-tight">
                 Full Program Documentation
               </h3>
-              
+
               <p className="text-xs text-white/90 leading-relaxed">
                 Download the complete field report detailing computer hardware specifications, e-learning software logs, teacher mentorship guides, and school deployment timelines.
               </p>
@@ -515,7 +514,7 @@ const CuriousMindDetail = () => {
 
         {/* METHODOLOGY SECTION WITH INTERACTIVE STEPPER / PAGINATION TABS */}
         <div className="space-y-8">
-          
+
           <div className="text-center space-y-2">
             <span className="text-xs font-black uppercase tracking-widest text-[#366A35] font-['Montserrat',sans-serif]">
               Methodology Blueprint
@@ -534,16 +533,14 @@ const CuriousMindDetail = () => {
               <button
                 key={idx}
                 onClick={() => setActivePhase(idx)}
-                className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold font-['Montserrat',sans-serif] transition-all duration-300 ease-in-out transform ${
-                  activePhase === idx
+                className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold font-['Montserrat',sans-serif] transition-all duration-300 ease-in-out transform ${activePhase === idx
                     ? "bg-[#366A35] text-white shadow-md scale-105"
                     : "bg-white text-gray-600 border border-gray-200 hover:bg-slate-100"
-                }`}
+                  }`}
               >
                 <span
-                  className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-colors ${
-                    activePhase === idx ? "bg-white text-[#366A35]" : "bg-gray-400 text-white"
-                  }`}
+                  className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-colors ${activePhase === idx ? "bg-white text-[#366A35]" : "bg-gray-400 text-white"
+                    }`}
                 >
                   {stg.stage}
                 </span>
@@ -555,7 +552,7 @@ const CuriousMindDetail = () => {
           {/* Active Phase Content Highlight Card */}
           <div className="bg-white rounded-3xl border border-gray-200/80 shadow-lg overflow-hidden transition-all duration-500">
             <div className="grid grid-cols-1 lg:grid-cols-12">
-              
+
               {/* Phase Left Image */}
               <div className="lg:col-span-5 relative h-64 lg:h-auto min-h-[260px]">
                 <img
@@ -625,11 +622,10 @@ const CuriousMindDetail = () => {
               <div
                 key={stage.stage}
                 onClick={() => setActivePhase(idx)}
-                className={`bg-white rounded-2xl border transition-all duration-300 cursor-pointer overflow-hidden flex flex-col ${
-                  activePhase === idx
+                className={`bg-white rounded-2xl border transition-all duration-300 cursor-pointer overflow-hidden flex flex-col ${activePhase === idx
                     ? "border-[#366A35] ring-2 ring-[#366A35]/20 shadow-md"
                     : "border-gray-200 hover:border-gray-300 shadow-xs"
-                }`}
+                  }`}
               >
                 <div className={`${stage.headerBg} text-white px-5 py-3 font-['Montserrat',sans-serif] flex items-center justify-between`}>
                   <h3 className="text-xs sm:text-sm font-extrabold tracking-tight">
