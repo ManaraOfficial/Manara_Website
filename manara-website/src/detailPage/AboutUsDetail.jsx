@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { 
-  FaBullseye, 
-  FaEye, 
-  FaHandshake, 
-  FaLightbulb, 
-  FaUsers, 
+import {
+  FaBullseye,
+  FaEye,
+  FaHandshake,
+  FaLightbulb,
+  FaUsers,
   FaGlobe,
   FaArrowRight,
   FaBookOpen,
@@ -106,26 +106,26 @@ const CORE_VALUES = [
 
 const TEAM = [
   {
-    name: "Random Doe",
-    role: "Executive Director",
-    image: "https://i.pravatar.cc/300?img=47", 
-  },
-  {
-    name: "Random Smith",
-    role: "Head of Operations (Munich)",
+    name: "Ralf Ledl",
+    role: "Chief Executive Officer",
     image: "https://i.pravatar.cc/300?img=11",
   },
   {
-    name: "Random Sharma",
-    role: "Project Manager (Kathmandu)",
-    image: "https://i.pravatar.cc/300?img=12",
+    name: "Jurgen Luck",
+    role: "Head of Operations",
+    image: "https://i.pravatar.cc/300?img=12 ",
+  },
+  {
+    name: "Andrea Spieth",
+    role: "Project Manager",
+    image: "https://i.pravatar.cc/300?img=47",
   },
 ];
 
 const AboutUsPage = () => {
   return (
     <div className="min-h-screen bg-slate-50 text-gray-800 pt-28 pb-16 font-['Nunito_Sans',sans-serif]">
-      
+
       {/* 1. HERO SECTION */}
       <section className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto mb-20 text-center space-y-6">
         <span className="inline-block px-3.5 py-1.5 rounded-full bg-[#EC8134]/10 text-[#EC8134] border border-[#EC8134]/20 text-xs font-extrabold uppercase tracking-widest font-['Montserrat',sans-serif]">
@@ -142,20 +142,20 @@ const AboutUsPage = () => {
       {/* 2. OUR STORY */}
       <section className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto mb-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#366A35]/10 text-[#366A35] text-xs font-extrabold uppercase tracking-widest font-['Montserrat',sans-serif]">
               Our Journey
             </div>
-            
+
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 font-['Montserrat',sans-serif] leading-tight">
               Bridging Ideas Between <span className="text-[#EC8134]">Kathmandu</span> & <span className="text-[#366A35]">Munich</span>
             </h2>
-            
+
             <p className="text-gray-600 leading-relaxed text-base">
               It all started with a simple conversation between curious minds across two distinct regions. We recognized a universal truth: while resources are often unevenly distributed, the passion for progress and community development knows no borders.
             </p>
-            
+
             <p className="text-gray-600 leading-relaxed text-base">
               What began as a grassroots initiative has evolved into an international collective. Through flagship efforts like <strong>Project-28</strong> and our community dialogue programs, we turn global solidarity into tangible, local action.
             </p>
@@ -227,7 +227,7 @@ const AboutUsPage = () => {
           {/* Mission Card */}
           <div className="relative bg-white p-8 sm:p-10 rounded-3xl border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-6 flex flex-col justify-between hover:shadow-[0_12px_30px_rgba(0,0,0,0.06)] transition-all duration-300 group overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-[#EC8134]/5 rounded-bl-full -mr-8 -mt-8 pointer-events-none transition-transform group-hover:scale-110" />
-            
+
             <div className="space-y-4 relative z-10">
               <div className="w-14 h-14 rounded-2xl bg-[#EC8134]/10 text-[#EC8134] flex items-center justify-center text-2xl">
                 <FaBullseye />
@@ -351,8 +351,8 @@ const AboutUsPage = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative">
           {METHODOLOGY.map((item, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className="relative bg-white rounded-3xl p-8 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col justify-between space-y-6 hover:-translate-y-1.5 transition-all duration-300"
             >
               <div className="space-y-4">
@@ -416,10 +416,10 @@ const AboutUsPage = () => {
       <section className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto mb-20">
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
-            Meet the Team
+            Co-Founder & Executive Director
           </h2>
           <p className="text-sm sm:text-base text-gray-500 max-w-2xl mx-auto">
-            The passionate individuals coordinating our efforts across our Kathmandu and Munich offices.
+            Visionary Leader • Youth Advocate • Social Entrepreneur
           </p>
         </div>
 
@@ -427,9 +427,9 @@ const AboutUsPage = () => {
           {TEAM.map((member, idx) => (
             <div key={idx} className="group text-center space-y-4">
               <div className="relative w-48 h-48 mx-auto overflow-hidden rounded-full border-4 border-white shadow-lg">
-                <img 
-                  src={member.image} 
-                  alt={member.name} 
+                <img
+                  src={member.image}
+                  alt={member.name}
                   className="object-cover w-full h-full transition duration-500 group-hover:scale-110"
                 />
               </div>
@@ -455,8 +455,8 @@ const AboutUsPage = () => {
           <p className="text-orange-100 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
             Whether you are looking to volunteer, partner, or just want to learn more about our projects, our inbox is always open.
           </p>
-          <Link 
-            to="/contact" 
+          <Link
+            to="/contact"
             className="inline-flex items-center gap-2 bg-white text-[#EC8134] px-6 py-3 rounded-xl font-bold text-sm hover:bg-slate-50 transition shadow-sm font-['Montserrat',sans-serif]"
           >
             Contact Us Today <FaArrowRight />

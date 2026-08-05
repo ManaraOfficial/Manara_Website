@@ -65,7 +65,7 @@ const MetricCard = ({ item, isVisible }) => {
   return (
     <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center">
       <div className="mb-3 p-3 bg-gray-50 rounded-xl">{item.icon}</div>
-      <span className="text-3xl font-extrabold text-[#D34A32] mb-1 font-['Montserrat',sans-serif]">
+      <span className="text-3xl font-extrabold text-[#ff1493] mb-1 font-['Montserrat',sans-serif]">
         {item.prefix || ""}
         {animatedNumber}
         {item.suffix || ""}
@@ -106,7 +106,7 @@ const Project28Detail = () => {
   const metrics = [
     {
       id: 1,
-      icon: <FaFemale className="text-2xl text-[#D34A32]" />,
+      icon: <FaFemale className="text-2xl text-[#ff1493]" />,
       numericValue: 100,
       prefix: "€",
       suffix: "",
@@ -114,7 +114,7 @@ const Project28Detail = () => {
     },
     {
       id: 2,
-      icon: <FaUsers className="text-2xl text-[#D34A32]" />,
+      icon: <FaUsers className="text-2xl text-[#ff1493]" />,
       numericValue: 30,
       prefix: "",
       suffix: "",
@@ -122,7 +122,7 @@ const Project28Detail = () => {
     },
     {
       id: 3,
-      icon: <FaShieldAlt className="text-[#D34A32] text-2xl" />,
+      icon: <FaShieldAlt className="text-[#ff1493] text-2xl" />,
       numericValue: 3,
       prefix: "",
       suffix: "-Way",
@@ -130,7 +130,7 @@ const Project28Detail = () => {
     },
     {
       id: 4,
-      icon: <FaShieldAlt className="text-2xl text-[#D34A32]" />,
+      icon: <FaShieldAlt className="text-2xl text-[#ff1493]" />,
       numericValue: 28,
       prefix: "",
       suffix: " Days",
@@ -196,13 +196,13 @@ const Project28Detail = () => {
       <section className="bg-gradient-to-b from-red-50/40 via-white to-white pt-28 pb-12 px-6 border-b border-gray-100">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-4xl mx-auto mb-12">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#D34A32]/10 text-[#D34A32] text-xs font-extrabold uppercase tracking-widest mb-4 font-['Montserrat',sans-serif]">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ff1493]/10 text-[#ff1493] text-xs font-extrabold uppercase tracking-widest mb-4 font-['Montserrat',sans-serif]">
               Health Initiative | Menstrual Dignity
             </div>
 
             <h1 className="text-4xl sm:text-6xl font-black text-gray-900 tracking-tight leading-tight mb-6 font-['Montserrat',sans-serif]">
               Menstrual Dignity & Health for Women in Nepal:{" "}
-              <span className="text-[#D34A32]">PROJECT 28</span>
+              <span className="text-[#ff1493]">PROJECT 28</span>
             </h1>
 
             <p className="text-base sm:text-xl text-gray-600 leading-relaxed font-normal max-w-3xl mx-auto mb-8">
@@ -212,16 +212,16 @@ const Project28Detail = () => {
 
             <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm text-gray-600">
               <span className="inline-flex items-center gap-1.5 bg-gray-100 border border-gray-200 px-4 py-2 rounded-full font-medium">
-                <FaMapMarkerAlt className="text-[#D34A32]" /> Nepal
+                <FaMapMarkerAlt className="text-[#ff1493]" /> Nepal
               </span>
-              <span className="bg-red-100/70 text-[#D34A32] border border-red-200 px-4 py-2 rounded-full font-bold">
+              <span className="bg-red-100/70 text-[#ff1493] border border-red-200 px-4 py-2 rounded-full font-bold">
                 In Cooperation with MRDS Nepal & Menschen im Dialog
               </span>
             </div>
           </div>
 
           <div className="relative max-w-5xl mx-auto">
-            <div className="absolute -inset-1 bg-gradient-to-r from-[#D34A32]/20 via-[#EC8134]/20 to-[#366A35]/20 rounded-3xl blur-lg" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#ff1493]/20 via-[#EC8134]/20 to-[#366A35]/20 rounded-3xl blur-lg" />
             <div className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-200 bg-white">
               <img
                 src={Project28Hero}
@@ -391,7 +391,7 @@ const Project28Detail = () => {
             </div>
 
             {/* Full Program Documentation Card */}
-            <div className="bg-gradient-to-br from-[#EC8134] to-[#D34A32] text-white p-6 sm:p-7 rounded-3xl shadow-md space-y-4">
+            <div className="bg-gradient-to-br from-[#EC8134] to-[#ff1493] text-white p-6 sm:p-7 rounded-3xl shadow-md space-y-4">
               <h3 className="text-xl font-bold font-['Montserrat',sans-serif]">
                 Full Program Documentation
               </h3>
@@ -401,7 +401,7 @@ const Project28Detail = () => {
 
               <a
                 href="#download-report"
-                className="w-full py-3 bg-white text-[#D34A32] hover:bg-gray-50 text-xs font-extrabold rounded-xl flex items-center justify-center gap-2 transition shadow-sm font-['Montserrat',sans-serif]"
+                className="w-full py-3 bg-white text-[#ff1493] hover:bg-gray-50 text-xs font-extrabold rounded-xl flex items-center justify-center gap-2 transition shadow-sm font-['Montserrat',sans-serif]"
               >
                 <FaDownload /> Download Report PDF
               </a>
@@ -424,8 +424,8 @@ const Project28Detail = () => {
       {/* CONTEXT & OBJECTIVE */}
       <section className="max-w-6xl px-8 mx-auto py-16 sm:py-20">
         <div className="grid md:grid-cols-2 gap-8 sm:gap-10">
-          <div className="bg-white border-l-4 border-[#D34A32] p-8 rounded-r-3xl shadow-sm bg-gradient-to-r from-red-50/20 to-transparent">
-            <h3 className="text-xl sm:text-2xl font-bold text-[#D34A32] mb-3 font-['Montserrat',sans-serif]">
+          <div className="bg-white border-l-4 border-[#ff1493] p-8 rounded-r-3xl shadow-sm bg-gradient-to-r from-red-50/20 to-transparent">
+            <h3 className="text-xl sm:text-2xl font-bold text-[#ff1493] mb-3 font-['Montserrat',sans-serif]">
               The Challenge in Nepal
             </h3>
             <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
@@ -449,7 +449,7 @@ const Project28Detail = () => {
         <div className="max-w-6xl mx-auto">
           {/* SECTION HEADER & TITLE */}
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="inline-block px-3.5 py-1 rounded-full bg-[#D34A32]/10 text-[#D34A32] text-xs font-black uppercase tracking-widest mb-3 font-['Montserrat',sans-serif]">
+            <span className="inline-block px-3.5 py-1 rounded-full bg-[#ff1493]/10 text-[#ff1493] text-xs font-black uppercase tracking-widest mb-3 font-['Montserrat',sans-serif]">
               Strategic Focus Areas
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight font-['Montserrat',sans-serif]">
@@ -530,7 +530,8 @@ const Project28Detail = () => {
 
       {/* TEAM & PARTNERS CORNERSTONE */}
       <section className="max-w-6xl px-8 mx-auto py-16 sm:py-20">
-        <div className="bg-[#D34A32] text-white rounded-3xl p-8 sm:p-12 shadow-xl">
+        <div className="bg-gradient-to-br from-[#D34A32] to-[#ff1493] text-white rounded-3xl p-8 sm:p-12 shadow-xl">
+        {/* <div className="bg-[#D34A32] text-white rounded-3xl p-8 sm:p-12 shadow-xl"> */}
           <div className="max-w-3xl mb-10">
             <span className="text-xs font-extrabold uppercase tracking-widest text-red-200 font-['Montserrat',sans-serif]">
               Expertise & Collaboration
@@ -604,8 +605,8 @@ const Project28Detail = () => {
             </div>
 
             <div
-              onClick={() => navigate("/cecs")}
-              className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:border-[#D34A32]/50 transition cursor-pointer group"
+              onClick={() => navigate("/sponsorship")}
+              className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:border-[#ff1493]/50 transition cursor-pointer group"
             >
               <span className="text-xs font-bold text-[#EC8134] uppercase tracking-wider font-['Montserrat',sans-serif]">
                 Medical Alliances
@@ -622,7 +623,7 @@ const Project28Detail = () => {
             </div>
 
             <div
-              onClick={() => navigate("/others")}
+              onClick={() => navigate("/other-activities")}
               className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:border-[#366A35]/50 transition cursor-pointer group"
             >
               <span className="text-xs font-bold text-[#366A35] uppercase tracking-wider font-['Montserrat',sans-serif]">
@@ -665,7 +666,7 @@ const Project28Detail = () => {
               </a>
               <a
                 href="tel:+49000000000"
-                className="inline-flex items-center gap-1.5 bg-[#366A35] hover:bg-[#2e592d] text-white text-xs font-bold px-3.5 py-2 rounded-xl transition"
+                className="inline-flex items-center gap-1.5 bg-[#ff1493] hover:bg-[#EC8134] text-white text-xs font-bold px-3.5 py-2 rounded-xl transition"
               >
                 <FaPhoneAlt /> Call Us
               </a>

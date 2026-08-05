@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { 
   FaCalendarAlt, 
   FaMapMarkerAlt, 
@@ -21,6 +21,8 @@ import {
 } from "react-icons/fa";
 
 const OtherActivitiesDetail = () => {
+  const navigate = useNavigate();
+
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
@@ -33,7 +35,20 @@ const OtherActivitiesDetail = () => {
     }
   };
 
-  // Detailed breakdown for each individual activity/initiative provided
+  // Smooth scroll or navigate to home route if on a different page
+  const handleScrollToOurWork = (e) => {
+    e.preventDefault();
+    const element = document.getElementById("our-work");
+
+    if (element) {
+      // If already on the home page where #our-work exists
+      element.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // If on /our-activities, navigate home and request scroll via state
+      navigate("/", { state: { scrollTo: "our-work" } });
+    }
+  };
+
   const initiatives = [
     {
       id: "toilet-construction",
@@ -115,7 +130,7 @@ const OtherActivitiesDetail = () => {
   return (
     <div className="min-h-screen bg-slate-50 text-gray-800 pt-28 pb-20 font-['Nunito_Sans',sans-serif]">
       
-      {/* 1. CENTERED HERO HEADER SECTION (No Back Button) */}
+      {/* 1. CENTERED HERO HEADER SECTION */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <div className="space-y-4 max-w-4xl mx-auto text-center">
           
@@ -178,7 +193,7 @@ const OtherActivitiesDetail = () => {
               </p>
             </div>
 
-            {/* DETAILED SECTIONS FOR EACH ITEM PROVIDED */}
+            {/* DETAILED SECTIONS */}
             <div className="space-y-8">
               <h2 className="text-2xl font-black text-gray-900 font-['Montserrat',sans-serif]">
                 Detailed Project Breakdown
@@ -256,7 +271,7 @@ const OtherActivitiesDetail = () => {
             </div>
 
             {/* Photo Gallery */}
-            <div className="space-y-6">
+            {/* <div className="space-y-6">
               <h2 className="text-2xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
                 Activity Photo Gallery
               </h2>
@@ -283,7 +298,7 @@ const OtherActivitiesDetail = () => {
                   />
                 </div>
               </div>
-            </div>
+            </div> */}
 
           </div>
 
@@ -370,12 +385,12 @@ const OtherActivitiesDetail = () => {
           <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
             Discover all our active projects across sanitation construction, health awareness campaigns, classroom weatherproofing, and early education support.
           </p>
-          <Link 
-            to="/other-activities"
-            className="inline-flex items-center gap-2 bg-[#EC8134] text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-[#d9732b] transition font-['Montserrat',sans-serif]"
+          <button 
+            onClick={handleScrollToOurWork}
+            className="inline-flex items-center gap-2 bg-[#EC8134] text-[#FFFFFF] px-6 py-3 rounded-xl font-bold text-sm hover:bg-[#d9732b] transition font-['Montserrat',sans-serif] cursor-pointer"
           >
             Explore All Activities
-          </Link>
+          </button>
         </div>
       </section>
 

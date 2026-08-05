@@ -50,9 +50,10 @@ export default function ReportsPage() {
         title="Official Reports"
         subtitle="Access and download detailed reports, annual reviews, and project documentation"
       />
+      
 
       {/* Category Tabs */}
-      <div className="max-w-6xl mx-auto my-8 flex flex-wrap justify-center gap-2">
+      <div className="max-w-6xl mx-auto mb-8 flex flex-wrap justify-center gap-2">
         {CATEGORIES.map((cat) => {
           const isActive = activeCategory === cat.value
           return (
@@ -64,7 +65,7 @@ export default function ReportsPage() {
                 backgroundColor: isActive ? cat.color : 'transparent',
                 color: isActive ? '#ffffff' : cat.color,
               }}
-              className="px-5 py-2 rounded-full border text-xs md:text-sm font-bold transition-all duration-300"
+              className="px-5 py-2 rounded-full border text-xs md:text-sm font-bold transition-all duration-300 hover:cursor-pointer"
             >
               {cat.label}
             </button>

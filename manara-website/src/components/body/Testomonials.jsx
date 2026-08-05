@@ -44,7 +44,7 @@ export default function Testimonials() {
   const swiperRef = useRef(null);
 
   return (
-    <section className="relative w-full py-20 bg-[#F8FAFC] flex items-center justify-center overflow-hidden flex flex-col  select-none">
+    <section className="relative w-full py-20 bg-[#F8FAFC] flex items-center justify-center overflow-hidden flex flex-col  select-none" id="testimonials">
         <SectionHeader title="What People Say" subtitle="Real experiences, shared by those who know us best."/>
       
       {/* Background soft ambient lights */}

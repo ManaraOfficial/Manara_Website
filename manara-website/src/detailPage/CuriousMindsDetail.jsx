@@ -25,23 +25,23 @@ import {
 // Image assets
 import CuriousMindsHero from "../assets/images/CuriousMinds.jpg";
 import Phase1Img from "../assets/images/CuriousMinds.jpg";
-import Phase2Img from "../assets/images/CuriousMinds.jpg";
-import Phase3Img from "../assets/images/CuriousMinds.jpg";
+import Phase2Img from "../assets/images/CuriousMinds3.jpg";
+import Phase3Img from "../assets/images/CuriousMinds5.jpg";
 
 // Hero Gallery Images Array for Pagination Slider
 const galleryImages = [
   {
-    src: CuriousMindsHero,
+    src: Phase1Img,
     title: "Digital Classroom Launch",
     subtitle: "Empowering rural schools in Gorkha & Sindhupalchok with interactive ICT labs."
   },
   {
-    src: Phase1Img,
+    src: Phase2Img,
     title: "Teacher Mentorship & Training",
     subtitle: "Training local educators to independently manage e-learning materials."
   },
   {
-    src: Phase2Img,
+    src: Phase3Img,
     title: "Interactive E-Learning",
     subtitle: "Students engaging directly with modern digital educational resources."
   }
@@ -181,7 +181,7 @@ const CuriousMindDetail = () => {
       image: Phase1Img,
       summary: "Inventory & Community Alignment",
       description:
-        "As a first step, we conduct a comprehensive inventory: interested schools are evaluated, risk assessments are carried out, and challenges are identified. Together with teachers, parents, and local officials, we communicate the importance of education and children's rights to create the foundation for targeted measures. Additionally, baseline student knowledge is assessed to measure learning progress over time.",
+        "As a first step, we conduct an inventory: Interested schools are evaluated, risk assessments are carried out, and challenges are identified. Together with teachers, parents, and local officials, we communicate the importance of education and children's rights to create the foundation for targeted measures. Additionally, the students' knowledge level is determined through an assessment. This allows us not only to provide targeted support but also to better measure learning progress. The results are later compared with those of schools not yet part of Curious Minds to demonstrate the project's added value and to evaluate the long-term impact of the measures.",
     },
     {
       stage: "02",
@@ -192,7 +192,7 @@ const CuriousMindDetail = () => {
       image: Phase2Img,
       summary: "Digital Setup & Teacher Mentorship",
       description:
-        "In phase II, we set up the digital infrastructure: networks and computers are implemented, basic IT skills are taught, and teachers are trained in using e-learning materials. At the same time, selected technically skilled teachers receive specialized training in system maintenance. Schools formally commit to maintaining and protecting these educational resources.",
+        "In project phase II, we begin setting up the digital infrastructure: networks and computers are implemented, basic IT skills are taught, and teachers are trained in the use of e-learning. At the same time, we train selected, technically skilled teachers in system maintenance. Based on the risk assessment from project phase I, we encourage teachers to develop appropriate measures to strengthen children's rights. The schools commit   to implementing and adhering to these measures  at a community meeting . This commitment is reinforced and made legally binding through the public signing  of a Memorandum of Understanding (MOU). This project phase ensures that education is not only accessible but also safe and sustainable.",
     },
     {
       stage: "03",
@@ -203,7 +203,7 @@ const CuriousMindDetail = () => {
       image: Phase3Img,
       summary: "Long-term Autonomy & Refresher Training",
       description:
-        "In the final phase, we ensure that supported schools become self-sufficient in the long term. We conduct a refresher training session three to six months after the official handover to address remaining questions and deepen knowledge. This ensures the sustainable, independent integration of digital learning methods.",
+        "In the third and final project phase, we ensure that the supported schools become self-sufficient in the long term. To this end, we conduct a refresher training session three to six months after the official handover, in which we address any remaining questions with teachers and selected students and meaningfully supplement or deepen their acquired knowledge. This ensures the sustainable integration of digital teaching and learning methods. Since complete independence is not always achieved immediately, Curious Minds continues to support the schools to overcome any remaining obstacles and dependencies. Teachers receive follow-up support for technical problems, repairs, or methodological challenges. With this phase, Curious Minds empowers the schools to maintain and further develop their educational structures in the long term.",
     },
   ];
 
@@ -656,10 +656,10 @@ const CuriousMindDetail = () => {
             <div className="space-y-4">
               <FaQuoteLeft className="text-3xl sm:text-4xl text-[#EC8134]/40" />
               <blockquote className="text-base sm:text-xl font-bold text-slate-800 italic leading-relaxed font-['Nunito_Sans',sans-serif]">
-                "Combining clean toilets, dry roofs, warm carpets, and hygiene demonstrations has completely changed our students' daily attitude toward coming to school."
+                "Curiosity fuels education – education opens worlds   | CURIOUS MINDS"
               </blockquote>
               <div className="pt-2 text-xs sm:text-sm font-extrabold text-slate-500 uppercase tracking-wider font-['Montserrat',sans-serif]">
-                — Local School Headmaster & Community Representative
+                — Ralf Ledl, Founder & Program Director
               </div>
             </div>
           </div>
@@ -737,7 +737,7 @@ const CuriousMindDetail = () => {
 
             {/* Impact Alliance (Red #D34A32) */}
             <div
-              onClick={() => navigate("/cecs")}
+              onClick={() => navigate("/sponsorship")}
               className="bg-white p-5 rounded-2xl border border-gray-100 shadow-xs hover:border-[#D34A32]/50 hover:shadow-md transition cursor-pointer group space-y-2"
             >
               <span className="text-xs font-bold text-[#D34A32] uppercase tracking-wider font-['Montserrat',sans-serif]">
@@ -756,7 +756,7 @@ const CuriousMindDetail = () => {
 
             {/* Let's Learn (Green #366A35) */}
             <div
-              onClick={() => navigate("/others")}
+              onClick={() => navigate("/other-activities")}
               className="bg-white p-5 rounded-2xl border border-gray-100 shadow-xs hover:border-[#366A35]/50 hover:shadow-md transition cursor-pointer group space-y-2"
             >
               <span className="text-xs font-bold text-[#366A35] uppercase tracking-wider font-['Montserrat',sans-serif]">

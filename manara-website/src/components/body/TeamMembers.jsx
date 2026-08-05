@@ -1,6 +1,13 @@
-import React, { useEffect, useRef } from "react";
-import confetti from "canvas-confetti";
-import { FaLinkedinIn, FaInstagram } from "react-icons/fa";
+import React, { useState, useEffect, useRef } from "react";
+import { 
+  FaLinkedinIn, 
+  FaInstagram, 
+  FaArrowRight, 
+  FaChevronLeft, 
+  FaChevronRight, 
+  FaPause,
+  FaMagic
+} from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import SectionHeader from "../reusableComp/SectionHeader";
 
@@ -12,284 +19,622 @@ import person5 from "../../assets/images/person5.png";
 import person6 from "../../assets/images/rajesh3.jpg";
 import person7 from "../../assets/images/person7.jpeg";
 
-const teamData = {
-  leader: {
-    name: "RALF LEDL",
-    role: "CHIEF EXECUTIVE OFFICER",
-    dept: "MENSCHEN IM DIALOG",
+// 🎨 BRAND COLOR
+const BRAND_COLOR = "#e5005a"; 
+
+// 🎬 TRANSITION TYPES ASSIGNED TO EACH SLIDE
+const TRANSITION_TYPES = [
+  { id: "iris", name: "Iris Expansion" },
+  { id: "blinds", name: "Venetian Blinds" },
+  { id: "doors", name: "Center Barn Doors" },
+  { id: "staggerWipe", name: "Staggered Slices" },
+  { id: "diagonal", name: "Diagonal Sweep" },
+];
+
+const teamList = [
+  {
+    id: "ralf",
+    name: "Ralf Ledl",
+    role: "Chief Executive Officer",
+    dept: "Menschen im Dialog",
+    category: "Leadership",
+    location: "Munich, Germany",
     image: person1,
+    quote: "Empowering dialogue and human connection across digital channels.",
+    stats: { projects: "45+", experience: "14 Yrs" },
+    effect: TRANSITION_TYPES[0],
   },
-  managers: [
-    {
-      name: "JURGEN LUCK",
-      role: "PROJECT MANAGER",
-      dept: "CECS",
-      image: person2,
-    },
-    {
-      name: "ANDREA SPIETH",
-      role: "PROJECT MANAGER",
-      dept: "PROJECT28",
-      image: person3,
-    },
-  ],
-  executives: [
-    {
-      name: "RIDAM GURUNG",
-      role: "EXECUTIVE",
-      dept: "CECS",
-      image: person4,
-    },
-    {
-      name: "ANJU DEVKOTA",
-      role: "EXECUTIVE",
-      dept: "PROJECT28",
-      image: person5,
-    },
-    {
-      name: "RAJESH JACKO",
-      role: "EXECUTIVE",
-      dept: "CURIOUS MINDS",
-      image: person6,
-    },
-    {
-      name: "NEHA ADHIKARI",
-      role: "EXECUTIVE",
-      dept: "PROJECT28",
-      image: person7,
-    },
-  ],
-};
+  {
+    id: "jurgen",
+    name: "Jürgen Luck",
+    role: "Project Manager",
+    dept: "CECS",
+    category: "Management",
+    location: "Stuttgart, Germany",
+    image: person2,
+    quote: "Precision engineering applied to strategic organizational scaling.",
+    stats: { projects: "30+", experience: "9 Yrs" },
+    effect: TRANSITION_TYPES[1],
+  },
+  {
+    id: "andrea",
+    name: "Andrea Spieth",
+    role: "Project Manager",
+    dept: "Project28",
+    category: "Management",
+    location: "Berlin, Germany",
+    image: person3,
+    quote: "Transforming ambitious ideas into seamless operational workflows.",
+    stats: { projects: "28+", experience: "8 Yrs" },
+    effect: TRANSITION_TYPES[2],
+  },
+  {
+    id: "ridam",
+    name: "Ridam Gurung",
+    role: "Executive Lead",
+    dept: "CECS",
+    category: "Executive",
+    location: "Kathmandu, Nepal",
+    image: person4,
+    quote: "Building robust modern digital experiences with relentless precision.",
+    stats: { projects: "22+", experience: "5 Yrs" },
+    effect: TRANSITION_TYPES[3],
+  },
+  {
+    id: "anju",
+    name: "Anju Devkota",
+    role: "Operations Executive",
+    dept: "Project28",
+    category: "Executive",
+    location: "Kathmandu, Nepal",
+    image: person5,
+    quote: "Bridging creative vision with structured, high-impact implementation.",
+    stats: { projects: "18+", experience: "4 Yrs" },
+    effect: TRANSITION_TYPES[4],
+  },
+  {
+    id: "rajesh",
+    name: "Rajesh Jacko",
+    role: "Creative Executive",
+    dept: "Curious Minds",
+    category: "Executive",
+    location: "Pokhara, Nepal",
+    image: person6,
+    quote: "Crafting bold aesthetic identities that leave a lasting impression.",
+    stats: { projects: "35+", experience: "6 Yrs" },
+    effect: TRANSITION_TYPES[0],
+  },
+  {
+    id: "neha",
+    name: "Neha Adhikari",
+    role: "Strategy Executive",
+    dept: "Project28",
+    category: "Executive",
+    location: "Kathmandu, Nepal",
+    image: person7,
+    quote: "Fostering brand growth through actionable insights and creative leadership.",
+    stats: { projects: "15+", experience: "3 Yrs" },
+    effect: TRANSITION_TYPES[1],
+  },
+];
 
 export default function EditorialTeam() {
-  const sectionRef = useRef(null);
-  const hasFired = useRef(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  
+  const activeMember = teamList[activeIndex];
+  const containerRef = useRef(null);
+  const itemRefs = useRef([]);
+  const isFirstRender = useRef(true);
 
-  // High-power continuous corner confetti loop (4 seconds)
-  const startContinuousConfetti = () => {
-    const duration = 0.8 * 1000;
-    const animationEnd = Date.now() + duration;
+  // ⏱️ AUTOMATIC 5-SECOND ROTATION
+  useEffect(() => {
+    if (isPaused) return;
 
-    const colors = ["#e5005a", "#3b82f6", "#10b981", "#f59e0b", "#ec4899"];
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % teamList.length);
+    }, 5000);
 
-    const frame = () => {
-      const timeLeft = animationEnd - Date.now();
+    return () => clearInterval(timer);
+  }, [isPaused]);
 
-      if (timeLeft <= 0) return;
+  // 🔄 CATCH UP PREVIOUS INDEX AFTER TRANSITION DURATION (1000MS) TO PREVENT SEAMS
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPrevIndex(activeIndex);
+    }, 1000);
 
-      // Left Cannon
-      confetti({
-        particleCount: 3,
-        angle: 50,
-        spread: 70,
-        startVelocity: 85,
-        ticks: 300,
-        gravity: 0.9,
-        scalar: 1.1,
-        origin: { x: 0, y: 0.95 },
-        colors: colors,
-        disableForReducedMotion: true,
-      });
+    return () => clearTimeout(timer);
+  }, [activeIndex]);
 
-      // Right Cannon
-      confetti({
-        particleCount: 3,
-        angle: 130,
-        spread: 70,
-        startVelocity: 85,
-        ticks: 300,
-        gravity: 0.9,
-        scalar: 1.1,
-        origin: { x: 1, y: 0.95 },
-        colors: colors,
-        disableForReducedMotion: true,
-      });
+  // SCROLL DIRECTORY TO ACTIVE MEMBER
+  useEffect(() => {
+    const container = containerRef.current;
+    const activeItem = itemRefs.current[activeIndex];
 
-      requestAnimationFrame(frame);
-    };
+    if (container && activeItem) {
+      const behavior = isFirstRender.current ? "auto" : "smooth";
+      const containerRect = container.getBoundingClientRect();
+      const itemRect = activeItem.getBoundingClientRect();
 
-    frame();
+      if (itemRect.top < containerRect.top) {
+        container.scrollTo({
+          top: container.scrollTop + (itemRect.top - containerRect.top),
+          behavior,
+        });
+      } else if (itemRect.bottom > containerRect.bottom) {
+        container.scrollTo({
+          top: container.scrollTop + (itemRect.bottom - containerRect.bottom),
+          behavior,
+        });
+      }
+
+      if (isFirstRender.current) {
+        isFirstRender.current = false;
+      }
+    }
+  }, [activeIndex]);
+
+  const handleNext = () => {
+    setActiveIndex((prev) => (prev + 1) % teamList.length);
   };
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasFired.current) {
-          startContinuousConfetti();
-          hasFired.current = true;
-        }
-      },
-      { threshold: 0.3 }
-    );
+  const handlePrev = () => {
+    setActiveIndex((prev) => (prev - 1 + teamList.length) % teamList.length);
+  };
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+  const handleSelectMember = (idx) => {
+    if (idx !== activeIndex) {
+      setActiveIndex(idx);
+    }
+  };
+
+  // 🎨 TRANSITION RENDERER COMPONENT
+  const renderTransitionEffect = (member, isActive) => {
+    const effectType = member.effect.id;
+
+    // 🎯 1. IRIS CIRCLE EXPANSION
+    if (effectType === "iris") {
+      return (
+        <div
+          className="absolute inset-0 w-full h-full transition-all duration-1000 ease-[cubic-bezier(0.77,0,0.175,1)] will-change-[clip-path]"
+          style={{
+            clipPath: isActive ? "circle(150% at 50% 50%)" : "circle(0% at 50% 50%)",
+            transform: "translateZ(0)",
+          }}
+        >
+          <img
+            src={member.image}
+            alt={member.name}
+            className="w-full h-full object-cover object-center"
+          />
+        </div>
+      );
     }
 
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
+    // 🎯 2. VENETIAN BLINDS (MICRO-OVERLAP PREVENTS SEAMS)
+    if (effectType === "blinds") {
+      return (
+        <div className="absolute inset-0 w-full h-full">
+          {[0, 1, 2, 3, 4, 5].map((blindIdx) => {
+            const topPercent = blindIdx * (100 / 6);
+
+            return (
+              <div
+                key={blindIdx}
+                className="absolute inset-x-0 w-full transition-all duration-700 ease-[cubic-bezier(0.77,0,0.175,1)] overflow-hidden will-change-[clip-path]"
+                style={{
+                  top: `${topPercent}%`,
+                  height: "calc(100% / 6 + 1.5px)",
+                  clipPath: isActive ? "inset(0% 0% 0% 0%)" : "inset(50% 0% 50% 0%)",
+                  transitionDelay: isActive ? `${blindIdx * 60}ms` : "0ms",
+                  transform: "translateZ(0)",
+                }}
+              >
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="absolute left-0 w-full h-[460px] sm:h-[540px] object-cover object-center"
+                  style={{ top: `-${topPercent * (540 / 100)}px` }}
+                />
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
+
+    // 🎯 3. CENTER BARN DOORS SPLIT
+    if (effectType === "doors") {
+      return (
+        <div className="absolute inset-0 w-full h-full">
+          {/* Left Door */}
+          <div
+            className="absolute inset-0 w-full h-full transition-all duration-800 ease-[cubic-bezier(0.77,0,0.175,1)] will-change-[clip-path]"
+            style={{
+              clipPath: isActive ? "inset(0% 49.5% 0% 0%)" : "inset(0% 100% 0% 0%)",
+              transform: "translateZ(0)",
+            }}
+          >
+            <img src={member.image} alt={member.name} className="w-full h-full object-cover object-center" />
+          </div>
+          {/* Right Door */}
+          <div
+            className="absolute inset-0 w-full h-full transition-all duration-800 ease-[cubic-bezier(0.77,0,0.175,1)] will-change-[clip-path]"
+            style={{
+              clipPath: isActive ? "inset(0% 0% 0% 49.5%)" : "inset(0% 0% 0% 100%)",
+              transform: "translateZ(0)",
+            }}
+          >
+            <img src={member.image} alt={member.name} className="w-full h-full object-cover object-center" />
+          </div>
+        </div>
+      );
+    }
+
+    // 🎯 4. STAGGERED VERTICAL SLICES
+    if (effectType === "staggerWipe") {
+      return (
+        <div className="absolute inset-0 w-full h-full">
+          {[0, 1, 2, 3].map((sliceIdx) => {
+            const leftPercent = Math.max(0, sliceIdx * 25 - 0.2);
+            const rightPercent = Math.max(0, 100 - (sliceIdx + 1) * 25 - 0.2);
+
+            return (
+              <div
+                key={sliceIdx}
+                className="absolute inset-0 w-full h-full transition-all duration-700 ease-[cubic-bezier(0.77,0,0.175,1)] will-change-[clip-path]"
+                style={{
+                  clipPath: isActive
+                    ? `inset(0% ${rightPercent}% 0% ${leftPercent}%)`
+                    : `inset(100% ${rightPercent}% 0% ${leftPercent}%)`,
+                  transitionDelay: isActive ? `${sliceIdx * 80}ms` : "0ms",
+                  transform: "translateZ(0)",
+                }}
+              >
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                />
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
+
+    // 🎯 5. DIAGONAL SWEEP CURTAIN
+    if (effectType === "diagonal") {
+      return (
+        <div
+          className="absolute inset-0 w-full h-full transition-all duration-900 ease-[cubic-bezier(0.77,0,0.175,1)] will-change-[clip-path]"
+          style={{
+            clipPath: isActive
+              ? "polygon(0% 0%, 150% 0%, 150% 150%, 0% 150%)"
+              : "polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%)",
+            transform: "translateZ(0)",
+          }}
+        >
+          <img
+            src={member.image}
+            alt={member.name}
+            className="w-full h-full object-cover object-center"
+          />
+        </div>
+      );
+    }
+
+    return null;
+  };
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative w-full min-h-screen bg-white text-slate-800 py-20 px-6 sm:px-12 flex flex-col items-center select-none overflow-hidden "
-    >
-      <div className="w-full max-w-7xl relative z-10 flex flex-col">
-        {/* SECTION HEADER */}
+    <section className="relative w-full min-h-screen bg-white text-slate-900 py-20 px-6 lg:px-16 flex flex-col justify-between overflow-hidden select-none font-sans" id="team">
+      
+      {/* BRAND COLOR DYNAMIC GRADIENT MESH BACKDROPS */}
+      <div 
+        className="absolute top-0 left-0 w-[700px] h-[700px] rounded-full blur-[120px] pointer-events-none transition-all duration-700 opacity-20"
+        style={{
+          background: `radial-gradient(circle, ${BRAND_COLOR} 0%, transparent 70%)`
+        }}
+      />
+      <div 
+        className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full blur-[140px] pointer-events-none transition-all duration-700 opacity-15"
+        style={{
+          background: `radial-gradient(circle, ${BRAND_COLOR} 0%, transparent 70%)`
+        }}
+      />
+
+      {/* HEADER SECTION */}
+      <div className="w-full max-w-7xl mx-auto z-20 mb-10">
         <SectionHeader
-          title="OUR TEAM"
-          subtitle="Get to know the passionate team behind our innovation."
+          title="MEET THE TEAM"
+          subtitle="The visionary minds shaping our brand and operations across the globe."
         />
-
-        {/* TOP LEVEL: CEO Node with Side Description */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-20 lg:mb-24">
-          <div className="hidden lg:block lg:col-span-3 text-left">
-            <span className="text-xs font-black uppercase tracking-widest text-[#e5005a] block mb-1">
-              Leadership
-            </span>
-            <p className="text-sm text-slate-500 font-medium leading-relaxed">
-              Guiding our global vision and strategic partnerships across all
-              initiative branches.
-            </p>
-          </div>
-
-          {/* CEO Card (Larger image & text) */}
-          <div className="lg:col-span-6 flex flex-col items-center text-center">
-            <div className="group cursor-pointer flex flex-col items-center">
-              <div className="relative w-56 h-56 sm:w-64 sm:h-64 rounded-full overflow-hidden bg-slate-50 shadow-[inset_4px_4px_10px_rgba(0,0,0,0.06),_8px_8px_20px_rgba(0,0,0,0.03)] border-[10px] border-slate-100 flex items-center justify-center transition-all duration-500 group-hover:shadow-[0_20px_40px_-10px_rgba(229,0,90,0.15)] group-hover:border-[#e5005a]/20">
-                <img
-                  src={teamData.leader.image}
-                  alt={teamData.leader.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-
-              <div className="mt-5">
-                <h2 className="text-2xl sm:text-3xl font-black tracking-wide uppercase text-slate-900 group-hover:text-[#e5005a] transition-colors">
-                  {teamData.leader.name}
-                </h2>
-                <p className="text-sm sm:text-base font-bold text-[#e5005a] uppercase tracking-widest mt-1">
-                  {teamData.leader.role}
-                </p>
-                <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider block mt-1">
-                  {teamData.leader.dept}
-                </span>
-              </div>
-
-              <div className="flex items-center gap-4 mt-4 opacity-40 group-hover:opacity-100 transition-opacity">
-                <a href="#" className="text-slate-800 hover:text-[#e5005a] transition-colors">
-                  <FaXTwitter size={14} />
-                </a>
-                <a href="#" className="text-slate-800 hover:text-[#e5005a] transition-colors">
-                  <FaInstagram size={15} />
-                </a>
-                <a href="#" className="text-slate-800 hover:text-[#e5005a] transition-colors">
-                  <FaLinkedinIn size={15} />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="lg:col-span-3 text-center lg:text-left text-sm text-slate-500 leading-relaxed max-w-sm mx-auto lg:mx-0">
-            <h3 className="font-bold text-slate-900 text-base mb-2 uppercase tracking-wide">
-              MENSCHEN IM DIALOG & PARTNERS
-            </h3>
-            <p>
-              We collaborate across dedicated departments—CECS, PROJECT28, and
-              CURIOUS MINDS—combining expert project management and executive
-              drive.
-            </p>
-          </div>
-        </div>
-
-        {/* MID LEVEL: Project Managers */}
-        <div className="flex flex-wrap justify-center gap-14 sm:gap-28 mb-20 lg:mb-24">
-          {teamData.managers.map((member, idx) => (
-            <div
-              key={idx}
-              className="group cursor-pointer flex items-center gap-5 sm:gap-6"
-            >
-              <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden bg-slate-50 shadow-md border-4 border-slate-100 shrink-0 transition-all duration-500 group-hover:scale-105 group-hover:border-[#e5005a]/30">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              <div className="text-left">
-                <h3 className="text-lg sm:text-xl font-black text-slate-900 uppercase tracking-wide group-hover:text-[#e5005a] transition-colors">
-                  {member.name}
-                </h3>
-                <p className="text-xs sm:text-sm font-bold text-[#e5005a] uppercase tracking-wider mt-0.5">
-                  {member.role}
-                </p>
-                <span className="text-xs font-semibold text-slate-400 uppercase block mt-0.5">
-                  {member.dept}
-                </span>
-
-                <div className="flex items-center gap-3 mt-2.5 opacity-40 group-hover:opacity-100 transition-opacity">
-                  <a href="#" className="text-slate-800 hover:text-[#e5005a] transition-colors">
-                    <FaXTwitter size={13} />
-                  </a>
-                  <a href="#" className="text-slate-800 hover:text-[#e5005a] transition-colors">
-                    <FaInstagram size={14} />
-                  </a>
-                  <a href="#" className="text-slate-800 hover:text-[#e5005a] transition-colors">
-                    <FaLinkedinIn size={14} />
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* BOTTOM LEVEL: Executives Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {teamData.executives.map((member, idx) => (
-            <div
-              key={idx}
-              className="group cursor-pointer flex items-center gap-4 p-4 rounded-2xl transition-all hover:bg-slate-50"
-            >
-              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden bg-slate-50 shadow-sm border-2 border-slate-200 shrink-0 transition-all duration-500 group-hover:scale-105 group-hover:border-[#e5005a]">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              <div className="text-left">
-                <h4 className="text-base font-black text-slate-900 uppercase tracking-wide group-hover:text-[#e5005a] transition-colors">
-                  {member.name}
-                </h4>
-                <p className="text-xs font-bold text-[#e5005a] uppercase tracking-wider mt-0.5">
-                  {member.role}
-                </p>
-                <span className="text-[10px] font-semibold text-slate-400 uppercase block mt-0.5">
-                  {member.dept}
-                </span>
-
-                <div className="flex items-center gap-2.5 mt-2.5 opacity-40 group-hover:opacity-100 transition-opacity">
-                  <a href="#" className="text-slate-800 hover:text-[#e5005a] transition-colors">
-                    <FaXTwitter size={12} />
-                  </a>
-                  <a href="#" className="text-slate-800 hover:text-[#e5005a] transition-colors">
-                    <FaInstagram size={13} />
-                  </a>
-                  <a href="#" className="text-slate-800 hover:text-[#e5005a] transition-colors">
-                    <FaLinkedinIn size={13} />
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
+
+      {/* MAIN CONTAINER GRID */}
+      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center my-auto z-20">
+        
+        {/* LEFT COLUMN: HERO SPOTLIGHT CANVAS */}
+        <div 
+          className="lg:col-span-6 relative group"
+          onMouseEnter={() => setIsPaused(true)}  // ⏸️ PAUSE ROTATION ON HOVER
+          onMouseLeave={() => setIsPaused(false)} // ▶️ RESUME ON MOUSE LEAVE
+        >
+          <div className="relative w-full h-[460px] sm:h-[540px] rounded-3xl overflow-hidden border border-slate-200/80 bg-slate-950 shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
+            
+            {/* 🛡️ 1. BASE BACKGROUND LAYER (HOLDS PREVIOUS IMAGE DURING TRANSITION) */}
+            <div className="absolute inset-0 w-full h-full z-0">
+              <img
+                src={teamList[prevIndex].image}
+                alt={teamList[prevIndex].name}
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
+
+            {/* 🎬 2. ACTIVE TRANSITION LAYER */}
+            {teamList.map((member, idx) => {
+              const isActive = idx === activeIndex;
+
+              return (
+                <div
+                  key={member.id}
+                  className={`absolute inset-0 w-full h-full pointer-events-none transition-opacity duration-300 ${
+                    isActive ? "z-10 opacity-100" : "z-0 opacity-0"
+                  }`}
+                >
+                  {renderTransitionEffect(member, isActive)}
+                </div>
+              );
+            })}
+
+            {/* VIGNETTE GRADIENT OVERLAY */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent opacity-90 z-20 pointer-events-none" />
+
+            {/* OVERLAY BADGES */}
+            <div className="absolute top-6 left-6 flex flex-wrap items-center gap-2 z-30">
+              <span 
+                className="px-3.5 py-1.5 rounded-full text-[10px] font-mono uppercase tracking-widest bg-white/95 backdrop-blur-md border border-slate-200/80 font-bold shadow-md"
+                style={{ color: BRAND_COLOR }}
+              >
+                {activeMember.category}
+              </span>
+
+              {/* 🎭 EFFECT TYPE INDICATOR BADGE */}
+              <span className="px-3 py-1.5 rounded-full text-[10px] font-mono uppercase tracking-widest bg-slate-900/90 text-white backdrop-blur-md border border-slate-700/50 flex items-center gap-1.5 shadow-md">
+                <FaMagic size={9} style={{ color: BRAND_COLOR }} /> {activeMember.effect.name}
+              </span>
+
+              {/* ⏸️ HOVER PAUSE INDICATOR BADGE */}
+              {isPaused && (
+                <span className="px-3 py-1.5 rounded-full text-[10px] font-mono uppercase tracking-widest bg-amber-500/90 text-slate-950 font-bold backdrop-blur-md flex items-center gap-1.5 shadow-md animate-pulse">
+                  <FaPause size={8} /> PAUSED
+                </span>
+              )}
+            </div>
+
+            {/* OVERLAY FOOTER CARD ON IMAGE */}
+            <div className="absolute bottom-6 left-6 right-6 p-3 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-100 shadow-2xl z-30">
+              <div 
+                key={activeMember.id}
+                className="animate-[slideInRight_0.9s_cubic-bezier(0.16,1,0.3,1)]"
+              >
+                <p className="text-xs italic text-slate-600 leading-relaxed font-medium">
+                  "{activeMember.quote}"
+                </p>
+                <div className="flex justify-between items-center border-t border-slate-100 pt-3">
+                  <div className="flex gap-6">
+                    <div>
+                      <p className="text-[9px] font-mono text-slate-400 uppercase">PROJECTS</p>
+                      <p className="text-sm font-black text-slate-900">{activeMember.stats.projects}</p>
+                    </div>
+                    <div>
+                      <p className="text-[9px] font-mono text-slate-400 uppercase">EXPERIENCE</p>
+                      <p className="text-sm font-black text-slate-900">{activeMember.stats.experience}</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <button 
+                      onClick={handlePrev} 
+                      className="p-2.5 rounded-xl bg-slate-100/80 border border-slate-200 hover:text-white transition-all active:scale-95 shadow-sm"
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = BRAND_COLOR;
+                        e.currentTarget.style.borderColor = BRAND_COLOR;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = "";
+                        e.currentTarget.style.borderColor = "";
+                      }}
+                      aria-label="Previous Team Member"
+                    >
+                      <FaChevronLeft size={12} />
+                    </button>
+                    <button 
+                      onClick={handleNext} 
+                      className="p-2.5 rounded-xl bg-slate-100/80 border border-slate-200 hover:text-white transition-all active:scale-95 shadow-sm"
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = BRAND_COLOR;
+                        e.currentTarget.style.borderColor = BRAND_COLOR;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = "";
+                        e.currentTarget.style.borderColor = "";
+                      }}
+                      aria-label="Next Team Member"
+                    >
+                      <FaChevronRight size={12} />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* RIGHT COLUMN: ACTIVE DETAILS & DIRECTORY SELECTOR */}
+        <div className="lg:col-span-6 flex flex-col justify-center space-y-6 lg:pl-6">
+          
+          {/* ACTIVE MEMBER DETAILS */}
+          <div
+            key={activeMember.id}
+            className="space-y-3 animate-[slideInRight_0.9s_cubic-bezier(0.16,1,0.3,1)]"
+          >
+            <div className="flex items-center gap-3">
+              <span className="h-0.5 w-8" style={{ backgroundColor: BRAND_COLOR }} />
+              <p className="text-xs font-mono font-bold uppercase tracking-widest" style={{ color: BRAND_COLOR }}>
+                {activeMember.dept}
+              </p>
+            </div>
+
+            <h2 className="text-4xl sm:text-5xl font-black uppercase tracking-tight text-slate-900">
+              {activeMember.name}
+            </h2>
+
+            <p className="text-base font-bold text-slate-600">
+              {activeMember.role}
+            </p>
+
+            <div className="flex items-center gap-3 pt-2">
+              {[FaXTwitter, FaInstagram, FaLinkedinIn].map((Icon, idx) => (
+                <a
+                  key={idx}
+                  href="#"
+                  className="p-3 rounded-xl bg-white/80 border border-slate-200 text-slate-600 hover:text-white shadow-sm transition-all active:scale-95"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = BRAND_COLOR;
+                    e.currentTarget.style.borderColor = BRAND_COLOR;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = "";
+                    e.currentTarget.style.borderColor = "";
+                  }}
+                >
+                  <Icon size={14} />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* DIRECTORY SELECTOR */}
+          <div className="space-y-2 pt-4">
+            <p className="text-[10px] font-mono tracking-widest text-slate-400 uppercase pb-2 border-b border-slate-100 flex justify-between items-center">
+              <span>// DIRECTORY (SWITCHING EVERY 5S)</span>
+              {isPaused && <span className="text-amber-600 font-bold tracking-normal">[ TIMER PAUSED ]</span>}
+            </p>
+
+            <div 
+              ref={containerRef}
+              className="space-y-1.5 max-h-[220px] overflow-y-auto pr-2 custom-scrollbar"
+            >
+              {teamList.map((member, idx) => {
+                const isActive = idx === activeIndex;
+
+                return (
+                  <button
+                    key={member.id}
+                    ref={(el) => (itemRefs.current[idx] = el)}
+                    onClick={() => handleSelectMember(idx)}
+                    className={`w-full text-left p-3 rounded-2xl transition-all duration-500 flex items-center justify-between group relative overflow-hidden ${
+                      isActive
+                        ? "bg-slate-900 text-white shadow-xl"
+                        : "bg-white/70 border border-slate-200/60 text-slate-600 hover:bg-white hover:text-slate-900"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3 z-10">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className={`w-8 h-8 rounded-full object-cover transition-transform duration-500 ${
+                          isActive ? "scale-110 ring-2" : "opacity-80"
+                        }`}
+                        style={{ ringColor: isActive ? BRAND_COLOR : "transparent" }}
+                      />
+                      <div>
+                        <h4 className="text-xs font-bold uppercase tracking-wide">
+                          {member.name}
+                        </h4>
+                        <p className={`text-[10px] font-mono ${isActive ? "text-slate-400" : "text-slate-500"}`}>
+                          {member.role} • <span className="opacity-70">{member.effect.name}</span>
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-3 z-10">
+                      <span className="text-[10px] font-mono text-slate-400">
+                        0{idx + 1}
+                      </span>
+                      <FaArrowRight
+                        size={10}
+                        style={{ color: isActive ? BRAND_COLOR : undefined }}
+                        className={`transition-transform duration-300 ${
+                          isActive ? "translate-x-0" : "opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 text-slate-400"
+                        }`}
+                      />
+                    </div>
+
+                    {/* Active Progress Line */}
+                    {isActive && (
+                      <div className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-slate-800">
+                        <div
+                          key={activeIndex}
+                          className="h-full animate-[progress_5s_linear_infinite]"
+                          style={{ 
+                            backgroundColor: BRAND_COLOR,
+                            animationPlayState: isPaused ? "paused" : "running"
+                          }}
+                        />
+                      </div>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* FOOTER BAR */}
+      <div className="w-full max-w-7xl mx-auto flex justify-between items-center z-20 border-t border-slate-200/80 pt-6 text-[10px] font-mono text-slate-400 uppercase tracking-widest mt-12">
+        <span>GLOBAL EXECUTIVE BOARD</span>
+        <span>{isPaused ? "ROTATION PAUSED" : "SWITCHING AUTOMATICALLY (5S)"}</span>
+      </div>
+
+      {/* HARDWARE-ACCELERATED KEYFRAMES */}
+      <style>{`
+        @keyframes slideInRight {
+          from {
+            opacity: 0;
+            transform: translate3d(50px, 0, 0);
+          }
+          to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+          }
+        }
+        @keyframes progress {
+          0% {
+            width: 0%;
+          }
+          100% {
+            width: 100%;
+          }
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: rgba(0, 0, 0, 0.02);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(0, 0, 0, 0.15);
+          border-radius: 4px;
+        }
+      `}</style>
     </section>
   );
 }

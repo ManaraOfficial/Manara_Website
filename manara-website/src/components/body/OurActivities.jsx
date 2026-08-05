@@ -15,7 +15,7 @@ const projects = [
     title: "CURIOUS MINDS",
     tagline: "Empowering Rural Classrooms Through E-Learning",
     description:
-      "Bridging the digital divide in remote Nepalese schools by building interactive computer labs, delivering hands-on IT training, and fostering independent digital learning.",
+      "Bridging the digital divide in remote Nepalese schools by building interactive computer labs, delivering hands-on Teachers training, and fostering independent digital learning.",
     image: CuriousMinds,
     path: "/curious-minds",
     category: "Education",
@@ -95,8 +95,8 @@ const OurActivities = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="bg-slate-50/50 font-['Nunito_Sans',sans-serif]">
-      <div className="max-w-6xl mx-auto px-6 space-y-16">
+    <section className="bg-slate-50/50 font-['Nunito_Sans',sans-serif]" id="our-work">
+      <div className="max-w-6xl mx-auto pb-20 px-6 space-y-16">
         
         <SectionHeader 
           title="Our Activities" 

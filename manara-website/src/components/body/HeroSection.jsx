@@ -12,7 +12,7 @@ const PROJECTS = [
   },
   {
     title: "CECS",
-    tagline: "Medical Alliances",
+    tagline: "Sponserships & Scholarships",
     headline: "Deploying healthcare and emergency response infrastructure where it is needed most.",
     desc: "Deploying mobile medical camps and basic maternal health infrastructure across high-altitude regions.",
     bgColor: "#EC8134", // Orange
@@ -29,7 +29,7 @@ const PROJECTS = [
 ];
 
 // Typewriter Text Component - drives slide progression after pauseDuration
-const TypewriterText = ({ text, speed = 35, pauseDuration = 8000, onComplete }) => {
+const TypewriterText = ({ text, speed = 40, pauseDuration = 6000, onComplete }) => {
   const [displayed, setDisplayed] = useState("");
 
   useEffect(() => {

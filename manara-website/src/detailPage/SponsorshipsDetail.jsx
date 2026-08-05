@@ -366,7 +366,7 @@ const SponsorshipsDetailPage = () => {
         
                     {/* Let's Learn (Green #366A35) */}
                     <div
-                      onClick={() => navigate("/others")}
+                      onClick={() => navigate("/other-activities")}
                       className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:border-[#366A35]/50 transition cursor-pointer group space-y-2"
                     >
                       <span className="text-xs font-bold text-[#366A35] uppercase tracking-wider font-['Montserrat',sans-serif]">

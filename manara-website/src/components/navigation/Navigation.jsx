@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
-// import logo from "../../assets/images/recolored_logo.svg";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import logo from "../../assets/images/logo2.png";
 import {
   FaInstagram,
@@ -25,20 +24,35 @@ const PROJECTS = [
   { name: "Other Activities", path: "/other-activities" },
 ];
 
+const EXPLORE_SECTIONS = [
+  { name: "OUR WORK", targetId: "our-work" },
+  { name: "TESTIMONIALS", targetId: "testimonials" },
+  { name: "OUR GALLERY", targetId: "gallery" },
+  { name: "OUR TEAM", targetId: "team" },
+];
+
 const Navigation = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [scrolled, setScrolled] = useState(false);
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
 
   // Dropdown States
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [projectsDropdownOpen, setProjectsDropdownOpen] = useState(false);
+  const [exploreDropdownOpen, setExploreDropdownOpen] = useState(false);
+
+  // Mobile Accordion States
   const [mobileProjectsOpen, setMobileProjectsOpen] = useState(false);
+  const [mobileExploreOpen, setMobileExploreOpen] = useState(false);
 
   // Active Language State
   const [currentLang, setCurrentLang] = useState("en");
 
   // Click Outside Refs
   const projectsRef = useRef(null);
+  const exploreRef = useRef(null);
   const langRef = useRef(null);
   const mobileLangRef = useRef(null);
 
@@ -50,6 +64,21 @@ const Navigation = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Handle smooth scroll navigation across pages
+  useEffect(() => {
+    if (location.pathname === "/" && location.state?.scrollTo) {
+      const targetId = location.state.scrollTo;
+      const timer = setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 200);
+
+      return () => clearTimeout(timer);
+    }
+  }, [location]);
 
   // Prevent background scroll when mobile drawer is open
   useEffect(() => {
@@ -65,6 +94,9 @@ const Navigation = () => {
     const handleClickOutside = (event) => {
       if (projectsRef.current && !projectsRef.current.contains(event.target)) {
         setProjectsDropdownOpen(false);
+      }
+      if (exploreRef.current && !exploreRef.current.contains(event.target)) {
+        setExploreDropdownOpen(false);
       }
       if (
         langRef.current &&
@@ -87,6 +119,33 @@ const Navigation = () => {
     setLangDropdownOpen(false);
   };
 
+  // Scroll to top when clicking Home / Logo
+  const handleHomeClick = (e) => {
+    setMobileDrawerOpen(false);
+    setProjectsDropdownOpen(false);
+    setExploreDropdownOpen(false);
+
+    if (location.pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const scrollToSection = (targetId) => {
+    setExploreDropdownOpen(false);
+    setMobileDrawerOpen(false);
+    setMobileExploreOpen(false);
+
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: targetId } });
+    } else {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   const selectedLang = LANGUAGES.find((l) => l.code === currentLang) || LANGUAGES[0];
 
   return (
@@ -101,7 +160,7 @@ const Navigation = () => {
         <div className="max-w-7xl mx-auto flex justify-between items-center text-white">
           
           {/* 1. BRAND LOGO */}
-          <Link to="/" className="flex items-center gap-3 group shrink-0">
+          <Link to="/" onClick={handleHomeClick} className="flex items-center gap-3 group shrink-0">
             <img
               src={logo}
               className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
@@ -113,6 +172,7 @@ const Navigation = () => {
           <div className="hidden lg:flex items-center gap-8 text-xs xl:text-sm font-bold uppercase tracking-wider">
             <Link 
               to="/" 
+              onClick={handleHomeClick}
               className="relative py-1 hover:text-[#EC8134] transition-colors duration-200 group"
             >
               Home
@@ -120,23 +180,25 @@ const Navigation = () => {
             </Link>
 
             <Link 
-              to="about-us" 
+              to="/about-us" 
               className="relative py-1 hover:text-[#EC8134] transition-colors duration-200 group"
             >
               About Us
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EC8134] transition-all duration-300 group-hover:w-full" />
             </Link>
 
-            {/* CLICKABLE PROJECTS DROPDOWN */}
+            {/* PROJECTS DROPDOWN */}
             <div className="relative" ref={projectsRef}>
               <button
                 onClick={() => {
                   setProjectsDropdownOpen(!projectsDropdownOpen);
+                  setExploreDropdownOpen(false);
                   setLangDropdownOpen(false);
                 }}
-                className="relative py-1 text-white hover:text-[#366A35] transition-colors duration-200 uppercase font-bold group cursor-pointer border-none bg-transparent"
+                className="relative py-1 text-white hover:text-[#366A35] transition-colors duration-200 uppercase font-bold group cursor-pointer border-none bg-transparent flex items-center gap-1.5"
               >
                 Projects
+                <FaChevronDown className={`text-[10px] transition-transform duration-200 ${projectsDropdownOpen ? "rotate-180" : ""}`} />
                 <span className={`absolute bottom-0 left-0 h-0.5 bg-[#366A35] transition-all duration-300 ${projectsDropdownOpen ? "w-full" : "w-0 group-hover:w-full"}`} />
               </button>
 
@@ -156,21 +218,52 @@ const Navigation = () => {
               )}
             </div>
 
-            <a 
-              href="#work" 
-              className="relative py-1 hover:text-[#D34A32] transition-colors duration-200 group"
+            {/* EXPLORE DROPDOWN */}
+            <div className="relative" ref={exploreRef}>
+              <button
+                onClick={() => {
+                  setExploreDropdownOpen(!exploreDropdownOpen);
+                  setProjectsDropdownOpen(false);
+                  setLangDropdownOpen(false);
+                }}
+                className="relative py-1 text-white hover:text-[#EC8134] transition-colors duration-200 uppercase font-bold group cursor-pointer border-none bg-transparent flex items-center gap-1.5"
+              >
+                Explore
+                <FaChevronDown className={`text-[10px] transition-transform duration-200 ${exploreDropdownOpen ? "rotate-180" : ""}`} />
+                <span className={`absolute bottom-0 left-0 h-0.5 bg-[#EC8134] transition-all duration-300 ${exploreDropdownOpen ? "w-full" : "w-0 group-hover:w-full"}`} />
+              </button>
+
+              {exploreDropdownOpen && (
+                <div className="absolute left-0 mt-3 w-48 bg-[#404040]/95 border border-white/15 rounded-xl shadow-2xl backdrop-blur-md overflow-hidden py-1.5 z-50">
+                  {EXPLORE_SECTIONS.map((item, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => scrollToSection(item.targetId)}
+                      className="w-full text-left block px-4 py-2.5 text-xs font-bold text-white/80 hover:text-[#EC8134] hover:bg-white/10 transition-colors duration-200"
+                    >
+                      {item.name}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* REPORTS PAGE LINK */}
+            <Link 
+              to="/reports" 
+              className="relative py-1 hover:text-[#EC8134] transition-colors duration-200 group"
             >
-              Our Work
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D34A32] transition-all duration-300 group-hover:w-full" />
-            </a>
+              Reports
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EC8134] transition-all duration-300 group-hover:w-full" />
+            </Link>
 
             <Link 
-  to="/contact" 
-  className="relative py-1 hover:text-[#EC8134] transition-colors duration-200 group"
->
-  Contact
-  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EC8134] transition-all duration-300 group-hover:w-full" />
-</Link>
+              to="/contact" 
+              className="relative py-1 hover:text-[#EC8134] transition-colors duration-200 group"
+            >
+              Contact
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EC8134] transition-all duration-300 group-hover:w-full" />
+            </Link>
           </div>
 
           {/* 3. DESKTOP LANGUAGE SELECTOR */}
@@ -180,6 +273,7 @@ const Navigation = () => {
                 onClick={() => {
                   setLangDropdownOpen(!langDropdownOpen);
                   setProjectsDropdownOpen(false);
+                  setExploreDropdownOpen(false);
                 }}
                 className="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full px-3.5 py-1.5 text-xs font-bold transition backdrop-blur-sm cursor-pointer"
                 aria-label="Select Language"
@@ -210,7 +304,6 @@ const Navigation = () => {
 
           {/* MOBILE TOGGLE & CONTROLS */}
           <div className="flex lg:hidden items-center gap-3">
-            {/* MOBILE LANGUAGE DROPDOWN WRAPPER */}
             <div className="relative" ref={mobileLangRef}>
               <button
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}
@@ -260,7 +353,6 @@ const Navigation = () => {
       />
 
       {/* MOBILE SIDE NAVIGATION DRAWER */}
-      {/* MOBILE SIDE NAVIGATION DRAWER */}
       <aside
         className={`fixed top-0 left-0 h-full w-[80%] max-w-[320px] bg-[#404040] text-white z-50 shadow-2xl transition-transform duration-300 ease-in-out flex flex-col lg:hidden ${
           mobileDrawerOpen ? "translate-x-0" : "-translate-x-full"
@@ -286,11 +378,12 @@ const Navigation = () => {
         <div className="flex-1 overflow-y-auto px-6 py-4 flex flex-col">
           <Link
             to="/"
-            onClick={() => setMobileDrawerOpen(false)}
+            onClick={handleHomeClick}
             className="py-4 text-base font-bold border-b border-white/15 text-white hover:text-[#EC8134] transition-colors"
           >
             Home
           </Link>
+
           <Link
             to="/about-us"
             onClick={() => setMobileDrawerOpen(false)}
@@ -299,7 +392,7 @@ const Navigation = () => {
             About Us
           </Link>
 
-          {/* Mobile Accordion for Projects */}
+          {/* Mobile Projects Accordion */}
           <div className="border-b border-white/15">
             <button
               onClick={() => setMobileProjectsOpen(!mobileProjectsOpen)}
@@ -327,13 +420,39 @@ const Navigation = () => {
             )}
           </div>
 
+          {/* Mobile Explore Accordion */}
+          <div className="border-b border-white/15">
+            <button
+              onClick={() => setMobileExploreOpen(!mobileExploreOpen)}
+              className="w-full py-4 flex items-center justify-between text-base font-bold text-white hover:text-[#EC8134] transition-colors"
+            >
+              <span>Explore</span>
+              <FaChevronDown className={`text-xs transition-transform duration-200 ${mobileExploreOpen ? "rotate-180" : ""}`} />
+            </button>
+            {mobileExploreOpen && (
+              <div className="pl-4 pb-3 space-y-2">
+                {EXPLORE_SECTIONS.map((item, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => scrollToSection(item.targetId)}
+                    className="block w-full text-left py-2 text-sm font-bold text-white/80 hover:text-[#EC8134] transition-colors"
+                  >
+                    {item.name}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Mobile Reports Link */}
           <Link
-            to="/work"
+            to="/reports"
             onClick={() => setMobileDrawerOpen(false)}
-            className="py-4 text-base font-bold border-b border-white/15 text-white hover:text-[#D34A32] transition-colors"
+            className="py-4 text-base font-bold border-b border-white/15 text-white hover:text-[#EC8134] transition-colors"
           >
-            Our Work
+            Reports
           </Link>
+
           <Link
             to="/contact"
             onClick={() => setMobileDrawerOpen(false)}
@@ -343,7 +462,7 @@ const Navigation = () => {
           </Link>
         </div>
 
-        {/* Drawer Social Icons (Kept as <a> tags for external routing) */}
+        {/* Drawer Social Icons */}
         <div className="p-6 border-t border-white/15 flex items-center justify-around text-white/80">
           <a
             href="https://www.instagram.com/MenschenDialog/"

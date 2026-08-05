@@ -73,7 +73,7 @@ export default function CategoryGalleryPage() {
   const visibleImages = allImages.slice(0, visiblePhotoCount)
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] py-12 px-4 md:px-8">
+    <div className="min-h-screen bg-[#F8FAFC] py-12 px-4 md:px-8" id="gallery">
       {/* CSS Override to force counter directly above the thumbnail bar */}
       <style>{`
         .yarl__counter {
@@ -122,7 +122,7 @@ export default function CategoryGalleryPage() {
       </div>
 
 
-      <div className="max-w-6xl mx-auto mt-10">
+      <div className="max-w-6xl mx-auto mt-10" >
         {loading ? (
           <div className="text-center py-20 text-slate-400 font-medium">
             Loading...
