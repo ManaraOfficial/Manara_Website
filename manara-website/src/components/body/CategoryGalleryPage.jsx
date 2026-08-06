@@ -73,7 +73,7 @@ export default function CategoryGalleryPage() {
   const visibleImages = allImages.slice(0, visiblePhotoCount)
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] py-12 px-4 md:px-8" id="gallery">
+    <div className="min-h-screen bg-gradient-to-b from-[#EC8134]/5 via-[#F8FAFC] to-white py-12 px-4 md:px-8" id="gallery">
       {/* CSS Override to force counter directly above the thumbnail bar */}
       <style>{`
         .yarl__counter {

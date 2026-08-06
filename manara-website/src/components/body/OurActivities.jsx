@@ -95,8 +95,9 @@ const OurActivities = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="bg-slate-50/50 font-['Nunito_Sans',sans-serif]" id="our-work">
-      <div className="max-w-6xl mx-auto pb-20 px-6 space-y-16">
+    <section className="bg-gradient-to-b from-[#366A35]/5 via-[#F8FAFC] to-hotpink font-['Nunito_Sans',sans-serif]" id="our-work">
+      
+      <div className="max-w-6xl mx-auto pb-20 px-6 space-b-16">
         
         <SectionHeader 
           title="Our Activities" 

@@ -62,20 +62,7 @@ border-radius: 10px;
 .project-item:hover .project-title {
   color: #ffbf47;
 }
-@keyframes fadeInPage {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-.animate-fade-in {
-  animation: fadeInPage 0.80s ease-out forwards;
-}
 /* green: #366A35
 orange: #EC8134
 red: #D34A32

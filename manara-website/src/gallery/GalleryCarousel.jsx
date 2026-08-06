@@ -55,7 +55,7 @@ export default function GalleryCarousel() {
   const totalCategories = CATEGORIES.length
 
   return (
-    <section className="min-h-screen bg-[#F8FAFC] py-12 px-4 flex flex-col items-center justify-start overflow-hidden"  id="gallery">
+    <section className="min-h-screen bg-gradient-to-b from-[deeppink]/5 via-[#F8FAFC] to-white pb-20 px-4 flex flex-col items-center justify-start overflow-hidden"  id="gallery">
       {/* Title Header */}
       <SectionHeader
         title="Our Gallery"

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { 
   FaCalendarAlt, 
@@ -17,11 +17,55 @@ import {
   FaSmile,
   FaShapes,
   FaCubes,
-  FaFeather
+  FaFeather,
+  FaChevronLeft,
+  FaChevronRight
 } from "react-icons/fa";
+
+// Hero Carousel Slides
+const heroSlides = [
+  {
+    src: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=1200",
+    title: "School Facilities Upgrade & Student Welfare",
+    subtitle: "Improving rural school infrastructure, sanitation, and learning environments for 350+ students.",
+    badge: "Primary Outreach"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&q=80&w=1200",
+    title: "Classroom Roof Construction & Repairs",
+    subtitle: "Replacing damaged beams and fitting CGI corrugated steel sheets to withstand monsoon weather.",
+    badge: "Infrastructure Support"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&q=80&w=1200",
+    title: "Student Health & Hygiene Programs",
+    subtitle: "Interactive oral health demonstrations paired with fluoride hygiene kit distributions.",
+    badge: "Health & Hygiene"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=1200",
+    title: "ECD Play Materials & Soft Carpeting",
+    subtitle: "Equipping early childhood development classrooms with learning toys and thermal flooring.",
+    badge: "Early Education"
+  }
+];
 
 const OtherActivitiesDetail = () => {
   const navigate = useNavigate();
+
+  // Hero Carousel State
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Auto-play timer for hero carousel
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
 
   const handleShare = () => {
     if (navigator.share) {
@@ -35,16 +79,13 @@ const OtherActivitiesDetail = () => {
     }
   };
 
-  // Smooth scroll or navigate to home route if on a different page
   const handleScrollToOurWork = (e) => {
     e.preventDefault();
     const element = document.getElementById("our-work");
 
     if (element) {
-      // If already on the home page where #our-work exists
       element.scrollIntoView({ behavior: "smooth" });
     } else {
-      // If on /our-activities, navigate home and request scroll via state
       navigate("/", { state: { scrollTo: "our-work" } });
     }
   };
@@ -130,7 +171,7 @@ const OtherActivitiesDetail = () => {
   return (
     <div className="min-h-screen bg-slate-50 text-gray-800 pt-28 pb-20 font-['Nunito_Sans',sans-serif]">
       
-      {/* 1. CENTERED HERO HEADER SECTION */}
+      {/* 1. CENTERED HERO HEADER SECTION WITH INTEGRATED CAROUSEL */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <div className="space-y-4 max-w-4xl mx-auto text-center">
           
@@ -166,13 +207,66 @@ const OtherActivitiesDetail = () => {
           </div>
         </div>
 
-        {/* Hero Featured Image */}
-        <div className="mt-10 relative rounded-3xl overflow-hidden shadow-xl max-h-[460px]">
-          <img 
-            src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=1200" 
-            alt="School Facilities Upgrade Program" 
-            className="w-full h-full object-cover min-h-[300px]"
-          />
+        {/* HERO CAROUSEL (Replaces static hero image) */}
+        <div className="mt-10 relative w-full h-[360px] sm:h-[460px] rounded-3xl overflow-hidden shadow-xl border border-gray-200/80 group">
+          {heroSlides.map((slide, idx) => (
+            <div
+              key={idx}
+              className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                idx === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+              }`}
+            >
+              <img
+                src={slide.src}
+                alt={slide.title}
+                className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-1000 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-transparent" />
+
+              {/* Overlay Content */}
+              <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8 text-white space-y-2">
+                <span className="inline-block px-3 py-1 rounded-full bg-[#EC8134] text-white text-[11px] font-extrabold uppercase tracking-wider font-['Montserrat',sans-serif]">
+                  {slide.badge}
+                </span>
+                <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold font-['Montserrat',sans-serif] text-white leading-tight">
+                  {slide.title}
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-200 max-w-2xl leading-relaxed">
+                  {slide.subtitle}
+                </p>
+              </div>
+            </div>
+          ))}
+
+          {/* Navigation Arrows */}
+          <button
+            onClick={prevSlide}
+            aria-label="Previous Slide"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/30 backdrop-blur-md text-white hover:bg-white hover:text-slate-900 transition flex items-center justify-center border border-white/40 shadow-md cursor-pointer"
+          >
+            <FaChevronLeft />
+          </button>
+          <button
+            onClick={nextSlide}
+            aria-label="Next Slide"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/30 backdrop-blur-md text-white hover:bg-white hover:text-slate-900 transition flex items-center justify-center border border-white/40 shadow-md cursor-pointer"
+          >
+            <FaChevronRight />
+          </button>
+
+          {/* Pagination Indicators */}
+          <div className="absolute bottom-4 right-6 z-20 flex items-center gap-2">
+            {heroSlides.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentSlide(idx)}
+                className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  idx === currentSlide ? "w-8 bg-[#EC8134]" : "w-2.5 bg-white/60 hover:bg-white"
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -269,37 +363,6 @@ const OtherActivitiesDetail = () => {
                 — Local School Headmaster & Community Representative
               </p>
             </div>
-
-            {/* Photo Gallery */}
-            {/* <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
-                Activity Photo Gallery
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="rounded-2xl overflow-hidden shadow-sm h-48 group">
-                  <img 
-                    src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&q=80&w=600" 
-                    alt="Classroom & Roof Repair" 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="rounded-2xl overflow-hidden shadow-sm h-48 group">
-                  <img 
-                    src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=600" 
-                    alt="Toothbrushing Demonstration" 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="rounded-2xl overflow-hidden shadow-sm h-48 group">
-                  <img 
-                    src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&q=80&w=600" 
-                    alt="ECD Toys and Carpeted Classrooms" 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              </div>
-            </div> */}
-
           </div>
 
           {/* RIGHT SIDEBAR (4 cols) */}
@@ -341,7 +404,7 @@ const OtherActivitiesDetail = () => {
               <div className="pt-4 border-t border-gray-100 space-y-3">
                 <button 
                   onClick={handleShare}
-                  className="w-full flex items-center justify-center gap-2 bg-slate-100 text-gray-700 py-3 rounded-xl font-bold text-sm hover:bg-slate-200 transition font-['Montserrat',sans-serif]"
+                  className="w-full flex items-center justify-center gap-2 bg-slate-100 text-gray-700 py-3 rounded-xl font-bold text-sm hover:bg-slate-200 transition font-['Montserrat',sans-serif] cursor-pointer"
                 >
                   <FaShareAlt /> Share Project
                 </button>
@@ -365,7 +428,7 @@ const OtherActivitiesDetail = () => {
               </p>
               <button 
                 onClick={() => alert("Downloading activity briefing report...")}
-                className="inline-flex items-center gap-2 bg-white text-[#EC8134] px-4 py-2.5 rounded-xl font-bold text-xs hover:bg-slate-50 transition shadow-sm font-['Montserrat',sans-serif]"
+                className="inline-flex items-center gap-2 bg-white text-[#EC8134] px-4 py-2.5 rounded-xl font-bold text-xs hover:bg-slate-50 transition shadow-sm font-['Montserrat',sans-serif] cursor-pointer"
               >
                 <FaDownload /> Download Report PDF
               </button>

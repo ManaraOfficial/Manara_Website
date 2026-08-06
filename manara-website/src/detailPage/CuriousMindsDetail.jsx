@@ -126,22 +126,8 @@ const MetricCard = ({ item }) => {
 const CuriousMindDetail = () => {
   const navigate = useNavigate();
 
-  // Gallery Pagination State
-  const [currentSlide, setCurrentSlide] = useState(0);
-
   // Phase Tab Pagination State
   const [activePhase, setActivePhase] = useState(0);
-
-  // Auto-play gallery every 6 seconds
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % galleryImages.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % galleryImages.length);
-  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
 
   // Key Impact Metrics
   const metrics = [
@@ -213,6 +199,9 @@ const CuriousMindDetail = () => {
       <div className="max-w-5xl mx-auto space-y-16">
 
         {/* HERO SECTION: Centered Editorial Header */}
+        <div className="max-w-5xl mx-auto space-y-16">
+
+        {/* HERO SECTION: Centered Editorial Header */}
         <div className="space-y-10">
 
           <div className="text-center max-w-4xl mx-auto space-y-4">
@@ -239,77 +228,46 @@ const CuriousMindDetail = () => {
             </div>
           </div>
 
-          {/* INTERACTIVE PAGINATED HERO IMAGE CAROUSEL */}
+          {/* STATIC HERO IMAGE BANNER */}
           <div className="relative w-full h-[340px] sm:h-[460px] lg:h-[500px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-2xl group">
+            <img
+              src={CuriousMindsHero}
+              alt="Curious Minds Digital Classroom"
+              className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-1000 ease-out"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
 
-            {/* Gallery Images with Transition */}
-            {galleryImages.map((img, idx) => (
-              <div
-                key={idx}
-                className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${idx === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-                  }`}
-              >
-                <img
-                  src={img.src}
-                  alt={img.title}
-                  className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-1000 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
-
-                {/* Image Overlay Content */}
-                <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8 text-white space-y-2">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#366A35] text-white text-[11px] font-bold uppercase tracking-wider">
-                    Let's Learn Program
-                  </div>
-                  <h2 className="text-2xl sm:text-4xl font-extrabold font-['Montserrat',sans-serif] text-white leading-tight">
-                    {img.title}
-                  </h2>
-                  <p className="text-xs sm:text-sm text-slate-200 max-w-2xl leading-relaxed">
-                    {img.subtitle}
-                  </p>
-                  <div className="flex items-center gap-3 text-xs text-slate-300 pt-1">
-                    <span className="flex items-center gap-1.5 font-semibold">
-                      <FaUser className="text-[#EC8134]" /> Initiated by Ralf Ledl
-                    </span>
-                    <span>•</span>
-                    <span>Building local capacity across rural Nepal</span>
-                  </div>
-                </div>
+            {/* Image Overlay Content */}
+            <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8 text-white space-y-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#366A35] text-white text-[11px] font-bold uppercase tracking-wider">
+                Let's Learn Program
               </div>
-            ))}
-
-            {/* Slider Navigation Arrows */}
-            <button
-              onClick={prevSlide}
-              aria-label="Previous Slide"
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/30 backdrop-blur-md text-white hover:bg-white hover:text-slate-900 transition flex items-center justify-center border border-white/40 shadow-md"
-            >
-              <FaChevronLeft />
-            </button>
-            <button
-              onClick={nextSlide}
-              aria-label="Next Slide"
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/30 backdrop-blur-md text-white hover:bg-white hover:text-slate-900 transition flex items-center justify-center border border-white/40 shadow-md"
-            >
-              <FaChevronRight />
-            </button>
-
-            {/* Pagination Dots */}
-            <div className="absolute bottom-4 right-6 z-20 flex items-center gap-2">
-              {galleryImages.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentSlide(idx)}
-                  className={`h-2.5 rounded-full transition-all duration-300 ${idx === currentSlide ? "w-8 bg-[#EC8134]" : "w-2.5 bg-white/60 hover:bg-white"
-                    }`}
-                  aria-label={`Go to slide ${idx + 1}`}
-                />
-              ))}
+              <h2 className="text-2xl sm:text-4xl font-extrabold font-['Montserrat',sans-serif] text-white leading-tight">
+                Digital Classroom Launch & E-Learning
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-200 max-w-2xl leading-relaxed">
+                Empowering rural schools in Gorkha & Sindhupalchok with interactive ICT labs and sustainable teacher mentorship.
+              </p>
+              <div className="flex items-center gap-3 text-xs text-slate-300 pt-1">
+                <span className="flex items-center gap-1.5 font-semibold">
+                  <FaUser className="text-[#EC8134]" /> Initiated by Ralf Ledl
+                </span>
+                <span>•</span>
+                <span>Building local capacity across rural Nepal</span>
+              </div>
             </div>
-
           </div>
 
         </div>
+
+        {/* METRICS SECTION */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {metrics.map((item) => (
+            <MetricCard key={item.id} item={item} />
+          ))}
+        </div>
+
+      </div>
 
         {/* ========================================================================= */}
         {/* NEW SECTION: PROGRAM OVERVIEW, QUICK INFO & FULL PROGRAM DOCS */}

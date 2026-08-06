@@ -330,7 +330,7 @@ export default function EditorialTeam() {
   };
 
   return (
-    <section className="relative w-full min-h-screen bg-white text-slate-900 py-20 px-6 lg:px-16 flex flex-col justify-between overflow-hidden select-none font-sans" id="team">
+    <section className="relative w-full min-h-screen bg-white text-slate-900 pb-20 px-6 lg:px-16 flex flex-col justify-between overflow-hidden select-none font-sans" id="team">
       
       {/* BRAND COLOR DYNAMIC GRADIENT MESH BACKDROPS */}
       <div 
@@ -347,7 +347,7 @@ export default function EditorialTeam() {
       />
 
       {/* HEADER SECTION */}
-      <div className="w-full max-w-7xl mx-auto z-20 mb-10">
+      <div className="w-full max-w-7xl mx-auto z-20">
         <SectionHeader
           title="MEET THE TEAM"
           subtitle="The visionary minds shaping our brand and operations across the globe."
