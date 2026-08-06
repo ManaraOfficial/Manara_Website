@@ -404,7 +404,7 @@ export default function EditorialTeam() {
 
               {/* 🎭 EFFECT TYPE INDICATOR BADGE */}
               <span className="px-3 py-1.5 rounded-full text-[10px] font-mono uppercase tracking-widest bg-slate-900/90 text-white backdrop-blur-md border border-slate-700/50 flex items-center gap-1.5 shadow-md">
-                <FaMagic size={9} style={{ color: BRAND_COLOR }} /> {activeMember.effect.name}
+                <FaMagic size={9} style={{ color: BRAND_COLOR }} /> {activeMember.location}
               </span>
 
               {/* ⏸️ HOVER PAUSE INDICATOR BADGE */}
