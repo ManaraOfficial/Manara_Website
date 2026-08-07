@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { client } from '../gallery/sanity'
 import SectionHeader from '../components/reusableComp/SectionHeader'
 
-const CATEGORIES = [
-  { label: 'All Reports', value: 'all', color: '#404040' },
-  { label: 'Curious Minds', value: 'curious-minds', color: '#366A35' },
-  { label: 'Project 28', value: 'project28', color: 'deeppink' },
-  { label: 'Sponsorship', value: 'sponsorship', color: '#D34A32' },
-]
-
 export default function ReportsPage() {
+  const { t } = useTranslation()
   const [reports, setReports] = useState([])
   const [activeCategory, setActiveCategory] = useState('all')
   const [loading, setLoading] = useState(true)
@@ -47,14 +42,19 @@ export default function ReportsPage() {
   return (
     <div className="min-h-screen bg-[#F8FAFC] py-12 px-4 md:px-8">
       <SectionHeader
-        title="Official Reports"
-        subtitle="Access and download detailed reports, annual reviews, and project documentation"
+        title={t('reports.title')}
+        subtitle={t('reports.subtitle')}
       />
       
 
       {/* Category Tabs */}
       <div className="max-w-6xl mx-auto mb-8 flex flex-wrap justify-center gap-2">
-        {CATEGORIES.map((cat) => {
+        {[
+          { label: t('reports.categories.all'), value: 'all', color: '#404040' },
+          { label: t('reports.categories.curiousMinds'), value: 'curious-minds', color: '#366A35' },
+          { label: t('reports.categories.project28'), value: 'project28', color: 'deeppink' },
+          { label: t('reports.categories.sponsorship'), value: 'sponsorship', color: '#D34A32' },
+        ].map((cat) => {
           const isActive = activeCategory === cat.value
           return (
             <button
@@ -77,11 +77,11 @@ export default function ReportsPage() {
       <div className="max-w-4xl mx-auto mt-8">
         {loading ? (
           <div className="text-center py-20 text-slate-400 font-medium">
-            Loading reports...
+            {t('common.loadingReports')}
           </div>
         ) : filteredReports.length === 0 ? (
           <div className="text-center py-16 text-slate-400">
-            No reports available in this category yet.
+            {t('common.noReports')}
           </div>
         ) : (
           <div className="flex flex-col gap-4">
@@ -128,7 +128,7 @@ export default function ReportsPage() {
                     download
                     className="self-start md:self-center px-6 py-2.5 bg-slate-800 text-white text-xs font-bold rounded-xl hover:bg-slate-900 transition-colors flex items-center gap-2 flex-shrink-0"
                   >
-                    <span>Download Report</span>
+                    <span>{t('common.downloadReport')}</span>
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                     </svg>

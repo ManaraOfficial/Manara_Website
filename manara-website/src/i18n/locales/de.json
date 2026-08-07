@@ -1,0 +1,254 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "aboutUs": "Über Uns",
+    "projects": "Projekte",
+    "explore": "Entdecken",
+    "reports": "Berichte",
+    "contact": "Kontakt",
+    "ourWork": "UNSERE ARBEIT",
+    "testimonials": "STIMMEN",
+    "gallery": "GALERIE",
+    "team": "TEAM",
+    "curiousMinds": "CURIOUS MINDS",
+    "project28": "PROJEKT 28",
+    "sponsorships": "PATENSCHAFTEN",
+    "otherActivities": "Weitere Aktivitäten"
+  },
+  "footer": {
+    "tagline": "Dialog fördern, strukturellen Wandel vorantreiben und widerstandsfähige internationale Gemeinschaften durch nachhaltige Basisinitiativen aufbauen.",
+    "quickLinks": "Schnellzugriff",
+    "home": "Startseite",
+    "aboutUs": "Über Uns",
+    "curiousMinds": "Curious Minds",
+    "project28": "Projekt 28",
+    "cecs": "CECS",
+    "contactUs": "Kontakt",
+    "contact": "Kontakt",
+    "address": "Deutschland • Nepal",
+    "rights": "© {{year}} Menschen im Dialog e.V. Alle Rechte vorbehalten.",
+    "privacy": "Datenschutz",
+    "impressum": "Impressum"
+  },
+  "common": {
+    "learnMoreAbout": "Erfahren Sie mehr über unsere Reise",
+    "exploreProgramDetails": "Programmdetails entdecken",
+    "viewProgram": "Programm ansehen",
+    "back": "← Zurück",
+    "backToAlbums": "← Zurück zu allen Alben",
+    "loading": "Lädt...",
+    "loadingReports": "Berichte werden geladen...",
+    "noReports": "In dieser Kategorie sind noch keine Berichte verfügbar.",
+    "downloadReport": "Bericht herunterladen",
+    "album": "Album",
+    "albums": "Alben",
+    "noAlbums": "Noch keine Alben hinzugefügt.",
+    "showingPhotos": "{{count}} von {{total}} Fotos werden angezeigt",
+    "loadingPreview": "Vorschau wird geladen...",
+    "loadMoreViewAlbums": "Mehr laden & Alben ansehen →",
+    "viewAlbumPhotos": "Albumfotos ansehen",
+    "photos": "Fotos",
+    "loadMorePhotos": "Weitere Fotos laden ({{remaining}} verbleibend)"
+  },
+  "home": {
+    "hero": {
+      "badge": "Nepal • Deutschland",
+      "prevProject": "Vorheriges Projekt",
+      "nextProject": "Nächstes Projekt",
+      "projects": [
+        {
+          "title": "Curious Minds",
+          "tagline": "Wissensstiftung",
+          "headline": "Wir verbinden Menschen, Ideen und Ressourcen, um gemeinsam neue Perspektiven zu schaffen.",
+          "desc": "Wir bauen Schulen und schaffen digitale Lerninfrastruktur in abgelegenen Bergdörfern Nepals."
+        },
+        {
+          "title": "CECS",
+          "tagline": "Patenschaften & Stipendien",
+          "headline": "Wir setzen Gesundheits- und Notfallinfrastruktur dort ein, wo sie am dringendsten benötigt wird.",
+          "desc": "Wir organisieren mobile medizinische Camps und grundlegende Gesundheitsversorgung für Mütter in Hochgebirgsregionen."
+        },
+        {
+          "title": "Projekt 28",
+          "tagline": "Mentuelle Würde",
+          "headline": "Wir fördern Menstruationswürde, Aufklärung und Gesundheit für Frauen in ganz Nepal.",
+          "desc": "Wir brechen Tabus und liefern nachhaltige Hygienelösungen, damit Frauen an allen 28 Tagen ihres Zyklus voll am Alltag teilnehmen können."
+        }
+      ]
+    },
+    "about": {
+      "title": "Wer Wir Sind",
+      "subtitle": "Die Köpfe, Mission und Vision, die unsere Reise antreiben.",
+      "tag": "Manara Nepal",
+      "quote": "\"Jedes Kind in Nepal verdient eine sichere Umgebung, eine gute Bildung und die Möglichkeit, eine selbstbestimmte Zukunft aufzubauen.\"",
+      "quoteLabel": "Graswurzel-Gemeinnützigkeit",
+      "badgeTitle": "100% gemeinnützige Organisation",
+      "badgeText": "Transparente Abläufe im Fokus auf das Wohl der Kinder",
+      "pill": "Die nächste Generation stärken",
+      "headline": "Leben verändern durch Bildung, Gesundheit & Mitgefühl in Nepal",
+      "p1": "Manara Nepal ist eine gemeinnützige Graswurzelorganisation, die gegründet wurde, um den Kreislauf von Armut und Not für benachteiligte Kinder und ländliche Gemeinden in ganz Nepal zu durchbrechen. Wir sind überzeugt, dass echte soziale Veränderung beginnt, wenn ein Kind ganzheitlich gefördert wird – spirituell, intellektuell und körperlich.",
+      "p2": "Durch direkte Partnerschaften mit lokalen Schulen, Gesundheitsfachkräften und Dorfleitern schließen wir kritische Ressourcenlücken. Von der Verteilung wichtiger Lernmaterialien und der Finanzierung von Stipendien bis hin zu Gesundheitscamps und Ernährungshilfe stellen wir sicher, dass kein Kind wegen wirtschaftlicher Not zurückgelassen wird.",
+      "commitments": [
+        "Gleicher Zugang zu Grundbildung",
+        "Präventive & akute Gesundheitsversorgung",
+        "Gemeinschaftsgetragene Entwicklung",
+        "Transparente & verantwortungsvolle Abläufe"
+      ],
+      "pillars": [
+        {
+          "title": "Bildung & Alphabetisierung",
+          "text": "Stipendien, Unterrichtsmaterialien, Reparaturen der Schulinfrastruktur und digitale Lernwerkzeuge, um junge Menschen im ländlichen Nepal zu stärken."
+        },
+        {
+          "title": "Gesundheit & Ernährung",
+          "text": "Ländliche Gesundheitschecks, Hygienschulungen und Ernährungsprogramme für heranwachsende Kinder."
+        },
+        {
+          "title": "Gemeindeschutz",
+          "text": "Wir arbeiten mit Familien zusammen, um sichere Räume zu schaffen, Kinderschutz zu fördern und in Krisen Nothilfe zu leisten."
+        }
+      ],
+      "missionTitle": "Unsere Mission",
+      "missionText": "Armutsbarrieren beseitigen, indem wir benachteiligten Kindern in ganz Nepal gleichen Zugang zu hochwertiger Bildung, essenzieller Gesundheitsversorgung und schützenden sozialen Umgebungen ermöglichen.",
+      "visionTitle": "Unsere Vision",
+      "visionText": "Ein widerstandsfähiges Nepal, in dem jedes Kind – unabhängig von Geschlecht oder sozioökonomischem Hintergrund – gesund aufwächst, gut ausgebildet ist und eine selbstbestimmte Zukunft aufbauen kann."
+    },
+    "activities": {
+      "title": "Unsere Aktivitäten",
+      "subtitle": "Entdecken Sie unsere wichtigsten Initiativen für nachhaltige Wirkung in Nepal.",
+      "initiative": "Initiative {{number}}",
+      "exploreProgramDetails": "Programmdetails entdecken",
+      "categories": {
+        "education": "Bildung",
+        "health": "Gesundheit",
+        "support": "Unterstützung",
+        "community": "Gemeinschaft"
+      },
+      "projects": [
+        {
+          "title": "CURIOUS MINDS",
+          "tagline": "Ländliche Klassenzimmer durch E-Learning stärken",
+          "description": "Wir überbrücken die digitale Kluft in abgelegenen nepalesischen Schulen durch interaktive Computerlabore, praxisnahe Lehrertrainings und unabhängiges digitales Lernen.",
+          "highlights": ["Interaktive ICT-Labore", "Lehrer-Mentoring", "Langfristige Nachhaltigkeit"]
+        },
+        {
+          "title": "PROJEKT 28",
+          "tagline": "Menstruationsgesundheit & Geschlechtergerechtigkeit fördern",
+          "description": "Kulturelle Tabus und gesundheitliche Ungleichheiten durch gemeinschaftsgetragene Hygieneaufklärung, Verteilung wiederverwendbarer Binden und Würdeprogramme durchbrechen.",
+          "highlights": ["Hygieneaufklärung", "Würdepakete", "Gemeindearbeit"]
+        },
+        {
+          "title": "PATENSCHAFTEN",
+          "tagline": "Potenzial durch Bildungshilfe entfalten",
+          "description": "Direkte Wege aus der Armut schaffen, indem Schulgebühren, Lernmaterialien, medizinische Versorgung und das allgemeine Wohlbefinden der Kinder unterstützt werden.",
+          "highlights": ["Direkte Beschulung", "Ganzheitliches Wohlbefinden", "Familienhilfe"]
+        },
+        {
+          "title": "WEITERE AKTIVITÄTEN",
+          "tagline": "Widerstandsfähige & nachhaltige Gemeinschaften fördern",
+          "description": "Lokale Kapazitäten durch Umweltschutz, Katastrophenvorsorge und nachhaltige Gemeindeentwicklungsprojekte stärken.",
+          "highlights": ["Ökologie & Naturschutz", "Katastrophenhilfe", "Existenzsicherung"]
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "Was Menschen Sagen",
+      "subtitle": "Echte Erfahrungen, geteilt von denen, die uns am besten kennen.",
+      "items": [
+        {
+          "position": "CEO, Menschen im Dialog",
+          "title": "Hellere Zukunft bauen",
+          "text": "MRDS Nepal hat außergewöhnliches Engagement bei der Verbesserung der ländlichen Bildung durch ICT bewiesen. Ihr Einsatz, ihre Professionalität und ihre Leidenschaft inspirieren uns weiterhin."
+        },
+        {
+          "position": "CECS-Manager",
+          "title": "UNGLAUBLICHE GESCHWINDIGKEIT & QUALITÄT",
+          "text": "Das Curious-Minds-Projekt hat die Lernerfahrung an unserer Schule verändert. Lehrer und Schüler nutzen digitale Lernwerkzeuge jetzt viel selbstbewusster."
+        },
+        {
+          "position": "Projekt 28",
+          "title": "Das Schweigen brechen, Würde aufbauen",
+          "text": "Mädchen und Frauen durch Menstruationsaufklärung, Würde und Zugang zu nachhaltigen Menstruationshygienelösungen stärken."
+        }
+      ]
+    },
+    "team": {
+      "title": "LERNEN SIE DAS TEAM KENNEN",
+      "subtitle": "Die visionären Köpfe hinter unserer Marke und unseren globalen Aktivitäten.",
+      "projectsLabel": "PROJEKTE",
+      "experienceLabel": "ERFAHRUNG",
+      "paused": "PAUSIERT",
+      "directory": "// VERZEICHNIS (WECHSEL ALLE 5S)",
+      "timerPaused": "[ TIMER PAUSIERT ]",
+      "footerLeft": "GLOBALER VORSTAND",
+      "footerRightPaused": "ROTATION PAUSIERT",
+      "footerRightAuto": "AUTOMATISCHER WECHSEL (5S)",
+      "members": [
+        {
+          "role": "Geschäftsführer",
+          "dept": "Menschen im Dialog",
+          "category": "Führung",
+          "location": "München, Deutschland",
+          "quote": "Dialog und menschliche Verbindung über digitale Kanäle stärken."
+        },
+        {
+          "role": "Projektmanager",
+          "dept": "CECS",
+          "category": "Management",
+          "location": "Stuttgart, Deutschland",
+          "quote": "Präzisionstechnik für strategische organisatorische Skalierung."
+        },
+        {
+          "role": "Projektmanager",
+          "dept": "Projekt28",
+          "category": "Management",
+          "location": "Berlin, Deutschland",
+          "quote": "Ehrgeizige Ideen in reibungslose Betriebsabläufe verwandeln."
+        },
+        {
+          "role": "Executive Lead",
+          "dept": "CECS",
+          "category": "Führung",
+          "location": "Kathmandu, Nepal",
+          "quote": "Robuste moderne digitale Erlebnisse mit unermüdlicher Präzision schaffen."
+        },
+        {
+          "role": "Operations-Executive",
+          "dept": "Projekt28",
+          "category": "Führung",
+          "location": "Kathmandu, Nepal",
+          "quote": "Kreative Vision mit strukturierter, wirkungsvoller Umsetzung verbinden."
+        },
+        {
+          "role": "Kreativ-Executive",
+          "dept": "Curious Minds",
+          "category": "Führung",
+          "location": "Pokhara, Nepal",
+          "quote": "Mutige ästhetische Identitäten schaffen, die bleibenden Eindruck hinterlassen."
+        },
+        {
+          "role": "Strategie-Executive",
+          "dept": "Projekt28",
+          "category": "Führung",
+          "location": "Kathmandu, Nepal",
+          "quote": "Markenwachstum durch umsetzbare Erkenntnisse und kreative Führung fördern."
+        }
+      ]
+    },
+    "gallery": {
+      "title": "Unsere Galerie",
+      "subtitle": "Entdecken Sie Momente und Fotos aus unseren Initiativen und Aktivitäten",
+      "loadMoreViewAlbums": "Mehr laden & Alben ansehen →"
+    }
+  },
+  "reports": {
+    "title": "Offizielle Berichte",
+    "subtitle": "Detaillierte Berichte, Jahresrückblicke und Projektdokumentationen ansehen und herunterladen",
+    "categories": {
+      "all": "Alle Berichte",
+      "curiousMinds": "Curious Minds",
+      "project28": "Projekt 28",
+      "sponsorship": "Patenschaften"
+    }
+  }
+}

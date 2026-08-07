@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { client, urlFor } from '../../gallery/sanity'
 import SectionHeader from '../reusableComp/SectionHeader'
 
@@ -14,6 +15,7 @@ import 'yet-another-react-lightbox/plugins/thumbnails.css'
 import 'yet-another-react-lightbox/plugins/counter.css'
 
 export default function CategoryGalleryPage() {
+  const { t } = useTranslation()
   const { category } = useParams()
   const navigate = useNavigate()
 
@@ -95,11 +97,11 @@ export default function CategoryGalleryPage() {
 
       
       <SectionHeader
-        title={selectedAlbum ? selectedAlbum.title : 'Our Gallery'}
+        title={selectedAlbum ? selectedAlbum.title : t('home.gallery.title')}
         subtitle={
           selectedAlbum
-            ? `Showing ${visibleImages.length} of ${allImages.length} photos`
-            : 'Explore photo albums and initiatives'
+            ? `${t('common.showingPhotos', { count: visibleImages.length, total: allImages.length })}`
+            : t('home.gallery.subtitle')
         }
       />
       {/* Back Button Navigation */}
@@ -109,14 +111,14 @@ export default function CategoryGalleryPage() {
             onClick={() => setSelectedAlbum(null)}
             className="text-sm font-semibold text-[#404040] hover:text-[#EC8134] flex items-center gap-1.5 transition-colors"
           >
-            ← Back to All Albums
+            {t('common.backToAlbums')}
           </button>
         ) : (
           <button
             onClick={() => navigate(-1)}
             className="text-sm font-semibold text-[#404040] hover:text-[#EC8134] flex items-center gap-1.5 transition-colors"
           >
-            ← Back
+            {t('common.back')}
           </button>
         )}
       </div>
@@ -125,7 +127,7 @@ export default function CategoryGalleryPage() {
       <div className="max-w-6xl mx-auto mt-10" >
         {loading ? (
           <div className="text-center py-20 text-slate-400 font-medium">
-            Loading...
+            {t('common.loading')}
           </div>
         ) : selectedAlbum ? (
           /* ======================================================== */
@@ -157,7 +159,7 @@ export default function CategoryGalleryPage() {
                   onClick={() => setVisiblePhotoCount((prev) => prev + 15)}
                   className="bg-gradient-to-r from-[#EC8134] to-[#D34A32] text-white text-xs font-bold px-8 py-3 rounded-full shadow-md hover:opacity-95 transition-all"
                 >
-                  Load More Photos ({allImages.length - visiblePhotoCount} remaining)
+                  {t('common.loadMorePhotos', { remaining: allImages.length - visiblePhotoCount })}
                 </button>
               </div>
             )}
@@ -188,7 +190,7 @@ export default function CategoryGalleryPage() {
                       />
                     )}
                     <span className="absolute bottom-3 right-3 bg-black/80 text-white text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm">
-                      {totalPhotos} Photos
+                      {totalPhotos} {t('common.photos')}
                     </span>
                   </div>
 
@@ -200,7 +202,7 @@ export default function CategoryGalleryPage() {
                       onClick={() => handleSelectAlbum(album)}
                       className="w-full py-2.5 rounded-xl border border-slate-200 text-[#404040] text-xs font-bold hover:bg-gradient-to-r hover:from-[#EC8134] hover:to-[#D34A32] hover:text-white transition-all duration-300"
                     >
-                      View Album Photos
+                      {t('common.viewAlbumPhotos')}
                     </button>
                   </div>
                 </div>

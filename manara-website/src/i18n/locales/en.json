@@ -1,0 +1,254 @@
+{
+  "nav": {
+    "home": "Home",
+    "aboutUs": "About Us",
+    "projects": "Projects",
+    "explore": "Explore",
+    "reports": "Reports",
+    "contact": "Contact",
+    "ourWork": "OUR WORK",
+    "testimonials": "TESTIMONIALS",
+    "gallery": "OUR GALLERY",
+    "team": "OUR TEAM",
+    "curiousMinds": "CURIOUS MINDS",
+    "project28": "PROJECT 28",
+    "sponsorships": "SPONSORSHIPS",
+    "otherActivities": "Other Activities"
+  },
+  "footer": {
+    "tagline": "Fostering dialogue, driving structural change, and building resilient international communities through sustainable grassroots initiatives.",
+    "quickLinks": "Quick Links",
+    "home": "Home",
+    "aboutUs": "About Us",
+    "curiousMinds": "Curious Minds",
+    "project28": "Project 28",
+    "cecs": "CECS",
+    "contactUs": "Contact Us",
+    "contact": "Contact",
+    "address": "Germany • Nepal",
+    "rights": "© {{year}} Menschen im Dialog e.V. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "impressum": "Impressum"
+  },
+  "common": {
+    "learnMoreAbout": "Learn More About Our Journey",
+    "exploreProgramDetails": "Explore Program Details",
+    "viewProgram": "View Program",
+    "back": "← Back",
+    "backToAlbums": "← Back to All Albums",
+    "loading": "Loading...",
+    "loadingReports": "Loading reports...",
+    "noReports": "No reports available in this category yet.",
+    "downloadReport": "Download Report",
+    "album": "Album",
+    "albums": "Albums",
+    "noAlbums": "No albums added yet.",
+    "showingPhotos": "Showing {{count}} of {{total}} photos",
+    "loadingPreview": "Loading preview...",
+    "loadMoreViewAlbums": "Load More & View Albums →",
+    "viewAlbumPhotos": "View Album Photos",
+    "photos": "Photos",
+    "loadMorePhotos": "Load More Photos ({{remaining}} remaining)"
+  },
+  "home": {
+    "hero": {
+      "badge": "Nepal • Germany",
+      "prevProject": "Previous Project",
+      "nextProject": "Next Project",
+      "projects": [
+        {
+          "title": "Curious Minds",
+          "tagline": "Knowledge Foundation",
+          "headline": "We connect people, ideas, and resources to create new perspectives together.",
+          "desc": "Building schools and providing digital learning infrastructure to remote mountain villages across Nepal."
+        },
+        {
+          "title": "CECS",
+          "tagline": "Sponsorships & Scholarships",
+          "headline": "Deploying healthcare and emergency response infrastructure where it is needed most.",
+          "desc": "Deploying mobile medical camps and basic maternal health infrastructure across high-altitude regions."
+        },
+        {
+          "title": "Project 28",
+          "tagline": "Menstrual Dignity",
+          "headline": "Promoting menstrual dignity, education, and health for women across Nepal.",
+          "desc": "Breaking taboos and delivering sustainable hygiene solutions so women can fully participate in daily life all 28 days of their cycle."
+        }
+      ]
+    },
+    "about": {
+      "title": "Who We Are",
+      "subtitle": "The minds, mission, and vision driving our journey.",
+      "tag": "Manara Nepal",
+      "quote": "\"Every child in Nepal deserves a safe environment, quality education, and the opportunity to build a self-reliant future.\"",
+      "quoteLabel": "Grassroots Non-Profit Action",
+      "badgeTitle": "100% Non-Profit Organization",
+      "badgeText": "Transparent operations focused on child welfare",
+      "pill": "Empowering The Next Generation",
+      "headline": "Transforming Lives Through Education, Health & Compassion in Nepal",
+      "p1": "is a grassroots non-profit organization established to break the cycle of poverty and hardship for vulnerable children and rural communities across Nepal. We operate on the conviction that real social change starts when a child is supported holistically—spiritually, intellectually, and physically.",
+      "p2": "By partnering directly with local schools, healthcare professionals, and village leaders, we bridge critical resource gaps. From distributing essential learning materials and funding scholarships to hosting health camps and providing nutritional support, our initiatives ensure that no child is left behind due to economic hardship.",
+      "commitments": [
+        "Equal Access to Primary Education",
+        "Preventative & Urgent Health Care",
+        "Community-Led Development",
+        "Transparent & Accountable Operations"
+      ],
+      "pillars": [
+        {
+          "title": "Child Education & Literacy",
+          "text": "Providing scholarships, classroom supplies, school infrastructure repairs, and digital learning tools to empower young minds across rural Nepal."
+        },
+        {
+          "title": "Healthcare & Nutrition",
+          "text": "Conducting rural health checkups, hygiene awareness workshops, and nutritional meal support programs for growing children."
+        },
+        {
+          "title": "Community Protection",
+          "text": "Working alongside families to build safe spaces, foster child protection awareness, and deliver emergency relief during local crises."
+        }
+      ],
+      "missionTitle": "Our Mission",
+      "missionText": "To eliminate poverty barriers by delivering equal access to quality education, essential healthcare services, and protective social environments for underprivileged children throughout Nepal.",
+      "visionTitle": "Our Vision",
+      "visionText": "A resilient Nepal where every child—regardless of gender or socio-economic background—grows up healthy, well-educated, and fully equipped to build a self-reliant future."
+    },
+    "activities": {
+      "title": "Our Activities",
+      "subtitle": "Explore our key initiatives dedicated to long-term impact across Nepal.",
+      "initiative": "Initiative {{number}}",
+      "exploreProgramDetails": "Explore Program Details",
+      "categories": {
+        "education": "Education",
+        "health": "Health",
+        "support": "Support",
+        "community": "Community"
+      },
+      "projects": [
+        {
+          "title": "CURIOUS MINDS",
+          "tagline": "Empowering Rural Classrooms Through E-Learning",
+          "description": "Bridging the digital divide in remote Nepalese schools by building interactive computer labs, delivering hands-on Teachers training, and fostering independent digital learning.",
+          "highlights": ["Interactive ICT Labs", "Teacher Mentorship", "Long-Term Sustainability"]
+        },
+        {
+          "title": "PROJECT 28",
+          "tagline": "Promoting Menstrual Health & Gender Equity",
+          "description": "Breaking cultural taboos and health disparities through community-led menstrual hygiene education, reusable pad distribution, and dignity awareness programs.",
+          "highlights": ["Hygiene Education", "Dignity Kits", "Community Outreach"]
+        },
+        {
+          "title": "SPONSORSHIPS",
+          "tagline": "Unlocking Potential Through Educational Support",
+          "description": "Creating direct paths out of poverty by supporting children's academic fees, school supplies, medical care, and overall wellbeing.",
+          "highlights": ["Direct Schooling", "Holistic Wellbeing", "Family Support"]
+        },
+        {
+          "title": "OTHER ACTIVITIES",
+          "tagline": "Fostering Resilient & Sustainable Communities",
+          "description": "Strengthening local capacity through environmental conservation, disaster preparedness, and sustainable community development projects.",
+          "highlights": ["Ecology & Conservation", "Disaster Relief", "Livelihood Care"]
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What People Say",
+      "subtitle": "Real experiences, shared by those who know us best.",
+      "items": [
+        {
+          "position": "CEO, Menschen im Dialog",
+          "title": "Building Brighter Futures",
+          "text": "MRDS Nepal has demonstrated exceptional dedication in improving rural education through ICT. Their commitment, professionalism, and passion continue to inspire us."
+        },
+        {
+          "position": "CECS Manager",
+          "title": "INCREDIBLE SPEED & QUALITY",
+          "text": "The Curious Minds project transformed the learning experience in our school. Teachers and students are now much more confident using digital learning tools."
+        },
+        {
+          "position": "Project 28",
+          "title": "Breaking the Silence, Building Dignity",
+          "text": "Empowering girls and women through menstrual health education, dignity, and access to sustainable menstrual hygiene solutions."
+        }
+      ]
+    },
+    "team": {
+      "title": "MEET THE TEAM",
+      "subtitle": "The visionary minds shaping our brand and operations across the globe.",
+      "projectsLabel": "PROJECTS",
+      "experienceLabel": "EXPERIENCE",
+      "paused": "PAUSED",
+      "directory": "// DIRECTORY (SWITCHING EVERY 5S)",
+      "timerPaused": "[ TIMER PAUSED ]",
+      "footerLeft": "GLOBAL EXECUTIVE BOARD",
+      "footerRightPaused": "ROTATION PAUSED",
+      "footerRightAuto": "SWITCHING AUTOMATICALLY (5S)",
+      "members": [
+        {
+          "role": "Chief Executive Officer",
+          "dept": "Menschen im Dialog",
+          "category": "Leadership",
+          "location": "Munich, Germany",
+          "quote": "Empowering dialogue and human connection across digital channels."
+        },
+        {
+          "role": "Project Manager",
+          "dept": "CECS",
+          "category": "Management",
+          "location": "Stuttgart, Germany",
+          "quote": "Precision engineering applied to strategic organizational scaling."
+        },
+        {
+          "role": "Project Manager",
+          "dept": "Project28",
+          "category": "Management",
+          "location": "Berlin, Germany",
+          "quote": "Transforming ambitious ideas into seamless operational workflows."
+        },
+        {
+          "role": "Executive Lead",
+          "dept": "CECS",
+          "category": "Executive",
+          "location": "Kathmandu, Nepal",
+          "quote": "Building robust modern digital experiences with relentless precision."
+        },
+        {
+          "role": "Operations Executive",
+          "dept": "Project28",
+          "category": "Executive",
+          "location": "Kathmandu, Nepal",
+          "quote": "Bridging creative vision with structured, high-impact implementation."
+        },
+        {
+          "role": "Creative Executive",
+          "dept": "Curious Minds",
+          "category": "Executive",
+          "location": "Pokhara, Nepal",
+          "quote": "Crafting bold aesthetic identities that leave a lasting impression."
+        },
+        {
+          "role": "Strategy Executive",
+          "dept": "Project28",
+          "category": "Executive",
+          "location": "Kathmandu, Nepal",
+          "quote": "Fostering brand growth through actionable insights and creative leadership."
+        }
+      ]
+    },
+    "gallery": {
+      "title": "Our Gallery",
+      "subtitle": "Explore moments and photos across our initiatives and activities",
+      "loadMoreViewAlbums": "Load More & View Albums →"
+    }
+  },
+  "reports": {
+    "title": "Official Reports",
+    "subtitle": "Access and download detailed reports, annual reviews, and project documentation",
+    "categories": {
+      "all": "All Reports",
+      "curiousMinds": "Curious Minds",
+      "project28": "Project 28",
+      "sponsorship": "Sponsorship"
+    }
+  }
+}

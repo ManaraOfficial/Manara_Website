@@ -1,31 +1,24 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { FaGlobe, FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
-const PROJECTS = [
+// Background images stay static (build-time assets/URLs), copy comes from i18next
+const PROJECT_IMAGES = [
   {
-    title: "Curious Minds",
-    tagline: "Knowledge Foundation",
-    headline: "We connect people, ideas, and resources to create new perspectives together.",
-    desc: "Building schools and providing digital learning infrastructure to remote mountain villages across Nepal.",
+    image:
+      "https://copilot.microsoft.com/th/id/BCO.649c9cd4-4fe5-48c2-a980-c2b27c147ebb.png",
     bgColor: "#366A35", // Green
-    image: "https://copilot.microsoft.com/th/id/BCO.649c9cd4-4fe5-48c2-a980-c2b27c147ebb.png"
   },
   {
-    title: "CECS",
-    tagline: "Sponserships & Scholarships",
-    headline: "Deploying healthcare and emergency response infrastructure where it is needed most.",
-    desc: "Deploying mobile medical camps and basic maternal health infrastructure across high-altitude regions.",
+    image:
+      "https://image.jimcdn.com/app/cms/image/transf/none/path/sf1c2e8936baa157c/image/i3d20b382755784f3/version/1629045977/image.jpg",
     bgColor: "#EC8134", // Orange
-    image: "https://image.jimcdn.com/app/cms/image/transf/none/path/sf1c2e8936baa157c/image/i3d20b382755784f3/version/1629045977/image.jpg"
   },
   {
-    title: "Project 28",
-    tagline: "Menstrual Dignity",
-    headline: "Promoting menstrual dignity, education, and health for women across Nepal.",
-    desc: "Breaking taboos and delivering sustainable hygiene solutions so women can fully participate in daily life all 28 days of their cycle.",
+    image:
+      "https://image.jimcdn.com/app/cms/image/transf/none/path/sf1c2e8936baa157c/image/i6c19cf6e7a8ea749/version/1730550822/image.jpg",
     bgColor: "#D34A32", // Red
-    image: "https://image.jimcdn.com/app/cms/image/transf/none/path/sf1c2e8936baa157c/image/i6c19cf6e7a8ea749/version/1730550822/image.jpg"
-  }
+  },
 ];
 
 // Typewriter Text Component - drives slide progression after pauseDuration
@@ -68,26 +61,30 @@ const TypewriterText = ({ text, speed = 40, pauseDuration = 6000, onComplete }) 
   );
 };
 
-export default function HomePage() {
+export default function HeroSection() {
+  const { t } = useTranslation();
   const [currentIdx, setCurrentIdx] = useState(0);
 
+  const projects = t("home.hero.projects", { returnObjects: true });
+
   const handlePrev = () => {
-    setCurrentIdx((prev) => (prev === 0 ? PROJECTS.length - 1 : prev - 1));
+    setCurrentIdx((prev) => (prev === 0 ? PROJECT_IMAGES.length - 1 : prev - 1));
   };
 
   const handleNext = () => {
-    setCurrentIdx((prev) => (prev === PROJECTS.length - 1 ? 0 : prev + 1));
+    setCurrentIdx((prev) => (prev === PROJECT_IMAGES.length - 1 ? 0 : prev + 1));
   };
 
-  const activeProject = PROJECTS[currentIdx];
+  const activeProject = projects[currentIdx];
+  const activeImage = PROJECT_IMAGES[currentIdx];
 
   return (
     <div className="relative w-full min-h-screen bg-[#0A0A0A] text-white overflow-hidden  flex items-center justify-center">
       
       {/* 1. FULL-SCREEN DYNAMIC BACKGROUND SLIDER */}
-      {PROJECTS.map((project, idx) => (
+      {PROJECT_IMAGES.map((project, idx) => (
         <div
-          key={project.title}
+          key={project.image}
           className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
             idx === currentIdx ? "opacity-45 scale-100" : "opacity-0 scale-105"
           }`}
@@ -137,7 +134,7 @@ export default function HomePage() {
   </span>
 
   <span className="text-[clamp(0.65rem,0.75vw,0.875rem)] font-black tracking-widest uppercase text-white/90">
-    Nepal • Germany
+    {t("home.hero.badge")}
   </span>
 
   {/* Germany Flag */}
@@ -166,10 +163,10 @@ export default function HomePage() {
 
         {/* TRIPLE-CIRCLE CAROUSEL TRACK */}
         <div className="relative w-full max-w-2xl h-[120px] sm:h-[160px] md:h-[190px] lg:h-[210px] flex items-center justify-center overflow-visible my-2">
-          {PROJECTS.map((item, idx) => {
+          {PROJECT_IMAGES.map((item, idx) => {
             const isActive = idx === currentIdx;
-            const isNext = idx === (currentIdx + 1) % PROJECTS.length;
-            const isPrevious = idx === (currentIdx - 1 + PROJECTS.length) % PROJECTS.length;
+            const isNext = idx === (currentIdx + 1) % PROJECT_IMAGES.length;
+            const isPrevious = idx === (currentIdx - 1 + PROJECT_IMAGES.length) % PROJECT_IMAGES.length;
 
             let circleClasses = "opacity-0 scale-50 pointer-events-none z-0";
             let dynamicStyle = {};
@@ -187,22 +184,22 @@ export default function HomePage() {
 
             return (
               <div
-                key={item.title}
+                key={item.image}
                 onClick={() => !isActive && setCurrentIdx(idx)}
                 style={dynamicStyle}
                 className={`absolute rounded-full flex flex-col justify-center items-center text-center p-2 sm:p-4 transform-gpu transition-all duration-[750ms] cubic-bezier(0.4, 0, 0.2, 1) ${circleClasses}`}
               >
                 <h3 className={`font-black uppercase tracking-wider text-center leading-tight ${
                   isActive 
-                    ? "text-[clamp(0.65rem,0.85vw,0.95rem)]" 
+                    ? "text-[clamp(0.95rem,0.85vw,0.95rem)]" 
                     : "text-[clamp(0.55rem,0.7vw,0.8rem)] font-bold"
                 }`}>
-                  {item.title}
+                  {projects[idx].title}
                 </h3>
 
                 {isActive && (
-                  <p className="text-[clamp(0.55rem,0.75vw,0.85rem)] text-white/90 text-center leading-tight mt-1 max-w-[80px] sm:max-w-[110px] md:max-w-[130px] line-clamp-2">
-                    {item.tagline}
+                  <p className="text-[clamp(0.75rem,0.75vw,0.85rem)] text-white/90 text-center leading-tight mt-1 max-w-[80px] sm:max-w-[110px] md:max-w-[130px] line-clamp-2">
+                    {projects[idx].tagline}
                   </p>
                 )}
 
@@ -217,14 +214,14 @@ export default function HomePage() {
           <button
             onClick={handlePrev}
             className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-black transition active:scale-95 cursor-pointer"
-            aria-label="Previous Project"
+            aria-label={t("home.hero.prevProject")}
           >
             <FaArrowLeft className="text-xs sm:text-sm" />
           </button>
           <button
             onClick={handleNext}
             className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-black transition active:scale-95 cursor-pointer"
-            aria-label="Next Project"
+            aria-label={t("home.hero.nextProject")}
           >
             <FaArrowRight className="text-xs sm:text-sm" />
           </button>

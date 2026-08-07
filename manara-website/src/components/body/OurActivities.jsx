@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import SectionHeader from "../reusableComp/SectionHeader";
 
 // Image assets
@@ -8,58 +9,39 @@ import Project28Img from "../../assets/images/Project28Img.jpg";
 import CECSImg from "../../assets/images/CECSImg.png";
 import OtherActivitiesImg from "../../assets/images/OtherActivitiesImg.png";
 
-const projects = [
+// Static project metadata — text content comes from i18next locales
+const PROJECTS = [
   {
     id: 1,
     number: "01",
-    title: "CURIOUS MINDS",
-    tagline: "Empowering Rural Classrooms Through E-Learning",
-    description:
-      "Bridging the digital divide in remote Nepalese schools by building interactive computer labs, delivering hands-on Teachers training, and fostering independent digital learning.",
     image: CuriousMinds,
     path: "/curious-minds",
-    category: "Education",
+    categoryKey: "education",
     color: "green",
-    highlights: ["Interactive ICT Labs", "Teacher Mentorship", "Long-Term Sustainability"],
   },
   {
     id: 2,
     number: "02",
-    title: "PROJECT 28",
-    tagline: "Promoting Menstrual Health & Gender Equity",
-    description:
-      "Breaking cultural taboos and health disparities through community-led menstrual hygiene education, reusable pad distribution, and dignity awareness programs.",
     image: Project28Img,
     path: "/project-28",
-    category: "Health",
+    categoryKey: "health",
     color: "orange",
-    highlights: ["Hygiene Education", "Dignity Kits", "Community Outreach"],
   },
   {
     id: 3,
     number: "03",
-    title: "SPONSORSHIPS",
-    tagline: "Unlocking Potential Through Educational Support",
-    description:
-      "Creating direct paths out of poverty by supporting children's academic fees, school supplies, medical care, and overall wellbeing.",
     image: CECSImg,
-    path: "/cecs",
-    category: "Support",
+    path: "/sponsorship",
+    categoryKey: "support",
     color: "red",
-    highlights: ["Direct Schooling", "Holistic Wellbeing", "Family Support"],
   },
   {
     id: 4,
     number: "04",
-    title: "OTHER ACTIVITIES",
-    tagline: "Fostering Resilient & Sustainable Communities",
-    description:
-      "Strengthening local capacity through environmental conservation, disaster preparedness, and sustainable community development projects.",
     image: OtherActivitiesImg,
     path: "/other-activities",
-    category: "Community",
+    categoryKey: "community",
     color: "green",
-    highlights: ["Ecology & Conservation", "Disaster Relief", "Livelihood Care"],
   },
 ];
 
@@ -92,7 +74,10 @@ const themeStyles = {
 };
 
 const OurActivities = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
+
+  const projects = t("home.activities.projects", { returnObjects: true });
 
   return (
     <section className="bg-gradient-to-b from-[#366A35]/5 via-[#F8FAFC] to-hotpink font-['Nunito_Sans',sans-serif]" id="our-work">
@@ -100,15 +85,16 @@ const OurActivities = () => {
       <div className="max-w-6xl mx-auto pb-20 px-6 space-b-16">
         
         <SectionHeader 
-          title="Our Activities" 
-          subtitle="Explore our key initiatives dedicated to long-term impact across Nepal." 
+          title={t("home.activities.title")} 
+          subtitle={t("home.activities.subtitle")} 
         />
 
         {/* Alternating Horizontal Split Showcase */}
         <div className="space-y-12 sm:space-y-16">
-          {projects.map((project, index) => {
+          {PROJECTS.map((project, index) => {
             const theme = themeStyles[project.color];
             const isEven = index % 2 === 1;
+            const copy = projects[index];
 
             return (
               <div
@@ -129,7 +115,7 @@ const OurActivities = () => {
                   >
                     <img
                       src={project.image}
-                      alt={project.title}
+                      alt={copy.title}
                       className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     />
                     
@@ -148,7 +134,7 @@ const OurActivities = () => {
                             className={`relative inline-flex rounded-full h-2 w-2 ${theme.dot}`}
                           />
                         </span>
-                        <span>{project.category}</span>
+                        <span>{t(`home.activities.categories.${project.categoryKey}`)}</span>
                       </span>
                     </div>
 
@@ -169,26 +155,26 @@ const OurActivities = () => {
                     <div className="space-y-2">
                       <div className="flex items-center gap-3">
                         <span className={`text-xs font-black tracking-widest font-mono uppercase ${theme.accentText}`}>
-                          Initiative {project.number}
+                          {t("home.activities.initiative", { number: project.number })}
                         </span>
                       </div>
 
                       <h3 className="text-2xl sm:text-4xl font-black text-gray-900 tracking-tight font-['Montserrat',sans-serif]">
-                        {project.title}
+                        {copy.title}
                       </h3>
 
                       <p className="text-sm font-bold text-gray-500 font-['Montserrat',sans-serif]">
-                        {project.tagline}
+                        {copy.tagline}
                       </p>
                     </div>
 
                     <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                      {project.description}
+                      {copy.description}
                     </p>
 
                     {/* Key Highlight Badges */}
                     <div className="flex flex-wrap gap-2 pt-1">
-                      {project.highlights.map((tag, idx) => (
+                      {copy.highlights.map((tag, idx) => (
                         <span
                           key={idx}
                           className={`px-3 py-1 rounded-lg text-xs font-semibold border ${theme.pill}`}
@@ -204,7 +190,7 @@ const OurActivities = () => {
                         onClick={() => navigate(project.path)}
                         className={`inline-flex items-center gap-3 px-6 py-3.5 rounded-xl text-xs font-black uppercase tracking-wider shadow-md transition-all duration-300 hover:scale-[1.02] active:scale-95 font-['Montserrat',sans-serif] ${theme.button}`}
                       >
-                        <span>Explore Program Details</span>
+                        <span>{t("home.activities.exploreProgramDetails")}</span>
                         <svg
                           className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1"
                           fill="none"

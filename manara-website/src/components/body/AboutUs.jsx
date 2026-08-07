@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { 
   FaArrowRight, 
   FaBullseye, 
@@ -9,8 +10,6 @@ import {
   FaMedkit, 
   FaHandsHelping,
   FaCheckCircle,
-  FaUsers,
-  FaSchool,
   FaQuoteLeft
 } from "react-icons/fa";
 
@@ -18,6 +17,11 @@ import {
 import SectionHeader from "../reusableComp/SectionHeader";
 
 const AboutSummarySection = () => {
+  const { t } = useTranslation();
+
+  const pillars = t("home.about.pillars", { returnObjects: true });
+  const commitments = t("home.about.commitments", { returnObjects: true });
+
   return (
     <div className="relative bg-gradient-to-b from-[#EC8134]/5 via-[#F8FAFC] to-white overflow-hidden"
     >
@@ -54,8 +58,8 @@ const AboutSummarySection = () => {
         
         {/* 1. Uniform Section Header */}
         <SectionHeader 
-          title="Who We Are" 
-          subtitle="The minds, mission, and vision driving our journey." 
+          title={t("home.about.title")} 
+          subtitle={t("home.about.subtitle")} 
         />
 
         {/* 2. Top Overview: Visual Column + Core Narrative */}
@@ -80,7 +84,7 @@ const AboutSummarySection = () => {
               <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/50 shadow-md flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#EC8134] animate-pulse" />
                 <span className="text-xs font-black text-slate-800 font-['Montserrat',sans-serif] tracking-wider uppercase">
-                  Manara Nepal
+                  {t("home.about.tag")}
                 </span>
               </div>
 
@@ -88,10 +92,10 @@ const AboutSummarySection = () => {
               <div className="absolute bottom-6 left-6 right-6 text-white space-y-2">
                 <FaQuoteLeft className="text-[#EC8134] text-xl opacity-80" />
                 <p className="text-sm font-medium text-slate-100 italic leading-snug">
-                  "Every child in Nepal deserves a safe environment, quality education, and the opportunity to build a self-reliant future."
+                  {t("home.about.quote")}
                 </p>
                 <div className="pt-1 flex items-center gap-2 text-xs font-bold text-amber-300 font-['Montserrat',sans-serif]">
-                  <span>Grassroots Non-Profit Action</span>
+                  <span>{t("home.about.quoteLabel")}</span>
                 </div>
               </div>
             </div>
@@ -103,10 +107,10 @@ const AboutSummarySection = () => {
               </div>
               <div>
                 <div className="text-sm font-extrabold text-slate-900 font-['Montserrat',sans-serif]">
-                  100% Non-Profit Organization
+                  {t("home.about.badgeTitle")}
                 </div>
                 <div className="text-xs text-slate-500 font-medium">
-                  Transparent operations focused on child welfare
+                  {t("home.about.badgeText")}
                 </div>
               </div>
             </div>
@@ -118,42 +122,32 @@ const AboutSummarySection = () => {
             {/* Main Subheading */}
             <div className="space-y-3">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#EC8134]/10 text-[#EC8134] text-xs font-bold uppercase tracking-wider font-['Montserrat',sans-serif]">
-                Empowering The Next Generation
+                {t("home.about.pill")}
               </div>
               
               <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 font-['Montserrat',sans-serif] leading-[1.25]">
-                Transforming Lives Through Education, Health & Compassion in <span className="text-[#EC8134]">Nepal</span>
+                {t("home.about.headline")}
               </h3>
             </div>
 
             {/* Comprehensive Narrative Copy */}
             <div className="space-y-3 text-slate-600 text-sm sm:text-base leading-relaxed">
               <p>
-                <strong className="text-slate-900 font-bold">Manara Nepal</strong> is a grassroots non-profit organization established to break the cycle of poverty and hardship for vulnerable children and rural communities across Nepal. We operate on the conviction that real social change starts when a child is supported holistically—spiritually, intellectually, and physically.
+                <strong className="text-slate-900 font-bold">{t("home.about.tag")}</strong> {t("home.about.p1")}
               </p>
               <p>
-                By partnering directly with local schools, healthcare professionals, and village leaders, we bridge critical resource gaps. From distributing essential learning materials and funding scholarships to hosting health camps and providing nutritional support, our initiatives ensure that no child is left behind due to economic hardship.
+                {t("home.about.p2")}
               </p>
             </div>
 
             {/* Key Organizational Commitments List */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-xs sm:text-sm font-bold text-slate-700">
-              <div className="flex items-center gap-2.5 p-2 rounded-lg bg-white/70 backdrop-blur-sm border border-slate-100">
-                <FaCheckCircle className="text-[#366A35] text-base shrink-0" />
-                <span>Equal Access to Primary Education</span>
-              </div>
-              <div className="flex items-center gap-2.5 p-2 rounded-lg bg-white/70 backdrop-blur-sm border border-slate-100">
-                <FaCheckCircle className="text-[#EC8134] text-base shrink-0" />
-                <span>Preventative & Urgent Health Care</span>
-              </div>
-              <div className="flex items-center gap-2.5 p-2 rounded-lg bg-white/70 backdrop-blur-sm border border-slate-100">
-                <FaCheckCircle className="text-[#D34A32] text-base shrink-0" />
-                <span>Community-Led Development</span>
-              </div>
-              <div className="flex items-center gap-2.5 p-2 rounded-lg bg-white/70 backdrop-blur-sm border border-slate-100">
-                <FaCheckCircle className="text-[#366A35] text-base shrink-0" />
-                <span>Transparent & Accountable Operations</span>
-              </div>
+              {commitments.map((commitment, idx) => (
+                <div key={idx} className="flex items-center gap-2.5 p-2 rounded-lg bg-white/70 backdrop-blur-sm border border-slate-100">
+                  <FaCheckCircle className="text-[#366A35] text-base shrink-0" />
+                  <span>{commitment}</span>
+                </div>
+              ))}
             </div>
 
             {/* Call To Action Button */}
@@ -162,7 +156,7 @@ const AboutSummarySection = () => {
                 to="/about-us"
                 className="inline-flex items-center gap-3 bg-[#EC8134] hover:bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold text-sm transition-all duration-300 shadow-lg shadow-[#EC8134]/25 hover:shadow-slate-900/20 group font-['Montserrat',sans-serif]"
               >
-                <span>Learn More About Our Journey</span>
+                <span>{t("common.learnMoreAbout")}</span>
                 <FaArrowRight className="group-hover:translate-x-1.5 transition-transform text-xs" />
               </Link>
             </div>
@@ -180,10 +174,10 @@ const AboutSummarySection = () => {
               <FaGraduationCap />
             </div>
             <h4 className="text-lg font-bold text-slate-900 font-['Montserrat',sans-serif] mb-2">
-              Child Education & Literacy
+              {pillars[0].title}
             </h4>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Providing scholarships, classroom supplies, school infrastructure repairs, and digital learning tools to empower young minds across rural Nepal.
+              {pillars[0].text}
             </p>
           </div>
 
@@ -193,10 +187,10 @@ const AboutSummarySection = () => {
               <FaMedkit />
             </div>
             <h4 className="text-lg font-bold text-slate-900 font-['Montserrat',sans-serif] mb-2">
-              Healthcare & Nutrition
+              {pillars[1].title}
             </h4>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Conducting rural health checkups, hygiene awareness workshops, and nutritional meal support programs for growing children.
+              {pillars[1].text}
             </p>
           </div>
 
@@ -206,10 +200,10 @@ const AboutSummarySection = () => {
               <FaHandsHelping />
             </div>
             <h4 className="text-lg font-bold text-slate-900 font-['Montserrat',sans-serif] mb-2">
-              Community Protection
+              {pillars[2].title}
             </h4>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Working alongside families to build safe spaces, foster child protection awareness, and deliver emergency relief during local crises.
+              {pillars[2].text}
             </p>
           </div>
 
@@ -226,11 +220,11 @@ const AboutSummarySection = () => {
                 <FaBullseye />
               </div>
               <h4 className="text-xl font-extrabold text-slate-900 font-['Montserrat',sans-serif]">
-                Our Mission
+                {t("home.about.missionTitle")}
               </h4>
             </div>
             <p className="text-sm text-slate-600 leading-relaxed">
-              To eliminate poverty barriers by delivering equal access to quality education, essential healthcare services, and protective social environments for underprivileged children throughout Nepal.
+              {t("home.about.missionText")}
             </p>
           </div>
 
@@ -242,11 +236,11 @@ const AboutSummarySection = () => {
                 <FaEye />
               </div>
               <h4 className="text-xl font-extrabold text-slate-900 font-['Montserrat',sans-serif]">
-                Our Vision
+                {t("home.about.visionTitle")}
               </h4>
             </div>
             <p className="text-sm text-slate-600 leading-relaxed">
-              A resilient Nepal where every child—regardless of gender or socio-economic background—grows up healthy, well-educated, and fully equipped to build a self-reliant future.
+              {t("home.about.visionText")}
             </p>
           </div>
 

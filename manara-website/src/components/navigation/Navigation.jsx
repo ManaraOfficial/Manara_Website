@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import logo from "../../assets/images/logo2.png";
 import {
   FaInstagram,
@@ -14,24 +15,25 @@ import {
 const LANGUAGES = [
   { code: "en", label: "English", flag: "🇬🇧" },
   { code: "de", label: "Deutsch", flag: "🇩🇪" },
-  { code: "np", label: "नेपाली", flag: "🇳🇵" },
+  { code: "ne", label: "नेपाली", flag: "🇳🇵" },
 ];
 
 const PROJECTS = [
-  { name: "CURIOUS MINDS", path: "/curious-minds" },
-  { name: "PROJECT 28", path: "/project-28" },
-  { name: "SPONSORSHIPS", path: "/sponsorship" },
-  { name: "Other Activities", path: "/other-activities" },
+  { nameKey: "nav.curiousMinds", path: "/curious-minds" },
+  { nameKey: "nav.project28", path: "/project-28" },
+  { nameKey: "nav.sponsorships", path: "/sponsorship" },
+  { nameKey: "nav.otherActivities", path: "/other-activities" },
 ];
 
 const EXPLORE_SECTIONS = [
-  { name: "OUR WORK", targetId: "our-work" },
-  { name: "TESTIMONIALS", targetId: "testimonials" },
-  { name: "OUR GALLERY", targetId: "gallery" },
-  { name: "OUR TEAM", targetId: "team" },
+  { nameKey: "nav.ourWork", targetId: "our-work" },
+  { nameKey: "nav.testimonials", targetId: "testimonials" },
+  { nameKey: "nav.gallery", targetId: "gallery" },
+  { nameKey: "nav.team", targetId: "team" },
 ];
 
 const Navigation = () => {
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -47,8 +49,8 @@ const Navigation = () => {
   const [mobileProjectsOpen, setMobileProjectsOpen] = useState(false);
   const [mobileExploreOpen, setMobileExploreOpen] = useState(false);
 
-  // Active Language State
-  const [currentLang, setCurrentLang] = useState("en");
+  // Active Language State (restored from i18next across sessions)
+  const [currentLang, setCurrentLang] = useState(i18n.language || "en");
 
   // Click Outside Refs
   const projectsRef = useRef(null);
@@ -64,6 +66,11 @@ const Navigation = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Keep the nav highlight in sync when the language is changed elsewhere
+  useEffect(() => {
+    setCurrentLang(i18n.language || "en");
+  }, [i18n.language, i18n]);
 
   // Handle smooth scroll navigation across pages
   useEffect(() => {
@@ -117,6 +124,7 @@ const Navigation = () => {
   const handleLanguageChange = (langCode) => {
     setCurrentLang(langCode);
     setLangDropdownOpen(false);
+    i18n.changeLanguage(langCode);
   };
 
   // Scroll to top when clicking Home / Logo
@@ -175,7 +183,7 @@ const Navigation = () => {
               onClick={handleHomeClick}
               className="relative py-1 hover:text-[#EC8134] transition-colors duration-200 group"
             >
-              Home
+              {t("nav.home")}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EC8134] transition-all duration-300 group-hover:w-full" />
             </Link>
 
@@ -183,7 +191,7 @@ const Navigation = () => {
               to="/about-us" 
               className="relative py-1 hover:text-[#EC8134] transition-colors duration-200 group"
             >
-              About Us
+              {t("nav.aboutUs")}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EC8134] transition-all duration-300 group-hover:w-full" />
             </Link>
 
@@ -197,7 +205,7 @@ const Navigation = () => {
                 }}
                 className="relative py-1 text-white hover:text-[#366A35] transition-colors duration-200 uppercase font-bold group cursor-pointer border-none bg-transparent flex items-center gap-1.5"
               >
-                Projects
+                {t("nav.projects")}
                 <FaChevronDown className={`text-[10px] transition-transform duration-200 ${projectsDropdownOpen ? "rotate-180" : ""}`} />
                 <span className={`absolute bottom-0 left-0 h-0.5 bg-[#366A35] transition-all duration-300 ${projectsDropdownOpen ? "w-full" : "w-0 group-hover:w-full"}`} />
               </button>
@@ -211,7 +219,7 @@ const Navigation = () => {
                       onClick={() => setProjectsDropdownOpen(false)}
                       className="block px-4 py-2.5 text-xs font-bold text-white/80 hover:text-[#366A35] hover:bg-white/10 transition-colors duration-200"
                     >
-                      {project.name}
+                      {t(project.nameKey)}
                     </Link>
                   ))}
                 </div>
@@ -228,7 +236,7 @@ const Navigation = () => {
                 }}
                 className="relative py-1 text-white hover:text-[#EC8134] transition-colors duration-200 uppercase font-bold group cursor-pointer border-none bg-transparent flex items-center gap-1.5"
               >
-                Explore
+                {t("nav.explore")}
                 <FaChevronDown className={`text-[10px] transition-transform duration-200 ${exploreDropdownOpen ? "rotate-180" : ""}`} />
                 <span className={`absolute bottom-0 left-0 h-0.5 bg-[#EC8134] transition-all duration-300 ${exploreDropdownOpen ? "w-full" : "w-0 group-hover:w-full"}`} />
               </button>
@@ -241,7 +249,7 @@ const Navigation = () => {
                       onClick={() => scrollToSection(item.targetId)}
                       className="w-full text-left block px-4 py-2.5 text-xs font-bold text-white/80 hover:text-[#EC8134] hover:bg-white/10 transition-colors duration-200"
                     >
-                      {item.name}
+                      {t(item.nameKey)}
                     </button>
                   ))}
                 </div>
@@ -253,7 +261,7 @@ const Navigation = () => {
               to="/reports" 
               className="relative py-1 hover:text-[#EC8134] transition-colors duration-200 group"
             >
-              Reports
+              {t("nav.reports")}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EC8134] transition-all duration-300 group-hover:w-full" />
             </Link>
 
@@ -261,7 +269,7 @@ const Navigation = () => {
               to="/contact" 
               className="relative py-1 hover:text-[#EC8134] transition-colors duration-200 group"
             >
-              Contact
+              {t("nav.contact")}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EC8134] transition-all duration-300 group-hover:w-full" />
             </Link>
           </div>
@@ -381,7 +389,7 @@ const Navigation = () => {
             onClick={handleHomeClick}
             className="py-4 text-base font-bold border-b border-white/15 text-white hover:text-[#EC8134] transition-colors"
           >
-            Home
+            {t("nav.home")}
           </Link>
 
           <Link
@@ -389,7 +397,7 @@ const Navigation = () => {
             onClick={() => setMobileDrawerOpen(false)}
             className="py-4 text-base font-bold border-b border-white/15 text-white hover:text-[#EC8134] transition-colors"
           >
-            About Us
+            {t("nav.aboutUs")}
           </Link>
 
           {/* Mobile Projects Accordion */}
@@ -398,7 +406,7 @@ const Navigation = () => {
               onClick={() => setMobileProjectsOpen(!mobileProjectsOpen)}
               className="w-full py-4 flex items-center justify-between text-base font-bold text-white hover:text-[#366A35] transition-colors"
             >
-              <span>Projects</span>
+              <span>{t("nav.projects")}</span>
               <FaChevronDown className={`text-xs transition-transform duration-200 ${mobileProjectsOpen ? "rotate-180" : ""}`} />
             </button>
             {mobileProjectsOpen && (
@@ -413,7 +421,7 @@ const Navigation = () => {
                     }}
                     className="block py-2 text-sm font-bold text-white/80 hover:text-[#366A35] transition-colors"
                   >
-                    {project.name}
+                    {t(project.nameKey)}
                   </Link>
                 ))}
               </div>
@@ -426,7 +434,7 @@ const Navigation = () => {
               onClick={() => setMobileExploreOpen(!mobileExploreOpen)}
               className="w-full py-4 flex items-center justify-between text-base font-bold text-white hover:text-[#EC8134] transition-colors"
             >
-              <span>Explore</span>
+              <span>{t("nav.explore")}</span>
               <FaChevronDown className={`text-xs transition-transform duration-200 ${mobileExploreOpen ? "rotate-180" : ""}`} />
             </button>
             {mobileExploreOpen && (
@@ -437,7 +445,7 @@ const Navigation = () => {
                     onClick={() => scrollToSection(item.targetId)}
                     className="block w-full text-left py-2 text-sm font-bold text-white/80 hover:text-[#EC8134] transition-colors"
                   >
-                    {item.name}
+                    {t(item.nameKey)}
                   </button>
                 ))}
               </div>
@@ -450,7 +458,7 @@ const Navigation = () => {
             onClick={() => setMobileDrawerOpen(false)}
             className="py-4 text-base font-bold border-b border-white/15 text-white hover:text-[#EC8134] transition-colors"
           >
-            Reports
+            {t("nav.reports")}
           </Link>
 
           <Link
@@ -458,7 +466,7 @@ const Navigation = () => {
             onClick={() => setMobileDrawerOpen(false)}
             className="py-4 text-base font-bold border-b border-white/15 text-white hover:text-[#EC8134] transition-colors"
           >
-            Contact
+            {t("nav.contact")}
           </Link>
         </div>
 

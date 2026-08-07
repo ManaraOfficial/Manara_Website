@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { 
   FaLinkedinIn, 
   FaInstagram, 
@@ -31,98 +32,80 @@ const TRANSITION_TYPES = [
   { id: "diagonal", name: "Diagonal Sweep" },
 ];
 
-const teamList = [
+// Static identity data — translatable fields are merged in from i18next inside the component
+const BASE_TEAM = [
   {
     id: "ralf",
     name: "Ralf Ledl",
-    role: "Chief Executive Officer",
-    dept: "Menschen im Dialog",
-    category: "Leadership",
-    location: "Munich, Germany",
     image: person1,
-    quote: "Empowering dialogue and human connection across digital channels.",
     stats: { projects: "45+", experience: "14 Yrs" },
     effect: TRANSITION_TYPES[0],
   },
   {
     id: "jurgen",
     name: "Jürgen Luck",
-    role: "Project Manager",
-    dept: "CECS",
-    category: "Management",
-    location: "Stuttgart, Germany",
     image: person2,
-    quote: "Precision engineering applied to strategic organizational scaling.",
     stats: { projects: "30+", experience: "9 Yrs" },
     effect: TRANSITION_TYPES[1],
   },
   {
     id: "andrea",
     name: "Andrea Spieth",
-    role: "Project Manager",
-    dept: "Project28",
-    category: "Management",
-    location: "Berlin, Germany",
     image: person3,
-    quote: "Transforming ambitious ideas into seamless operational workflows.",
     stats: { projects: "28+", experience: "8 Yrs" },
     effect: TRANSITION_TYPES[2],
   },
   {
     id: "ridam",
     name: "Ridam Gurung",
-    role: "Executive Lead",
-    dept: "CECS",
-    category: "Executive",
-    location: "Kathmandu, Nepal",
     image: person4,
-    quote: "Building robust modern digital experiences with relentless precision.",
     stats: { projects: "22+", experience: "5 Yrs" },
     effect: TRANSITION_TYPES[3],
   },
   {
     id: "anju",
     name: "Anju Devkota",
-    role: "Operations Executive",
-    dept: "Project28",
-    category: "Executive",
-    location: "Kathmandu, Nepal",
     image: person5,
-    quote: "Bridging creative vision with structured, high-impact implementation.",
     stats: { projects: "18+", experience: "4 Yrs" },
     effect: TRANSITION_TYPES[4],
   },
   {
     id: "rajesh",
     name: "Rajesh Jacko",
-    role: "Creative Executive",
-    dept: "Curious Minds",
-    category: "Executive",
-    location: "Pokhara, Nepal",
     image: person6,
-    quote: "Crafting bold aesthetic identities that leave a lasting impression.",
     stats: { projects: "35+", experience: "6 Yrs" },
     effect: TRANSITION_TYPES[0],
   },
   {
     id: "neha",
     name: "Neha Adhikari",
-    role: "Strategy Executive",
-    dept: "Project28",
-    category: "Executive",
-    location: "Kathmandu, Nepal",
     image: person7,
-    quote: "Fostering brand growth through actionable insights and creative leadership.",
     stats: { projects: "15+", experience: "3 Yrs" },
     effect: TRANSITION_TYPES[1],
   },
 ];
 
 export default function EditorialTeam() {
+  const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  
+
+  // Merge translated copy (role, dept, category, location, quote) into the base team data
+  const teamMeta = t("home.team.members", { returnObjects: true });
+  const teamList = useMemo(
+    () =>
+      BASE_TEAM.map((member, idx) => ({
+        ...member,
+        role: teamMeta[idx]?.role || member.role,
+        dept: teamMeta[idx]?.dept || member.dept,
+        category: teamMeta[idx]?.category || member.category,
+        location: teamMeta[idx]?.location || member.location,
+        quote: teamMeta[idx]?.quote || member.quote,
+      })),
+    [teamMeta]
+  );
+
   const activeMember = teamList[activeIndex];
   const containerRef = useRef(null);
   const itemRefs = useRef([]);
@@ -349,8 +332,8 @@ export default function EditorialTeam() {
       {/* HEADER SECTION */}
       <div className="w-full max-w-7xl mx-auto z-20">
         <SectionHeader
-          title="MEET THE TEAM"
-          subtitle="The visionary minds shaping our brand and operations across the globe."
+          title={t("home.team.title")}
+          subtitle={t("home.team.subtitle")}
         />
       </div>
 
@@ -410,7 +393,7 @@ export default function EditorialTeam() {
               {/* ⏸️ HOVER PAUSE INDICATOR BADGE */}
               {isPaused && (
                 <span className="px-3 py-1.5 rounded-full text-[10px] font-mono uppercase tracking-widest bg-amber-500/90 text-slate-950 font-bold backdrop-blur-md flex items-center gap-1.5 shadow-md animate-pulse">
-                  <FaPause size={8} /> PAUSED
+                  <FaPause size={8} /> {t("home.team.paused")}
                 </span>
               )}
             </div>
@@ -427,11 +410,11 @@ export default function EditorialTeam() {
                 <div className="flex justify-between items-center border-t border-slate-100 pt-3">
                   <div className="flex gap-6">
                     <div>
-                      <p className="text-[9px] font-mono text-slate-400 uppercase">PROJECTS</p>
+                      <p className="text-[9px] font-mono text-slate-400 uppercase">{t("home.team.projectsLabel")}</p>
                       <p className="text-sm font-black text-slate-900">{activeMember.stats.projects}</p>
                     </div>
                     <div>
-                      <p className="text-[9px] font-mono text-slate-400 uppercase">EXPERIENCE</p>
+                      <p className="text-[9px] font-mono text-slate-400 uppercase">{t("home.team.experienceLabel")}</p>
                       <p className="text-sm font-black text-slate-900">{activeMember.stats.experience}</p>
                     </div>
                   </div>
@@ -521,8 +504,8 @@ export default function EditorialTeam() {
           {/* DIRECTORY SELECTOR */}
           <div className="space-y-2 pt-4">
             <p className="text-[10px] font-mono tracking-widest text-slate-400 uppercase pb-2 border-b border-slate-100 flex justify-between items-center">
-              <span>// DIRECTORY (SWITCHING EVERY 5S)</span>
-              {isPaused && <span className="text-amber-600 font-bold tracking-normal">[ TIMER PAUSED ]</span>}
+              <span>{t("home.team.directory")}</span>
+              {isPaused && <span className="text-amber-600 font-bold tracking-normal">{t("home.team.timerPaused")}</span>}
             </p>
 
             <div 
@@ -600,8 +583,8 @@ export default function EditorialTeam() {
 
       {/* FOOTER BAR */}
       <div className="w-full max-w-7xl mx-auto flex justify-between items-center z-20 border-t border-slate-200/80 pt-6 text-[10px] font-mono text-slate-400 uppercase tracking-widest mt-12">
-        <span>GLOBAL EXECUTIVE BOARD</span>
-        <span>{isPaused ? "ROTATION PAUSED" : "SWITCHING AUTOMATICALLY (5S)"}</span>
+        <span>{t("home.team.footerLeft")}</span>
+        <span>{isPaused ? t("home.team.footerRightPaused") : t("home.team.footerRightAuto")}</span>
       </div>
 
       {/* HARDWARE-ACCELERATED KEYFRAMES */}

@@ -1,10 +1,12 @@
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { FaLinkedinIn, FaInstagram, FaFacebookF, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 import logo from "../../assets/images/logo2.png";
 
 const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -24,7 +26,7 @@ const Footer = () => {
           </a>
 
           <p className="text-xs text-white/60 leading-relaxed font-normal max-w-sm">
-            Fostering dialogue, driving structural change, and building resilient international communities through sustainable grassroots initiatives.
+            {t("footer.tagline")}
           </p>
 
           {/* Social Icons Hovering with Brand Accent */}
@@ -70,7 +72,7 @@ const Footer = () => {
 
         {/* Column 2: Navigation Links */}
         <div className="flex flex-col items-start text-left space-y-4">
-          <h4 className="text-xs font-black text-white tracking-widest uppercase">Quick Links</h4>
+          <h4 className="text-xs font-black text-white tracking-widest uppercase">{t("footer.quickLinks")}</h4>
           <ul className="space-y-3 text-xs font-medium text-white/60">
             <li>
               <Link
@@ -80,32 +82,32 @@ const Footer = () => {
                 }}
                 className="hover:text-[#EC8134] transition-colors duration-200"
               >
-                Home
+                {t("footer.home")}
               </Link>
             </li>
             <li>
               <Link to="/about-us" className="hover:text-[#EC8134] transition-colors duration-200">
-                About Us
+                {t("footer.aboutUs")}
               </Link>
             </li>
             <li>
               <Link to="/curious-minds" className="hover:text-[#366A35] transition-colors duration-200">
-                Curious Minds
+                {t("footer.curiousMinds")}
               </Link>
             </li>
             <li>
               <Link to="/project-28" className="hover:text-[#D34A32] transition-colors duration-200">
-                Project 28
+                {t("footer.project28")}
               </Link>
             </li>
             <li>
               <Link to="/sponsorship" className="hover:text-[#D34A32] transition-colors duration-200">
-                CECS
+                {t("footer.cecs")}
               </Link>
             </li>
             <li>
               <Link to="/contact" className="hover:text-[#EC8134] transition-colors duration-200">
-                Contact Us
+                {t("footer.contactUs")}
               </Link>
             </li>
           </ul>
@@ -113,7 +115,7 @@ const Footer = () => {
 
         {/* Column 3: Direct Contact Information */}
         <div className="flex flex-col items-start text-left space-y-4">
-          <h4 className="text-xs font-black text-white tracking-widest uppercase">Contact</h4>
+          <h4 className="text-xs font-black text-white tracking-widest uppercase">{t("footer.contact")}</h4>
           <ul className="space-y-3.5 text-xs font-medium text-white/60">
             <li className="flex items-center gap-3">
               <FaEnvelope className="text-[#EC8134] text-[12px] shrink-0" />
@@ -125,7 +127,7 @@ const Footer = () => {
             </li>
             <li className="flex items-start gap-3 leading-relaxed">
               <FaMapMarkerAlt className="text-[#D34A32] text-[13px] mt-0.5 shrink-0" />
-              <span>Germany • Nepal</span>
+              <span>{t("footer.address")}</span>
             </li>
           </ul>
         </div>
@@ -136,11 +138,11 @@ const Footer = () => {
       <div className="border-t border-white/10 bg-black/40">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-white/50 text-xs font-medium">
           <div>
-            © {currentYear} Menschen im Dialog e.V. All rights reserved.
+            {t("footer.rights", { year: currentYear })}
           </div>
           <div className="flex items-center gap-6">
-            <a href="#privacy" className="hover:text-white transition-colors duration-200">Privacy Policy</a>
-            <a href="#terms" className="hover:text-white transition-colors duration-200">Impressum</a>
+            <a href="#privacy" className="hover:text-white transition-colors duration-200">{t("footer.privacy")}</a>
+            <a href="#terms" className="hover:text-white transition-colors duration-200">{t("footer.impressum")}</a>
           </div>
         </div>
       </div>

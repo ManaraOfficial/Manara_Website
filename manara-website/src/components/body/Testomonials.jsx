@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { FaStar, FaQuoteLeft, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
@@ -12,40 +13,25 @@ import person1 from "../../assets/images/person1.jpg";
 import person4 from "../../assets/images/person4.jpeg";
 import person5 from "../../assets/images/person5.png";
 
-const testimonials = [
-  {
-    id: 0,
-    name: "Ralf Schmid",
-    position: "CEO, Menschen im Dialog",
-    image: person1, 
-    title: "Building Brighter Futures",
-    text: "MRDS Nepal has demonstrated exceptional dedication in improving rural education through ICT. Their commitment, professionalism, and passion continue to inspire us.",
-  },
-  {
-    id: 1,
-    name: "Ridam Gurung",
-    position: "CECS Manager",
-    image: person4,
-    title: "INCREDIBLE SPEED & QUALITY",
-    text: "The Curious Minds project transformed the learning experience in our school. Teachers and students are now much more confident using digital learning tools.",
-  },
-  {
-    id: 2,
-    name: "Anju Devkota",
-    position: "Project 28",
-    image: person5,
-    title: "Breaking the Silence, Building Dignity",
-    text: "Empowering girls and women through menstrual health education, dignity, and access to sustainable menstrual hygiene solutions.",
-  },
-];
-
 export default function Testimonials() {
+  const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef(null);
 
+  const items = t("home.testimonials.items", { returnObjects: true });
+
+  const testimonials = items.map((item, idx) => ({
+    id: idx,
+    name: idx === 0 ? "Ralf Schmid" : idx === 1 ? "Ridam Gurung" : "Anju Devkota",
+    image: idx === 0 ? person1 : idx === 1 ? person4 : person5,
+    position: item.position,
+    title: item.title,
+    text: item.text,
+  }));
+
   return (
     <section className="relative w-full pb-20 bg-[#F8FAFC] flex items-center justify-center overflow-hidden flex flex-col  select-none" id="testimonials">
-        <SectionHeader title="What People Say" subtitle="Real experiences, shared by those who know us best."/>
+        <SectionHeader title={t("home.testimonials.title")} subtitle={t("home.testimonials.subtitle")}/>
       
       {/* Background soft ambient lights */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl pointer-events-none" />

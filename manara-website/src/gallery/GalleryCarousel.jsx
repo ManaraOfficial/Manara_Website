@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { client } from '../gallery/sanity'
 import GalleryCardView from './GalleryCardView'
-import SectionHeader from '../../src/components/reusableComp/SectionHeader'
+import SectionHeader from '../components/reusableComp/SectionHeader'
 
 const CATEGORIES = [
   {
@@ -25,6 +26,7 @@ const CATEGORIES = [
 ]
 
 export default function GalleryCarousel() {
+  const { t } = useTranslation()
   const [activeCategory, setActiveCategory] = useState('curious-minds')
   const [albums, setAlbums] = useState([])
   const [loading, setLoading] = useState(true)
@@ -58,8 +60,8 @@ export default function GalleryCarousel() {
     <section className="min-h-screen bg-gradient-to-b from-[deeppink]/5 via-[#F8FAFC] to-white pb-20 px-4 flex flex-col items-center justify-start overflow-hidden"  id="gallery">
       {/* Title Header */}
       <SectionHeader
-        title="Our Gallery"
-        subtitle="Explore moments and photos across our initiatives and activities"
+        title={t('home.gallery.title')}
+        subtitle={t('home.gallery.subtitle')}
       />
 
       {/* Top Pill Navigation Bar */}
