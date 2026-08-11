@@ -1,4 +1,4 @@
-import './index.css' 
+import './index.css'
 import HomePage from './views/HomePage'
 import Navigation from './components/navigation/Navigation'
 import Footer from './components/footer/footer'
@@ -11,16 +11,29 @@ import ReportsPage from './views/reportsPage'
 import ContactUs from './views/ContactUs'
 import AboutUsDetail from './detailPage/AboutUsDetail'
 import OtherActivities from './detailPage/OtherActivities'
+import SmoothScroll from './components/reusableComp/SmoothScroll'
+import { getLenis } from './lib/lenis'
 import { Routes, Route, Outlet, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { FaArrowUp } from 'react-icons/fa'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 // Resets scroll position to (0,0) when switching routes
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const lenis = getLenis();
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
+
+    // New route = new page height/content, so scroll-triggered
+    // animations need their trigger positions recalculated.
+    const id = requestAnimationFrame(() => ScrollTrigger.refresh());
+    return () => cancelAnimationFrame(id);
   }, [pathname]);
 
   return null;
@@ -55,10 +68,15 @@ const ScrollToTopButton = () => {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+    const lenis = getLenis();
+    if (lenis) {
+      lenis.scrollTo(0);
+    } else {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
   };
 
   // SVG Progress Ring calculations
@@ -155,6 +173,7 @@ const ScrollToTopButton = () => {
 const MainLayout = () => {
   return (
     <div className="m-auto">
+      <SmoothScroll />
       <ScrollToTop />
       <Navigation />
       <Outlet />
