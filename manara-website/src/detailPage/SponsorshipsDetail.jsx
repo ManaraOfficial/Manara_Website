@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom'
 import { useTranslation } from "react-i18next";
+import HeroTitle from "../components/reusableComp/HeroTitle";
 import {
   FaGraduationCap,
   FaShieldAlt,
@@ -51,10 +52,14 @@ const SponsorshipsDetailPage = () => {
             {t("sponsorshipsDetail.badge")}
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-black text-gray-900 tracking-tight leading-tight mb-6 font-['Montserrat',sans-serif]">
-            {t("sponsorshipsDetail.heroTitleLine1")} <br />
-            <span className="text-[#D34A32]">{t("sponsorshipsDetail.heroTitleHighlight")}</span>
-          </h1>
+          <HeroTitle
+            className="text-4xl sm:text-6xl font-black text-gray-900 tracking-tight leading-tight mb-6 font-['Montserrat',sans-serif]"
+            segments={[
+              { text: t("sponsorshipsDetail.heroTitleLine1") },
+              { break: true },
+              { text: t("sponsorshipsDetail.heroTitleHighlight"), className: "text-[#D34A32]" },
+            ]}
+          />
 
           <p className="text-base sm:text-xl text-gray-600 leading-relaxed font-normal max-w-3xl mx-auto mb-8">
             {t("sponsorshipsDetail.heroSubtitle")}
@@ -200,7 +205,9 @@ const SponsorshipsDetailPage = () => {
         <div className="bg-white p-6 sm:p-8 rounded-2xl border border-gray-100 shadow-sm space-y-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-gray-100 pb-6">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 font-['Montserrat',sans-serif]">{t("sponsorshipsDetail.allocationTitle")}</h2>
+              <h2 className="text-2xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
+                {t("sponsorshipsDetail.allocationTitle")}
+              </h2>
               <p className="text-gray-500 text-sm mt-1">
                 {t("sponsorshipsDetail.allocationSubtitle")}
               </p>
@@ -232,7 +239,9 @@ const SponsorshipsDetailPage = () => {
         {/* REFINED INFORMATIONAL FAQ ACCORDION */}
         <div className="space-y-6">
           <div className="text-center space-y-2">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 font-['Montserrat',sans-serif]">{t("sponsorshipsDetail.faqTitle")}</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
+              {t("sponsorshipsDetail.faqTitle")}
+            </h2>
             <p className="text-xs sm:text-sm text-gray-500">
               {t("sponsorshipsDetail.faqSubtitle")}
             </p>

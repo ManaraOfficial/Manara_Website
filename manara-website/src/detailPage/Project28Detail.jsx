@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import HeroTitle from "../components/reusableComp/HeroTitle";
 import {
   FaShieldAlt,
   FaMapMarkerAlt,
@@ -152,10 +153,13 @@ const Project28Detail = () => {
               {t("project28Detail.heroBadge")}
             </div>
 
-            <h1 className="text-4xl sm:text-6xl font-black text-gray-900 tracking-tight leading-tight mb-6 font-['Montserrat',sans-serif]">
-              {t("project28Detail.heroTitleLine1")}{" "}
-              <span className="text-[#ff1493]">{t("project28Detail.heroTitleHighlight")}</span>
-            </h1>
+            <HeroTitle
+              className="text-4xl sm:text-6xl font-black text-gray-900 tracking-tight leading-tight mb-6 font-['Montserrat',sans-serif]"
+              segments={[
+                { text: t("project28Detail.heroTitleLine1") },
+                { text: t("project28Detail.heroTitleHighlight"), className: "text-[#ff1493]" },
+              ]}
+            />
 
             <p className="text-base sm:text-xl text-gray-600 leading-relaxed font-normal max-w-3xl mx-auto mb-8">
               {t("project28Detail.heroSubtitle")}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import HeroTitle from "../components/reusableComp/HeroTitle";
 import {
   FaSchool,
   FaGraduationCap,
@@ -176,10 +177,14 @@ const CuriousMindDetail = () => {
               {t("curiousMindsDetail.heroBadge")}
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight leading-tight font-['Montserrat',sans-serif]">
-              {t("curiousMindsDetail.heroTitleLine1")} <br />
-              <span className="text-[#366A35]">{t("curiousMindsDetail.heroTitleHighlight")}</span>
-            </h1>
+            <HeroTitle
+              className="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight leading-tight font-['Montserrat',sans-serif]"
+              segments={[
+                { text: t("curiousMindsDetail.heroTitleLine1") },
+                { break: true },
+                { text: t("curiousMindsDetail.heroTitleHighlight"), className: "text-[#366A35]" },
+              ]}
+            />
 
             <p className="text-base sm:text-xl text-gray-600 leading-relaxed font-normal max-w-3xl mx-auto pt-1">
               {t("curiousMindsDetail.heroSubtitle")}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import HeroTitle from "../components/reusableComp/HeroTitle";
 import {
   FaCalendarAlt, 
   FaMapMarkerAlt, 
@@ -136,9 +137,10 @@ const OtherActivitiesDetail = () => {
           </div>
 
           {/* Centered Balanced Title */}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 font-['Montserrat',sans-serif] leading-tight">
-            {t("otherActivitiesDetail.pageTitle")}
-          </h1>
+          <HeroTitle
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 font-['Montserrat',sans-serif] leading-tight"
+            segments={[{ text: t("otherActivitiesDetail.pageTitle") }]}
+          />
 
           {/* Key Event Details Pills */}
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600 font-medium pt-2">

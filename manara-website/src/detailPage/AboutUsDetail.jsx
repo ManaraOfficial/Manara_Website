@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import HeroTitle from "../components/reusableComp/HeroTitle";
 import {
   FaBullseye,
   FaEye,
@@ -60,9 +61,13 @@ const AboutUsPage = () => {
         <span className="inline-block px-3.5 py-1.5 rounded-full bg-[#EC8134]/10 text-[#EC8134] border border-[#EC8134]/20 text-xs font-extrabold uppercase tracking-widest font-['Montserrat',sans-serif]">
           {t("aboutUsDetail.heroBadge")}
         </span>
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight font-['Montserrat',sans-serif] max-w-4xl mx-auto leading-tight">
-          {t("aboutUsDetail.heroTitlePrefix")} <span className="text-[#EC8134]">{t("aboutUsDetail.heroTitleHighlight")}</span>
-        </h1>
+        <HeroTitle
+          className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight font-['Montserrat',sans-serif] max-w-4xl mx-auto leading-tight"
+          segments={[
+            { text: t("aboutUsDetail.heroTitlePrefix") },
+            { text: t("aboutUsDetail.heroTitleHighlight"), className: "text-[#EC8134]" },
+          ]}
+        />
         <p className="text-base sm:text-lg text-gray-600 leading-relaxed font-normal max-w-3xl mx-auto">
           {t("aboutUsDetail.heroSubtitle")}
         </p>
