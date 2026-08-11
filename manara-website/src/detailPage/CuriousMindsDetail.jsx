@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   FaSchool,
   FaGraduationCap,
@@ -123,76 +124,42 @@ const MetricCard = ({ item }) => {
   );
 };
 
+const stageStyles = [
+  { color: "#D34A32", headerBg: "bg-[#D34A32]", image: Phase1Img },
+  { color: "#EC8134", headerBg: "bg-[#EC8134]", image: Phase2Img },
+  { color: "#366A35", headerBg: "bg-[#366A35]", image: Phase3Img },
+];
+
+const metricIcons = [
+  <FaSchool className="text-2xl text-[#366A35]" />,
+  <FaGraduationCap className="text-2xl text-[#366A35]" />,
+  <FaChalkboardTeacher className="text-2xl text-[#366A35]" />,
+  <FaHandshake className="text-2xl text-[#366A35]" />,
+];
+
 const CuriousMindDetail = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   // Phase Tab Pagination State
   const [activePhase, setActivePhase] = useState(0);
 
   // Key Impact Metrics
-  const metrics = [
-    {
-      id: 1,
-      icon: <FaSchool className="text-2xl text-[#366A35]" />,
-      value: "12+",
-      label: "Partner Schools",
-    },
-    {
-      id: 2,
-      icon: <FaGraduationCap className="text-2xl text-[#366A35]" />,
-      value: "1,500+",
-      label: "Students Empowered",
-    },
-    {
-      id: 3,
-      icon: <FaChalkboardTeacher className="text-2xl text-[#366A35]" />,
-      value: "80+",
-      label: "Educators Trained",
-    },
-    {
-      id: 4,
-      icon: <FaHandshake className="text-2xl text-[#366A35]" />,
-      value: "100%",
-      label: "Local Ownership",
-    },
-  ];
+  const metrics = t("curiousMindsDetail.metrics", { returnObjects: true }).map((m, idx) => ({
+    id: idx + 1,
+    icon: metricIcons[idx],
+    value: m.value,
+    label: m.label,
+  }));
 
   // 3-Stage Methodology Process Data
-  const processStages = [
-    {
-      stage: "01",
-      title: "1. Analysis & Awareness",
-      badgeText: "Phase 1: Analysis",
-      color: "#D34A32",
-      headerBg: "bg-[#D34A32]",
-      image: Phase1Img,
-      summary: "Inventory & Community Alignment",
-      description:
-        "As a first step, we conduct an inventory: Interested schools are evaluated, risk assessments are carried out, and challenges are identified. Together with teachers, parents, and local officials, we communicate the importance of education and children's rights to create the foundation for targeted measures. Additionally, the students' knowledge level is determined through an assessment. This allows us not only to provide targeted support but also to better measure learning progress. The results are later compared with those of schools not yet part of Curious Minds to demonstrate the project's added value and to evaluate the long-term impact of the measures.",
-    },
-    {
-      stage: "02",
-      title: "2. Implementation & Infrastructure",
-      badgeText: "Phase 2: Execution",
-      color: "#EC8134",
-      headerBg: "bg-[#EC8134]",
-      image: Phase2Img,
-      summary: "Digital Setup & Teacher Mentorship",
-      description:
-        "In project phase II, we begin setting up the digital infrastructure: networks and computers are implemented, basic IT skills are taught, and teachers are trained in the use of e-learning. At the same time, we train selected, technically skilled teachers in system maintenance. Based on the risk assessment from project phase I, we encourage teachers to develop appropriate measures to strengthen children's rights. The schools commit   to implementing and adhering to these measures  at a community meeting . This commitment is reinforced and made legally binding through the public signing  of a Memorandum of Understanding (MOU). This project phase ensures that education is not only accessible but also safe and sustainable.",
-    },
-    {
-      stage: "03",
-      title: "3. Independence & Sustainability",
-      badgeText: "Phase 3: Sustainability",
-      color: "#366A35",
-      headerBg: "bg-[#366A35]",
-      image: Phase3Img,
-      summary: "Long-term Autonomy & Refresher Training",
-      description:
-        "In the third and final project phase, we ensure that the supported schools become self-sufficient in the long term. To this end, we conduct a refresher training session three to six months after the official handover, in which we address any remaining questions with teachers and selected students and meaningfully supplement or deepen their acquired knowledge. This ensures the sustainable integration of digital teaching and learning methods. Since complete independence is not always achieved immediately, Curious Minds continues to support the schools to overcome any remaining obstacles and dependencies. Teachers receive follow-up support for technical problems, repairs, or methodological challenges. With this phase, Curious Minds empowers the schools to maintain and further develop their educational structures in the long term.",
-    },
-  ];
+  const processStages = t("curiousMindsDetail.processStages", { returnObjects: true }).map((stg, idx) => ({
+    ...stg,
+    ...stageStyles[idx],
+  }));
+
+  const visionCards = t("curiousMindsDetail.visionCards", { returnObjects: true });
+  const otherAreas = t("curiousMindsDetail.otherAreas", { returnObjects: true });
 
   return (
     <div className="min-h-screen bg-slate-50 text-gray-800 pt-24 sm:pt-28 pb-16 px-4 sm:px-6 lg:px-8 font-['Nunito_Sans',sans-serif]">
@@ -206,24 +173,24 @@ const CuriousMindDetail = () => {
 
           <div className="text-center max-w-4xl mx-auto space-y-4">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#366A35]/10 text-[#366A35] border border-[#366A35]/20 text-xs font-black uppercase tracking-widest font-['Montserrat',sans-serif]">
-              Education Program | Let's Learn
+              {t("curiousMindsDetail.heroBadge")}
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight leading-tight font-['Montserrat',sans-serif]">
-              Empowering Young Minds Through Digital Education: <br />
-              <span className="text-[#366A35]">CURIOUS MINDS</span>
+              {t("curiousMindsDetail.heroTitleLine1")} <br />
+              <span className="text-[#366A35]">{t("curiousMindsDetail.heroTitleHighlight")}</span>
             </h1>
 
             <p className="text-base sm:text-xl text-gray-600 leading-relaxed font-normal max-w-3xl mx-auto pt-1">
-              We bridge the gap in rural educational access by providing schools in Nepal with interactive ICT equipment, long-term teacher training, and sustainable infrastructure.
+              {t("curiousMindsDetail.heroSubtitle")}
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm text-gray-700 pt-2">
               <span className="inline-flex items-center gap-2 bg-white border border-gray-200 shadow-xs px-4 py-2 rounded-full font-semibold">
-                <FaMapMarkerAlt className="text-[#EC8134]" /> Gorkha & Sindhupalchok, Nepal
+                <FaMapMarkerAlt className="text-[#EC8134]" /> {t("curiousMindsDetail.heroLocation")}
               </span>
               <span className="bg-[#366A35]/10 text-[#366A35] border border-[#366A35]/30 px-4 py-2 rounded-full font-bold">
-                Active Initiative
+                {t("curiousMindsDetail.heroActiveInitiative")}
               </span>
             </div>
           </div>
@@ -240,20 +207,20 @@ const CuriousMindDetail = () => {
             {/* Image Overlay Content */}
             <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8 text-white space-y-2">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#366A35] text-white text-[11px] font-bold uppercase tracking-wider">
-                Let's Learn Program
+                {t("curiousMindsDetail.bannerBadge")}
               </div>
               <h2 className="text-2xl sm:text-4xl font-extrabold font-['Montserrat',sans-serif] text-white leading-tight">
-                Digital Classroom Launch & E-Learning
+                {t("curiousMindsDetail.bannerTitle")}
               </h2>
               <p className="text-xs sm:text-sm text-slate-200 max-w-2xl leading-relaxed">
-                Empowering rural schools in Gorkha & Sindhupalchok with interactive ICT labs and sustainable teacher mentorship.
+                {t("curiousMindsDetail.bannerSubtitle")}
               </p>
               <div className="flex items-center gap-3 text-xs text-slate-300 pt-1">
                 <span className="flex items-center gap-1.5 font-semibold">
-                  <FaUser className="text-[#EC8134]" /> Initiated by Ralf Ledl
+                  <FaUser className="text-[#EC8134]" /> {t("curiousMindsDetail.bannerInitiatedBy")}
                 </span>
                 <span>•</span>
-                <span>Building local capacity across rural Nepal</span>
+                <span>{t("curiousMindsDetail.bannerFooterText")}</span>
               </div>
             </div>
           </div>
@@ -280,17 +247,17 @@ const CuriousMindDetail = () => {
             {/* Program Overview Card */}
             <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm space-y-4">
               <h2 className="text-xl sm:text-2xl font-black text-gray-900 font-['Montserrat',sans-serif]">
-                Program Overview
+                {t("curiousMindsDetail.programOverviewTitle")}
               </h2>
               <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                Our initiative takes a holistic approach to improving school life in rural communities. By combining physical infrastructure enhancements—like interactive ICT computer labs and solar power support—with long-term teacher training and early digital learning resources, we help ensure every child studies in a safe, inspiring, and forward-looking environment.
+                {t("curiousMindsDetail.programOverviewText")}
               </p>
             </div>
 
             {/* Detailed Project Breakdown */}
             <div className="space-y-4">
               <h2 className="text-xl sm:text-2xl font-black text-gray-900 font-['Montserrat',sans-serif]">
-                Core Program Deliverables
+                {t("curiousMindsDetail.deliverablesTitle")}
               </h2>
 
               <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm space-y-6">
@@ -302,38 +269,28 @@ const CuriousMindDetail = () => {
                   </div>
                   <div>
                     <h3 className="text-lg sm:text-xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
-                      1. Digital Infrastructure & ICT Lab Setup
+                      {t("curiousMindsDetail.deliverableTitle")}
                     </h3>
                   </div>
                 </div>
 
                 <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-                  Establishing modern, solar-assisted digital classrooms ensures students gain direct hands-on experience with ICT tools and offline e-learning software. We build safe, dust-free laptop stations, configure network access, and provide durable educational software suited for remote learning environments.
+                  {t("curiousMindsDetail.deliverableDescription")}
                 </p>
 
                 {/* Key Highlights & Actions Box */}
                 <div className="bg-slate-50 p-5 sm:p-6 rounded-2xl border border-slate-100 space-y-3">
                   <span className="text-[11px] font-black uppercase tracking-wider text-gray-500 font-['Montserrat',sans-serif]">
-                    KEY HIGHLIGHTS & ACTIONS TAKEN:
+                    {t("curiousMindsDetail.keyHighlightsLabel")}
                   </span>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm font-semibold text-gray-700">
-                    <div className="flex items-start gap-2.5">
-                      <FaCheckCircle className="text-[#366A35] text-base mt-0.5 flex-shrink-0" />
-                      <span>Installed energy-efficient computers & solar battery backups</span>
-                    </div>
-                    <div className="flex items-start gap-2.5">
-                      <FaCheckCircle className="text-[#366A35] text-base mt-0.5 flex-shrink-0" />
-                      <span>Deployed offline e-learning servers & interactive curriculum</span>
-                    </div>
-                    <div className="flex items-start gap-2.5">
-                      <FaCheckCircle className="text-[#366A35] text-base mt-0.5 flex-shrink-0" />
-                      <span>Constructed secure, dust-free laptop stations & work desks</span>
-                    </div>
-                    <div className="flex items-start gap-2.5">
-                      <FaCheckCircle className="text-[#366A35] text-base mt-0.5 flex-shrink-0" />
-                      <span>Trained local IT guardians for ongoing system maintenance</span>
-                    </div>
+                    {t("curiousMindsDetail.deliverableHighlights", { returnObjects: true }).map((point, idx) => (
+                      <div className="flex items-start gap-2.5" key={idx}>
+                        <FaCheckCircle className="text-[#366A35] text-base mt-0.5 flex-shrink-0" />
+                        <span>{point}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
@@ -348,7 +305,7 @@ const CuriousMindDetail = () => {
             {/* Quick Info Card */}
             <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm space-y-6">
               <h3 className="text-lg font-black text-gray-900 font-['Montserrat',sans-serif]">
-                Quick Info
+                {t("curiousMindsDetail.quickInfoTitle")}
               </h3>
 
               <div className="space-y-4 text-xs sm:text-sm">
@@ -358,10 +315,10 @@ const CuriousMindDetail = () => {
                   <FaTag className="text-[#EC8134] text-base mt-0.5 flex-shrink-0" />
                   <div>
                     <span className="block text-[10px] font-bold uppercase tracking-wider text-gray-400 font-['Montserrat',sans-serif]">
-                      FOCUS AREAS
+                      {t("curiousMindsDetail.focusAreasLabel")}
                     </span>
                     <span className="font-extrabold text-gray-800">
-                      ICT Equipment, E-Learning Software, Teacher Mentorship & Solar Power
+                      {t("curiousMindsDetail.focusAreasValue")}
                     </span>
                   </div>
                 </div>
@@ -371,10 +328,10 @@ const CuriousMindDetail = () => {
                   <FaMapMarkerAlt className="text-blue-500 text-base mt-0.5 flex-shrink-0" />
                   <div>
                     <span className="block text-[10px] font-bold uppercase tracking-wider text-gray-400 font-['Montserrat',sans-serif]">
-                      LOCATION
+                      {t("curiousMindsDetail.locationLabel")}
                     </span>
                     <span className="font-extrabold text-gray-800">
-                      Gorkha & Sindhupalchok Schools, Nepal
+                      {t("curiousMindsDetail.locationValue")}
                     </span>
                   </div>
                 </div>
@@ -384,10 +341,10 @@ const CuriousMindDetail = () => {
                   <FaGlobe className="text-[#366A35] text-base mt-0.5 flex-shrink-0" />
                   <div>
                     <span className="block text-[10px] font-bold uppercase tracking-wider text-gray-400 font-['Montserrat',sans-serif]">
-                      ORGANIZER
+                      {t("curiousMindsDetail.organizerLabel")}
                     </span>
                     <span className="font-extrabold text-gray-800">
-                      Let's Learn & Digital Outreach Team
+                      {t("curiousMindsDetail.organizerValue")}
                     </span>
                   </div>
                 </div>
@@ -399,22 +356,22 @@ const CuriousMindDetail = () => {
                 <button
                   onClick={() => {
                     if (navigator.share) {
-                      navigator.share({ title: "Curious Minds Initiative", url: window.location.href });
+                      navigator.share({ title: t("curiousMindsDetail.shareTitle"), url: window.location.href });
                     } else {
                       navigator.clipboard.writeText(window.location.href);
-                      alert("Link copied to clipboard!");
+                      alert(t("curiousMindsDetail.linkCopied"));
                     }
                   }}
                   className="w-full flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 py-3 rounded-2xl text-xs font-bold transition"
                 >
-                  <FaShareAlt /> Share Project
+                  <FaShareAlt /> {t("curiousMindsDetail.shareProject")}
                 </button>
 
                 <Link
                   to='/contact'
                   className="w-full py-3 bg-[#366A35] hover:bg-[#2d582c] text-white text-xs font-bold rounded-xl flex items-center justify-center gap-2 transition font-['Montserrat',sans-serif]"
                 >
-                  <FaHeart /> Become a Volunteer
+                  <FaHeart /> {t("curiousMindsDetail.becomeVolunteer")}
                 </Link>
               </div>
 
@@ -423,18 +380,18 @@ const CuriousMindDetail = () => {
             {/* Full Program Documentation Card */}
             <div className="bg-[#EC8134] text-white p-6 sm:p-7 rounded-3xl shadow-lg space-y-4">
               <h3 className="text-lg font-black font-['Montserrat',sans-serif] leading-tight">
-                Full Program Documentation
+                {t("curiousMindsDetail.reportBannerTitle")}
               </h3>
 
               <p className="text-xs text-white/90 leading-relaxed">
-                Download the complete field report detailing computer hardware specifications, e-learning software logs, teacher mentorship guides, and school deployment timelines.
+                {t("curiousMindsDetail.reportBannerText")}
               </p>
 
               <a
                 href="/reports"
                 className="inline-flex items-center justify-center gap-2 w-full bg-white text-[#EC8134] hover:bg-slate-50 font-black text-xs py-3.5 px-4 rounded-xl transition shadow-sm font-['Montserrat',sans-serif]"
               >
-                <FaDownload /> Download Report PDF
+                <FaDownload /> {t("curiousMindsDetail.downloadReportPdf")}
               </a>
             </div>
 
@@ -453,19 +410,19 @@ const CuriousMindDetail = () => {
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-white border-l-4 border-[#D34A32] p-6 sm:p-8 rounded-2xl border-y border-r border-gray-100 shadow-sm space-y-3 hover:shadow-md transition">
             <h3 className="text-xl sm:text-2xl font-extrabold text-[#D34A32] font-['Montserrat',sans-serif]">
-              The Challenge
+              {t("curiousMindsDetail.challengeTitle")}
             </h3>
             <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-              Students in remote regions often lack access to digital learning tools and interactive education. Without early access to computer literacy, young learners encounter barriers that limit future educational and career opportunities.
+              {t("curiousMindsDetail.challengeText")}
             </p>
           </div>
 
           <div className="bg-white border-l-4 border-[#366A35] p-6 sm:p-8 rounded-2xl border-y border-r border-gray-100 shadow-sm space-y-3 hover:shadow-md transition">
             <h3 className="text-xl sm:text-2xl font-extrabold text-[#366A35] font-['Montserrat',sans-serif]">
-              Our Approach
+              {t("curiousMindsDetail.approachTitle")}
             </h3>
             <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-              We connect schools with ICT resources, educational software, and teacher mentorship—building self-sufficient learning environments where local educators guide students toward self-determined futures.
+              {t("curiousMindsDetail.approachText")}
             </p>
           </div>
         </div>
@@ -475,13 +432,13 @@ const CuriousMindDetail = () => {
 
           <div className="text-center space-y-2">
             <span className="text-xs font-black uppercase tracking-widest text-[#366A35] font-['Montserrat',sans-serif]">
-              Methodology Blueprint
+              {t("curiousMindsDetail.methodologyLabel")}
             </span>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-gray-900 font-['Montserrat',sans-serif]">
-              Three Phases to Project Success
+              {t("curiousMindsDetail.methodologyTitle")}
             </h2>
             <p className="text-gray-600 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
-              Click through each phase to explore how we work alongside schools and local leadership to ensure lasting transformation.
+              {t("curiousMindsDetail.methodologySubtitle")}
             </p>
           </div>
 
@@ -521,7 +478,7 @@ const CuriousMindDetail = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent" />
                 <div className="absolute top-4 left-4">
                   <span className="px-3.5 py-1 rounded-full text-xs font-black text-white bg-slate-900/80 backdrop-blur-md border border-white/20 font-['Montserrat',sans-serif]">
-                    STAGE {processStages[activePhase].stage}
+                    {t("curiousMindsDetail.stageLabel")} {processStages[activePhase].stage}
                   </span>
                 </div>
               </div>
@@ -550,7 +507,7 @@ const CuriousMindDetail = () => {
                 {/* Interactive Controls inside Phase Card */}
                 <div className="pt-2 flex items-center justify-between border-t border-gray-100">
                   <span className="text-xs font-bold text-gray-400 font-['Montserrat',sans-serif]">
-                    Phase {activePhase + 1} of {processStages.length}
+                    {t("curiousMindsDetail.phaseOfLabel", { current: activePhase + 1, total: processStages.length })}
                   </span>
                   <div className="flex items-center gap-2">
                     <button
@@ -558,14 +515,14 @@ const CuriousMindDetail = () => {
                       onClick={() => setActivePhase((prev) => Math.max(0, prev - 1))}
                       className="px-3 py-1.5 rounded-lg border border-gray-200 text-xs font-bold text-gray-700 disabled:opacity-40 hover:bg-slate-100 transition"
                     >
-                      Previous Phase
+                      {t("curiousMindsDetail.previousPhase")}
                     </button>
                     <button
                       disabled={activePhase === processStages.length - 1}
                       onClick={() => setActivePhase((prev) => Math.min(processStages.length - 1, prev + 1))}
                       className="px-3 py-1.5 rounded-lg bg-[#366A35] text-white text-xs font-bold disabled:opacity-40 hover:bg-[#2e592d] transition"
                     >
-                      Next Phase
+                      {t("curiousMindsDetail.nextPhase")}
                     </button>
                   </div>
                 </div>
@@ -595,7 +552,7 @@ const CuriousMindDetail = () => {
                 <div className="p-4 flex-1 text-xs text-gray-600 leading-relaxed space-y-2">
                   <p className="line-clamp-3">{stage.description}</p>
                   <span className="inline-block text-[11px] font-bold text-[#EC8134]">
-                    Click to expand details →
+                    {t("curiousMindsDetail.clickToExpand")}
                   </span>
                 </div>
               </div>
@@ -610,10 +567,10 @@ const CuriousMindDetail = () => {
             <div className="space-y-4">
               <FaQuoteLeft className="text-3xl sm:text-4xl text-[#EC8134]/40" />
               <blockquote className="text-base sm:text-xl font-bold text-slate-800 italic leading-relaxed font-['Nunito_Sans',sans-serif]">
-                "Curiosity fuels education – education opens worlds   | CURIOUS MINDS"
+                "{t("curiousMindsDetail.quoteText")}"
               </blockquote>
               <div className="pt-2 text-xs sm:text-sm font-extrabold text-slate-500 uppercase tracking-wider font-['Montserrat',sans-serif]">
-                — Ralf Ledl, Founder & Program Director
+                {t("curiousMindsDetail.quoteAuthor")}
               </div>
             </div>
           </div>
@@ -623,50 +580,32 @@ const CuriousMindDetail = () => {
         <div className="bg-[#366A35] p-8 sm:p-12 rounded-3xl shadow-xl space-y-8 text-white">
           <div className="space-y-1">
             <span className="text-xs font-extrabold uppercase tracking-widest text-green-200 font-['Montserrat',sans-serif]">
-              LONG-TERM VISION
+              {t("curiousMindsDetail.visionLabel")}
             </span>
             <h3 className="text-2xl sm:text-4xl font-black text-white font-['Montserrat',sans-serif]">
-              Built on Local Ownership & Dignity
+              {t("curiousMindsDetail.visionTitle")}
             </h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div className="bg-[#437942] p-6 rounded-2xl space-y-3 hover:bg-[#4b854a] transition duration-300">
-              <FaCheckCircle className="text-2xl text-[#EC8134]" />
-              <h4 className="font-extrabold text-base text-white font-['Montserrat',sans-serif]">
-                Teacher Empowerment
-              </h4>
-              <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
-                Educators gain technical expertise to operate labs, troubleshoot hardware, and guide students independently.
-              </p>
-            </div>
-
-            <div className="bg-[#437942] p-6 rounded-2xl space-y-3 hover:bg-[#4b854a] transition duration-300">
-              <FaCheckCircle className="text-2xl text-[#EC8134]" />
-              <h4 className="font-extrabold text-base text-white font-['Montserrat',sans-serif]">
-                Community Stewardship
-              </h4>
-              <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
-                School committees and local leaders assume full management of facilities, ensuring long-term protection and care.
-              </p>
-            </div>
-
-            <div className="bg-[#437942] p-6 rounded-2xl space-y-3 hover:bg-[#4b854a] transition duration-300">
-              <FaCheckCircle className="text-2xl text-[#EC8134]" />
-              <h4 className="font-extrabold text-base text-white font-['Montserrat',sans-serif]">
-                Continuous Support
-              </h4>
-              <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
-                Follow-up visits at 3 and 6 months offer refresher training and ensure resources remain actively integrated into learning.
-              </p>
-            </div>
+            {visionCards.map((card, idx) => (
+              <div className="bg-[#437942] p-6 rounded-2xl space-y-3 hover:bg-[#4b854a] transition duration-300" key={idx}>
+                <FaCheckCircle className="text-2xl text-[#EC8134]" />
+                <h4 className="font-extrabold text-base text-white font-['Montserrat',sans-serif]">
+                  {card.title}
+                </h4>
+                <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
+                  {card.text}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* NAVIGATION TO OTHER CORE ACTIVITIES */}
         <div className="space-y-6">
           <h3 className="text-xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
-            Explore Other Core Focus Areas
+            {t("curiousMindsDetail.exploreOtherTitle")}
           </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -676,16 +615,16 @@ const CuriousMindDetail = () => {
               className="bg-white p-5 rounded-2xl border border-gray-100 shadow-xs hover:border-[#EC8134]/50 hover:shadow-md transition cursor-pointer group space-y-2"
             >
               <span className="text-xs font-bold text-[#EC8134] uppercase tracking-wider font-['Montserrat',sans-serif]">
-                Health-NOW (Health)
+                {otherAreas[0].tag}
               </span>
               <h4 className="text-base font-bold text-gray-900 group-hover:text-[#EC8134] transition font-['Montserrat',sans-serif]">
-                PROJECT 28
+                {otherAreas[0].title}
               </h4>
               <p className="text-xs text-gray-500 leading-relaxed">
-                Promoting menstrual health, dignity, and active care across remote communities in Nepal.
+                {otherAreas[0].text}
               </p>
               <span className="inline-flex items-center gap-1 text-xs font-bold text-[#EC8134] pt-2">
-                View Program <FaArrowRight className="text-[10px]" />
+                {t("curiousMindsDetail.viewProgram")} <FaArrowRight className="text-[10px]" />
               </span>
             </div>
 
@@ -695,16 +634,16 @@ const CuriousMindDetail = () => {
               className="bg-white p-5 rounded-2xl border border-gray-100 shadow-xs hover:border-[#D34A32]/50 hover:shadow-md transition cursor-pointer group space-y-2"
             >
               <span className="text-xs font-bold text-[#D34A32] uppercase tracking-wider font-['Montserrat',sans-serif]">
-                Impact-Alliance (Collaboration)
+                {otherAreas[1].tag}
               </span>
               <h4 className="text-base font-bold text-gray-900 group-hover:text-[#D34A32] transition font-['Montserrat',sans-serif]">
-                SPONSORSHIPS
+                {otherAreas[1].title}
               </h4>
               <p className="text-xs text-gray-500 leading-relaxed">
-                Connecting partners and resources to support education, wellbeing, and community development.
+                {otherAreas[1].text}
               </p>
               <span className="inline-flex items-center gap-1 text-xs font-bold text-[#D34A32] pt-2">
-                View Program <FaArrowRight className="text-[10px]" />
+                {t("curiousMindsDetail.viewProgram")} <FaArrowRight className="text-[10px]" />
               </span>
             </div>
 
@@ -714,16 +653,16 @@ const CuriousMindDetail = () => {
               className="bg-white p-5 rounded-2xl border border-gray-100 shadow-xs hover:border-[#366A35]/50 hover:shadow-md transition cursor-pointer group space-y-2"
             >
               <span className="text-xs font-bold text-[#366A35] uppercase tracking-wider font-['Montserrat',sans-serif]">
-                Let's Learn (Education)
+                {otherAreas[2].tag}
               </span>
               <h4 className="text-base font-bold text-gray-900 group-hover:text-[#366A35] transition font-['Montserrat',sans-serif]">
-                OTHER ACTIVITIES
+                {otherAreas[2].title}
               </h4>
               <p className="text-xs text-gray-500 leading-relaxed">
-                Fostering environmental education, community livelihoods, and disaster preparedness.
+                {otherAreas[2].text}
               </p>
               <span className="inline-flex items-center gap-1 text-xs font-bold text-[#366A35] pt-2">
-                View Program <FaArrowRight className="text-[10px]" />
+                {t("curiousMindsDetail.viewProgram")} <FaArrowRight className="text-[10px]" />
               </span>
             </div>
           </div>
@@ -733,10 +672,10 @@ const CuriousMindDetail = () => {
         <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-center sm:text-left space-y-1">
             <h4 className="font-bold text-gray-900 text-sm font-['Montserrat',sans-serif]">
-              Inquire More About Curious Minds
+              {t("curiousMindsDetail.inquiryTitle")}
             </h4>
             <p className="text-xs text-gray-600">
-              Get in touch to review our annual transparency reports.
+              {t("curiousMindsDetail.inquiryText")}
             </p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-2">
@@ -744,19 +683,19 @@ const CuriousMindDetail = () => {
               to="/reports"
               className="inline-flex items-center gap-1.5 bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-bold px-3.5 py-2 rounded-xl border border-gray-200 transition"
             >
-              <FaExternalLinkAlt /> Transparency
+              <FaExternalLinkAlt /> {t("curiousMindsDetail.transparency")}
             </Link>
             <a
               href="mailto:info@menschen-dialog.de"
               className="inline-flex items-center gap-1.5 bg-[#EC8134] hover:bg-[#d4702b] text-white text-xs font-bold px-3.5 py-2 rounded-xl transition"
             >
-              <FaEnvelope /> Email Us
+              <FaEnvelope /> {t("curiousMindsDetail.emailUs")}
             </a>
             <a
               href="tel:+49000000000"
               className="inline-flex items-center gap-1.5 bg-[#366A35] hover:bg-[#2e592d] text-white text-xs font-bold px-3.5 py-2 rounded-xl transition"
             >
-              <FaPhoneAlt /> Call Us
+              <FaPhoneAlt /> {t("curiousMindsDetail.callUs")}
             </a>
           </div>
         </div>

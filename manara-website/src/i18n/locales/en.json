@@ -250,5 +250,598 @@
       "project28": "Project 28",
       "sponsorship": "Sponsorship"
     }
+  },
+  "otherActivitiesDetail": {
+    "heroSlides": [
+      {
+        "title": "School Facilities Upgrade & Student Welfare",
+        "subtitle": "Improving rural school infrastructure, sanitation, and learning environments for 350+ students.",
+        "badge": "Primary Outreach"
+      },
+      {
+        "title": "Classroom Roof Construction & Repairs",
+        "subtitle": "Replacing damaged beams and fitting CGI corrugated steel sheets to withstand monsoon weather.",
+        "badge": "Infrastructure Support"
+      },
+      {
+        "title": "Student Health & Hygiene Programs",
+        "subtitle": "Interactive oral health demonstrations paired with fluoride hygiene kit distributions.",
+        "badge": "Health & Hygiene"
+      },
+      {
+        "title": "ECD Play Materials & Soft Carpeting",
+        "subtitle": "Equipping early childhood development classrooms with learning toys and thermal flooring.",
+        "badge": "Early Education"
+      }
+    ],
+    "shareTitle": "School Facilities Upgrade & Student Welfare Program",
+    "linkCopied": "Link copied to clipboard!",
+    "categoryBadge": "Community & Education Support",
+    "statusBadge": "Active Projects",
+    "pageTitle": "School Facilities Upgrade & Student Welfare Program",
+    "eventDetails": {
+      "duration": "Ongoing Community Project",
+      "location": "Rural School Districts",
+      "beneficiaries": "350+ Children Benefited"
+    },
+    "programOverviewTitle": "Program Overview",
+    "programOverviewText": "Our initiative takes a holistic approach to improving school life in rural communities. By combining physical infrastructure enhancements—like toilet construction and roof repair—with personal health education and early childhood learning support, we help ensure every child studies in a safe, warm, and inspiring environment.",
+    "detailedBreakdownTitle": "Detailed Project Breakdown",
+    "keyHighlightsLabel": "Key Highlights & Actions Taken:",
+    "initiatives": [
+      {
+        "id": "toilet-construction",
+        "title": "1. School Sanitation: Toilet Facility Construction",
+        "description": "Access to proper sanitation facilities is essential for maintaining student health and encouraging daily school attendance, especially for young girls. We constructed new, separate, ventilated toilet blocks for boys and girls, complete with running water connections and hygienic handwashing stations.",
+        "details": [
+          "Built separate, private toilet stalls for male and female students",
+          "Installed continuous tap water supply systems and concrete handwash basins",
+          "Constructed proper waste disposal and septic filtration tanks",
+          "Provided soap dispensers and trained students on post-use sanitation practices"
+        ]
+      },
+      {
+        "id": "roof-construction",
+        "title": "2. Infrastructure Support: Classroom Roof Construction & Repair",
+        "description": "Damp and leaking roofs disrupt studies and create unsafe classroom environments during monsoon rains and extreme weather. We repaired damaged structural beams and fitted high-durability CGI corrugated steel roofing sheets across school blocks to keep classrooms dry, safe, and fully functional year-round.",
+        "details": [
+          "Replaced damaged timber frameworks and cracked roofing materials",
+          "Installed durable CGI steel corrugated sheets over leaking classroom blocks",
+          "Sealed eaves and drainage gutters to prevent water accumulation",
+          "Ensured zero classroom disruption during heavy seasonal rainfalls"
+        ]
+      },
+      {
+        "id": "toothbrushing-demo",
+        "title": "3. Health & Hygiene: Student Toothbrushing Demonstrations",
+        "description": "Preventive dental health education protects children from cavities, tooth loss, and school absenteeism due to pain. Using oversized 3D jaw models and giant brushes, our volunteer team conducted interactive step-by-step demonstrations showing students how to properly brush their teeth and clean their gums.",
+        "details": [
+          "Led interactive group demonstrations on proper circular brushing techniques",
+          "Handed out dental kits containing fluoride toothpaste, soft brushes, and rinsing cups",
+          "Guided students through live, supervised tooth-brushing sessions on-site",
+          "Distributed 30-day daily brushing habit tracking cards with stickers for home use"
+        ]
+      },
+      {
+        "id": "ecd-play-materials",
+        "title": "4. Early Childhood Education: Play Materials & Learning Toys",
+        "description": "Young children learn best through active play, tactile discovery, and social interaction. We equipped Early Childhood Development (ECD) classrooms with age-appropriate learning toys, puzzle sets, building blocks, and creative art materials to spark curiosity and cognitive development.",
+        "details": [
+          "Supplied non-toxic wooden building blocks, shape sorters, and counting beads",
+          "Provided picture books, drawing pads, crayons, and clay modeling kits",
+          "Created dedicated story corner play sets for toddler creative play",
+          "Oriented ECD teachers on integrating play-based methods into daily lesson plans"
+        ]
+      },
+      {
+        "id": "ecd-carpet-flooring",
+        "title": "5. Classroom Comfort: Warm Floor Carpeting for ECD Rooms",
+        "description": "Rural ECD classrooms frequently feature cold, hard concrete floors where young children spend hours sitting and playing. To create a warm, safe, and hygienic indoor space, we installed thick thermal insulating carpets and soft foam play mats throughout the early learning rooms.",
+        "details": [
+          "Fitted thick thermal foam padding under heavy-duty carpet layers",
+          "Transformed cold concrete floors into soft, warm, child-safe seating areas",
+          "Reduced dust exposure and cushioned accidental falls during indoor activities",
+          "Significantly improved daily attendance and comfort for young toddlers"
+        ]
+      }
+    ],
+    "impactMetricsTitle": "Combined Impact Metrics",
+    "impactMetrics": [
+      { "value": "New", "label": "Toilets Constructed" },
+      { "value": "100%", "label": "Leak-Free Roofs" },
+      { "value": "180+", "label": "Oral Kits Gifted" },
+      { "value": "Warm", "label": "Carpeted ECD Rooms" }
+    ],
+    "quoteText": "Combining clean toilets, dry roofs, warm carpets, and hygiene demonstrations has completely changed our students' daily attitude toward coming to school.",
+    "quoteAuthor": "— Local School Headmaster & Community Representative",
+    "quickInfoTitle": "Quick Info",
+    "focusAreasLabel": "Focus Areas",
+    "focusAreasValue": "Toilets, Roofs, Oral Health, ECD Toys & Carpets",
+    "locationLabel": "Location",
+    "locationValue": "Community Primary & ECD Schools",
+    "organizerLabel": "Organizer",
+    "organizerValue": "Community & School Outreach Team",
+    "shareProject": "Share Project",
+    "becomeVolunteer": "Become a Volunteer",
+    "reportBannerTitle": "Full Program Documentation",
+    "reportBannerText": "Download the complete field report detailing toilet construction specs, roofing material logs, dental kit distributions, and ECD toy inventory.",
+    "downloadingAlert": "Downloading activity briefing report...",
+    "downloadReportPdf": "Download Report PDF",
+    "footerCtaTitle": "Want to learn more about our school initiatives?",
+    "footerCtaText": "Discover all our active projects across sanitation construction, health awareness campaigns, classroom weatherproofing, and early education support.",
+    "exploreAllActivities": "Explore All Activities"
+  },
+  "curiousMindsDetail": {
+    "heroBadge": "Education Program | Let's Learn",
+    "heroTitleLine1": "Empowering Young Minds Through Digital Education:",
+    "heroTitleHighlight": "CURIOUS MINDS",
+    "heroSubtitle": "We bridge the gap in rural educational access by providing schools in Nepal with interactive ICT equipment, long-term teacher training, and sustainable infrastructure.",
+    "heroLocation": "Gorkha & Sindhupalchok, Nepal",
+    "heroActiveInitiative": "Active Initiative",
+    "bannerBadge": "Let's Learn Program",
+    "bannerTitle": "Digital Classroom Launch & E-Learning",
+    "bannerSubtitle": "Empowering rural schools in Gorkha & Sindhupalchok with interactive ICT labs and sustainable teacher mentorship.",
+    "bannerInitiatedBy": "Initiated by Ralf Ledl",
+    "bannerFooterText": "Building local capacity across rural Nepal",
+    "metrics": [
+      { "value": "12+", "label": "Partner Schools" },
+      { "value": "1,500+", "label": "Students Empowered" },
+      { "value": "80+", "label": "Educators Trained" },
+      { "value": "100%", "label": "Local Ownership" }
+    ],
+    "programOverviewTitle": "Program Overview",
+    "programOverviewText": "Our initiative takes a holistic approach to improving school life in rural communities. By combining physical infrastructure enhancements—like interactive ICT computer labs and solar power support—with long-term teacher training and early digital learning resources, we help ensure every child studies in a safe, inspiring, and forward-looking environment.",
+    "deliverablesTitle": "Core Program Deliverables",
+    "deliverableTitle": "1. Digital Infrastructure & ICT Lab Setup",
+    "deliverableDescription": "Establishing modern, solar-assisted digital classrooms ensures students gain direct hands-on experience with ICT tools and offline e-learning software. We build safe, dust-free laptop stations, configure network access, and provide durable educational software suited for remote learning environments.",
+    "keyHighlightsLabel": "KEY HIGHLIGHTS & ACTIONS TAKEN:",
+    "deliverableHighlights": [
+      "Installed energy-efficient computers & solar battery backups",
+      "Deployed offline e-learning servers & interactive curriculum",
+      "Constructed secure, dust-free laptop stations & work desks",
+      "Trained local IT guardians for ongoing system maintenance"
+    ],
+    "quickInfoTitle": "Quick Info",
+    "focusAreasLabel": "FOCUS AREAS",
+    "focusAreasValue": "ICT Equipment, E-Learning Software, Teacher Mentorship & Solar Power",
+    "locationLabel": "LOCATION",
+    "locationValue": "Gorkha & Sindhupalchok Schools, Nepal",
+    "organizerLabel": "ORGANIZER",
+    "organizerValue": "Let's Learn & Digital Outreach Team",
+    "shareTitle": "Curious Minds Initiative",
+    "linkCopied": "Link copied to clipboard!",
+    "shareProject": "Share Project",
+    "becomeVolunteer": "Become a Volunteer",
+    "reportBannerTitle": "Full Program Documentation",
+    "reportBannerText": "Download the complete field report detailing computer hardware specifications, e-learning software logs, teacher mentorship guides, and school deployment timelines.",
+    "downloadReportPdf": "Download Report PDF",
+    "challengeTitle": "The Challenge",
+    "challengeText": "Students in remote regions often lack access to digital learning tools and interactive education. Without early access to computer literacy, young learners encounter barriers that limit future educational and career opportunities.",
+    "approachTitle": "Our Approach",
+    "approachText": "We connect schools with ICT resources, educational software, and teacher mentorship—building self-sufficient learning environments where local educators guide students toward self-determined futures.",
+    "methodologyLabel": "Methodology Blueprint",
+    "methodologyTitle": "Three Phases to Project Success",
+    "methodologySubtitle": "Click through each phase to explore how we work alongside schools and local leadership to ensure lasting transformation.",
+    "stageLabel": "STAGE",
+    "phaseOfLabel": "Phase {{current}} of {{total}}",
+    "previousPhase": "Previous Phase",
+    "nextPhase": "Next Phase",
+    "clickToExpand": "Click to expand details →",
+    "processStages": [
+      {
+        "stage": "01",
+        "title": "1. Analysis & Awareness",
+        "badgeText": "Phase 1: Analysis",
+        "summary": "Inventory & Community Alignment",
+        "description": "As a first step, we conduct an inventory: Interested schools are evaluated, risk assessments are carried out, and challenges are identified. Together with teachers, parents, and local officials, we communicate the importance of education and children's rights to create the foundation for targeted measures. Additionally, the students' knowledge level is determined through an assessment. This allows us not only to provide targeted support but also to better measure learning progress. The results are later compared with those of schools not yet part of Curious Minds to demonstrate the project's added value and to evaluate the long-term impact of the measures."
+      },
+      {
+        "stage": "02",
+        "title": "2. Implementation & Infrastructure",
+        "badgeText": "Phase 2: Execution",
+        "summary": "Digital Setup & Teacher Mentorship",
+        "description": "In project phase II, we begin setting up the digital infrastructure: networks and computers are implemented, basic IT skills are taught, and teachers are trained in the use of e-learning. At the same time, we train selected, technically skilled teachers in system maintenance. Based on the risk assessment from project phase I, we encourage teachers to develop appropriate measures to strengthen children's rights. The schools commit to implementing and adhering to these measures at a community meeting. This commitment is reinforced and made legally binding through the public signing of a Memorandum of Understanding (MOU). This project phase ensures that education is not only accessible but also safe and sustainable."
+      },
+      {
+        "stage": "03",
+        "title": "3. Independence & Sustainability",
+        "badgeText": "Phase 3: Sustainability",
+        "summary": "Long-term Autonomy & Refresher Training",
+        "description": "In the third and final project phase, we ensure that the supported schools become self-sufficient in the long term. To this end, we conduct a refresher training session three to six months after the official handover, in which we address any remaining questions with teachers and selected students and meaningfully supplement or deepen their acquired knowledge. This ensures the sustainable integration of digital teaching and learning methods. Since complete independence is not always achieved immediately, Curious Minds continues to support the schools to overcome any remaining obstacles and dependencies. Teachers receive follow-up support for technical problems, repairs, or methodological challenges. With this phase, Curious Minds empowers the schools to maintain and further develop their educational structures in the long term."
+      }
+    ],
+    "quoteText": "Curiosity fuels education – education opens worlds | CURIOUS MINDS",
+    "quoteAuthor": "— Ralf Ledl, Founder & Program Director",
+    "visionLabel": "LONG-TERM VISION",
+    "visionTitle": "Built on Local Ownership & Dignity",
+    "visionCards": [
+      {
+        "title": "Teacher Empowerment",
+        "text": "Educators gain technical expertise to operate labs, troubleshoot hardware, and guide students independently."
+      },
+      {
+        "title": "Community Stewardship",
+        "text": "School committees and local leaders assume full management of facilities, ensuring long-term protection and care."
+      },
+      {
+        "title": "Continuous Support",
+        "text": "Follow-up visits at 3 and 6 months offer refresher training and ensure resources remain actively integrated into learning."
+      }
+    ],
+    "exploreOtherTitle": "Explore Other Core Focus Areas",
+    "otherAreas": [
+      {
+        "tag": "Health-NOW (Health)",
+        "title": "PROJECT 28",
+        "text": "Promoting menstrual health, dignity, and active care across remote communities in Nepal."
+      },
+      {
+        "tag": "Impact-Alliance (Collaboration)",
+        "title": "SPONSORSHIPS",
+        "text": "Connecting partners and resources to support education, wellbeing, and community development."
+      },
+      {
+        "tag": "Let's Learn (Education)",
+        "title": "OTHER ACTIVITIES",
+        "text": "Fostering environmental education, community livelihoods, and disaster preparedness."
+      }
+    ],
+    "viewProgram": "View Program",
+    "inquiryTitle": "Inquire More About Curious Minds",
+    "inquiryText": "Get in touch to review our annual transparency reports.",
+    "transparency": "Transparency",
+    "emailUs": "Email Us",
+    "callUs": "Call Us"
+  },
+  "project28Detail": {
+    "heroBadge": "Health Initiative | Menstrual Dignity",
+    "heroTitleLine1": "Menstrual Dignity & Health for Women in Nepal:",
+    "heroTitleHighlight": "PROJECT 28",
+    "heroSubtitle": "Helping ensure menstruating people can participate in daily life with dignity, safety, and without limitations throughout all 28 days of their cycle.",
+    "heroLocation": "Nepal",
+    "heroCooperation": "In Cooperation with MRDS Nepal & Menschen im Dialog",
+    "bannerInitiatedBy": "Initiated by Andrea Spieth",
+    "bannerInitiatorText": "Organizational development consultant combining expertise in education, health, and development cooperation.",
+    "bannerBadge": "Project 28 Nepal",
+    "metrics": [
+      { "prefix": "€", "value": 100, "suffix": "", "label": "Per Workshop (20-30 Women)" },
+      { "prefix": "", "value": 30, "suffix": "", "label": "Women & Girls Reached / Session" },
+      { "prefix": "", "value": 3, "suffix": "-Way", "label": "Partner Network (MRDS & MiD)" },
+      { "prefix": "", "value": 28, "suffix": " Days", "label": "Full Dignity Across Every Cycle" }
+    ],
+    "programOverviewTitle": "Program Overview",
+    "programOverviewText": "Our initiative takes a holistic approach to improving menstrual health and dignity in rural communities across Nepal. By combining comprehensive biological education with the distribution of sustainable, ecological hygiene products like reusable menstrual cups, we help ensure women and young girls can study, work, and thrive without monthly limitations.",
+    "breakdownTitle": "Detailed Project Breakdown",
+    "breakdownItemTitle": "1. Menstrual Hygiene & Biological Education",
+    "breakdownItemText": "Breaking long-standing social taboos starts with accurate knowledge. We conduct interactive village workshops that educate adolescent girls, women, and community leaders on basic reproductive health and hygienic management practices.",
+    "keyHighlightsLabel": "KEY HIGHLIGHTS & ACTIONS TAKEN:",
+    "breakdownHighlights": [
+      "Interactive village workshops & biological instruction",
+      "Distribution of eco-friendly, reusable menstrual cups",
+      "Community dialogue to eliminate monthly isolation taboos",
+      "Trainer support, local permits, and participant meals"
+    ],
+    "quickInfoTitle": "Quick Info",
+    "focusAreasLabel": "FOCUS AREAS",
+    "focusAreasValue": "Menstrual Health, Eco Hygiene, Stigma Reduction & Education",
+    "locationLabel": "LOCATION",
+    "locationValue": "Rural Communities & Schools, Nepal",
+    "organizerLabel": "ORGANIZER",
+    "organizerValue": "MRDS Nepal & Menschen im Dialog",
+    "shareTitle": "Project 28 Nepal",
+    "linkCopied": "Link copied to clipboard!",
+    "shareProject": "Share Project",
+    "becomeVolunteer": "Become a Volunteer",
+    "reportBannerTitle": "Full Program Documentation",
+    "reportBannerText": "Download the complete field report detailing workshop structures, reusable cup distribution metrics, and educational impact logs.",
+    "downloadReportPdf": "Download Report PDF",
+    "challengeTitle": "The Challenge in Nepal",
+    "challengeText": "In large parts of Nepal, basic knowledge about menstruation is lacking. Monthly bleeding leads to restrictions in daily life, as menstruation is heavily associated with taboos, isolation, and prejudices.",
+    "solutionTitle": "The Project 28 Solution",
+    "solutionText": "By offering workshops that cover ecological hygiene products (like menstrual cups), trainer fees, permits, and food, we enable girls and women to understand their body and live without monthly restrictions.",
+    "pillarsLabel": "Strategic Focus Areas",
+    "pillarsTitle": "Key Pillars of Project 28",
+    "pillarsSubtitle": "Combining knowledge transfer, sustainable hygiene distribution, and long-term empowerment.",
+    "coreDeliverablesLabel": "CORE DELIVERABLES",
+    "pillars": [
+      {
+        "badgeText": "SHORT-TERM ACTION",
+        "title": "Education & Awareness",
+        "subTitle": "BREAKING TABOOS THROUGH KNOWLEDGE",
+        "description": "Increasing menstrual education across local communities to dismantle taboos and social prejudices. We foster a clear understanding of menstruation as a normal, healthy biological process.",
+        "points": [
+          "Deliver clear biological education to girls & women",
+          "Dispel cultural myths, taboos, and social isolation",
+          "Encourage open dialogue within village communities"
+        ]
+      },
+      {
+        "badgeText": "PRACTICAL IMPLEMENTATION",
+        "title": "Ecological & Economical Solutions",
+        "subTitle": "SUSTAINABLE HYGIENE DISTRIBUTION",
+        "description": "Providing sustainable, long-lasting hygiene products (such as reusable menstrual cups) alongside expert instruction during localized workshops.",
+        "points": [
+          "Distribute reusable menstrual cups (€100 reaches 20–30 women)",
+          "Cover workshop costs: trainer fees, permits, food & travel",
+          "Offer practical guidance for safe hygiene management"
+        ]
+      },
+      {
+        "badgeText": "LONG-TERM IMPACT",
+        "title": "Full Participation & Stigma Reduction",
+        "subTitle": "EMPOWERMENT ACROSS EVERY CYCLE",
+        "description": "Enabling women and girls to participate in school, work, and community life without monthly restrictions or stigma, while sustainably elevating living conditions.",
+        "points": [
+          "Ensure uninterrupted access to school and daily work",
+          "Combat menstrual stigma across all 28 days of the cycle",
+          "Strengthen local partnerships (MRDS Nepal & MiD)"
+        ]
+      }
+    ],
+    "expertiseLabel": "Expertise & Collaboration",
+    "expertiseTitle": "Driven by Passion, Education & Health Cooperation",
+    "expertiseText": "Besides her passion and commitment, initiator Andrea Spieth from Vorarlberg brings extensive experience as an organizational development consultant. Together with MRDS Nepal and Menschen im Dialog, we possess the necessary expertise to create lasting impact.",
+    "expertiseCards": [
+      {
+        "title": "Education & Awareness",
+        "text": "Conducting community workshops that deliver accurate biological facts and eliminate cultural myths."
+      },
+      {
+        "title": "Ecological Solutions",
+        "text": "Distributing re-usable menstrual cups to provide an economical and eco-friendly alternative for women."
+      },
+      {
+        "title": "Sustainable Living Conditions",
+        "text": "Empowering women so they never miss school or work, elevating living standards for entire families."
+      }
+    ],
+    "exploreOtherTitle": "Explore Other Core Focus Areas",
+    "otherAreas": [
+      {
+        "tag": "Education Focus",
+        "title": "CURIOUS MINDS",
+        "text": "Fostering digital literacy and ICT access for rural schools across Nepal."
+      },
+      {
+        "tag": "Medical Alliances",
+        "title": "CECS HEALTH CAMPS",
+        "text": "Deploying mobile medical camps and basic health infrastructure in high-altitude regions."
+      },
+      {
+        "tag": "Community Livelihoods",
+        "title": "OTHER ACTIVITIES",
+        "text": "Fostering environmental education, community resilience, and local empowerment."
+      }
+    ],
+    "viewProgram": "View Program",
+    "inquiryTitle": "Inquire More About Project 28",
+    "inquiryText": "Get in touch to review our annual transparency reports.",
+    "transparency": "Transparency",
+    "emailUs": "Email Us",
+    "callUs": "Call Us"
+  },
+  "sponsorshipsDetail": {
+    "badge": "SPONSORSHIPS",
+    "heroTitleLine1": "Fulfilling a Child's Wish for a Future:",
+    "heroTitleHighlight": "SPONSORSHIPS",
+    "heroSubtitle": "Sponsorship can have a lasting positive impact on the lives of a child and the people around them. It's a structured program that fosters sustainable development, educational continuity, and community empowerment in remote regions of Nepal.",
+    "heroLocation": "Nepal",
+    "heroCooperation": "In Cooperation with MRDS Nepal & Menschen im Dialog",
+    "imageBadge": "Sponsorship Program",
+    "imageTitle": "Fulfilling a Child's Wish for a Future",
+    "initiatedBy": "Initiated by Jürgen Lück",
+    "regionLabel": "Gorkha District & Manaslu Region",
+    "introTitle": "Active in the Manaslu Region since 2017",
+    "introText": "Children and young people living in the Manaslu region of Nepal are particularly affected by poverty; in some cases, they have lost one or more parents and are therefore at risk of child labor or early marriage. Structured sponsorship models sustainably improve the educational access and living conditions of these children and young people.",
+    "goalsTitle": "Our Goals",
+    "shortTermGoalsTitle": "Short-Term Goals",
+    "shortTermGoals": [
+      "Avoid child labor",
+      "Prevent early marriage",
+      "Continuous access to education"
+    ],
+    "longTermGoalsTitle": "Long-Term Goals",
+    "longTermGoals": [
+      "Creating opportunities through education",
+      "Improve living conditions sustainably",
+      "Involve and promote the surrounding community",
+      "Promote village communities"
+    ],
+    "frameworkLabel": "Framework",
+    "howItWorksTitle": "How the Sponsorship Program Works",
+    "howItWorksSubtitle": "Our holistic sponsorship model ensures that support directly addresses individual learning needs, community well-being, and localized oversight.",
+    "howItWorksSteps": [
+      {
+        "title": "1. Educational Assistance",
+        "text": "Direct provision of textbooks, learning materials, school uniforms, and tuition assistance required to keep children enrolled through 10th grade."
+      },
+      {
+        "title": "2. Local Partner Network",
+        "text": "Implementation is coordinated on the ground by MRDS Nepal, maintaining continuous dialogue with guardians, teachers, and local leaders."
+      },
+      {
+        "title": "3. Sustainable Growth",
+        "text": "Beyond schooling, the program works to improve community nutrition, health awareness, and general living standards across target villages."
+      }
+    ],
+    "allocationTitle": "Resource Allocation Framework",
+    "allocationSubtitle": "How support and operational resources are structured across key child development areas.",
+    "allocationBadge": "Impact Overview",
+    "breakdown": [
+      { "category": "Nutrition", "percent": "30%", "detail": "Healthy food, snacks for the sometimes very long walk to school." },
+      { "category": "School Supplies", "percent": "15%", "detail": "Bag, writing utensils, notepad or notebooks, textbooks." },
+      { "category": "Clothing", "percent": "13%", "detail": "Every child receives new school clothing once a year." },
+      { "category": "School Fees", "percent": "13%", "detail": "As needed, these do not apply at every school." },
+      { "category": "Development", "percent": "12%", "detail": "Strengthening the environment and village community, developing sustainable solutions." },
+      { "category": "Coaching & PM*", "percent": "12%", "detail": "Local partner coordination, support/coaching of foster parents, project management." },
+      { "category": "Buffer", "percent": "5%", "detail": "Respond to emergencies, compensate for price fluctuations." }
+    ],
+    "allocationFootnote": "*PM = Project Management, includes payment to our local project partner for coordination, communication, support and coaching of foster parents, as well as development of village communities.",
+    "faqTitle": "Project FAQ",
+    "faqSubtitle": "Key insights into our sponsorship initiative and regional impact in Nepal.",
+    "faqs": [
+      {
+        "q": "How does this program support long-term child development?",
+        "a": "The program provides continuous access to education in a familiar environment, protecting children and young people from child labor or early marriage while improving their overall quality of life."
+      },
+      {
+        "q": "Where is the initiative implemented?",
+        "a": "The program operates primarily in remote villages of the Chumnubri and Dharche communities in the Gorkha District (Manaslu region) of Nepal."
+      },
+      {
+        "q": "Who coordinates the project locally in Nepal?",
+        "a": "Our long-standing local partner, Manaslu Rural Development Society Nepal (MRDS Nepal), coordinates directly with local communities, foster families, and schools to manage and execute project activities on the ground."
+      },
+      {
+        "q": "Until when do children remain supported under this initiative?",
+        "a": "Support continues until the children complete their 10th-grade Secondary Education Examination (SEE), equipping them with critical foundations for higher studies or vocational paths."
+      },
+      {
+        "q": "How are project outcomes and transparency ensured?",
+        "a": "Detailed annual activity and impact reports are published regularly in accordance with international transparency standards to share ongoing progress and financial oversight."
+      }
+    ],
+    "exploreOtherTitle": "Explore Other Core Focus Areas",
+    "otherAreas": [
+      {
+        "tag": "Education Focus",
+        "title": "CURIOUS MINDS",
+        "text": "Fostering digital literacy and ICT access for rural schools across Nepal."
+      },
+      {
+        "tag": "Health-NOW (Health)",
+        "title": "PROJECT 28",
+        "text": "Promoting menstrual health, dignity, and active care across remote communities in Nepal."
+      },
+      {
+        "tag": "Let's Learn (Education)",
+        "title": "OTHER ACTIVITIES",
+        "text": "Fostering environmental education, community livelihoods, and disaster preparedness."
+      }
+    ],
+    "viewProgram": "View Program",
+    "inquiryTitle": "Inquire More About Sponsorships",
+    "inquiryText": "Get in touch to review our annual transparency reports.",
+    "transparency": "Transparency",
+    "emailUs": "Email Us",
+    "callUs": "Call Us"
+  },
+  "aboutUsDetail": {
+    "stats": [
+      { "label": "Active Initiatives", "value": "28+" },
+      { "label": "Lives Impacted", "value": "10,000+" },
+      { "label": "Global Partners", "value": "15+" },
+      { "label": "Years of Service", "value": "5+" }
+    ],
+    "focusAreas": [
+      {
+        "title": "Education & Curious Minds",
+        "description": "Fostering environments where continuous learning and curiosity thrive, providing educational resources to underserved areas."
+      },
+      {
+        "title": "Sustainable Development",
+        "description": "Executing eco-friendly infrastructure and resource management projects to ensure long-term community health."
+      },
+      {
+        "title": "Civic Dialogue",
+        "description": "Creating safe spaces for community discussions, bridging cultural divides between our global and local networks."
+      }
+    ],
+    "methodology": [
+      {
+        "badge": "Stage 01",
+        "title": "Listen & Assess",
+        "description": "We start on the ground before designing any project. Our team conducts field research and holds open dialogues with community members to identify genuine needs.",
+        "highlights": ["On-the-ground surveys", "Community consultations", "Resource mapping"]
+      },
+      {
+        "badge": "Stage 02",
+        "title": "Co-Design & Execute",
+        "description": "Collaborating with local leaders and international partners, we build tailored action plans like Project-28 and execute them with complete financial and operational clarity.",
+        "highlights": ["Local leadership input", "Cross-border teamwork", "Direct resource delivery"]
+      },
+      {
+        "badge": "Stage 03",
+        "title": "Evaluate & Scale",
+        "description": "We measure impact, gather feedback from local participants, publish transparent reports, and scale effective models across other communities.",
+        "highlights": ["Impact reporting", "Open financial audits", "Long-term sustainability"]
+      }
+    ],
+    "coreValues": [
+      {
+        "title": "Radical Transparency",
+        "description": "We believe in open governance. Our financial disclosures and impact reports are always accessible to the public."
+      },
+      {
+        "title": "Community First",
+        "description": "Everything we do is centered around empowering communities and fostering meaningful dialogue across borders."
+      },
+      {
+        "title": "Curious Minds",
+        "description": "We encourage innovation, continuous learning, and creative problem-solving in all of our active projects."
+      },
+      {
+        "title": "Global Connection",
+        "description": "Bridging the gap between our offices in Kathmandu and Munich to create a unified, worldwide impact."
+      }
+    ],
+    "team": [
+      { "name": "Ralf Ledl", "role": "Chief Executive Officer" },
+      { "name": "Jurgen Luck", "role": "Head of Operations" },
+      { "name": "Andrea Spieth", "role": "Project Manager" }
+    ],
+    "heroBadge": "Who We Are",
+    "heroTitlePrefix": "Empowering Communities Through",
+    "heroTitleHighlight": "Dialogue & Action",
+    "heroSubtitle": "We are a dedicated collective operating across borders to drive sustainable change. From curious minds to large-scale initiatives, we bridge gaps and build futures.",
+    "journeyBadge": "Our Journey",
+    "journeyTitlePrefix": "Bridging Ideas Between",
+    "journeyTitleKathmandu": "Kathmandu",
+    "journeyTitleAnd": "&",
+    "journeyTitleMunich": "Munich",
+    "journeyText1": "It all started with a simple conversation between curious minds across two distinct regions. We recognized a universal truth: while resources are often unevenly distributed, the passion for progress and community development knows no borders.",
+    "journeyText2Prefix": "What began as a grassroots initiative has evolved into an international collective. Through flagship efforts like",
+    "journeyText2Bold": "Project-28",
+    "journeyText2Suffix": "and our community dialogue programs, we turn global solidarity into tangible, local action.",
+    "journeyQuote": "\"Dialogue is the bridge; action is the destination.\"",
+    "journeyQuoteAuthor": "Connecting volunteer networks in Nepal with international advocates in Germany.",
+    "networkLabel": "Cross-Continental Network",
+    "munichTitle": "Munich, Germany",
+    "munichText": "Resource Coordination & Global Outreach",
+    "kathmanduTitle": "Kathmandu, Nepal",
+    "kathmanduText": "On-the-Ground Execution & Community Leadership",
+    "grassrootsOperations": "Grassroots Operations",
+    "transparentLabel": "100% Transparent",
+    "purposeBadge": "Our Purpose",
+    "purposeTitlePrefix": "Driven by",
+    "purposeTitleHighlight1": "Purpose",
+    "purposeTitleMid": "Guided by",
+    "purposeTitleHighlight2": "Impact",
+    "missionTitle": "Our Mission",
+    "missionText": "To provide equitable access to resources, education, and opportunities for underprivileged communities. We implement sustainable projects that foster independence, resilience, and cross-cultural understanding.",
+    "missionPoints": [
+      "Grassroots Community Support",
+      "Sustainable & Independent Development",
+      "Cross-Cultural Collaboration"
+    ],
+    "visionTitle": "Our Vision",
+    "visionText": "A world where geographic and socioeconomic boundaries do not dictate a person's potential. We envision thriving, interconnected communities built on a foundation of transparency, empathy, and mutual respect.",
+    "visionPoints": [
+      "Boundary-Free Educational Access",
+      "Empowered Local Leadership",
+      "Transparent & Interconnected Governance"
+    ],
+    "whatWeDoTitle": "What We Do",
+    "whatWeDoSubtitle": "Our initiatives are heavily focused on three main pillars to ensure holistic and sustainable growth.",
+    "processBadge": "Our Process",
+    "processTitlePrefix": "How We Turn Dialogue Into",
+    "processTitleHighlight": "Impact",
+    "processSubtitle": "Sustainable change requires structure. We follow a clear, three-stage framework to ensure transparency, community ownership, and measurable results.",
+    "whatDrivesUsTitle": "What Drives Us",
+    "teamSectionTitle": "Co-Founder & Executive Director",
+    "teamSectionSubtitle": "Visionary Leader • Youth Advocate • Social Entrepreneur",
+    "ctaTitle": "Want to be part of the change?",
+    "ctaText": "Whether you are looking to volunteer, partner, or just want to learn more about our projects, our inbox is always open.",
+    "ctaButton": "Contact Us Today"
   }
 }

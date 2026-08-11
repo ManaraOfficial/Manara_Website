@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   FaShieldAlt,
   FaMapMarkerAlt,
@@ -77,8 +78,28 @@ const MetricCard = ({ item, isVisible }) => {
   );
 };
 
+const metricIcons = [
+  <FaFemale className="text-2xl text-[#ff1493]" />,
+  <FaUsers className="text-2xl text-[#ff1493]" />,
+  <FaShieldAlt className="text-[#ff1493] text-2xl" />,
+  <FaShieldAlt className="text-2xl text-[#ff1493]" />,
+];
+
+const pillarStyles = [
+  { id: "pillar-1", borderBg: "bg-[#B03A2E]", icon: <FaGraduationCap className="text-lg text-white" />, image: Phase1Img },
+  { id: "pillar-2", borderBg: "bg-[#E66B19]", icon: <FaLeaf className="text-lg text-white" />, image: Phase2Img },
+  { id: "pillar-3", borderBg: "bg-[#1E5622]", icon: <FaShieldAlt className="text-lg text-white" />, image: Phase3Img },
+];
+
+const expertiseIcons = [
+  <FaGraduationCap className="text-2xl text-yellow-300 mb-3" />,
+  <FaLeaf className="text-2xl text-green-300 mb-3" />,
+  <FaCheckCircle className="text-2xl text-orange-300 mb-3" />,
+];
+
 const Project28Detail = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const metricsRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -103,92 +124,23 @@ const Project28Detail = () => {
     };
   }, []);
 
-  const metrics = [
-    {
-      id: 1,
-      icon: <FaFemale className="text-2xl text-[#ff1493]" />,
-      numericValue: 100,
-      prefix: "€",
-      suffix: "",
-      label: "Per Workshop (20-30 Women)",
-    },
-    {
-      id: 2,
-      icon: <FaUsers className="text-2xl text-[#ff1493]" />,
-      numericValue: 30,
-      prefix: "",
-      suffix: "",
-      label: "Women & Girls Reached / Session",
-    },
-    {
-      id: 3,
-      icon: <FaShieldAlt className="text-[#ff1493] text-2xl" />,
-      numericValue: 3,
-      prefix: "",
-      suffix: "-Way",
-      label: "Partner Network (MRDS & MiD)",
-    },
-    {
-      id: 4,
-      icon: <FaShieldAlt className="text-2xl text-[#ff1493]" />,
-      numericValue: 28,
-      prefix: "",
-      suffix: " Days",
-      label: "Full Dignity Across Every Cycle",
-    },
-  ];
+  const metrics = t("project28Detail.metrics", { returnObjects: true }).map((m, idx) => ({
+    id: idx + 1,
+    icon: metricIcons[idx],
+    numericValue: m.value,
+    prefix: m.prefix,
+    suffix: m.suffix,
+    label: m.label,
+  }));
 
   // Pillar Data
-  const projectPillars = [
-    {
-      id: "pillar-1",
-      badgeText: "SHORT-TERM ACTION",
-      borderBg: "bg-[#B03A2E]",
-      icon: <FaGraduationCap className="text-lg text-white" />,
-      title: "Education & Awareness",
-      subTitle: "BREAKING TABOOS THROUGH KNOWLEDGE",
-      image: Phase1Img,
-      description:
-        "Increasing menstrual education across local communities to dismantle taboos and social prejudices. We foster a clear understanding of menstruation as a normal, healthy biological process.",
-      points: [
-        "Deliver clear biological education to girls & women",
-        "Dispel cultural myths, taboos, and social isolation",
-        "Encourage open dialogue within village communities",
-      ],
-    },
-    {
-      id: "pillar-2",
-      badgeText: "PRACTICAL IMPLEMENTATION",
-      borderBg: "bg-[#E66B19]",
-      icon: <FaLeaf className="text-lg text-white" />,
-      title: "Ecological & Economical Solutions",
-      subTitle: "SUSTAINABLE HYGIENE DISTRIBUTION",
-      image: Phase2Img,
-      description:
-        "Providing sustainable, long-lasting hygiene products (such as reusable menstrual cups) alongside expert instruction during localized workshops.",
-      points: [
-        "Distribute reusable menstrual cups (€100 reaches 20–30 women)",
-        "Cover workshop costs: trainer fees, permits, food & travel",
-        "Offer practical guidance for safe hygiene management",
-      ],
-    },
-    {
-      id: "pillar-3",
-      badgeText: "LONG-TERM IMPACT",
-      borderBg: "bg-[#1E5622]",
-      icon: <FaShieldAlt className="text-lg text-white" />,
-      title: "Full Participation & Stigma Reduction",
-      subTitle: "EMPOWERMENT ACROSS EVERY CYCLE",
-      image: Phase3Img,
-      description:
-        "Enabling women and girls to participate in school, work, and community life without monthly restrictions or stigma, while sustainably elevating living conditions.",
-      points: [
-        "Ensure uninterrupted access to school and daily work",
-        "Combat menstrual stigma across all 28 days of the cycle",
-        "Strengthen local partnerships (MRDS Nepal & MiD)",
-      ],
-    },
-  ];
+  const projectPillars = t("project28Detail.pillars", { returnObjects: true }).map((pillar, idx) => ({
+    ...pillar,
+    ...pillarStyles[idx],
+  }));
+
+  const expertiseCards = t("project28Detail.expertiseCards", { returnObjects: true });
+  const otherAreas = t("project28Detail.otherAreas", { returnObjects: true });
 
   return (
     <div className="w-full bg-white text-[#404040] font-['Nunito_Sans',sans-serif]">
@@ -197,25 +149,24 @@ const Project28Detail = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-4xl mx-auto mb-12">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ff1493]/10 text-[#ff1493] text-xs font-extrabold uppercase tracking-widest mb-4 font-['Montserrat',sans-serif]">
-              Health Initiative | Menstrual Dignity
+              {t("project28Detail.heroBadge")}
             </div>
 
             <h1 className="text-4xl sm:text-6xl font-black text-gray-900 tracking-tight leading-tight mb-6 font-['Montserrat',sans-serif]">
-              Menstrual Dignity & Health for Women in Nepal:{" "}
-              <span className="text-[#ff1493]">PROJECT 28</span>
+              {t("project28Detail.heroTitleLine1")}{" "}
+              <span className="text-[#ff1493]">{t("project28Detail.heroTitleHighlight")}</span>
             </h1>
 
             <p className="text-base sm:text-xl text-gray-600 leading-relaxed font-normal max-w-3xl mx-auto mb-8">
-              Helping ensure menstruating people can participate in daily life
-              with dignity, safety, and without limitations throughout all 28 days of their cycle.
+              {t("project28Detail.heroSubtitle")}
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm text-gray-600">
               <span className="inline-flex items-center gap-1.5 bg-gray-100 border border-gray-200 px-4 py-2 rounded-full font-medium">
-                <FaMapMarkerAlt className="text-[#ff1493]" /> Nepal
+                <FaMapMarkerAlt className="text-[#ff1493]" /> {t("project28Detail.heroLocation")}
               </span>
               <span className="bg-red-100/70 text-[#ff1493] border border-red-200 px-4 py-2 rounded-full font-bold">
-                In Cooperation with MRDS Nepal & Menschen im Dialog
+                {t("project28Detail.heroCooperation")}
               </span>
             </div>
           </div>
@@ -231,14 +182,14 @@ const Project28Detail = () => {
               <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-6 sm:p-8 flex justify-between items-end text-white">
                 <div>
                   <h3 className="text-lg sm:text-xl font-bold font-['Montserrat',sans-serif]">
-                    Initiated by Andrea Spieth
+                    {t("project28Detail.bannerInitiatedBy")}
                   </h3>
                   <p className="text-xs sm:text-sm text-gray-200 max-w-md">
-                    Organizational development consultant combining expertise in education, health, and development cooperation.
+                    {t("project28Detail.bannerInitiatorText")}
                   </p>
                 </div>
                 <span className="hidden sm:block text-xs font-bold uppercase tracking-wider bg-white/20 backdrop-blur-md px-3.5 py-1.5 rounded-lg border border-white/30">
-                  Project 28 Nepal
+                  {t("project28Detail.bannerBadge")}
                 </span>
               </div>
             </div>
@@ -256,17 +207,17 @@ const Project28Detail = () => {
             {/* Program Overview Card */}
             <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm space-y-4">
               <h2 className="text-2xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
-                Program Overview
+                {t("project28Detail.programOverviewTitle")}
               </h2>
               <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                Our initiative takes a holistic approach to improving menstrual health and dignity in rural communities across Nepal. By combining comprehensive biological education with the distribution of sustainable, ecological hygiene products like reusable menstrual cups, we help ensure women and young girls can study, work, and thrive without monthly limitations.
+                {t("project28Detail.programOverviewText")}
               </p>
             </div>
 
             {/* Detailed Project Breakdown Header */}
             <div>
               <h3 className="text-2xl font-bold text-gray-900 font-['Montserrat',sans-serif] mb-6">
-                Detailed Project Breakdown
+                {t("project28Detail.breakdownTitle")}
               </h3>
 
               {/* Breakdown Card 1 */}
@@ -277,37 +228,27 @@ const Project28Detail = () => {
                   </div>
                   <div>
                     <h4 className="text-xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
-                      1. Menstrual Hygiene & Biological Education
+                      {t("project28Detail.breakdownItemTitle")}
                     </h4>
                   </div>
                 </div>
 
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Breaking long-standing social taboos starts with accurate knowledge. We conduct interactive village workshops that educate adolescent girls, women, and community leaders on basic reproductive health and hygienic management practices.
+                  {t("project28Detail.breakdownItemText")}
                 </p>
 
                 {/* Key Highlights & Actions Box */}
                 <div className="bg-gray-50/80 p-5 sm:p-6 rounded-2xl border border-gray-100 space-y-3">
                   <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 font-['Montserrat',sans-serif] block mb-2">
-                    KEY HIGHLIGHTS & ACTIONS TAKEN:
+                    {t("project28Detail.keyHighlightsLabel")}
                   </span>
                   <div className="grid sm:grid-cols-2 gap-3 text-xs sm:text-sm text-gray-700 font-semibold">
-                    <div className="flex items-start gap-2.5">
-                      <FaCheckCircle className="text-[#ff1493] shrink-0 mt-0.5" />
-                      <span>Interactive village workshops & biological instruction</span>
-                    </div>
-                    <div className="flex items-start gap-2.5">
-                      <FaCheckCircle className="text-[#ff1493] shrink-0 mt-0.5" />
-                      <span>Distribution of eco-friendly, reusable menstrual cups</span>
-                    </div>
-                    <div className="flex items-start gap-2.5">
-                      <FaCheckCircle className="text-[#ff1493] shrink-0 mt-0.5" />
-                      <span>Community dialogue to eliminate monthly isolation taboos</span>
-                    </div>
-                    <div className="flex items-start gap-2.5">
-                      <FaCheckCircle className="text-[#ff1493] shrink-0 mt-0.5" />
-                      <span>Trainer support, local permits, and participant meals</span>
-                    </div>
+                    {t("project28Detail.breakdownHighlights", { returnObjects: true }).map((point, idx) => (
+                      <div className="flex items-start gap-2.5" key={idx}>
+                        <FaCheckCircle className="text-[#ff1493] shrink-0 mt-0.5" />
+                        <span>{point}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -321,7 +262,7 @@ const Project28Detail = () => {
             {/* Quick Info Card */}
             <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm space-y-6">
               <h3 className="text-xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
-                Quick Info
+                {t("project28Detail.quickInfoTitle")}
               </h3>
 
               <div className="space-y-4">
@@ -330,10 +271,10 @@ const Project28Detail = () => {
                   <FaTag className="text-[#EC8134] text-sm shrink-0 mt-1" />
                   <div>
                     <span className="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block font-['Montserrat',sans-serif]">
-                      FOCUS AREAS
+                      {t("project28Detail.focusAreasLabel")}
                     </span>
                     <span className="text-xs sm:text-sm font-bold text-gray-800">
-                      Menstrual Health, Eco Hygiene, Stigma Reduction & Education
+                      {t("project28Detail.focusAreasValue")}
                     </span>
                   </div>
                 </div>
@@ -343,10 +284,10 @@ const Project28Detail = () => {
                   <FaMapMarkerAlt className="text-blue-500 text-sm shrink-0 mt-1" />
                   <div>
                     <span className="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block font-['Montserrat',sans-serif]">
-                      LOCATION
+                      {t("project28Detail.locationLabel")}
                     </span>
                     <span className="text-xs sm:text-sm font-bold text-gray-800">
-                      Rural Communities & Schools, Nepal
+                      {t("project28Detail.locationValue")}
                     </span>
                   </div>
                 </div>
@@ -356,10 +297,10 @@ const Project28Detail = () => {
                   <FaGlobe className="text-[#ff1493] text-sm shrink-0 mt-1" />
                   <div>
                     <span className="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block font-['Montserrat',sans-serif]">
-                      ORGANIZER
+                      {t("project28Detail.organizerLabel")}
                     </span>
                     <span className="text-xs sm:text-sm font-bold text-gray-800">
-                      MRDS Nepal & Menschen im Dialog
+                      {t("project28Detail.organizerValue")}
                     </span>
                   </div>
                 </div>
@@ -370,22 +311,22 @@ const Project28Detail = () => {
                 <button
                   onClick={() => {
                     if (navigator.share) {
-                      navigator.share({ title: "Project 28 Nepal", url: window.location.href });
+                      navigator.share({ title: t("project28Detail.shareTitle"), url: window.location.href });
                     } else {
                       navigator.clipboard.writeText(window.location.href);
-                      alert("Link copied to clipboard!");
+                      alert(t("project28Detail.linkCopied"));
                     }
                   }}
                   className="w-full py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold rounded-xl flex items-center justify-center gap-2 transition font-['Montserrat',sans-serif]"
                 >
-                  <FaShareAlt /> Share Project
+                  <FaShareAlt /> {t("project28Detail.shareProject")}
                 </button>
 
                 <Link
                   to='/contact'
                   className="w-full py-3 bg-gradient-to-br from-[#D34A32] to-[#ff1493] hover:bg-[deeppink] text-white text-xs font-bold rounded-xl flex items-center justify-center gap-2 transition font-['Montserrat',sans-serif]"
                 >
-                  <FaHeart /> Become a Volunteer
+                  <FaHeart /> {t("project28Detail.becomeVolunteer")}
                 </Link>
               </div>
             </div>
@@ -393,17 +334,17 @@ const Project28Detail = () => {
             {/* Full Program Documentation Card */}
             <div className="bg-gradient-to-br from-[#EC8134] to-[#ff1493] text-white p-6 sm:p-7 rounded-3xl shadow-md space-y-4">
               <h3 className="text-xl font-bold font-['Montserrat',sans-serif]">
-                Full Program Documentation
+                {t("project28Detail.reportBannerTitle")}
               </h3>
               <p className="text-xs text-red-50 leading-relaxed">
-                Download the complete field report detailing workshop structures, reusable cup distribution metrics, and educational impact logs.
+                {t("project28Detail.reportBannerText")}
               </p>
 
               <a
                 href="#download-report"
                 className="w-full py-3 bg-white text-[#ff1493] hover:bg-gray-50 text-xs font-extrabold rounded-xl flex items-center justify-center gap-2 transition shadow-sm font-['Montserrat',sans-serif]"
               >
-                <FaDownload /> Download Report PDF
+                <FaDownload /> {t("project28Detail.downloadReportPdf")}
               </a>
             </div>
 
@@ -426,19 +367,19 @@ const Project28Detail = () => {
         <div className="grid md:grid-cols-2 gap-8 sm:gap-10">
           <div className="bg-white border-l-4 border-[#ff1493] p-8 rounded-r-3xl shadow-sm bg-gradient-to-r from-red-50/20 to-transparent">
             <h3 className="text-xl sm:text-2xl font-bold text-[#ff1493] mb-3 font-['Montserrat',sans-serif]">
-              The Challenge in Nepal
+              {t("project28Detail.challengeTitle")}
             </h3>
             <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
-              In large parts of Nepal, basic knowledge about menstruation is lacking. Monthly bleeding leads to restrictions in daily life, as menstruation is heavily associated with taboos, isolation, and prejudices.
+              {t("project28Detail.challengeText")}
             </p>
           </div>
 
           <div className="bg-white border-l-4 border-[#EC8134] p-8 rounded-r-3xl shadow-sm bg-gradient-to-r from-orange-50/20 to-transparent">
             <h3 className="text-xl sm:text-2xl font-bold text-[#EC8134] mb-3 font-['Montserrat',sans-serif]">
-              The Project 28 Solution
+              {t("project28Detail.solutionTitle")}
             </h3>
             <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
-              By offering workshops that cover ecological hygiene products (like menstrual cups), trainer fees, permits, and food, we enable girls and women to understand their body and live without monthly restrictions.
+              {t("project28Detail.solutionText")}
             </p>
           </div>
         </div>
@@ -450,13 +391,13 @@ const Project28Detail = () => {
           {/* SECTION HEADER & TITLE */}
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="inline-block px-3.5 py-1 rounded-full bg-[#ff1493]/10 text-[#ff1493] text-xs font-black uppercase tracking-widest mb-3 font-['Montserrat',sans-serif]">
-              Strategic Focus Areas
+              {t("project28Detail.pillarsLabel")}
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight font-['Montserrat',sans-serif]">
-              Key Pillars of Project 28
+              {t("project28Detail.pillarsTitle")}
             </h2>
             <p className="text-gray-600 text-sm sm:text-base mt-2">
-              Combining knowledge transfer, sustainable hygiene distribution, and long-term empowerment.
+              {t("project28Detail.pillarsSubtitle")}
             </p>
           </div>
 
@@ -507,7 +448,7 @@ const Project28Detail = () => {
                   <div>
                     <div className="pt-5 border-t border-gray-100">
                       <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 block mb-4 font-['Montserrat',sans-serif]">
-                        CORE DELIVERABLES
+                        {t("project28Detail.coreDeliverablesLabel")}
                       </span>
                       <div className="space-y-3">
                         {pillar.points.map((pt, idx) => (
@@ -534,46 +475,28 @@ const Project28Detail = () => {
         {/* <div className="bg-[#D34A32] text-white rounded-3xl p-8 sm:p-12 shadow-xl"> */}
           <div className="max-w-3xl mb-10">
             <span className="text-xs font-extrabold uppercase tracking-widest text-red-200 font-['Montserrat',sans-serif]">
-              Expertise & Collaboration
+              {t("project28Detail.expertiseLabel")}
             </span>
             <h3 className="text-2xl sm:text-3xl font-extrabold mt-1 font-['Montserrat',sans-serif]">
-              Driven by Passion, Education & Health Cooperation
+              {t("project28Detail.expertiseTitle")}
             </h3>
             <p className="text-sm text-red-100 mt-3 leading-relaxed">
-              Besides her passion and commitment, initiator Andrea Spieth from Vorarlberg brings extensive experience as an organizational development consultant. Together with MRDS Nepal and Menschen im Dialog, we possess the necessary expertise to create lasting impact.
+              {t("project28Detail.expertiseText")}
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10">
-              <FaGraduationCap className="text-2xl text-yellow-300 mb-3" />
-              <h4 className="font-bold text-base mb-2 font-['Montserrat',sans-serif]">
-                Education & Awareness
-              </h4>
-              <p className="text-xs text-gray-100 leading-relaxed">
-                Conducting community workshops that deliver accurate biological facts and eliminate cultural myths.
-              </p>
-            </div>
-
-            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10">
-              <FaLeaf className="text-2xl text-green-300 mb-3" />
-              <h4 className="font-bold text-base mb-2 font-['Montserrat',sans-serif]">
-                Ecological Solutions
-              </h4>
-              <p className="text-xs text-gray-100 leading-relaxed">
-                Distributing re-usable menstrual cups to provide an economical and eco-friendly alternative for women.
-              </p>
-            </div>
-
-            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10">
-              <FaCheckCircle className="text-2xl text-orange-300 mb-3" />
-              <h4 className="font-bold text-base mb-2 font-['Montserrat',sans-serif]">
-                Sustainable Living Conditions
-              </h4>
-              <p className="text-xs text-gray-100 leading-relaxed">
-                Empowering women so they never miss school or work, elevating living standards for entire families.
-              </p>
-            </div>
+            {expertiseCards.map((card, idx) => (
+              <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10" key={idx}>
+                {expertiseIcons[idx]}
+                <h4 className="font-bold text-base mb-2 font-['Montserrat',sans-serif]">
+                  {card.title}
+                </h4>
+                <p className="text-xs text-gray-100 leading-relaxed">
+                  {card.text}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -582,7 +505,7 @@ const Project28Detail = () => {
       <section className="bg-gray-50 py-16 px-6 border-t border-gray-100">
         <div className="max-w-6xl px-8 mx-auto space-y-16">
           <h3 className="text-lg font-bold text-gray-800 mb-6 font-['Montserrat',sans-serif]">
-            Explore Other Core Focus Areas
+            {t("project28Detail.exploreOtherTitle")}
           </h3>
 
           <div className="grid sm:grid-cols-3 gap-6">
@@ -591,16 +514,16 @@ const Project28Detail = () => {
               className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:border-[#ff1493]/50 transition cursor-pointer group"
             >
               <span className="text-xs font-bold text-[#ff1493] uppercase tracking-wider font-['Montserrat',sans-serif]">
-                Education Focus
+                {otherAreas[0].tag}
               </span>
               <h4 className="text-base font-bold text-gray-900 mt-2 group-hover:text-[#ff1493] transition font-['Montserrat',sans-serif]">
-                CURIOUS MINDS
+                {otherAreas[0].title}
               </h4>
               <p className="text-xs text-gray-500 mt-1">
-                Fostering digital literacy and ICT access for rural schools across Nepal.
+                {otherAreas[0].text}
               </p>
               <span className="inline-flex items-center gap-1 text-xs font-bold text-[#ff1493] mt-4">
-                View Program <FaArrowRight className="text-[10px]" />
+                {t("project28Detail.viewProgram")} <FaArrowRight className="text-[10px]" />
               </span>
             </div>
 
@@ -609,16 +532,16 @@ const Project28Detail = () => {
               className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:border-[#ff1493]/50 transition cursor-pointer group"
             >
               <span className="text-xs font-bold text-[#EC8134] uppercase tracking-wider font-['Montserrat',sans-serif]">
-                Medical Alliances
+                {otherAreas[1].tag}
               </span>
               <h4 className="text-base font-bold text-gray-900 mt-2 group-hover:text-[#EC8134] transition font-['Montserrat',sans-serif]">
-                CECS HEALTH CAMPS
+                {otherAreas[1].title}
               </h4>
               <p className="text-xs text-gray-500 mt-1">
-                Deploying mobile medical camps and basic health infrastructure in high-altitude regions.
+                {otherAreas[1].text}
               </p>
               <span className="inline-flex items-center gap-1 text-xs font-bold text-[#EC8134] mt-4">
-                View Program <FaArrowRight className="text-[10px]" />
+                {t("project28Detail.viewProgram")} <FaArrowRight className="text-[10px]" />
               </span>
             </div>
 
@@ -627,16 +550,16 @@ const Project28Detail = () => {
               className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:border-[#ff1493]/50 transition cursor-pointer group"
             >
               <span className="text-xs font-bold text-[#ff1493] uppercase tracking-wider font-['Montserrat',sans-serif]">
-                Community Livelihoods
+                {otherAreas[2].tag}
               </span>
               <h4 className="text-base font-bold text-gray-900 mt-2 group-hover:text-[#ff1493] transition font-['Montserrat',sans-serif]">
-                OTHER ACTIVITIES
+                {otherAreas[2].title}
               </h4>
               <p className="text-xs text-gray-500 mt-1">
-                Fostering environmental education, community resilience, and local empowerment.
+                {otherAreas[2].text}
               </p>
               <span className="inline-flex items-center gap-1 text-xs font-bold text-[#ff1493] mt-4">
-                View Program <FaArrowRight className="text-[10px]" />
+                {t("project28Detail.viewProgram")} <FaArrowRight className="text-[10px]" />
               </span>
             </div>
           </div>
@@ -645,10 +568,10 @@ const Project28Detail = () => {
           <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="text-center sm:text-left space-y-1">
               <h4 className="font-bold text-gray-900 text-sm font-['Montserrat',sans-serif]">
-                Inquire More About Project 28
+                {t("project28Detail.inquiryTitle")}
               </h4>
               <p className="text-xs text-gray-600">
-                Get in touch to review our annual transparency reports.
+                {t("project28Detail.inquiryText")}
               </p>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-2">
@@ -656,19 +579,19 @@ const Project28Detail = () => {
                 to="/reports"
                 className="inline-flex items-center gap-1.5 bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-bold px-3.5 py-2 rounded-xl border border-gray-200 transition"
               >
-                <FaExternalLinkAlt /> Transparency
+                <FaExternalLinkAlt /> {t("project28Detail.transparency")}
               </Link>
               <a
                 href="mailto:info@menschen-dialog.de"
                 className="inline-flex items-center gap-1.5 bg-[#EC8134] hover:bg-[#d4702b] text-white text-xs font-bold px-3.5 py-2 rounded-xl transition"
               >
-                <FaEnvelope /> Email Us
+                <FaEnvelope /> {t("project28Detail.emailUs")}
               </a>
               <a
                 href="tel:+49000000000"
                 className="inline-flex items-center gap-1.5 bg-[#ff1493] hover:bg-[#EC8134] text-white text-xs font-bold px-3.5 py-2 rounded-xl transition"
               >
-                <FaPhoneAlt /> Call Us
+                <FaPhoneAlt /> {t("project28Detail.callUs")}
               </a>
             </div>
           </div>

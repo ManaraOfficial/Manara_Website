@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { 
+import { useTranslation } from "react-i18next";
+import {
   FaCalendarAlt, 
   FaMapMarkerAlt, 
   FaUsers, 
@@ -22,36 +23,63 @@ import {
   FaChevronRight
 } from "react-icons/fa";
 
-// Hero Carousel Slides
-const heroSlides = [
+// Hero Carousel images (static assets; text comes from i18n)
+const heroImages = [
+  "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=1200",
+  "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&q=80&w=1200",
+  "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&q=80&w=1200",
+  "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=1200"
+];
+
+// Icon/style metadata per initiative (kept in code; text comes from i18n)
+const initiativeMeta = [
   {
-    src: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=1200",
-    title: "School Facilities Upgrade & Student Welfare",
-    subtitle: "Improving rural school infrastructure, sanitation, and learning environments for 350+ students.",
-    badge: "Primary Outreach"
+    id: "toilet-construction",
+    icon: <FaBuilding className="text-[#366A35] text-2xl" />,
+    accentColor: "border-[#366A35]",
+    badgeBg: "bg-[#366A35]/10 text-[#366A35]"
   },
   {
-    src: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&q=80&w=1200",
-    title: "Classroom Roof Construction & Repairs",
-    subtitle: "Replacing damaged beams and fitting CGI corrugated steel sheets to withstand monsoon weather.",
-    badge: "Infrastructure Support"
+    id: "roof-construction",
+    icon: <FaBuilding className="text-[#EC8134] text-2xl" />,
+    accentColor: "border-[#EC8134]",
+    badgeBg: "bg-[#EC8134]/10 text-[#EC8134]"
   },
   {
-    src: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&q=80&w=1200",
-    title: "Student Health & Hygiene Programs",
-    subtitle: "Interactive oral health demonstrations paired with fluoride hygiene kit distributions.",
-    badge: "Health & Hygiene"
+    id: "toothbrushing-demo",
+    icon: <FaTooth className="text-blue-600 text-2xl" />,
+    accentColor: "border-blue-600",
+    badgeBg: "bg-blue-100 text-blue-700"
   },
   {
-    src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=1200",
-    title: "ECD Play Materials & Soft Carpeting",
-    subtitle: "Equipping early childhood development classrooms with learning toys and thermal flooring.",
-    badge: "Early Education"
+    id: "ecd-play-materials",
+    icon: <FaCubes className="text-purple-600 text-2xl" />,
+    accentColor: "border-purple-600",
+    badgeBg: "bg-purple-100 text-purple-700"
+  },
+  {
+    id: "ecd-carpet-flooring",
+    icon: <FaShapes className="text-emerald-600 text-2xl" />,
+    accentColor: "border-emerald-600",
+    badgeBg: "bg-emerald-100 text-emerald-700"
   }
 ];
 
 const OtherActivitiesDetail = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
+  const heroSlides = t("otherActivitiesDetail.heroSlides", { returnObjects: true }).map((slide, idx) => ({
+    ...slide,
+    src: heroImages[idx]
+  }));
+
+  const initiatives = t("otherActivitiesDetail.initiatives", { returnObjects: true }).map((item, idx) => ({
+    ...item,
+    ...initiativeMeta[idx]
+  }));
+
+  const impactMetrics = t("otherActivitiesDetail.impactMetrics", { returnObjects: true });
 
   // Hero Carousel State
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -62,7 +90,7 @@ const OtherActivitiesDetail = () => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     }, 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [heroSlides.length]);
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
@@ -70,12 +98,12 @@ const OtherActivitiesDetail = () => {
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
-        title: "School Facilities Upgrade & Student Welfare Program",
+        title: t("otherActivitiesDetail.shareTitle"),
         url: window.location.href,
       }).catch(() => {});
     } else {
       navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+      alert(t("otherActivitiesDetail.linkCopied"));
     }
   };
 
@@ -90,84 +118,6 @@ const OtherActivitiesDetail = () => {
     }
   };
 
-  const initiatives = [
-    {
-      id: "toilet-construction",
-      title: "1. School Sanitation: Toilet Facility Construction",
-      icon: <FaBuilding className="text-[#366A35] text-2xl" />,
-      accentColor: "border-[#366A35]",
-      badgeBg: "bg-[#366A35]/10 text-[#366A35]",
-      description:
-        "Access to proper sanitation facilities is essential for maintaining student health and encouraging daily school attendance, especially for young girls. We constructed new, separate, ventilated toilet blocks for boys and girls, complete with running water connections and hygienic handwashing stations.",
-      details: [
-        "Built separate, private toilet stalls for male and female students",
-        "Installed continuous tap water supply systems and concrete handwash basins",
-        "Constructed proper waste disposal and septic filtration tanks",
-        "Provided soap dispensers and trained students on post-use sanitation practices"
-      ]
-    },
-    {
-      id: "roof-construction",
-      title: "2. Infrastructure Support: Classroom Roof Construction & Repair",
-      icon: <FaBuilding className="text-[#EC8134] text-2xl" />,
-      accentColor: "border-[#EC8134]",
-      badgeBg: "bg-[#EC8134]/10 text-[#EC8134]",
-      description:
-        "Damp and leaking roofs disrupt studies and create unsafe classroom environments during monsoon rains and extreme weather. We repaired damaged structural beams and fitted high-durability CGI corrugated steel roofing sheets across school blocks to keep classrooms dry, safe, and fully functional year-round.",
-      details: [
-        "Replaced damaged timber frameworks and cracked roofing materials",
-        "Installed durable CGI steel corrugated sheets over leaking classroom blocks",
-        "Sealed eaves and drainage gutters to prevent water accumulation",
-        "Ensured zero classroom disruption during heavy seasonal rainfalls"
-      ]
-    },
-    {
-      id: "toothbrushing-demo",
-      title: "3. Health & Hygiene: Student Toothbrushing Demonstrations",
-      icon: <FaTooth className="text-blue-600 text-2xl" />,
-      accentColor: "border-blue-600",
-      badgeBg: "bg-blue-100 text-blue-700",
-      description:
-        "Preventive dental health education protects children from cavities, tooth loss, and school absenteeism due to pain. Using oversized 3D jaw models and giant brushes, our volunteer team conducted interactive step-by-step demonstrations showing students how to properly brush their teeth and clean their gums.",
-      details: [
-        "Led interactive group demonstrations on proper circular brushing techniques",
-        "Handed out dental kits containing fluoride toothpaste, soft brushes, and rinsing cups",
-        "Guided students through live, supervised tooth-brushing sessions on-site",
-        "Distributed 30-day daily brushing habit tracking cards with stickers for home use"
-      ]
-    },
-    {
-      id: "ecd-play-materials",
-      title: "4. Early Childhood Education: Play Materials & Learning Toys",
-      icon: <FaCubes className="text-purple-600 text-2xl" />,
-      accentColor: "border-purple-600",
-      badgeBg: "bg-purple-100 text-purple-700",
-      description:
-        "Young children learn best through active play, tactile discovery, and social interaction. We equipped Early Childhood Development (ECD) classrooms with age-appropriate learning toys, puzzle sets, building blocks, and creative art materials to spark curiosity and cognitive development.",
-      details: [
-        "Supplied non-toxic wooden building blocks, shape sorters, and counting beads",
-        "Provided picture books, drawing pads, crayons, and clay modeling kits",
-        "Created dedicated story corner play sets for toddler creative play",
-        "Oriented ECD teachers on integrating play-based methods into daily lesson plans"
-      ]
-    },
-    {
-      id: "ecd-carpet-flooring",
-      title: "5. Classroom Comfort: Warm Floor Carpeting for ECD Rooms",
-      icon: <FaShapes className="text-emerald-600 text-2xl" />,
-      accentColor: "border-emerald-600",
-      badgeBg: "bg-emerald-100 text-emerald-700",
-      description:
-        "Rural ECD classrooms frequently feature cold, hard concrete floors where young children spend hours sitting and playing. To create a warm, safe, and hygienic indoor space, we installed thick thermal insulating carpets and soft foam play mats throughout the early learning rooms.",
-      details: [
-        "Fitted thick thermal foam padding under heavy-duty carpet layers",
-        "Transformed cold concrete floors into soft, warm, child-safe seating areas",
-        "Reduced dust exposure and cushioned accidental falls during indoor activities",
-        "Significantly improved daily attendance and comfort for young toddlers"
-      ]
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-slate-50 text-gray-800 pt-28 pb-20 font-['Nunito_Sans',sans-serif]">
       
@@ -178,31 +128,31 @@ const OtherActivitiesDetail = () => {
           {/* Category & Status Badges */}
           <div className="flex flex-wrap items-center justify-center gap-3">
             <span className="px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-widest font-['Montserrat',sans-serif] bg-[#EC8134]/10 text-[#EC8134]">
-              Community & Education Support
+              {t("otherActivitiesDetail.categoryBadge")}
             </span>
             <span className="px-3 py-1 rounded-full bg-slate-200 text-gray-700 text-xs font-bold uppercase tracking-wider font-['Montserrat',sans-serif]">
-              Active Projects
+              {t("otherActivitiesDetail.statusBadge")}
             </span>
           </div>
 
           {/* Centered Balanced Title */}
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 font-['Montserrat',sans-serif] leading-tight">
-            School Facilities Upgrade & Student Welfare Program
+            {t("otherActivitiesDetail.pageTitle")}
           </h1>
 
           {/* Key Event Details Pills */}
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600 font-medium pt-2">
             <div className="flex items-center gap-2">
               <FaCalendarAlt className="text-[#EC8134]" />
-              <span>Ongoing Community Project</span>
+              <span>{t("otherActivitiesDetail.eventDetails.duration")}</span>
             </div>
             <div className="flex items-center gap-2">
               <FaMapMarkerAlt className="text-[#366A35]" />
-              <span>Rural School Districts</span>
+              <span>{t("otherActivitiesDetail.eventDetails.location")}</span>
             </div>
             <div className="flex items-center gap-2">
               <FaUsers className="text-[#D34A32]" />
-              <span>350+ Children Benefited</span>
+              <span>{t("otherActivitiesDetail.eventDetails.beneficiaries")}</span>
             </div>
           </div>
         </div>
@@ -280,17 +230,17 @@ const OtherActivitiesDetail = () => {
             {/* Overview Summary */}
             <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-4">
               <h2 className="text-2xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
-                Program Overview
+                {t("otherActivitiesDetail.programOverviewTitle")}
               </h2>
               <p className="text-gray-600 leading-relaxed">
-                Our initiative takes a holistic approach to improving school life in rural communities. By combining physical infrastructure enhancements—like toilet construction and roof repair—with personal health education and early childhood learning support, we help ensure every child studies in a safe, warm, and inspiring environment.
+                {t("otherActivitiesDetail.programOverviewText")}
               </p>
             </div>
 
             {/* DETAILED SECTIONS */}
             <div className="space-y-8">
               <h2 className="text-2xl font-black text-gray-900 font-['Montserrat',sans-serif]">
-                Detailed Project Breakdown
+                {t("otherActivitiesDetail.detailedBreakdownTitle")}
               </h2>
 
               {initiatives.map((item) => (
@@ -313,7 +263,7 @@ const OtherActivitiesDetail = () => {
 
                   <div className="bg-slate-50 rounded-2xl p-5 border border-slate-100 space-y-3">
                     <h4 className="text-xs font-extrabold uppercase tracking-wider text-gray-500 font-['Montserrat',sans-serif]">
-                      Key Highlights & Actions Taken:
+                      {t("otherActivitiesDetail.keyHighlightsLabel")}
                     </h4>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-gray-700 font-medium">
                       {item.details.map((point, idx) => (
@@ -331,25 +281,15 @@ const OtherActivitiesDetail = () => {
             {/* Overall Program Outcomes */}
             <div className="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-3xl p-8 shadow-md">
               <h3 className="text-xs font-extrabold uppercase tracking-widest text-[#EC8134] font-['Montserrat',sans-serif] mb-6">
-                Combined Impact Metrics
+                {t("otherActivitiesDetail.impactMetricsTitle")}
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-                <div className="space-y-1">
-                  <div className="text-2xl sm:text-3xl font-black text-white font-['Montserrat',sans-serif]">New</div>
-                  <div className="text-xs font-semibold text-gray-300 font-['Montserrat',sans-serif]">Toilets Constructed</div>
-                </div>
-                <div className="space-y-1">
-                  <div className="text-2xl sm:text-3xl font-black text-white font-['Montserrat',sans-serif]">100%</div>
-                  <div className="text-xs font-semibold text-gray-300 font-['Montserrat',sans-serif]">Leak-Free Roofs</div>
-                </div>
-                <div className="space-y-1">
-                  <div className="text-2xl sm:text-3xl font-black text-white font-['Montserrat',sans-serif]">180+</div>
-                  <div className="text-xs font-semibold text-gray-300 font-['Montserrat',sans-serif]">Oral Kits Gifted</div>
-                </div>
-                <div className="space-y-1">
-                  <div className="text-2xl sm:text-3xl font-black text-white font-['Montserrat',sans-serif]">Warm</div>
-                  <div className="text-xs font-semibold text-gray-300 font-['Montserrat',sans-serif]">Carpeted ECD Rooms</div>
-                </div>
+                {impactMetrics.map((metric, idx) => (
+                  <div className="space-y-1" key={idx}>
+                    <div className="text-2xl sm:text-3xl font-black text-white font-['Montserrat',sans-serif]">{metric.value}</div>
+                    <div className="text-xs font-semibold text-gray-300 font-['Montserrat',sans-serif]">{metric.label}</div>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -357,10 +297,10 @@ const OtherActivitiesDetail = () => {
             <div className="p-8 rounded-3xl bg-gradient-to-r from-[#EC8134]/10 via-[#366A35]/5 to-transparent border-l-4 border-[#EC8134] relative space-y-3">
               <FaQuoteLeft className="text-3xl text-[#EC8134]/30" />
               <p className="text-base sm:text-lg font-bold text-gray-900 italic font-['Montserrat',sans-serif] leading-relaxed">
-                "Combining clean toilets, dry roofs, warm carpets, and hygiene demonstrations has completely changed our students' daily attitude toward coming to school."
+                "{t("otherActivitiesDetail.quoteText")}"
               </p>
               <p className="text-xs font-bold text-gray-500 uppercase tracking-wider font-['Montserrat',sans-serif]">
-                — Local School Headmaster & Community Representative
+                {t("otherActivitiesDetail.quoteAuthor")}
               </p>
             </div>
           </div>
@@ -371,49 +311,49 @@ const OtherActivitiesDetail = () => {
             {/* Quick Summary Card */}
             <div className="bg-white rounded-3xl p-6 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-6 sticky top-28">
               <h3 className="text-lg font-bold text-gray-900 font-['Montserrat',sans-serif] border-b border-gray-100 pb-4">
-                Quick Info
+                {t("otherActivitiesDetail.quickInfoTitle")}
               </h3>
 
               <div className="space-y-4 text-sm">
                 <div className="flex items-start gap-3">
                   <FaTag className="text-[#EC8134] mt-1 shrink-0" />
                   <div>
-                    <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider">Focus Areas</span>
-                    <span className="font-bold text-gray-800">Toilets, Roofs, Oral Health, ECD Toys & Carpets</span>
+                    <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider">{t("otherActivitiesDetail.focusAreasLabel")}</span>
+                    <span className="font-bold text-gray-800">{t("otherActivitiesDetail.focusAreasValue")}</span>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
                   <FaMapMarkerAlt className="text-blue-600 mt-1 shrink-0" />
                   <div>
-                    <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider">Location</span>
-                    <span className="font-bold text-gray-800">Community Primary & ECD Schools</span>
+                    <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider">{t("otherActivitiesDetail.locationLabel")}</span>
+                    <span className="font-bold text-gray-800">{t("otherActivitiesDetail.locationValue")}</span>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
                   <FaGlobe className="text-[#366A35] mt-1 shrink-0" />
                   <div>
-                    <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider">Organizer</span>
-                    <span className="font-bold text-gray-800">Community & School Outreach Team</span>
+                    <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider">{t("otherActivitiesDetail.organizerLabel")}</span>
+                    <span className="font-bold text-gray-800">{t("otherActivitiesDetail.organizerValue")}</span>
                   </div>
                 </div>
               </div>
 
               {/* Action Buttons */}
               <div className="pt-4 border-t border-gray-100 space-y-3">
-                <button 
+                <button
                   onClick={handleShare}
                   className="w-full flex items-center justify-center gap-2 bg-slate-100 text-gray-700 py-3 rounded-xl font-bold text-sm hover:bg-slate-200 transition font-['Montserrat',sans-serif] cursor-pointer"
                 >
-                  <FaShareAlt /> Share Project
+                  <FaShareAlt /> {t("otherActivitiesDetail.shareProject")}
                 </button>
 
-                <a 
+                <a
                   href="mailto:contact@project28.org"
                   className="w-full flex items-center justify-center gap-2 bg-[#366A35] text-white py-3 rounded-xl font-bold text-sm hover:bg-[#2e592d] transition font-['Montserrat',sans-serif]"
                 >
-                  <FaHandHoldingHeart /> Support This Cause
+                  <FaHandHoldingHeart /> {t("otherActivitiesDetail.becomeVolunteer")}
                 </a>
               </div>
             </div>
@@ -421,16 +361,16 @@ const OtherActivitiesDetail = () => {
             {/* Report Download Banner */}
             <div className="bg-gradient-to-br from-[#EC8134] to-[#d36f26] rounded-3xl p-6 text-white space-y-4 shadow-md">
               <h4 className="text-lg font-bold font-['Montserrat',sans-serif]">
-                Full Program Documentation
+                {t("otherActivitiesDetail.reportBannerTitle")}
               </h4>
               <p className="text-xs text-orange-100 leading-relaxed">
-                Download the complete field report detailing toilet construction specs, roofing material logs, dental kit distributions, and ECD toy inventory.
+                {t("otherActivitiesDetail.reportBannerText")}
               </p>
-              <button 
-                onClick={() => alert("Downloading activity briefing report...")}
+              <button
+                onClick={() => alert(t("otherActivitiesDetail.downloadingAlert"))}
                 className="inline-flex items-center gap-2 bg-white text-[#EC8134] px-4 py-2.5 rounded-xl font-bold text-xs hover:bg-slate-50 transition shadow-sm font-['Montserrat',sans-serif] cursor-pointer"
               >
-                <FaDownload /> Download Report PDF
+                <FaDownload /> {t("otherActivitiesDetail.downloadReportPdf")}
               </button>
             </div>
 
@@ -443,16 +383,16 @@ const OtherActivitiesDetail = () => {
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
         <div className="bg-white rounded-3xl p-8 sm:p-12 border border-gray-100 shadow-sm text-center space-y-6">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 font-['Montserrat',sans-serif]">
-            Want to learn more about our school initiatives?
+            {t("otherActivitiesDetail.footerCtaTitle")}
           </h2>
           <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            Discover all our active projects across sanitation construction, health awareness campaigns, classroom weatherproofing, and early education support.
+            {t("otherActivitiesDetail.footerCtaText")}
           </p>
-          <button 
+          <button
             onClick={handleScrollToOurWork}
             className="inline-flex items-center gap-2 bg-[#EC8134] text-[#FFFFFF] px-6 py-3 rounded-xl font-bold text-sm hover:bg-[#d9732b] transition font-['Montserrat',sans-serif] cursor-pointer"
           >
-            Explore All Activities
+            {t("otherActivitiesDetail.exploreAllActivities")}
           </button>
         </div>
       </section>

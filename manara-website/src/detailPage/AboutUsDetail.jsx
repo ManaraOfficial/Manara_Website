@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   FaBullseye,
   FaEye,
@@ -17,125 +18,53 @@ import {
   FaCheckCircle
 } from "react-icons/fa";
 
-// --- Data Arrays ---
+// --- Icon/style metadata (text comes from i18n) ---
 
-const STATS = [
-  { id: 1, label: "Active Initiatives", value: "28+" },
-  { id: 2, label: "Lives Impacted", value: "10,000+" },
-  { id: 3, label: "Global Partners", value: "15+" },
-  { id: 4, label: "Years of Service", value: "5+" },
+const focusIcons = [<FaBookOpen />, <FaLeaf />, <FaComments />];
+
+const methodologyMeta = [
+  { icon: <FaSearch />, color: "from-amber-500/10 to-orange-500/5 text-[#EC8134]", accent: "bg-[#EC8134]" },
+  { icon: <FaCogs />, color: "from-emerald-500/10 to-green-500/5 text-[#366A35]", accent: "bg-[#366A35]" },
+  { icon: <FaChartLine />, color: "from-[#D34A32]/10 to-red-500/5 text-[#D34A32]", accent: "bg-[#D34A32]" },
 ];
 
-const FOCUS_AREAS = [
-  {
-    icon: <FaBookOpen />,
-    title: "Education & Curious Minds",
-    description: "Fostering environments where continuous learning and curiosity thrive, providing educational resources to underserved areas.",
-  },
-  {
-    icon: <FaLeaf />,
-    title: "Sustainable Development",
-    description: "Executing eco-friendly infrastructure and resource management projects to ensure long-term community health.",
-  },
-  {
-    icon: <FaComments />,
-    title: "Civic Dialogue",
-    description: "Creating safe spaces for community discussions, bridging cultural divides between our global and local networks.",
-  }
+const coreValueMeta = [
+  { icon: <FaHandshake />, color: "bg-[#EC8134]/10 text-[#EC8134]" },
+  { icon: <FaUsers />, color: "bg-[#366A35]/10 text-[#366A35]" },
+  { icon: <FaLightbulb />, color: "bg-[#D34A32]/10 text-[#D34A32]" },
+  { icon: <FaGlobe />, color: "bg-blue-100 text-blue-600" },
 ];
 
-const METHODOLOGY = [
-  {
-    step: "01",
-    badge: "Stage 01",
-    icon: <FaSearch />,
-    title: "Listen & Assess",
-    description: "We start on the ground before designing any project. Our team conducts field research and holds open dialogues with community members to identify genuine needs.",
-    highlights: ["On-the-ground surveys", "Community consultations", "Resource mapping"],
-    color: "from-amber-500/10 to-orange-500/5 text-[#EC8134]",
-    accent: "bg-[#EC8134]",
-  },
-  {
-    step: "02",
-    badge: "Stage 02",
-    icon: <FaCogs />,
-    title: "Co-Design & Execute",
-    description: "Collaborating with local leaders and international partners, we build tailored action plans like Project-28 and execute them with complete financial and operational clarity.",
-    highlights: ["Local leadership input", "Cross-border teamwork", "Direct resource delivery"],
-    color: "from-emerald-500/10 to-green-500/5 text-[#366A35]",
-    accent: "bg-[#366A35]",
-  },
-  {
-    step: "03",
-    badge: "Stage 03",
-    icon: <FaChartLine />,
-    title: "Evaluate & Scale",
-    description: "We measure impact, gather feedback from local participants, publish transparent reports, and scale effective models across other communities.",
-    highlights: ["Impact reporting", "Open financial audits", "Long-term sustainability"],
-    color: "from-[#D34A32]/10 to-red-500/5 text-[#D34A32]",
-    accent: "bg-[#D34A32]",
-  }
-];
-
-const CORE_VALUES = [
-  {
-    icon: <FaHandshake />,
-    title: "Radical Transparency",
-    description: "We believe in open governance. Our financial disclosures and impact reports are always accessible to the public.",
-    color: "bg-[#EC8134]/10 text-[#EC8134]"
-  },
-  {
-    icon: <FaUsers />,
-    title: "Community First",
-    description: "Everything we do is centered around empowering communities and fostering meaningful dialogue across borders.",
-    color: "bg-[#366A35]/10 text-[#366A35]"
-  },
-  {
-    icon: <FaLightbulb />,
-    title: "Curious Minds",
-    description: "We encourage innovation, continuous learning, and creative problem-solving in all of our active projects.",
-    color: "bg-[#D34A32]/10 text-[#D34A32]"
-  },
-  {
-    icon: <FaGlobe />,
-    title: "Global Connection",
-    description: "Bridging the gap between our offices in Kathmandu and Munich to create a unified, worldwide impact.",
-    color: "bg-blue-100 text-blue-600"
-  }
-];
-
-const TEAM = [
-  {
-    name: "Ralf Ledl",
-    role: "Chief Executive Officer",
-    image: "https://i.pravatar.cc/300?img=11",
-  },
-  {
-    name: "Jurgen Luck",
-    role: "Head of Operations",
-    image: "https://i.pravatar.cc/300?img=12 ",
-  },
-  {
-    name: "Andrea Spieth",
-    role: "Project Manager",
-    image: "https://i.pravatar.cc/300?img=47",
-  },
+const teamImages = [
+  "https://i.pravatar.cc/300?img=11",
+  "https://i.pravatar.cc/300?img=12 ",
+  "https://i.pravatar.cc/300?img=47",
 ];
 
 const AboutUsPage = () => {
+  const { t } = useTranslation();
+
+  const STATS = t("aboutUsDetail.stats", { returnObjects: true }).map((s, idx) => ({ id: idx + 1, ...s }));
+  const FOCUS_AREAS = t("aboutUsDetail.focusAreas", { returnObjects: true }).map((f, idx) => ({ ...f, icon: focusIcons[idx] }));
+  const METHODOLOGY = t("aboutUsDetail.methodology", { returnObjects: true }).map((m, idx) => ({ ...m, ...methodologyMeta[idx] }));
+  const CORE_VALUES = t("aboutUsDetail.coreValues", { returnObjects: true }).map((v, idx) => ({ ...v, ...coreValueMeta[idx] }));
+  const TEAM = t("aboutUsDetail.team", { returnObjects: true }).map((m, idx) => ({ ...m, image: teamImages[idx] }));
+  const missionPoints = t("aboutUsDetail.missionPoints", { returnObjects: true });
+  const visionPoints = t("aboutUsDetail.visionPoints", { returnObjects: true });
+
   return (
     <div className="min-h-screen bg-slate-50 text-gray-800 pt-28 pb-16 font-['Nunito_Sans',sans-serif]">
 
       {/* 1. HERO SECTION */}
       <section className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto mb-20 text-center space-y-6">
         <span className="inline-block px-3.5 py-1.5 rounded-full bg-[#EC8134]/10 text-[#EC8134] border border-[#EC8134]/20 text-xs font-extrabold uppercase tracking-widest font-['Montserrat',sans-serif]">
-          Who We Are
+          {t("aboutUsDetail.heroBadge")}
         </span>
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight font-['Montserrat',sans-serif] max-w-4xl mx-auto leading-tight">
-          Empowering Communities Through <span className="text-[#EC8134]">Dialogue & Action</span>
+          {t("aboutUsDetail.heroTitlePrefix")} <span className="text-[#EC8134]">{t("aboutUsDetail.heroTitleHighlight")}</span>
         </h1>
         <p className="text-base sm:text-lg text-gray-600 leading-relaxed font-normal max-w-3xl mx-auto">
-          We are a dedicated collective operating across borders to drive sustainable change. From curious minds to large-scale initiatives, we bridge gaps and build futures.
+          {t("aboutUsDetail.heroSubtitle")}
         </p>
       </section>
 
@@ -145,27 +74,27 @@ const AboutUsPage = () => {
 
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#366A35]/10 text-[#366A35] text-xs font-extrabold uppercase tracking-widest font-['Montserrat',sans-serif]">
-              Our Journey
+              {t("aboutUsDetail.journeyBadge")}
             </div>
 
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 font-['Montserrat',sans-serif] leading-tight">
-              Bridging Ideas Between <span className="text-[#EC8134]">Kathmandu</span> & <span className="text-[#366A35]">Munich</span>
+              {t("aboutUsDetail.journeyTitlePrefix")} <span className="text-[#EC8134]">{t("aboutUsDetail.journeyTitleKathmandu")}</span> {t("aboutUsDetail.journeyTitleAnd")} <span className="text-[#366A35]">{t("aboutUsDetail.journeyTitleMunich")}</span>
             </h2>
 
             <p className="text-gray-600 leading-relaxed text-base">
-              It all started with a simple conversation between curious minds across two distinct regions. We recognized a universal truth: while resources are often unevenly distributed, the passion for progress and community development knows no borders.
+              {t("aboutUsDetail.journeyText1")}
             </p>
 
             <p className="text-gray-600 leading-relaxed text-base">
-              What began as a grassroots initiative has evolved into an international collective. Through flagship efforts like <strong>Project-28</strong> and our community dialogue programs, we turn global solidarity into tangible, local action.
+              {t("aboutUsDetail.journeyText2Prefix")} <strong>{t("aboutUsDetail.journeyText2Bold")}</strong> {t("aboutUsDetail.journeyText2Suffix")}
             </p>
 
             <div className="p-5 rounded-2xl bg-gradient-to-r from-[#EC8134]/10 via-[#366A35]/5 to-transparent border-l-4 border-[#EC8134] space-y-1">
               <p className="text-sm font-bold text-gray-900 font-['Montserrat',sans-serif]">
-                "Dialogue is the bridge; action is the destination."
+                {t("aboutUsDetail.journeyQuote")}
               </p>
               <p className="text-xs text-gray-500 font-medium">
-                Connecting volunteer networks in Nepal with international advocates in Germany.
+                {t("aboutUsDetail.journeyQuoteAuthor")}
               </p>
             </div>
           </div>
@@ -173,7 +102,7 @@ const AboutUsPage = () => {
           <div className="lg:col-span-5">
             <div className="relative bg-white rounded-3xl p-8 border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] space-y-6">
               <div className="text-xs font-bold text-gray-400 uppercase tracking-widest font-['Montserrat',sans-serif] mb-2">
-                Cross-Continental Network
+                {t("aboutUsDetail.networkLabel")}
               </div>
 
               <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100/80 transition hover:bg-slate-100/60">
@@ -181,8 +110,8 @@ const AboutUsPage = () => {
                   🇩🇪
                 </div>
                 <div>
-                  <h4 className="text-base font-bold text-gray-900 font-['Montserrat',sans-serif]">Munich, Germany</h4>
-                  <p className="text-xs text-gray-500">Resource Coordination & Global Outreach</p>
+                  <h4 className="text-base font-bold text-gray-900 font-['Montserrat',sans-serif]">{t("aboutUsDetail.munichTitle")}</h4>
+                  <p className="text-xs text-gray-500">{t("aboutUsDetail.munichText")}</p>
                 </div>
               </div>
 
@@ -197,14 +126,14 @@ const AboutUsPage = () => {
                   🇳🇵
                 </div>
                 <div>
-                  <h4 className="text-base font-bold text-gray-900 font-['Montserrat',sans-serif]">Kathmandu, Nepal</h4>
-                  <p className="text-xs text-gray-500">On-the-Ground Execution & Community Leadership</p>
+                  <h4 className="text-base font-bold text-gray-900 font-['Montserrat',sans-serif]">{t("aboutUsDetail.kathmanduTitle")}</h4>
+                  <p className="text-xs text-gray-500">{t("aboutUsDetail.kathmanduText")}</p>
                 </div>
               </div>
 
               <div className="pt-2 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500 font-semibold font-['Montserrat',sans-serif]">
-                <span>Grassroots Operations</span>
-                <span className="text-[#366A35] font-bold">100% Transparent</span>
+                <span>{t("aboutUsDetail.grassrootsOperations")}</span>
+                <span className="text-[#366A35] font-bold">{t("aboutUsDetail.transparentLabel")}</span>
               </div>
             </div>
           </div>
@@ -216,10 +145,10 @@ const AboutUsPage = () => {
       <section className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto mb-24">
         <div className="text-center space-y-4 mb-12">
           <span className="inline-block px-3.5 py-1.5 rounded-full bg-[#366A35]/10 text-[#366A35] text-xs font-extrabold uppercase tracking-widest font-['Montserrat',sans-serif]">
-            Our Purpose
+            {t("aboutUsDetail.purposeBadge")}
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 font-['Montserrat',sans-serif]">
-            Driven by <span className="text-[#EC8134]">Purpose</span>, Guided by <span className="text-[#366A35]">Impact</span>
+            {t("aboutUsDetail.purposeTitlePrefix")} <span className="text-[#EC8134]">{t("aboutUsDetail.purposeTitleHighlight1")}</span>, {t("aboutUsDetail.purposeTitleMid")} <span className="text-[#366A35]">{t("aboutUsDetail.purposeTitleHighlight2")}</span>
           </h2>
         </div>
 
@@ -233,26 +162,20 @@ const AboutUsPage = () => {
                 <FaBullseye />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
-                Our Mission
+                {t("aboutUsDetail.missionTitle")}
               </h3>
               <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                To provide equitable access to resources, education, and opportunities for underprivileged communities. We implement sustainable projects that foster independence, resilience, and cross-cultural understanding.
+                {t("aboutUsDetail.missionText")}
               </p>
             </div>
 
             <div className="pt-4 border-t border-gray-100 space-y-2.5 relative z-10">
-              <div className="flex items-center gap-2.5 text-xs font-semibold text-gray-700">
-                <FaCheckCircle className="text-[#EC8134] shrink-0" />
-                <span>Grassroots Community Support</span>
-              </div>
-              <div className="flex items-center gap-2.5 text-xs font-semibold text-gray-700">
-                <FaCheckCircle className="text-[#EC8134] shrink-0" />
-                <span>Sustainable & Independent Development</span>
-              </div>
-              <div className="flex items-center gap-2.5 text-xs font-semibold text-gray-700">
-                <FaCheckCircle className="text-[#EC8134] shrink-0" />
-                <span>Cross-Cultural Collaboration</span>
-              </div>
+              {missionPoints.map((point, idx) => (
+                <div className="flex items-center gap-2.5 text-xs font-semibold text-gray-700" key={idx}>
+                  <FaCheckCircle className="text-[#EC8134] shrink-0" />
+                  <span>{point}</span>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -265,26 +188,20 @@ const AboutUsPage = () => {
                 <FaEye />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
-                Our Vision
+                {t("aboutUsDetail.visionTitle")}
               </h3>
               <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                A world where geographic and socioeconomic boundaries do not dictate a person's potential. We envision thriving, interconnected communities built on a foundation of transparency, empathy, and mutual respect.
+                {t("aboutUsDetail.visionText")}
               </p>
             </div>
 
             <div className="pt-4 border-t border-gray-100 space-y-2.5 relative z-10">
-              <div className="flex items-center gap-2.5 text-xs font-semibold text-gray-700">
-                <FaCheckCircle className="text-[#366A35] shrink-0" />
-                <span>Boundary-Free Educational Access</span>
-              </div>
-              <div className="flex items-center gap-2.5 text-xs font-semibold text-gray-700">
-                <FaCheckCircle className="text-[#366A35] shrink-0" />
-                <span>Empowered Local Leadership</span>
-              </div>
-              <div className="flex items-center gap-2.5 text-xs font-semibold text-gray-700">
-                <FaCheckCircle className="text-[#366A35] shrink-0" />
-                <span>Transparent & Interconnected Governance</span>
-              </div>
+              {visionPoints.map((point, idx) => (
+                <div className="flex items-center gap-2.5 text-xs font-semibold text-gray-700" key={idx}>
+                  <FaCheckCircle className="text-[#366A35] shrink-0" />
+                  <span>{point}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -294,10 +211,10 @@ const AboutUsPage = () => {
       <section className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto mb-20">
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
-            What We Do
+            {t("aboutUsDetail.whatWeDoTitle")}
           </h2>
           <p className="text-sm sm:text-base text-gray-500 max-w-2xl mx-auto">
-            Our initiatives are heavily focused on three main pillars to ensure holistic and sustainable growth.
+            {t("aboutUsDetail.whatWeDoSubtitle")}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -339,13 +256,13 @@ const AboutUsPage = () => {
       <section className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto mb-24">
         <div className="text-center space-y-4 mb-16">
           <span className="inline-block px-3.5 py-1.5 rounded-full bg-[#EC8134]/10 text-[#EC8134] text-xs font-extrabold uppercase tracking-widest font-['Montserrat',sans-serif]">
-            Our Process
+            {t("aboutUsDetail.processBadge")}
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 font-['Montserrat',sans-serif]">
-            How We Turn Dialogue Into <span className="text-[#366A35]">Impact</span>
+            {t("aboutUsDetail.processTitlePrefix")} <span className="text-[#366A35]">{t("aboutUsDetail.processTitleHighlight")}</span>
           </h2>
           <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Sustainable change requires structure. We follow a clear, three-stage framework to ensure transparency, community ownership, and measurable results.
+            {t("aboutUsDetail.processSubtitle")}
           </p>
         </div>
 
@@ -391,7 +308,7 @@ const AboutUsPage = () => {
       <section className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto mb-20">
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
-            What Drives Us
+            {t("aboutUsDetail.whatDrivesUsTitle")}
           </h2>
         </div>
 
@@ -416,10 +333,10 @@ const AboutUsPage = () => {
       <section className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto mb-20">
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
-            Co-Founder & Executive Director
+            {t("aboutUsDetail.teamSectionTitle")}
           </h2>
           <p className="text-sm sm:text-base text-gray-500 max-w-2xl mx-auto">
-            Visionary Leader • Youth Advocate • Social Entrepreneur
+            {t("aboutUsDetail.teamSectionSubtitle")}
           </p>
         </div>
 
@@ -450,16 +367,16 @@ const AboutUsPage = () => {
       <section className="px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <div className="bg-[#EC8134] rounded-3xl p-8 sm:p-12 text-center text-white shadow-lg space-y-6">
           <h2 className="text-2xl sm:text-3xl font-bold font-['Montserrat',sans-serif]">
-            Want to be part of the change?
+            {t("aboutUsDetail.ctaTitle")}
           </h2>
           <p className="text-orange-100 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-            Whether you are looking to volunteer, partner, or just want to learn more about our projects, our inbox is always open.
+            {t("aboutUsDetail.ctaText")}
           </p>
           <Link
             to="/contact"
             className="inline-flex items-center gap-2 bg-white text-[#EC8134] px-6 py-3 rounded-xl font-bold text-sm hover:bg-slate-50 transition shadow-sm font-['Montserrat',sans-serif]"
           >
-            Contact Us Today <FaArrowRight />
+            {t("aboutUsDetail.ctaButton")} <FaArrowRight />
           </Link>
         </div>
       </section>
