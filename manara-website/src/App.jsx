@@ -2,6 +2,7 @@ import './index.css'
 import Navigation from './components/navigation/Navigation'
 import Footer from './components/footer/footer'
 import SmoothScroll from './components/reusableComp/SmoothScroll'
+import FestivalGreetingModal from './components/reusableComp/FestivalGreetingModal'
 import { getLenis } from './lib/lenis'
 import { Routes, Route, Outlet, useLocation } from 'react-router-dom'
 import { useEffect, useState, lazy, Suspense } from 'react'
@@ -189,6 +190,7 @@ const MainLayout = () => {
       <Outlet />
       <Footer />
       <ScrollToTopButton />
+      <FestivalGreetingModal />
     </div>
   )
 }
