@@ -17,6 +17,30 @@ body {
   color: #e5e5e5;
 }
 
+/* Theme toggle: curtain-down reveal via the View Transitions API */
+::view-transition-group(root) {
+  animation-duration: 600ms;
+}
+
+::view-transition-old(root) {
+  animation: none;
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  animation: theme-curtain-down 600ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  z-index: 2;
+}
+
+@keyframes theme-curtain-down {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
   .nunito {
     font-family: 'Nunito' , sans-serif;
   }
