@@ -57,7 +57,7 @@ export default function GalleryCarousel() {
   const totalCategories = CATEGORIES.length
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-[deeppink]/5 via-[#F8FAFC] to-white pb-20 px-4 flex flex-col items-center justify-start overflow-hidden"  id="gallery">
+    <section className="min-h-screen bg-gradient-to-b from-[deeppink]/5 via-[#F8FAFC] to-white dark:from-[deeppink]/10 dark:via-[#0c0c0c] dark:to-[#0a0a0a] pb-20 px-4 flex flex-col items-center justify-start overflow-hidden"  id="gallery">
       {/* Title Header */}
       <SectionHeader
         title={t('home.gallery.title')}
@@ -65,7 +65,7 @@ export default function GalleryCarousel() {
       />
 
       {/* Top Pill Navigation Bar */}
-      <div className="flex gap-2 bg-slate-200/60 backdrop-blur-md p-1.5 rounded-full mb-10 shadow-inner border border-slate-200/80">
+      <div className="flex gap-2 bg-slate-200/60 dark:bg-white/5 backdrop-blur-md p-1.5 rounded-full mb-10 shadow-inner border border-slate-200/80 dark:border-white/15">
         {CATEGORIES.map((cat) => {
           const isActive = activeCategory === cat.value
           return (
@@ -80,7 +80,7 @@ export default function GalleryCarousel() {
               className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
                 isActive
                   ? `text-white shadow-md ${cat.shadowClass}`
-                  : 'bg-transparent text-[#404040] hover:bg-slate-200/60 hover:text-black'
+                  : 'bg-transparent text-[#404040] dark:text-slate-300 hover:bg-slate-200/60 dark:hover:bg-white/10 hover:text-black dark:hover:text-white'
               }`}
             >
               <span
@@ -108,13 +108,13 @@ export default function GalleryCarousel() {
           if (offset > 1) offset -= totalCategories
 
           let transformStyles =
-            'translate-x-0 scale-100 opacity-100 z-10 shadow-xl shadow-slate-200/80 border border-slate-100'
+            'translate-x-0 scale-100 opacity-100 z-10 shadow-xl shadow-slate-200/80 dark:shadow-none border border-slate-100 dark:border-white/15'
           if (offset === -1) {
             transformStyles =
-              '-translate-x-1/4 scale-90 opacity-60 z-0 cursor-pointer shadow-lg border border-slate-200/60'
+              '-translate-x-1/4 scale-90 opacity-60 z-0 cursor-pointer shadow-lg dark:shadow-none border border-slate-200/60 dark:border-white/15'
           } else if (offset === 1) {
             transformStyles =
-              'translate-x-1/4 scale-90 opacity-60 z-0 cursor-pointer shadow-lg border border-slate-200/60'
+              'translate-x-1/4 scale-90 opacity-60 z-0 cursor-pointer shadow-lg dark:shadow-none border border-slate-200/60 dark:border-white/15'
           }
 
           const categoryAlbums = albums.filter((alb) => alb.category === cat.value)
@@ -123,7 +123,7 @@ export default function GalleryCarousel() {
             <div
               key={cat.value}
               onClick={() => offset !== 0 && setActiveCategory(cat.value)}
-              className={`absolute w-full max-w-3xl h-full bg-white rounded-3xl p-6 transition-all duration-500 ease-out ${transformStyles}`}
+              className={`absolute w-full max-w-3xl h-full bg-white dark:bg-[#1c1c1c] rounded-3xl p-6 transition-all duration-500 ease-out ${transformStyles}`}
             >
               <GalleryCardView
                 title={cat.label}

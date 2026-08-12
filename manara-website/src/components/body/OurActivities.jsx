@@ -80,7 +80,7 @@ const OurActivities = () => {
   const projects = t("home.activities.projects", { returnObjects: true });
 
   return (
-    <section className="bg-gradient-to-b from-[#366A35]/5 via-[#F8FAFC] to-hotpink font-['Nunito_Sans',sans-serif]" id="our-work">
+    <section className="bg-gradient-to-b from-[#366A35]/5 via-[#F8FAFC] to-hotpink dark:from-[#366A35]/10 dark:via-[#0c0c0c] dark:to-[#0a0a0a] font-['Nunito_Sans',sans-serif]" id="our-work">
       
       <div className="max-w-6xl mx-auto pb-20 px-6 space-b-16">
         
@@ -99,7 +99,7 @@ const OurActivities = () => {
             return (
               <div
                 key={project.id}
-                className={`group bg-white rounded-3xl border border-gray-200/80 p-6 sm:p-8 lg:p-10 shadow-sm hover:shadow-xl transition-all duration-500 ${theme.borderHover}`}
+                className={`group bg-white dark:bg-[#1f1f23] rounded-3xl border border-gray-200/80 dark:border-white/15 p-6 sm:p-8 lg:p-10 shadow-sm dark:shadow-xl dark:shadow-black/30 hover:shadow-xl transition-all duration-500 ${theme.borderHover}`}
               >
                 <div
                   className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center ${
@@ -159,16 +159,16 @@ const OurActivities = () => {
                         </span>
                       </div>
 
-                      <h3 className="text-2xl sm:text-4xl font-black text-gray-900 tracking-tight font-['Montserrat',sans-serif]">
+                      <h3 className="text-2xl sm:text-4xl font-black text-gray-900 dark:text-white tracking-tight font-['Montserrat',sans-serif]">
                         {copy.title}
                       </h3>
 
-                      <p className="text-sm font-bold text-gray-500 font-['Montserrat',sans-serif]">
+                      <p className="text-sm font-bold text-gray-500 dark:text-gray-400 font-['Montserrat',sans-serif]">
                         {copy.tagline}
                       </p>
                     </div>
 
-                    <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                    <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
                       {copy.description}
                     </p>
 

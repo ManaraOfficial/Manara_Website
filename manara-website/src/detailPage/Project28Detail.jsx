@@ -65,14 +65,14 @@ const MetricCard = ({ item, isVisible }) => {
   const animatedNumber = useCountUp(item.numericValue, 2000, isVisible);
 
   return (
-    <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center">
-      <div className="mb-3 p-3 bg-gray-50 rounded-xl">{item.icon}</div>
+    <div className="bg-white dark:bg-[#1f1f23] p-6 rounded-2xl border border-gray-100 dark:border-white/15 shadow-sm flex flex-col items-center text-center">
+      <div className="mb-3 p-3 bg-gray-50 dark:bg-white/5 rounded-xl">{item.icon}</div>
       <span className="text-3xl font-extrabold text-[#ff1493] mb-1 font-['Montserrat',sans-serif]">
         {item.prefix || ""}
         {animatedNumber}
         {item.suffix || ""}
       </span>
-      <span className="text-xs sm:text-sm font-medium text-gray-600">
+      <span className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-300">
         {item.label}
       </span>
     </div>
@@ -144,9 +144,9 @@ const Project28Detail = () => {
   const otherAreas = t("project28Detail.otherAreas", { returnObjects: true });
 
   return (
-    <div className="w-full bg-white text-[#404040] font-['Nunito_Sans',sans-serif]">
+    <div className="w-full bg-white dark:bg-[#0a0a0a] text-[#404040] dark:text-gray-200 font-['Nunito_Sans',sans-serif]">
       {/* HERO SECTION */}
-      <section className="bg-gradient-to-b from-red-50/40 via-white to-white pt-28 pb-12 px-6 border-b border-gray-100">
+      <section className="bg-gradient-to-b from-red-50/40 via-white to-white dark:from-[#0c0c0c] dark:via-[#0a0a0a] dark:to-[#0a0a0a] pt-28 pb-12 px-6 border-b border-gray-100 dark:border-white/15">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-4xl mx-auto mb-12">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ff1493]/10 text-[#ff1493] text-xs font-extrabold uppercase tracking-widest mb-4 font-['Montserrat',sans-serif]">
@@ -154,19 +154,19 @@ const Project28Detail = () => {
             </div>
 
             <HeroTitle
-              className="text-4xl sm:text-6xl font-black text-gray-900 tracking-tight leading-tight mb-6 font-['Montserrat',sans-serif]"
+              className="text-4xl sm:text-6xl font-black text-gray-900 dark:text-white tracking-tight leading-tight mb-6 font-['Montserrat',sans-serif]"
               segments={[
                 { text: t("project28Detail.heroTitleLine1") },
                 { text: t("project28Detail.heroTitleHighlight"), className: "text-[#ff1493]" },
               ]}
             />
 
-            <p className="text-base sm:text-xl text-gray-600 leading-relaxed font-normal max-w-3xl mx-auto mb-8">
+            <p className="text-base sm:text-xl text-gray-600 dark:text-gray-300 leading-relaxed font-normal max-w-3xl mx-auto mb-8">
               {t("project28Detail.heroSubtitle")}
             </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm text-gray-600">
-              <span className="inline-flex items-center gap-1.5 bg-gray-100 border border-gray-200 px-4 py-2 rounded-full font-medium">
+            <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+              <span className="inline-flex items-center gap-1.5 bg-gray-100 dark:bg-white/10 border border-gray-200 dark:border-white/15 px-4 py-2 rounded-full font-medium">
                 <FaMapMarkerAlt className="text-[#ff1493]" /> {t("project28Detail.heroLocation")}
               </span>
               <span className="bg-red-100/70 text-[#ff1493] border border-red-200 px-4 py-2 rounded-full font-bold">
@@ -177,7 +177,7 @@ const Project28Detail = () => {
 
           <div className="relative max-w-5xl mx-auto">
             <div className="absolute -inset-1 bg-gradient-to-r from-[#ff1493]/20 via-[#EC8134]/20 to-[#ff1493]/20 rounded-3xl blur-lg" />
-            <div className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-200 bg-white">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-200 dark:border-white/15 bg-white dark:bg-[#1f1f23]">
               <img
                 src={Project28Hero}
                 alt="Project 28 Nepal Initiative"
@@ -209,44 +209,44 @@ const Project28Detail = () => {
           <div className="lg:col-span-2 space-y-8">
             
             {/* Program Overview Card */}
-            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm space-y-4">
-              <h2 className="text-2xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
+            <div className="bg-white dark:bg-[#1f1f23] p-6 sm:p-8 rounded-3xl border border-gray-100 dark:border-white/15 shadow-sm space-y-4">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white font-['Montserrat',sans-serif]">
                 {t("project28Detail.programOverviewTitle")}
               </h2>
-              <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
                 {t("project28Detail.programOverviewText")}
               </p>
             </div>
 
             {/* Detailed Project Breakdown Header */}
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 font-['Montserrat',sans-serif] mb-6">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white font-['Montserrat',sans-serif] mb-6">
                 {t("project28Detail.breakdownTitle")}
               </h3>
 
               {/* Breakdown Card 1 */}
-              <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm space-y-6">
+              <div className="bg-white dark:bg-[#1f1f23] p-6 sm:p-8 rounded-3xl border border-gray-100 dark:border-white/15 shadow-sm space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-[#ffd2d9] rounded-2xl text-[#ff1493] shrink-0">
                     <FaBookOpen className="text-2xl" />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
+                    <h4 className="text-xl font-bold text-gray-900 dark:text-white font-['Montserrat',sans-serif]">
                       {t("project28Detail.breakdownItemTitle")}
                     </h4>
                   </div>
                 </div>
 
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
                   {t("project28Detail.breakdownItemText")}
                 </p>
 
                 {/* Key Highlights & Actions Box */}
-                <div className="bg-gray-50/80 p-5 sm:p-6 rounded-2xl border border-gray-100 space-y-3">
-                  <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 font-['Montserrat',sans-serif] block mb-2">
+                <div className="bg-gray-50/80 dark:bg-white/5 p-5 sm:p-6 rounded-2xl border border-gray-100 dark:border-white/10 space-y-3">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 dark:text-gray-500 font-['Montserrat',sans-serif] block mb-2">
                     {t("project28Detail.keyHighlightsLabel")}
                   </span>
-                  <div className="grid sm:grid-cols-2 gap-3 text-xs sm:text-sm text-gray-700 font-semibold">
+                  <div className="grid sm:grid-cols-2 gap-3 text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-semibold">
                     {t("project28Detail.breakdownHighlights", { returnObjects: true }).map((point, idx) => (
                       <div className="flex items-start gap-2.5" key={idx}>
                         <FaCheckCircle className="text-[#ff1493] shrink-0 mt-0.5" />
@@ -264,8 +264,8 @@ const Project28Detail = () => {
           <div className="space-y-6">
             
             {/* Quick Info Card */}
-            <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm space-y-6">
-              <h3 className="text-xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
+            <div className="bg-white dark:bg-[#1f1f23] p-6 rounded-3xl border border-gray-100 dark:border-white/15 shadow-sm space-y-6">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white font-['Montserrat',sans-serif]">
                 {t("project28Detail.quickInfoTitle")}
               </h3>
 
@@ -274,10 +274,10 @@ const Project28Detail = () => {
                 <div className="flex items-start gap-3">
                   <FaTag className="text-[#EC8134] text-sm shrink-0 mt-1" />
                   <div>
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block font-['Montserrat',sans-serif]">
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 dark:text-gray-500 block font-['Montserrat',sans-serif]">
                       {t("project28Detail.focusAreasLabel")}
                     </span>
-                    <span className="text-xs sm:text-sm font-bold text-gray-800">
+                    <span className="text-xs sm:text-sm font-bold text-gray-800 dark:text-gray-200">
                       {t("project28Detail.focusAreasValue")}
                     </span>
                   </div>
@@ -287,10 +287,10 @@ const Project28Detail = () => {
                 <div className="flex items-start gap-3">
                   <FaMapMarkerAlt className="text-blue-500 text-sm shrink-0 mt-1" />
                   <div>
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block font-['Montserrat',sans-serif]">
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 dark:text-gray-500 block font-['Montserrat',sans-serif]">
                       {t("project28Detail.locationLabel")}
                     </span>
-                    <span className="text-xs sm:text-sm font-bold text-gray-800">
+                    <span className="text-xs sm:text-sm font-bold text-gray-800 dark:text-gray-200">
                       {t("project28Detail.locationValue")}
                     </span>
                   </div>
@@ -300,10 +300,10 @@ const Project28Detail = () => {
                 <div className="flex items-start gap-3">
                   <FaGlobe className="text-[#ff1493] text-sm shrink-0 mt-1" />
                   <div>
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 block font-['Montserrat',sans-serif]">
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 dark:text-gray-500 block font-['Montserrat',sans-serif]">
                       {t("project28Detail.organizerLabel")}
                     </span>
-                    <span className="text-xs sm:text-sm font-bold text-gray-800">
+                    <span className="text-xs sm:text-sm font-bold text-gray-800 dark:text-gray-200">
                       {t("project28Detail.organizerValue")}
                     </span>
                   </div>
@@ -321,7 +321,7 @@ const Project28Detail = () => {
                       alert(t("project28Detail.linkCopied"));
                     }
                   }}
-                  className="w-full py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold rounded-xl flex items-center justify-center gap-2 transition font-['Montserrat',sans-serif]"
+                  className="w-full py-3 bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 text-gray-700 dark:text-gray-300 text-xs font-bold rounded-xl flex items-center justify-center gap-2 transition font-['Montserrat',sans-serif]"
                 >
                   <FaShareAlt /> {t("project28Detail.shareProject")}
                 </button>
@@ -358,7 +358,7 @@ const Project28Detail = () => {
       </section>
 
       {/* ANIMATED METRICS STRIP */}
-      <section ref={metricsRef} className="bg-gray-50 border-y border-gray-100 py-10 px-6">
+      <section ref={metricsRef} className="bg-gray-50 dark:bg-[#0c0c0c] border-y border-gray-100 dark:border-white/15 py-10 px-6">
         <div className="max-w-6xl px-8 mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
           {metrics.map((item) => (
             <MetricCard key={item.id} item={item} isVisible={isVisible} />
@@ -369,20 +369,20 @@ const Project28Detail = () => {
       {/* CONTEXT & OBJECTIVE */}
       <section className="max-w-6xl px-8 mx-auto py-16 sm:py-20">
         <div className="grid md:grid-cols-2 gap-8 sm:gap-10">
-          <div className="bg-white border-l-4 border-[#ff1493] p-8 rounded-r-3xl shadow-sm bg-gradient-to-r from-red-50/20 to-transparent">
+          <div className="bg-white dark:bg-[#1f1f23] border-l-4 border-[#ff1493] p-8 rounded-r-3xl shadow-sm bg-gradient-to-r from-red-50/20 to-transparent">
             <h3 className="text-xl sm:text-2xl font-bold text-[#ff1493] mb-3 font-['Montserrat',sans-serif]">
               {t("project28Detail.challengeTitle")}
             </h3>
-            <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
               {t("project28Detail.challengeText")}
             </p>
           </div>
 
-          <div className="bg-white border-l-4 border-[#EC8134] p-8 rounded-r-3xl shadow-sm bg-gradient-to-r from-orange-50/20 to-transparent">
+          <div className="bg-white dark:bg-[#1f1f23] border-l-4 border-[#EC8134] p-8 rounded-r-3xl shadow-sm bg-gradient-to-r from-orange-50/20 to-transparent">
             <h3 className="text-xl sm:text-2xl font-bold text-[#EC8134] mb-3 font-['Montserrat',sans-serif]">
               {t("project28Detail.solutionTitle")}
             </h3>
-            <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
               {t("project28Detail.solutionText")}
             </p>
           </div>
@@ -390,17 +390,17 @@ const Project28Detail = () => {
       </section>
 
       {/* PILLARS SECTION */}
-      <section className="bg-gray-50/50 py-16 px-4 sm:px-6 border-y border-gray-100">
+      <section className="bg-gray-50/50 dark:bg-[#0c0c0c] py-16 px-4 sm:px-6 border-y border-gray-100 dark:border-white/15">
         <div className="max-w-6xl mx-auto">
           {/* SECTION HEADER & TITLE */}
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="inline-block px-3.5 py-1 rounded-full bg-[#ff1493]/10 text-[#ff1493] text-xs font-black uppercase tracking-widest mb-3 font-['Montserrat',sans-serif]">
               {t("project28Detail.pillarsLabel")}
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight font-['Montserrat',sans-serif]">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight font-['Montserrat',sans-serif]">
               {t("project28Detail.pillarsTitle")}
             </h2>
-            <p className="text-gray-600 text-sm sm:text-base mt-2">
+            <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base mt-2">
               {t("project28Detail.pillarsSubtitle")}
             </p>
           </div>
@@ -410,7 +410,7 @@ const Project28Detail = () => {
             {projectPillars.map((pillar) => (
               <div
                 key={pillar.id}
-                className="bg-white rounded-[28px] border border-gray-200/70 shadow-sm overflow-hidden flex flex-col transition-all duration-300 hover:shadow-md"
+                className="bg-white dark:bg-[#1f1f23] rounded-[28px] border border-gray-200/70 dark:border-white/15 shadow-sm overflow-hidden flex flex-col transition-all duration-300 hover:shadow-md"
               >
                 {/* Header Image Box */}
                 <div className="relative h-[250px] w-full overflow-hidden">
@@ -445,20 +445,20 @@ const Project28Detail = () => {
 
                 {/* Card Content */}
                 <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
-                  <p className="text-xs sm:text-[13px] text-gray-500 leading-relaxed font-medium mb-8">
+                  <p className="text-xs sm:text-[13px] text-gray-500 dark:text-gray-400 leading-relaxed font-medium mb-8">
                     {pillar.description}
                   </p>
 
                   <div>
-                    <div className="pt-5 border-t border-gray-100">
-                      <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 block mb-4 font-['Montserrat',sans-serif]">
+                    <div className="pt-5 border-t border-gray-100 dark:border-white/15">
+                      <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 dark:text-gray-500 block mb-4 font-['Montserrat',sans-serif]">
                         {t("project28Detail.coreDeliverablesLabel")}
                       </span>
                       <div className="space-y-3">
                         {pillar.points.map((pt, idx) => (
                           <div key={idx} className="flex items-start gap-3">
                             <FaCheckCircle className="text-[#ff1493] text-xs shrink-0 mt-0.5" />
-                            <span className="text-xs text-gray-600 font-semibold leading-tight">
+                            <span className="text-xs text-gray-600 dark:text-gray-300 font-semibold leading-tight">
                               {pt}
                             </span>
                           </div>
@@ -506,24 +506,24 @@ const Project28Detail = () => {
       </section>
 
       {/* OTHER ACTIVITIES NAVIGATION */}
-      <section className="bg-gray-50 py-16 px-6 border-t border-gray-100">
+      <section className="bg-gray-50 dark:bg-[#0c0c0c] py-16 px-6 border-t border-gray-100 dark:border-white/15">
         <div className="max-w-6xl px-8 mx-auto space-y-16">
-          <h3 className="text-lg font-bold text-gray-800 mb-6 font-['Montserrat',sans-serif]">
+          <h3 className="text-lg font-bold text-gray-800 dark:text-gray-200 mb-6 font-['Montserrat',sans-serif]">
             {t("project28Detail.exploreOtherTitle")}
           </h3>
 
           <div className="grid sm:grid-cols-3 gap-6">
             <div
               onClick={() => navigate("/curious-minds")}
-              className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:border-[#ff1493]/50 transition cursor-pointer group"
+              className="bg-white dark:bg-[#1f1f23] p-6 rounded-2xl border border-gray-100 dark:border-white/15 shadow-sm hover:border-[#ff1493]/50 transition cursor-pointer group"
             >
               <span className="text-xs font-bold text-[#ff1493] uppercase tracking-wider font-['Montserrat',sans-serif]">
                 {otherAreas[0].tag}
               </span>
-              <h4 className="text-base font-bold text-gray-900 mt-2 group-hover:text-[#ff1493] transition font-['Montserrat',sans-serif]">
+              <h4 className="text-base font-bold text-gray-900 dark:text-white mt-2 group-hover:text-[#ff1493] transition font-['Montserrat',sans-serif]">
                 {otherAreas[0].title}
               </h4>
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                 {otherAreas[0].text}
               </p>
               <span className="inline-flex items-center gap-1 text-xs font-bold text-[#ff1493] mt-4">
@@ -533,15 +533,15 @@ const Project28Detail = () => {
 
             <div
               onClick={() => navigate("/sponsorship")}
-              className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:border-[#ff1493]/50 transition cursor-pointer group"
+              className="bg-white dark:bg-[#1f1f23] p-6 rounded-2xl border border-gray-100 dark:border-white/15 shadow-sm hover:border-[#ff1493]/50 transition cursor-pointer group"
             >
               <span className="text-xs font-bold text-[#EC8134] uppercase tracking-wider font-['Montserrat',sans-serif]">
                 {otherAreas[1].tag}
               </span>
-              <h4 className="text-base font-bold text-gray-900 mt-2 group-hover:text-[#EC8134] transition font-['Montserrat',sans-serif]">
+              <h4 className="text-base font-bold text-gray-900 dark:text-white mt-2 group-hover:text-[#EC8134] transition font-['Montserrat',sans-serif]">
                 {otherAreas[1].title}
               </h4>
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                 {otherAreas[1].text}
               </p>
               <span className="inline-flex items-center gap-1 text-xs font-bold text-[#EC8134] mt-4">
@@ -551,15 +551,15 @@ const Project28Detail = () => {
 
             <div
               onClick={() => navigate("/other-activities")}
-              className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:border-[#ff1493]/50 transition cursor-pointer group"
+              className="bg-white dark:bg-[#1f1f23] p-6 rounded-2xl border border-gray-100 dark:border-white/15 shadow-sm hover:border-[#ff1493]/50 transition cursor-pointer group"
             >
               <span className="text-xs font-bold text-[#ff1493] uppercase tracking-wider font-['Montserrat',sans-serif]">
                 {otherAreas[2].tag}
               </span>
-              <h4 className="text-base font-bold text-gray-900 mt-2 group-hover:text-[#ff1493] transition font-['Montserrat',sans-serif]">
+              <h4 className="text-base font-bold text-gray-900 dark:text-white mt-2 group-hover:text-[#ff1493] transition font-['Montserrat',sans-serif]">
                 {otherAreas[2].title}
               </h4>
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                 {otherAreas[2].text}
               </p>
               <span className="inline-flex items-center gap-1 text-xs font-bold text-[#ff1493] mt-4">
@@ -569,19 +569,19 @@ const Project28Detail = () => {
           </div>
 
           {/* TRANSPARENCY & CONTACT FOOTER CALLOUT */}
-          <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="bg-white dark:bg-[#1f1f23] p-6 rounded-2xl border border-gray-200 dark:border-white/15 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="text-center sm:text-left space-y-1">
-              <h4 className="font-bold text-gray-900 text-sm font-['Montserrat',sans-serif]">
+              <h4 className="font-bold text-gray-900 dark:text-white text-sm font-['Montserrat',sans-serif]">
                 {t("project28Detail.inquiryTitle")}
               </h4>
-              <p className="text-xs text-gray-600">
+              <p className="text-xs text-gray-600 dark:text-gray-300">
                 {t("project28Detail.inquiryText")}
               </p>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-2">
               <Link
                 to="/reports"
-                className="inline-flex items-center gap-1.5 bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-bold px-3.5 py-2 rounded-xl border border-gray-200 transition"
+                className="inline-flex items-center gap-1.5 bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 text-gray-800 dark:text-gray-200 text-xs font-bold px-3.5 py-2 rounded-xl border border-gray-200 dark:border-white/15 transition"
               >
                 <FaExternalLinkAlt /> {t("project28Detail.transparency")}
               </Link>

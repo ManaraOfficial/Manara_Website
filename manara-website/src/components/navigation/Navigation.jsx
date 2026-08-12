@@ -10,7 +10,10 @@ import {
   FaChevronDown,
   FaBars,
   FaXmark,
+  FaSun,
+  FaMoon,
 } from "react-icons/fa6";
+import { useTheme } from "../../context/ThemeContext";
 
 const LANGUAGES = [
   { code: "en", label: "English", flag: "🇬🇧" },
@@ -36,6 +39,7 @@ const Navigation = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
 
   const [scrolled, setScrolled] = useState(false);
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
@@ -276,6 +280,13 @@ const Navigation = () => {
 
           {/* 3. DESKTOP LANGUAGE SELECTOR */}
           <div className="hidden lg:flex items-center gap-4">
+            <button
+              onClick={toggleTheme}
+              className="flex items-center justify-center w-9 h-9 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full text-xs font-bold transition backdrop-blur-sm cursor-pointer"
+              aria-label="Toggle dark mode"
+            >
+              {theme === "dark" ? <FaSun className="text-[#EC8134]" /> : <FaMoon />}
+            </button>
             <div className="relative" ref={langRef}>
               <button
                 onClick={() => {
@@ -312,6 +323,13 @@ const Navigation = () => {
 
           {/* MOBILE TOGGLE & CONTROLS */}
           <div className="flex lg:hidden items-center gap-3">
+            <button
+              onClick={toggleTheme}
+              className="flex items-center justify-center w-8 h-8 bg-white/10 border border-white/20 rounded-full text-xs cursor-pointer"
+              aria-label="Toggle dark mode"
+            >
+              {theme === "dark" ? <FaSun className="text-[#EC8134]" /> : <FaMoon />}
+            </button>
             <div className="relative" ref={mobileLangRef}>
               <button
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}

@@ -120,7 +120,7 @@ const OtherActivitiesDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-gray-800 pt-28 pb-20 font-['Nunito_Sans',sans-serif]">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0a0a0a] text-gray-800 dark:text-gray-200 pt-28 pb-20 font-['Nunito_Sans',sans-serif]">
       
       {/* 1. CENTERED HERO HEADER SECTION WITH INTEGRATED CAROUSEL */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
@@ -131,19 +131,19 @@ const OtherActivitiesDetail = () => {
             <span className="px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-widest font-['Montserrat',sans-serif] bg-[#EC8134]/10 text-[#EC8134]">
               {t("otherActivitiesDetail.categoryBadge")}
             </span>
-            <span className="px-3 py-1 rounded-full bg-slate-200 text-gray-700 text-xs font-bold uppercase tracking-wider font-['Montserrat',sans-serif]">
+            <span className="px-3 py-1 rounded-full bg-slate-200 dark:bg-white/10 text-gray-700 dark:text-gray-300 text-xs font-bold uppercase tracking-wider font-['Montserrat',sans-serif]">
               {t("otherActivitiesDetail.statusBadge")}
             </span>
           </div>
 
           {/* Centered Balanced Title */}
           <HeroTitle
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 font-['Montserrat',sans-serif] leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white font-['Montserrat',sans-serif] leading-tight"
             segments={[{ text: t("otherActivitiesDetail.pageTitle") }]}
           />
 
           {/* Key Event Details Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600 font-medium pt-2">
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600 dark:text-gray-300 font-medium pt-2">
             <div className="flex items-center gap-2">
               <FaCalendarAlt className="text-[#EC8134]" />
               <span>{t("otherActivitiesDetail.eventDetails.duration")}</span>
@@ -160,7 +160,7 @@ const OtherActivitiesDetail = () => {
         </div>
 
         {/* HERO CAROUSEL (Replaces static hero image) */}
-        <div className="mt-10 relative w-full h-[360px] sm:h-[460px] rounded-3xl overflow-hidden shadow-xl border border-gray-200/80 group">
+        <div className="mt-10 relative w-full h-[360px] sm:h-[460px] rounded-3xl overflow-hidden shadow-xl border border-gray-200/80 dark:border-white/15 group">
           {heroSlides.map((slide, idx) => (
             <div
               key={idx}
@@ -230,44 +230,44 @@ const OtherActivitiesDetail = () => {
           <div className="lg:col-span-8 space-y-10">
             
             {/* Overview Summary */}
-            <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-4">
-              <h2 className="text-2xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
+            <div className="bg-white dark:bg-[#1f1f23] rounded-3xl p-8 border border-gray-100 dark:border-white/15 shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-none space-y-4">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white font-['Montserrat',sans-serif]">
                 {t("otherActivitiesDetail.programOverviewTitle")}
               </h2>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                 {t("otherActivitiesDetail.programOverviewText")}
               </p>
             </div>
 
             {/* DETAILED SECTIONS */}
             <div className="space-y-8">
-              <h2 className="text-2xl font-black text-gray-900 font-['Montserrat',sans-serif]">
+              <h2 className="text-2xl font-black text-gray-900 dark:text-white font-['Montserrat',sans-serif]">
                 {t("otherActivitiesDetail.detailedBreakdownTitle")}
               </h2>
 
               {initiatives.map((item) => (
                 <div 
                   key={item.id} 
-                  className={`bg-white rounded-3xl p-6 sm:p-8 border-l-4 ${item.accentColor} border-y border-r border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-5`}
+                  className={`bg-white dark:bg-[#1f1f23] rounded-3xl p-6 sm:p-8 border-l-4 ${item.accentColor} border-y border-r border-gray-100 dark:border-white/15 shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-none space-y-5`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className="p-3 bg-slate-50 rounded-2xl">
+                    <div className="p-3 bg-slate-50 dark:bg-white/5 rounded-2xl">
                       {item.icon}
                     </div>
-                    <h3 className="text-xl sm:text-2xl font-extrabold text-gray-900 font-['Montserrat',sans-serif]">
+                    <h3 className="text-xl sm:text-2xl font-extrabold text-gray-900 dark:text-white font-['Montserrat',sans-serif]">
                       {item.title}
                     </h3>
                   </div>
 
-                  <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
                     {item.description}
                   </p>
 
-                  <div className="bg-slate-50 rounded-2xl p-5 border border-slate-100 space-y-3">
-                    <h4 className="text-xs font-extrabold uppercase tracking-wider text-gray-500 font-['Montserrat',sans-serif]">
+                  <div className="bg-slate-50 dark:bg-white/5 rounded-2xl p-5 border border-slate-100 dark:border-white/10 space-y-3">
+                    <h4 className="text-xs font-extrabold uppercase tracking-wider text-gray-500 dark:text-gray-400 font-['Montserrat',sans-serif]">
                       {t("otherActivitiesDetail.keyHighlightsLabel")}
                     </h4>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-gray-700 font-medium">
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-medium">
                       {item.details.map((point, idx) => (
                         <li key={idx} className="flex items-start gap-2.5">
                           <FaCheckCircle className="text-[#366A35] text-base shrink-0 mt-0.5" />
@@ -298,10 +298,10 @@ const OtherActivitiesDetail = () => {
             {/* Quote Block */}
             <div className="p-8 rounded-3xl bg-gradient-to-r from-[#EC8134]/10 via-[#366A35]/5 to-transparent border-l-4 border-[#EC8134] relative space-y-3">
               <FaQuoteLeft className="text-3xl text-[#EC8134]/30" />
-              <p className="text-base sm:text-lg font-bold text-gray-900 italic font-['Montserrat',sans-serif] leading-relaxed">
+              <p className="text-base sm:text-lg font-bold text-gray-900 dark:text-white italic font-['Montserrat',sans-serif] leading-relaxed">
                 "{t("otherActivitiesDetail.quoteText")}"
               </p>
-              <p className="text-xs font-bold text-gray-500 uppercase tracking-wider font-['Montserrat',sans-serif]">
+              <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider font-['Montserrat',sans-serif]">
                 {t("otherActivitiesDetail.quoteAuthor")}
               </p>
             </div>
@@ -311,8 +311,8 @@ const OtherActivitiesDetail = () => {
           <div className="lg:col-span-4 space-y-8">
             
             {/* Quick Summary Card */}
-            <div className="bg-white rounded-3xl p-6 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-6 sticky top-28">
-              <h3 className="text-lg font-bold text-gray-900 font-['Montserrat',sans-serif] border-b border-gray-100 pb-4">
+            <div className="bg-white dark:bg-[#1f1f23] rounded-3xl p-6 border border-gray-100 dark:border-white/15 shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-none space-y-6 sticky top-28">
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white font-['Montserrat',sans-serif] border-b border-gray-100 dark:border-white/15 pb-4">
                 {t("otherActivitiesDetail.quickInfoTitle")}
               </h3>
 
@@ -320,33 +320,33 @@ const OtherActivitiesDetail = () => {
                 <div className="flex items-start gap-3">
                   <FaTag className="text-[#EC8134] mt-1 shrink-0" />
                   <div>
-                    <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider">{t("otherActivitiesDetail.focusAreasLabel")}</span>
-                    <span className="font-bold text-gray-800">{t("otherActivitiesDetail.focusAreasValue")}</span>
+                    <span className="block text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">{t("otherActivitiesDetail.focusAreasLabel")}</span>
+                    <span className="font-bold text-gray-800 dark:text-gray-200">{t("otherActivitiesDetail.focusAreasValue")}</span>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
                   <FaMapMarkerAlt className="text-blue-600 mt-1 shrink-0" />
                   <div>
-                    <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider">{t("otherActivitiesDetail.locationLabel")}</span>
-                    <span className="font-bold text-gray-800">{t("otherActivitiesDetail.locationValue")}</span>
+                    <span className="block text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">{t("otherActivitiesDetail.locationLabel")}</span>
+                    <span className="font-bold text-gray-800 dark:text-gray-200">{t("otherActivitiesDetail.locationValue")}</span>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
                   <FaGlobe className="text-[#366A35] mt-1 shrink-0" />
                   <div>
-                    <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider">{t("otherActivitiesDetail.organizerLabel")}</span>
-                    <span className="font-bold text-gray-800">{t("otherActivitiesDetail.organizerValue")}</span>
+                    <span className="block text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">{t("otherActivitiesDetail.organizerLabel")}</span>
+                    <span className="font-bold text-gray-800 dark:text-gray-200">{t("otherActivitiesDetail.organizerValue")}</span>
                   </div>
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-4 border-t border-gray-100 space-y-3">
+              <div className="pt-4 border-t border-gray-100 dark:border-white/15 space-y-3">
                 <button
                   onClick={handleShare}
-                  className="w-full flex items-center justify-center gap-2 bg-slate-100 text-gray-700 py-3 rounded-xl font-bold text-sm hover:bg-slate-200 transition font-['Montserrat',sans-serif] cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 bg-slate-100 dark:bg-white/10 text-gray-700 dark:text-gray-300 py-3 rounded-xl font-bold text-sm hover:bg-slate-200 dark:hover:bg-white/20 transition font-['Montserrat',sans-serif] cursor-pointer"
                 >
                   <FaShareAlt /> {t("otherActivitiesDetail.shareProject")}
                 </button>
@@ -383,11 +383,11 @@ const OtherActivitiesDetail = () => {
 
       {/* 3. RELATED ACTIVITIES / FOOTER CTA */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
-        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-gray-100 shadow-sm text-center space-y-6">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 font-['Montserrat',sans-serif]">
+        <div className="bg-white dark:bg-[#1f1f23] rounded-3xl p-8 sm:p-12 border border-gray-100 dark:border-white/15 shadow-sm text-center space-y-6">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white font-['Montserrat',sans-serif]">
             {t("otherActivitiesDetail.footerCtaTitle")}
           </h2>
-          <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+          <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
             {t("otherActivitiesDetail.footerCtaText")}
           </p>
           <button

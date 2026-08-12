@@ -23,7 +23,7 @@ const AboutSummarySection = () => {
   const commitments = t("home.about.commitments", { returnObjects: true });
 
   return (
-    <div className="relative bg-gradient-to-b from-[#EC8134]/5 via-[#F8FAFC] to-white overflow-hidden"
+    <div className="relative bg-gradient-to-b from-[#EC8134]/5 via-[#F8FAFC] to-white dark:from-[#EC8134]/10 dark:via-[#0c0c0c] dark:to-[#0a0a0a] overflow-hidden"
     >
       
       {/* 🌈 TOP TRI-COLOR BRAND ACCENT STRIP */}
@@ -101,15 +101,15 @@ const AboutSummarySection = () => {
             </div>
 
             {/* Floating Impact Badge (Bottom Right) */}
-            <div className="mt-6 bg-white/90 backdrop-blur-md p-4 sm:p-2 rounded-2xl border border-slate-100 shadow-xl flex items-center gap-4">
+            <div className="mt-6 bg-white/90 dark:bg-[#1f1f23] backdrop-blur-md p-4 sm:p-2 rounded-2xl border border-slate-100 dark:border-white/15 shadow-xl flex items-center gap-4">
               <div className="w-12 h-12 rounded-xl bg-orange-50 text-[#EC8134] flex items-center justify-center text-xl shrink-0">
                 <FaHeart />
               </div>
               <div>
-                <div className="text-sm font-extrabold text-slate-900 font-['Montserrat',sans-serif]">
+                <div className="text-sm font-extrabold text-slate-900 dark:text-white font-['Montserrat',sans-serif]">
                   {t("home.about.badgeTitle")}
                 </div>
-                <div className="text-xs text-slate-500 font-medium">
+                <div className="text-xs text-slate-500 dark:text-slate-400 font-medium">
                   {t("home.about.badgeText")}
                 </div>
               </div>
@@ -125,13 +125,13 @@ const AboutSummarySection = () => {
                 {t("home.about.pill")}
               </div>
               
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 font-['Montserrat',sans-serif] leading-[1.25]">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white font-['Montserrat',sans-serif] leading-[1.25]">
                 {t("home.about.headline")}
               </h3>
             </div>
 
             {/* Comprehensive Narrative Copy */}
-            <div className="space-y-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+            <div className="space-y-3 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
               <p>
                 <strong className="text-slate-900 font-bold">{t("home.about.tag")}</strong> {t("home.about.p1")}
               </p>
@@ -141,9 +141,9 @@ const AboutSummarySection = () => {
             </div>
 
             {/* Key Organizational Commitments List */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-xs sm:text-sm font-bold text-slate-700">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-200">
               {commitments.map((commitment, idx) => (
-                <div key={idx} className="flex items-center gap-2.5 p-2 rounded-lg bg-white/70 backdrop-blur-sm border border-slate-100">
+                <div key={idx} className="flex items-center gap-2.5 p-2 rounded-lg bg-white/70 dark:bg-[#1f1f23] backdrop-blur-sm border border-slate-100 dark:border-white/15">
                   <FaCheckCircle className="text-[#366A35] text-base shrink-0" />
                   <span>{commitment}</span>
                 </div>
@@ -169,40 +169,40 @@ const AboutSummarySection = () => {
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
           
           {/* Pillar 1: Education (Orange Accent) */}
-          <div className="p-6 rounded-3xl bg-white/80 backdrop-blur-sm border border-slate-200/70 hover:bg-white hover:shadow-xl hover:border-[#EC8134]/40 transition-all duration-300 group">
+          <div className="p-6 rounded-3xl bg-white/80 dark:bg-[#1f1f23] backdrop-blur-sm border border-slate-200/70 dark:border-white/15 hover:bg-white dark:hover:bg-white/10 hover:shadow-xl hover:border-[#EC8134]/40 transition-all duration-300 group">
             <div className="w-12 h-12 rounded-2xl bg-orange-100 text-[#EC8134] flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition-transform">
               <FaGraduationCap />
             </div>
-            <h4 className="text-lg font-bold text-slate-900 font-['Montserrat',sans-serif] mb-2">
+            <h4 className="text-lg font-bold text-slate-900 dark:text-white font-['Montserrat',sans-serif] mb-2">
               {pillars[0].title}
             </h4>
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               {pillars[0].text}
             </p>
           </div>
 
           {/* Pillar 2: Health & Nutrition (Green Accent) */}
-          <div className="p-6 rounded-3xl bg-white/80 backdrop-blur-sm border border-slate-200/70 hover:bg-white hover:shadow-xl hover:border-[#366A35]/40 transition-all duration-300 group">
+          <div className="p-6 rounded-3xl bg-white/80 dark:bg-[#1f1f23] backdrop-blur-sm border border-slate-200/70 dark:border-white/15 hover:bg-white dark:hover:bg-white/10 hover:shadow-xl hover:border-[#366A35]/40 transition-all duration-300 group">
             <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-[#366A35] flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition-transform">
               <FaMedkit />
             </div>
-            <h4 className="text-lg font-bold text-slate-900 font-['Montserrat',sans-serif] mb-2">
+            <h4 className="text-lg font-bold text-slate-900 dark:text-white font-['Montserrat',sans-serif] mb-2">
               {pillars[1].title}
             </h4>
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               {pillars[1].text}
             </p>
           </div>
 
           {/* Pillar 3: Community Empowerment (Red Accent) */}
-          <div className="p-6 rounded-3xl bg-white/80 backdrop-blur-sm border border-slate-200/70 hover:bg-white hover:shadow-xl hover:border-[#D34A32]/40 transition-all duration-300 group">
+          <div className="p-6 rounded-3xl bg-white/80 dark:bg-[#1f1f23] backdrop-blur-sm border border-slate-200/70 dark:border-white/15 hover:bg-white dark:hover:bg-white/10 hover:shadow-xl hover:border-[#D34A32]/40 transition-all duration-300 group">
             <div className="w-12 h-12 rounded-2xl bg-rose-100 text-[#D34A32] flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition-transform">
               <FaHandsHelping />
             </div>
-            <h4 className="text-lg font-bold text-slate-900 font-['Montserrat',sans-serif] mb-2">
+            <h4 className="text-lg font-bold text-slate-900 dark:text-white font-['Montserrat',sans-serif] mb-2">
               {pillars[2].title}
             </h4>
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               {pillars[2].text}
             </p>
           </div>
@@ -213,33 +213,33 @@ const AboutSummarySection = () => {
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           
           {/* Mission Card (Orange Header Accent) */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-white/90 backdrop-blur-sm border border-slate-200/80 shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white/90 dark:bg-[#1f1f23] backdrop-blur-sm border border-slate-200/80 dark:border-white/15 shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow">
             <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#EC8134]" />
             <div className="flex items-center gap-3 mb-3">
               <div className="w-10 h-10 rounded-xl bg-[#EC8134]/10 text-[#EC8134] flex items-center justify-center text-lg font-bold">
                 <FaBullseye />
               </div>
-              <h4 className="text-xl font-extrabold text-slate-900 font-['Montserrat',sans-serif]">
+              <h4 className="text-xl font-extrabold text-slate-900 dark:text-white font-['Montserrat',sans-serif]">
                 {t("home.about.missionTitle")}
               </h4>
             </div>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               {t("home.about.missionText")}
             </p>
           </div>
 
           {/* Vision Card (Green Header Accent) */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-white/90 backdrop-blur-sm border border-slate-200/80 shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white/90 dark:bg-[#1f1f23] backdrop-blur-sm border border-slate-200/80 dark:border-white/15 shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow">
             <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#366A35]" />
             <div className="flex items-center gap-3 mb-3">
               <div className="w-10 h-10 rounded-xl bg-[#366A35]/10 text-[#366A35] flex items-center justify-center text-lg font-bold">
                 <FaEye />
               </div>
-              <h4 className="text-xl font-extrabold text-slate-900 font-['Montserrat',sans-serif]">
+              <h4 className="text-xl font-extrabold text-slate-900 dark:text-white font-['Montserrat',sans-serif]">
                 {t("home.about.visionTitle")}
               </h4>
             </div>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               {t("home.about.visionText")}
             </p>
           </div>

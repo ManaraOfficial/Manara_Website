@@ -65,7 +65,7 @@ export default function SectionHeader({ title, subtitle }) {
         <div>
           <h1
             ref={titleRef}
-            className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-none uppercase"
+            className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-none uppercase"
           >
             {words.map((word, idx) => (
               <span key={idx} className="inline-block overflow-hidden pb-1 mr-[0.3em] align-top">
@@ -74,7 +74,7 @@ export default function SectionHeader({ title, subtitle }) {
             ))}
           </h1>
           {subtitle && (
-            <p ref={subtitleRef} className="text-sm text-slate-500 font-medium tracking-wide mt-2 will-change-transform">
+            <p ref={subtitleRef} className="text-sm text-slate-500 dark:text-slate-400 font-medium tracking-wide mt-2 will-change-transform">
               {subtitle}
             </p>
           )}

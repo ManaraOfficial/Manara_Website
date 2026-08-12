@@ -112,13 +112,13 @@ const MetricCard = ({ item }) => {
   return (
     <div
       ref={elementRef}
-      className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center space-y-1.5"
+      className="bg-white dark:bg-[#1f1f23] p-5 rounded-2xl border border-gray-100 dark:border-white/15 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center space-y-1.5"
     >
-      <div className="p-3 bg-slate-50 rounded-xl mb-1 text-[#366A35]">{item.icon}</div>
+      <div className="p-3 bg-slate-50 dark:bg-white/5 rounded-xl mb-1 text-[#366A35]">{item.icon}</div>
       <span className="text-2xl sm:text-3xl font-extrabold text-[#366A35] font-['Montserrat',sans-serif]">
         {displayValue}
       </span>
-      <span className="text-xs sm:text-sm font-semibold text-gray-600">
+      <span className="text-xs sm:text-sm font-semibold text-gray-600 dark:text-gray-300">
         {item.label}
       </span>
     </div>
@@ -163,7 +163,7 @@ const CuriousMindDetail = () => {
   const otherAreas = t("curiousMindsDetail.otherAreas", { returnObjects: true });
 
   return (
-    <div className="min-h-screen bg-slate-50 text-gray-800 pt-24 sm:pt-28 pb-16 px-4 sm:px-6 lg:px-8 font-['Nunito_Sans',sans-serif]">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0a0a0a] text-gray-800 dark:text-gray-200 pt-24 sm:pt-28 pb-16 px-4 sm:px-6 lg:px-8 font-['Nunito_Sans',sans-serif]">
       <div className="max-w-5xl mx-auto space-y-16">
 
         {/* HERO SECTION: Centered Editorial Header */}
@@ -178,7 +178,7 @@ const CuriousMindDetail = () => {
             </div>
 
             <HeroTitle
-              className="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight leading-tight font-['Montserrat',sans-serif]"
+              className="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white tracking-tight leading-tight font-['Montserrat',sans-serif]"
               segments={[
                 { text: t("curiousMindsDetail.heroTitleLine1") },
                 { break: true },
@@ -186,12 +186,12 @@ const CuriousMindDetail = () => {
               ]}
             />
 
-            <p className="text-base sm:text-xl text-gray-600 leading-relaxed font-normal max-w-3xl mx-auto pt-1">
+            <p className="text-base sm:text-xl text-gray-600 dark:text-gray-300 leading-relaxed font-normal max-w-3xl mx-auto pt-1">
               {t("curiousMindsDetail.heroSubtitle")}
             </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm text-gray-700 pt-2">
-              <span className="inline-flex items-center gap-2 bg-white border border-gray-200 shadow-xs px-4 py-2 rounded-full font-semibold">
+            <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm text-gray-700 dark:text-gray-300 pt-2">
+              <span className="inline-flex items-center gap-2 bg-white dark:bg-[#1f1f23] border border-gray-200 dark:border-white/15 shadow-xs px-4 py-2 rounded-full font-semibold">
                 <FaMapMarkerAlt className="text-[#EC8134]" /> {t("curiousMindsDetail.heroLocation")}
               </span>
               <span className="bg-[#366A35]/10 text-[#366A35] border border-[#366A35]/30 px-4 py-2 rounded-full font-bold">
@@ -201,7 +201,7 @@ const CuriousMindDetail = () => {
           </div>
 
           {/* STATIC HERO IMAGE BANNER */}
-          <div className="relative w-full h-[340px] sm:h-[460px] lg:h-[500px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-2xl group">
+          <div className="relative w-full h-[340px] sm:h-[460px] lg:h-[500px] rounded-3xl overflow-hidden border border-gray-200/80 dark:border-white/15 shadow-2xl group">
             <img
               src={CuriousMindsHero}
               alt="Curious Minds Digital Classroom"
@@ -250,22 +250,22 @@ const CuriousMindDetail = () => {
           <div className="lg:col-span-8 space-y-8">
 
             {/* Program Overview Card */}
-            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm space-y-4">
-              <h2 className="text-xl sm:text-2xl font-black text-gray-900 font-['Montserrat',sans-serif]">
+            <div className="bg-white dark:bg-[#1f1f23] p-6 sm:p-8 rounded-3xl border border-gray-100 dark:border-white/15 shadow-sm space-y-4">
+              <h2 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white font-['Montserrat',sans-serif]">
                 {t("curiousMindsDetail.programOverviewTitle")}
               </h2>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
                 {t("curiousMindsDetail.programOverviewText")}
               </p>
             </div>
 
             {/* Detailed Project Breakdown */}
             <div className="space-y-4">
-              <h2 className="text-xl sm:text-2xl font-black text-gray-900 font-['Montserrat',sans-serif]">
+              <h2 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white font-['Montserrat',sans-serif]">
                 {t("curiousMindsDetail.deliverablesTitle")}
               </h2>
 
-              <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm space-y-6">
+              <div className="bg-white dark:bg-[#1f1f23] p-6 sm:p-8 rounded-3xl border border-gray-100 dark:border-white/15 shadow-sm space-y-6">
 
                 {/* Header with Badge Icon */}
                 <div className="flex items-start gap-4">
@@ -273,23 +273,23 @@ const CuriousMindDetail = () => {
                     <FaLaptopCode className="text-2xl" />
                   </div>
                   <div>
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white font-['Montserrat',sans-serif]">
                       {t("curiousMindsDetail.deliverableTitle")}
                     </h3>
                   </div>
                 </div>
 
-                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm leading-relaxed">
                   {t("curiousMindsDetail.deliverableDescription")}
                 </p>
 
                 {/* Key Highlights & Actions Box */}
-                <div className="bg-slate-50 p-5 sm:p-6 rounded-2xl border border-slate-100 space-y-3">
-                  <span className="text-[11px] font-black uppercase tracking-wider text-gray-500 font-['Montserrat',sans-serif]">
+                <div className="bg-slate-50 dark:bg-white/5 p-5 sm:p-6 rounded-2xl border border-slate-100 dark:border-white/10 space-y-3">
+                  <span className="text-[11px] font-black uppercase tracking-wider text-gray-500 dark:text-gray-400 font-['Montserrat',sans-serif]">
                     {t("curiousMindsDetail.keyHighlightsLabel")}
                   </span>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm font-semibold text-gray-700">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">
                     {t("curiousMindsDetail.deliverableHighlights", { returnObjects: true }).map((point, idx) => (
                       <div className="flex items-start gap-2.5" key={idx}>
                         <FaCheckCircle className="text-[#366A35] text-base mt-0.5 flex-shrink-0" />
@@ -308,8 +308,8 @@ const CuriousMindDetail = () => {
           <div className="lg:col-span-4 space-y-6">
 
             {/* Quick Info Card */}
-            <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm space-y-6">
-              <h3 className="text-lg font-black text-gray-900 font-['Montserrat',sans-serif]">
+            <div className="bg-white dark:bg-[#1f1f23] p-6 rounded-3xl border border-gray-100 dark:border-white/15 shadow-sm space-y-6">
+              <h3 className="text-lg font-black text-gray-900 dark:text-white font-['Montserrat',sans-serif]">
                 {t("curiousMindsDetail.quickInfoTitle")}
               </h3>
 
@@ -319,10 +319,10 @@ const CuriousMindDetail = () => {
                 <div className="flex items-start gap-3">
                   <FaTag className="text-[#EC8134] text-base mt-0.5 flex-shrink-0" />
                   <div>
-                    <span className="block text-[10px] font-bold uppercase tracking-wider text-gray-400 font-['Montserrat',sans-serif]">
+                    <span className="block text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 font-['Montserrat',sans-serif]">
                       {t("curiousMindsDetail.focusAreasLabel")}
                     </span>
-                    <span className="font-extrabold text-gray-800">
+                    <span className="font-extrabold text-gray-800 dark:text-gray-200">
                       {t("curiousMindsDetail.focusAreasValue")}
                     </span>
                   </div>
@@ -332,10 +332,10 @@ const CuriousMindDetail = () => {
                 <div className="flex items-start gap-3">
                   <FaMapMarkerAlt className="text-blue-500 text-base mt-0.5 flex-shrink-0" />
                   <div>
-                    <span className="block text-[10px] font-bold uppercase tracking-wider text-gray-400 font-['Montserrat',sans-serif]">
+                    <span className="block text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 font-['Montserrat',sans-serif]">
                       {t("curiousMindsDetail.locationLabel")}
                     </span>
-                    <span className="font-extrabold text-gray-800">
+                    <span className="font-extrabold text-gray-800 dark:text-gray-200">
                       {t("curiousMindsDetail.locationValue")}
                     </span>
                   </div>
@@ -345,10 +345,10 @@ const CuriousMindDetail = () => {
                 <div className="flex items-start gap-3">
                   <FaGlobe className="text-[#366A35] text-base mt-0.5 flex-shrink-0" />
                   <div>
-                    <span className="block text-[10px] font-bold uppercase tracking-wider text-gray-400 font-['Montserrat',sans-serif]">
+                    <span className="block text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 font-['Montserrat',sans-serif]">
                       {t("curiousMindsDetail.organizerLabel")}
                     </span>
-                    <span className="font-extrabold text-gray-800">
+                    <span className="font-extrabold text-gray-800 dark:text-gray-200">
                       {t("curiousMindsDetail.organizerValue")}
                     </span>
                   </div>
@@ -367,7 +367,7 @@ const CuriousMindDetail = () => {
                       alert(t("curiousMindsDetail.linkCopied"));
                     }
                   }}
-                  className="w-full flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 py-3 rounded-2xl text-xs font-bold transition"
+                  className="w-full flex items-center justify-center gap-2 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 text-slate-800 dark:text-white py-3 rounded-2xl text-xs font-bold transition"
                 >
                   <FaShareAlt /> {t("curiousMindsDetail.shareProject")}
                 </button>
@@ -413,20 +413,20 @@ const CuriousMindDetail = () => {
 
         {/* CONTEXT & OBJECTIVE DUAL CARDS */}
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-white border-l-4 border-[#D34A32] p-6 sm:p-8 rounded-2xl border-y border-r border-gray-100 shadow-sm space-y-3 hover:shadow-md transition">
+          <div className="bg-white dark:bg-[#1f1f23] border-l-4 border-[#D34A32] p-6 sm:p-8 rounded-2xl border-y border-r border-gray-100 dark:border-white/15 shadow-sm space-y-3 hover:shadow-md transition">
             <h3 className="text-xl sm:text-2xl font-extrabold text-[#D34A32] font-['Montserrat',sans-serif]">
               {t("curiousMindsDetail.challengeTitle")}
             </h3>
-            <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
               {t("curiousMindsDetail.challengeText")}
             </p>
           </div>
 
-          <div className="bg-white border-l-4 border-[#366A35] p-6 sm:p-8 rounded-2xl border-y border-r border-gray-100 shadow-sm space-y-3 hover:shadow-md transition">
+          <div className="bg-white dark:bg-[#1f1f23] border-l-4 border-[#366A35] p-6 sm:p-8 rounded-2xl border-y border-r border-gray-100 dark:border-white/15 shadow-sm space-y-3 hover:shadow-md transition">
             <h3 className="text-xl sm:text-2xl font-extrabold text-[#366A35] font-['Montserrat',sans-serif]">
               {t("curiousMindsDetail.approachTitle")}
             </h3>
-            <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
               {t("curiousMindsDetail.approachText")}
             </p>
           </div>
@@ -439,23 +439,23 @@ const CuriousMindDetail = () => {
             <span className="text-xs font-black uppercase tracking-widest text-[#366A35] font-['Montserrat',sans-serif]">
               {t("curiousMindsDetail.methodologyLabel")}
             </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-gray-900 font-['Montserrat',sans-serif]">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-gray-900 dark:text-white font-['Montserrat',sans-serif]">
               {t("curiousMindsDetail.methodologyTitle")}
             </h2>
-            <p className="text-gray-600 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
               {t("curiousMindsDetail.methodologySubtitle")}
             </p>
           </div>
 
           {/* Phase Stepper Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 border-b border-gray-200 pb-4">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 border-b border-gray-200 dark:border-white/15 pb-4">
             {processStages.map((stg, idx) => (
               <button
                 key={idx}
                 onClick={() => setActivePhase(idx)}
                 className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold font-['Montserrat',sans-serif] transition-all duration-300 ease-in-out transform ${activePhase === idx
                     ? "bg-[#366A35] text-white shadow-md scale-105"
-                    : "bg-white text-gray-600 border border-gray-200 hover:bg-slate-100"
+                    : "bg-white dark:bg-[#1f1f23] text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-white/15 hover:bg-slate-100 dark:hover:bg-white/10"
                   }`}
               >
                 <span
@@ -470,7 +470,7 @@ const CuriousMindDetail = () => {
           </div>
 
           {/* Active Phase Content Highlight Card */}
-          <div className="bg-white rounded-3xl border border-gray-200/80 shadow-lg overflow-hidden transition-all duration-500">
+          <div className="bg-white dark:bg-[#1f1f23] rounded-3xl border border-gray-200/80 dark:border-white/15 shadow-lg overflow-hidden transition-all duration-500">
             <div className="grid grid-cols-1 lg:grid-cols-12">
 
               {/* Phase Left Image */}
@@ -497,28 +497,28 @@ const CuriousMindDetail = () => {
                   >
                     {processStages[activePhase].badgeText}
                   </span>
-                  <h3 className="text-xl sm:text-2xl font-black text-gray-900 font-['Montserrat',sans-serif]">
+                  <h3 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white font-['Montserrat',sans-serif]">
                     {processStages[activePhase].title}
                   </h3>
-                  <p className="text-xs font-semibold text-gray-500">
+                  <p className="text-xs font-semibold text-gray-500 dark:text-gray-400">
                     {processStages[activePhase].summary}
                   </p>
                 </div>
 
-                <p className="text-xs sm:text-base text-gray-600 leading-relaxed">
+                <p className="text-xs sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
                   {processStages[activePhase].description}
                 </p>
 
                 {/* Interactive Controls inside Phase Card */}
-                <div className="pt-2 flex items-center justify-between border-t border-gray-100">
-                  <span className="text-xs font-bold text-gray-400 font-['Montserrat',sans-serif]">
+                <div className="pt-2 flex items-center justify-between border-t border-gray-100 dark:border-white/15">
+                  <span className="text-xs font-bold text-gray-400 dark:text-gray-500 font-['Montserrat',sans-serif]">
                     {t("curiousMindsDetail.phaseOfLabel", { current: activePhase + 1, total: processStages.length })}
                   </span>
                   <div className="flex items-center gap-2">
                     <button
                       disabled={activePhase === 0}
                       onClick={() => setActivePhase((prev) => Math.max(0, prev - 1))}
-                      className="px-3 py-1.5 rounded-lg border border-gray-200 text-xs font-bold text-gray-700 disabled:opacity-40 hover:bg-slate-100 transition"
+                      className="px-3 py-1.5 rounded-lg border border-gray-200 dark:border-white/15 text-xs font-bold text-gray-700 dark:text-gray-300 disabled:opacity-40 hover:bg-slate-100 dark:hover:bg-white/10 transition"
                     >
                       {t("curiousMindsDetail.previousPhase")}
                     </button>
@@ -542,9 +542,9 @@ const CuriousMindDetail = () => {
               <div
                 key={stage.stage}
                 onClick={() => setActivePhase(idx)}
-                className={`bg-white rounded-2xl border transition-all duration-300 cursor-pointer overflow-hidden flex flex-col ${activePhase === idx
+                className={`bg-white dark:bg-[#1f1f23] rounded-2xl border transition-all duration-300 cursor-pointer overflow-hidden flex flex-col ${activePhase === idx
                     ? "border-[#366A35] ring-2 ring-[#366A35]/20 shadow-md"
-                    : "border-gray-200 hover:border-gray-300 shadow-xs"
+                    : "border-gray-200 dark:border-white/15 hover:border-gray-300 dark:hover:border-white/25 shadow-xs"
                   }`}
               >
                 <div className={`${stage.headerBg} text-white px-5 py-3 font-['Montserrat',sans-serif] flex items-center justify-between`}>
@@ -554,7 +554,7 @@ const CuriousMindDetail = () => {
                   <span className="text-xs opacity-80 font-mono">0{idx + 1}</span>
                 </div>
 
-                <div className="p-4 flex-1 text-xs text-gray-600 leading-relaxed space-y-2">
+                <div className="p-4 flex-1 text-xs text-gray-600 dark:text-gray-300 leading-relaxed space-y-2">
                   <p className="line-clamp-3">{stage.description}</p>
                   <span className="inline-block text-[11px] font-bold text-[#EC8134]">
                     {t("curiousMindsDetail.clickToExpand")}
@@ -568,13 +568,13 @@ const CuriousMindDetail = () => {
 
         {/* QUOTE CALLOUT SECTION */}
         <div className="py-4">
-          <div className="bg-slate-50/80 rounded-2xl border-l-4 border-[#EC8134] p-6 sm:p-10 shadow-xs relative">
+          <div className="bg-slate-50/80 dark:bg-white/5 rounded-2xl border-l-4 border-[#EC8134] p-6 sm:p-10 shadow-xs relative">
             <div className="space-y-4">
               <FaQuoteLeft className="text-3xl sm:text-4xl text-[#EC8134]/40" />
-              <blockquote className="text-base sm:text-xl font-bold text-slate-800 italic leading-relaxed font-['Nunito_Sans',sans-serif]">
+              <blockquote className="text-base sm:text-xl font-bold text-slate-800 dark:text-white italic leading-relaxed font-['Nunito_Sans',sans-serif]">
                 "{t("curiousMindsDetail.quoteText")}"
               </blockquote>
-              <div className="pt-2 text-xs sm:text-sm font-extrabold text-slate-500 uppercase tracking-wider font-['Montserrat',sans-serif]">
+              <div className="pt-2 text-xs sm:text-sm font-extrabold text-slate-500 dark:text-gray-400 uppercase tracking-wider font-['Montserrat',sans-serif]">
                 {t("curiousMindsDetail.quoteAuthor")}
               </div>
             </div>
@@ -609,7 +609,7 @@ const CuriousMindDetail = () => {
 
         {/* NAVIGATION TO OTHER CORE ACTIVITIES */}
         <div className="space-y-6">
-          <h3 className="text-xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white font-['Montserrat',sans-serif]">
             {t("curiousMindsDetail.exploreOtherTitle")}
           </h3>
 
@@ -617,15 +617,15 @@ const CuriousMindDetail = () => {
             {/* Health-NOW (Orange #EC8134) */}
             <div
               onClick={() => navigate("/project-28")}
-              className="bg-white p-5 rounded-2xl border border-gray-100 shadow-xs hover:border-[#EC8134]/50 hover:shadow-md transition cursor-pointer group space-y-2"
+              className="bg-white dark:bg-[#1f1f23] p-5 rounded-2xl border border-gray-100 dark:border-white/15 shadow-xs hover:border-[#EC8134]/50 hover:shadow-md transition cursor-pointer group space-y-2"
             >
               <span className="text-xs font-bold text-[#EC8134] uppercase tracking-wider font-['Montserrat',sans-serif]">
                 {otherAreas[0].tag}
               </span>
-              <h4 className="text-base font-bold text-gray-900 group-hover:text-[#EC8134] transition font-['Montserrat',sans-serif]">
+              <h4 className="text-base font-bold text-gray-900 dark:text-white group-hover:text-[#EC8134] transition font-['Montserrat',sans-serif]">
                 {otherAreas[0].title}
               </h4>
-              <p className="text-xs text-gray-500 leading-relaxed">
+              <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
                 {otherAreas[0].text}
               </p>
               <span className="inline-flex items-center gap-1 text-xs font-bold text-[#EC8134] pt-2">
@@ -636,15 +636,15 @@ const CuriousMindDetail = () => {
             {/* Impact Alliance (Red #D34A32) */}
             <div
               onClick={() => navigate("/sponsorship")}
-              className="bg-white p-5 rounded-2xl border border-gray-100 shadow-xs hover:border-[#D34A32]/50 hover:shadow-md transition cursor-pointer group space-y-2"
+              className="bg-white dark:bg-[#1f1f23] p-5 rounded-2xl border border-gray-100 dark:border-white/15 shadow-xs hover:border-[#D34A32]/50 hover:shadow-md transition cursor-pointer group space-y-2"
             >
               <span className="text-xs font-bold text-[#D34A32] uppercase tracking-wider font-['Montserrat',sans-serif]">
                 {otherAreas[1].tag}
               </span>
-              <h4 className="text-base font-bold text-gray-900 group-hover:text-[#D34A32] transition font-['Montserrat',sans-serif]">
+              <h4 className="text-base font-bold text-gray-900 dark:text-white group-hover:text-[#D34A32] transition font-['Montserrat',sans-serif]">
                 {otherAreas[1].title}
               </h4>
-              <p className="text-xs text-gray-500 leading-relaxed">
+              <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
                 {otherAreas[1].text}
               </p>
               <span className="inline-flex items-center gap-1 text-xs font-bold text-[#D34A32] pt-2">
@@ -655,15 +655,15 @@ const CuriousMindDetail = () => {
             {/* Let's Learn (Green #366A35) */}
             <div
               onClick={() => navigate("/other-activities")}
-              className="bg-white p-5 rounded-2xl border border-gray-100 shadow-xs hover:border-[#366A35]/50 hover:shadow-md transition cursor-pointer group space-y-2"
+              className="bg-white dark:bg-[#1f1f23] p-5 rounded-2xl border border-gray-100 dark:border-white/15 shadow-xs hover:border-[#366A35]/50 hover:shadow-md transition cursor-pointer group space-y-2"
             >
               <span className="text-xs font-bold text-[#366A35] uppercase tracking-wider font-['Montserrat',sans-serif]">
                 {otherAreas[2].tag}
               </span>
-              <h4 className="text-base font-bold text-gray-900 group-hover:text-[#366A35] transition font-['Montserrat',sans-serif]">
+              <h4 className="text-base font-bold text-gray-900 dark:text-white group-hover:text-[#366A35] transition font-['Montserrat',sans-serif]">
                 {otherAreas[2].title}
               </h4>
-              <p className="text-xs text-gray-500 leading-relaxed">
+              <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
                 {otherAreas[2].text}
               </p>
               <span className="inline-flex items-center gap-1 text-xs font-bold text-[#366A35] pt-2">
@@ -674,19 +674,19 @@ const CuriousMindDetail = () => {
         </div>
 
         {/* INQUIRY BANNER */}
-        <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="bg-white dark:bg-[#1f1f23] p-6 rounded-2xl border border-gray-200 dark:border-white/15 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-center sm:text-left space-y-1">
-            <h4 className="font-bold text-gray-900 text-sm font-['Montserrat',sans-serif]">
+            <h4 className="font-bold text-gray-900 dark:text-white text-sm font-['Montserrat',sans-serif]">
               {t("curiousMindsDetail.inquiryTitle")}
             </h4>
-            <p className="text-xs text-gray-600">
+            <p className="text-xs text-gray-600 dark:text-gray-300">
               {t("curiousMindsDetail.inquiryText")}
             </p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-2">
             <Link
               to="/reports"
-              className="inline-flex items-center gap-1.5 bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-bold px-3.5 py-2 rounded-xl border border-gray-200 transition"
+              className="inline-flex items-center gap-1.5 bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 text-gray-800 dark:text-gray-200 text-xs font-bold px-3.5 py-2 rounded-xl border border-gray-200 dark:border-white/15 transition"
             >
               <FaExternalLinkAlt /> {t("curiousMindsDetail.transparency")}
             </Link>

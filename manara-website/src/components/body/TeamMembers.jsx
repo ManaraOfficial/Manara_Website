@@ -313,7 +313,7 @@ export default function EditorialTeam() {
   };
 
   return (
-    <section className="relative w-full min-h-screen bg-white text-slate-900 pb-20 px-6 lg:px-16 flex flex-col justify-between overflow-hidden select-none font-sans" id="team">
+    <section className="relative w-full min-h-screen bg-white dark:bg-[#0a0a0a] text-slate-900 dark:text-white pb-20 px-6 lg:px-16 flex flex-col justify-between overflow-hidden select-none font-sans" id="team">
       
       {/* BRAND COLOR DYNAMIC GRADIENT MESH BACKDROPS */}
       <div 
@@ -346,7 +346,7 @@ export default function EditorialTeam() {
           onMouseEnter={() => setIsPaused(true)}  // ⏸️ PAUSE ROTATION ON HOVER
           onMouseLeave={() => setIsPaused(false)} // ▶️ RESUME ON MOUSE LEAVE
         >
-          <div className="relative w-full h-[460px] sm:h-[540px] rounded-3xl overflow-hidden border border-slate-200/80 bg-slate-950 shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
+          <div className="relative w-full h-[460px] sm:h-[540px] rounded-3xl overflow-hidden border border-slate-200/80 dark:border-white/15 bg-slate-950 shadow-[0_20px_50px_rgba(0,0,0,0.08)] dark:shadow-none">
             
             {/* 🛡️ 1. BASE BACKGROUND LAYER (HOLDS PREVIOUS IMAGE DURING TRANSITION) */}
             <div className="absolute inset-0 w-full h-full z-0">
@@ -472,11 +472,11 @@ export default function EditorialTeam() {
               </p>
             </div>
 
-            <h2 className="text-4xl sm:text-5xl font-black uppercase tracking-tight text-slate-900">
+            <h2 className="text-4xl sm:text-5xl font-black uppercase tracking-tight text-slate-900 dark:text-white">
               {activeMember.name}
             </h2>
 
-            <p className="text-base font-bold text-slate-600">
+            <p className="text-base font-bold text-slate-600 dark:text-slate-300">
               {activeMember.role}
             </p>
 
@@ -485,7 +485,7 @@ export default function EditorialTeam() {
                 <a
                   key={idx}
                   href="#"
-                  className="p-3 rounded-xl bg-white/80 border border-slate-200 text-slate-600 hover:text-white shadow-sm transition-all active:scale-95"
+                  className="p-3 rounded-xl bg-white/80 dark:bg-[#1f1f23] border border-slate-200 dark:border-white/15 text-slate-600 dark:text-slate-300 hover:text-white shadow-sm transition-all active:scale-95"
                   onMouseEnter={(e) => {
                     e.currentTarget.style.backgroundColor = BRAND_COLOR;
                     e.currentTarget.style.borderColor = BRAND_COLOR;
@@ -503,7 +503,7 @@ export default function EditorialTeam() {
 
           {/* DIRECTORY SELECTOR */}
           <div className="space-y-2 pt-4">
-            <p className="text-[10px] font-mono tracking-widest text-slate-400 uppercase pb-2 border-b border-slate-100 flex justify-between items-center">
+            <p className="text-[10px] font-mono tracking-widest text-slate-400 uppercase pb-2 border-b border-slate-100 dark:border-white/15 flex justify-between items-center">
               <span>{t("home.team.directory")}</span>
               {isPaused && <span className="text-amber-600 font-bold tracking-normal">{t("home.team.timerPaused")}</span>}
             </p>
@@ -522,8 +522,8 @@ export default function EditorialTeam() {
                     onClick={() => handleSelectMember(idx)}
                     className={`w-full text-left p-3 rounded-2xl transition-all duration-500 flex items-center justify-between group relative overflow-hidden ${
                       isActive
-                        ? "bg-slate-900 text-white shadow-xl"
-                        : "bg-white/70 border border-slate-200/60 text-slate-600 hover:bg-white hover:text-slate-900"
+                        ? "bg-slate-900 dark:bg-white/10 text-white shadow-xl"
+                        : "bg-white/70 dark:bg-[#1f1f23] border border-slate-200/60 dark:border-white/15 text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white"
                     }`}
                   >
                     <div className="flex items-center gap-3 z-10">
@@ -582,7 +582,7 @@ export default function EditorialTeam() {
       </div>
 
       {/* FOOTER BAR */}
-      <div className="w-full max-w-7xl mx-auto flex justify-between items-center z-20 border-t border-slate-200/80 pt-6 text-[10px] font-mono text-slate-400 uppercase tracking-widest mt-12">
+      <div className="w-full max-w-7xl mx-auto flex justify-between items-center z-20 border-t border-slate-200/80 dark:border-white/15 pt-6 text-[10px] font-mono text-slate-400 uppercase tracking-widest mt-12">
         <span>{t("home.team.footerLeft")}</span>
         <span>{isPaused ? t("home.team.footerRightPaused") : t("home.team.footerRightAuto")}</span>
       </div>

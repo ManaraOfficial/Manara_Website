@@ -15,9 +15,9 @@ export default function GalleryCardView({ title, categoryValue, albums, loading 
   return (
     <div className="h-full flex flex-col justify-between">
       {/* Category Card Title */}
-      <div className="mb-4 pb-2 border-b border-slate-100 flex items-center justify-between">
-        <h3 className="text-xl font-bold text-[#404040]">{title}</h3>
-        <span className="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full">
+      <div className="mb-4 pb-2 border-b border-slate-100 dark:border-white/15 flex items-center justify-between">
+        <h3 className="text-xl font-bold text-[#404040] dark:text-white">{title}</h3>
+        <span className="text-xs font-semibold px-2.5 py-1 bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 rounded-full">
           {albums.length} {albums.length === 1 ? t('common.album') : t('common.albums')}
         </span>
       </div>
@@ -37,7 +37,7 @@ export default function GalleryCardView({ title, categoryValue, albums, loading 
             {previewImages.map((img, idx) => (
               <div
                 key={idx}
-                className="w-full h-36 rounded-xl overflow-hidden bg-slate-100 shadow-sm"
+                className="w-full h-36 rounded-xl overflow-hidden bg-slate-100 dark:bg-white/10 shadow-sm"
               >
                 <img
                   src={urlFor(img).width(400).url()}
