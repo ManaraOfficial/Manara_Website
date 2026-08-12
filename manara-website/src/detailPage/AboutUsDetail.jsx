@@ -352,6 +352,7 @@ const AboutUsPage = () => {
                 <img
                   src={member.image}
                   alt={member.name}
+                  loading="lazy"
                   className="object-cover w-full h-full transition duration-500 group-hover:scale-110"
                 />
               </div>

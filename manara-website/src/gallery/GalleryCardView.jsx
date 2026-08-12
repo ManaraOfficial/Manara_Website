@@ -42,6 +42,7 @@ export default function GalleryCardView({ title, categoryValue, albums, loading 
                 <img
                   src={urlFor(img).width(400).url()}
                   alt={title}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                 />
               </div>

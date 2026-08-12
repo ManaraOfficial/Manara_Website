@@ -111,6 +111,7 @@ export default function ImageViewerModal({
                 <img
                   src={thumbSrc}
                   alt={`Thumbnail ${idx + 1}`}
+                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
               </button>

@@ -1,22 +1,32 @@
 import './index.css'
-import HomePage from './views/HomePage'
 import Navigation from './components/navigation/Navigation'
 import Footer from './components/footer/footer'
-import NotFound from './components/404 Page/NotFound'
-import CuriousMindDetail from './detailPage/CuriousMindsDetail'
-import Project28Detail from './detailPage/Project28Detail'
-import SponsorshipDetail from './detailPage/SponsorshipsDetail'
-import CategoryGalleryPage from './components/body/CategoryGalleryPage'
-import ReportsPage from './views/reportsPage'
-import ContactUs from './views/ContactUs'
-import AboutUsDetail from './detailPage/AboutUsDetail'
-import OtherActivities from './detailPage/OtherActivities'
 import SmoothScroll from './components/reusableComp/SmoothScroll'
 import { getLenis } from './lib/lenis'
 import { Routes, Route, Outlet, useLocation } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, lazy, Suspense } from 'react'
 import { FaArrowUp } from 'react-icons/fa'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+// Route-level code splitting: each page only downloads when a user actually visits it,
+// instead of every detail page's bundle loading up front on the first page view.
+const HomePage = lazy(() => import('./views/HomePage'))
+const NotFound = lazy(() => import('./components/404 Page/NotFound'))
+const CuriousMindDetail = lazy(() => import('./detailPage/CuriousMindsDetail'))
+const Project28Detail = lazy(() => import('./detailPage/Project28Detail'))
+const SponsorshipDetail = lazy(() => import('./detailPage/SponsorshipsDetail'))
+const CategoryGalleryPage = lazy(() => import('./components/body/CategoryGalleryPage'))
+const ReportsPage = lazy(() => import('./views/reportsPage'))
+const ContactUs = lazy(() => import('./views/ContactUs'))
+const AboutUsDetail = lazy(() => import('./detailPage/AboutUsDetail'))
+const OtherActivities = lazy(() => import('./detailPage/OtherActivities'))
+
+// Minimal, theme-agnostic fallback shown only during the brief gap while a route chunk downloads
+const RouteLoadingFallback = () => (
+  <div className="min-h-screen flex items-center justify-center bg-white dark:bg-[#0a0a0a]">
+    <div className="w-10 h-10 border-3 border-[#EC8134]/30 border-t-[#EC8134] rounded-full animate-spin" />
+  </div>
+)
 
 // Resets scroll position to (0,0) when switching routes
 const ScrollToTop = () => {
@@ -185,24 +195,26 @@ const MainLayout = () => {
 
 function App() {
   return (
-    <Routes>
-      <Route element={<MainLayout />}>
-        <Route path="/" element={<HomePage />} />
-        
-        <Route path="/curious-minds" element={<CuriousMindDetail />} />
-        <Route path="/project-28" element={<Project28Detail />} />
-        <Route path="/sponsorship" element={<SponsorshipDetail />} />
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<HomePage />} />
 
-        {/* Dynamic Gallery Route */}
-        <Route path="/gallery/:category" element={<CategoryGalleryPage />} />
-        <Route path="/reports" element={<ReportsPage />} />
-        <Route path="/contact" element={<ContactUs />} />
-        <Route path="/about-us" element={<AboutUsDetail />} />
-        <Route path="/other-activities" element={<OtherActivities />} />
-      </Route>
+          <Route path="/curious-minds" element={<CuriousMindDetail />} />
+          <Route path="/project-28" element={<Project28Detail />} />
+          <Route path="/sponsorship" element={<SponsorshipDetail />} />
 
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+          {/* Dynamic Gallery Route */}
+          <Route path="/gallery/:category" element={<CategoryGalleryPage />} />
+          <Route path="/reports" element={<ReportsPage />} />
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/about-us" element={<AboutUsDetail />} />
+          <Route path="/other-activities" element={<OtherActivities />} />
+        </Route>
+
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Suspense>
   )
 }
 

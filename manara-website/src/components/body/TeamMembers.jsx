@@ -530,6 +530,7 @@ export default function EditorialTeam() {
                       <img
                         src={member.image}
                         alt={member.name}
+                        loading="lazy"
                         className={`w-8 h-8 rounded-full object-cover transition-transform duration-500 ${
                           isActive ? "scale-110 ring-2" : "opacity-80"
                         }`}

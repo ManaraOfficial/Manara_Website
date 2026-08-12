@@ -164,6 +164,7 @@ const SponsorshipsDetailPage = () => {
             <img
               src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800&auto=format&fit=crop"
               alt="Education access for children"
+              loading="lazy"
               className="w-full h-full object-cover"
             />
           </div>
@@ -171,6 +172,7 @@ const SponsorshipsDetailPage = () => {
             <img
               src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=800&auto=format&fit=crop"
               alt="Community development in Nepal"
+              loading="lazy"
               className="w-full h-full object-cover"
             />
           </div>

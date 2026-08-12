@@ -426,6 +426,7 @@ const Project28Detail = () => {
                   <img
                     src={pillar.image}
                     alt={pillar.title}
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />

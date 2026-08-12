@@ -20,6 +20,7 @@ const Footer = () => {
           <a href="/" className="flex items-center gap-3 group shrink-0">
             <img
               src={logo}
+              loading="lazy"
               className="h-12 sm:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               alt="Menschen im Dialog e.V. Logo"
             />

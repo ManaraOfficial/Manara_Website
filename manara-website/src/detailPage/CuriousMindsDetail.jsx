@@ -483,6 +483,7 @@ const CuriousMindDetail = () => {
                 <img
                   src={processStages[activePhase].image}
                   alt={processStages[activePhase].title}
+                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent" />

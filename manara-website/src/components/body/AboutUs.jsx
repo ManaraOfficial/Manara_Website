@@ -76,6 +76,7 @@ const AboutSummarySection = () => {
               <img
                 src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop"
                 alt="Children in Nepal participating in educational activities"
+                loading="lazy"
                 className="w-full h-[480px] sm:h-[520px] object-cover opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
