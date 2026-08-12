@@ -12,4 +12,17 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        // Split stable, rarely-changing vendor libs into their own chunk so returning
+        // visitors only re-download app code after a deploy, not React/GSAP/i18next again.
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-gsap': ['gsap', '@gsap/react'],
+          'vendor-i18n': ['i18next', 'react-i18next'],
+        },
+      },
+    },
+  },
 })

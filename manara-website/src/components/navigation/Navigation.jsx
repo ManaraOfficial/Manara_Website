@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { ensureLanguageLoaded } from "../../i18n";
 import logo from "../../assets/images/logo2.png";
 import {
   FaInstagram,
@@ -125,9 +126,10 @@ const Navigation = () => {
     };
   }, []);
 
-  const handleLanguageChange = (langCode) => {
+  const handleLanguageChange = async (langCode) => {
     setCurrentLang(langCode);
     setLangDropdownOpen(false);
+    await ensureLanguageLoaded(langCode);
     i18n.changeLanguage(langCode);
   };
 

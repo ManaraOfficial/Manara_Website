@@ -1,8 +1,6 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import en from "./locales/en.json";
-import de from "./locales/de.json";
-import ne from "./locales/ne.json";
 
 const STORAGE_KEY = "manara-language";
 
@@ -15,13 +13,27 @@ const getStoredLanguage = () => {
   return stored || "en";
 };
 
-const savedLanguage = getStoredLanguage();
+export const savedLanguage = getStoredLanguage();
+
+// German and Nepali translation JSON (~115KB combined) only ship to visitors who actually
+// switch to them, instead of loading on every visit regardless of chosen language.
+const lazyLocaleLoaders = {
+  de: () => import("./locales/de.json"),
+  ne: () => import("./locales/ne.json"),
+};
+
+const loadedLanguages = new Set(["en"]);
+
+export const ensureLanguageLoaded = async (lng) => {
+  if (loadedLanguages.has(lng) || !lazyLocaleLoaders[lng]) return;
+  const { default: resources } = await lazyLocaleLoaders[lng]();
+  i18n.addResourceBundle(lng, "translation", resources, true, true);
+  loadedLanguages.add(lng);
+};
 
 i18n.use(initReactI18next).init({
   resources: {
     en: { translation: en },
-    de: { translation: de },
-    ne: { translation: ne },
   },
   lng: savedLanguage,
   fallbackLng: "en",
