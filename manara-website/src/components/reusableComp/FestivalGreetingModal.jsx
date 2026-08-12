@@ -33,9 +33,7 @@ const FestivalGreetingModal = () => {
 
   if (!festival) return null;
 
-  // Only Nepali gets its own translation; German (and anything else) falls back to English
   const isNepali = i18n.language === "ne";
-  const message = isNepali ? festival.message.ne : festival.message.en;
   const thankYou = isNepali ? "धन्यवाद" : "Thank You";
 
   return (
@@ -45,11 +43,11 @@ const FestivalGreetingModal = () => {
       }`}
       role="dialog"
       aria-modal="true"
-      aria-label={message}
+      aria-label={festival.message.ne}
     >
-      {/* Backdrop */}
+      {/* Backdrop — kept light so the page behind stays visible */}
       <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/25 backdrop-blur-[2px]"
         onClick={handleClose}
       />
 
@@ -71,9 +69,14 @@ const FestivalGreetingModal = () => {
           {festival.emoji}
         </div>
 
-        <p className="text-lg font-extrabold text-gray-900 dark:text-white font-['Montserrat',sans-serif] leading-snug">
-          {message}
-        </p>
+        <div className="space-y-1.5">
+          <p className="text-lg font-extrabold text-gray-900 dark:text-white font-['Montserrat',sans-serif] leading-snug">
+            {festival.message.ne}
+          </p>
+          <p className="text-sm font-semibold text-gray-600 dark:text-gray-300 leading-snug">
+            {festival.message.en}
+          </p>
+        </div>
 
         <p className="text-xs text-gray-500 dark:text-gray-400">
           — Manara Foundation
