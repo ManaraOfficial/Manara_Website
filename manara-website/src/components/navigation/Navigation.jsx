@@ -22,10 +22,10 @@ const LANGUAGES = [
 ];
 
 const PROJECTS = [
-  { nameKey: "nav.curiousMinds", path: "/curious-minds" },
-  { nameKey: "nav.project28", path: "/project-28" },
-  { nameKey: "nav.sponsorships", path: "/sponsorship" },
-  { nameKey: "nav.otherActivities", path: "/other-activities" },
+  { nameKey: "nav.curiousMinds", path: "/curious-minds", color: "#366A35" },
+  { nameKey: "nav.project28", path: "/project-28", color: "#ff1493" },
+  { nameKey: "nav.sponsorships", path: "/sponsorship", color: "#D34A32" },
+  { nameKey: "nav.otherActivities", path: "/other-activities", color: "#EC8134" },
 ];
 
 const EXPLORE_SECTIONS = [
@@ -223,7 +223,8 @@ const Navigation = () => {
                       key={idx}
                       to={project.path}
                       onClick={() => setProjectsDropdownOpen(false)}
-                      className="block px-4 py-2.5 text-xs font-bold text-white/80 hover:text-[#366A35] hover:bg-white/10 transition-colors duration-200"
+                      style={{ "--hover-accent": project.color }}
+                      className="block px-4 py-2.5 text-xs font-bold text-white/80 hover:text-[var(--hover-accent)] hover:bg-white/10 transition-colors duration-200"
                     >
                       {t(project.nameKey)}
                     </Link>
@@ -439,7 +440,8 @@ const Navigation = () => {
                       setMobileDrawerOpen(false);
                       setMobileProjectsOpen(false);
                     }}
-                    className="block py-2 text-sm font-bold text-white/80 hover:text-[#366A35] transition-colors"
+                    style={{ "--hover-accent": project.color }}
+                    className="block py-2 text-sm font-bold text-white/80 hover:text-[var(--hover-accent)] transition-colors"
                   >
                     {t(project.nameKey)}
                   </Link>
