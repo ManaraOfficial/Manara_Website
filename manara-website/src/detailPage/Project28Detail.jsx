@@ -7,6 +7,7 @@ import {
   FaMapMarkerAlt,
   FaArrowRight,
   FaCheckCircle,
+  FaUser,
   FaUsers,
   FaGraduationCap,
   FaLeaf,
@@ -183,18 +184,26 @@ const Project28Detail = () => {
                 alt="Project 28 Nepal Initiative"
                 className="w-full h-[320px] sm:h-[460px] object-cover"
               />
-              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-6 sm:p-8 flex justify-between items-end text-white">
-                <div>
-                  <h3 className="text-lg sm:text-xl font-bold font-['Montserrat',sans-serif]">
-                    {t("project28Detail.bannerInitiatedBy")}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-gray-200 max-w-md">
-                    {t("project28Detail.bannerInitiatorText")}
-                  </p>
-                </div>
-                <span className="hidden sm:block text-xs font-bold uppercase tracking-wider bg-white/20 backdrop-blur-md px-3.5 py-1.5 rounded-lg border border-white/30">
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
+
+              {/* Image Overlay Content */}
+              <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8 text-white space-y-2">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ff1493] text-white text-[11px] font-bold uppercase tracking-wider">
                   {t("project28Detail.bannerBadge")}
-                </span>
+                </div>
+                <h2 className="text-2xl sm:text-4xl font-extrabold font-['Montserrat',sans-serif] text-white leading-tight">
+                  {t("project28Detail.bannerTitle")}
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-200 max-w-2xl leading-relaxed">
+                  {t("project28Detail.bannerSubtitle")}
+                </p>
+                <div className="flex items-center gap-3 text-xs text-slate-300 pt-1">
+                  <span className="flex items-center gap-1.5 font-semibold">
+                    <FaUser className="text-[#ff1493]" /> {t("project28Detail.bannerInitiatedBy")}
+                  </span>
+                  <span>•</span>
+                  <span>{t("project28Detail.bannerFooterText")}</span>
+                </div>
               </div>
             </div>
           </div>

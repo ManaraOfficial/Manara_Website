@@ -50,9 +50,13 @@ const galleryImages = [
   }
 ];
 
+// Converts Devanagari digits (used in the Nepali locale's metric strings) to Arabic digits so parseInt can read them
+const toArabicDigits = (str) =>
+  str.replace(/[०-९]/g, (digit) => "०१२३४५६७८९".indexOf(digit));
+
 // Custom Hook for smooth counting animation with Intersection Observer
-const useCountUp = (endValue, duration = 2000) => {
-  const numericTarget = parseInt(endValue.replace(/,/g, ""), 10);
+const useCountUp = (endValue, duration = 2000, locale = "en") => {
+  const numericTarget = parseInt(toArabicDigits(endValue).replace(/,/g, ""), 10);
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef(null);
@@ -96,7 +100,7 @@ const useCountUp = (endValue, duration = 2000) => {
     return () => window.cancelAnimationFrame(animationFrameId);
   }, [isVisible, numericTarget, duration]);
 
-  const formattedCount = count.toLocaleString();
+  const formattedCount = count.toLocaleString(locale === "ne" ? "ne-NP-u-nu-deva" : undefined);
 
   let displayValue = formattedCount;
   if (endValue.includes("%")) displayValue = `${formattedCount}%`;
@@ -107,7 +111,8 @@ const useCountUp = (endValue, duration = 2000) => {
 
 // Animated Metric Card Component
 const MetricCard = ({ item }) => {
-  const { displayValue, elementRef } = useCountUp(item.value, 2000);
+  const { i18n } = useTranslation();
+  const { displayValue, elementRef } = useCountUp(item.value, 2000, i18n.language);
 
   return (
     <div

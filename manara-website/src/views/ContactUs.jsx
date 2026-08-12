@@ -195,7 +195,7 @@ const ContactUsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-gray-800 pt-28 pb-16 px-4 sm:px-6 lg:px-8 font-['Nunito_Sans',sans-serif]">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0a0a0a] text-gray-800 dark:text-gray-200 pt-28 pb-16 px-4 sm:px-6 lg:px-8 font-['Nunito_Sans',sans-serif]">
       <div className="max-w-6xl mx-auto space-y-16">
 
         {/* HEADER */}
@@ -204,10 +204,10 @@ const ContactUsPage = () => {
             Get In Touch
           </span>
           <HeroTitle
-            className="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight font-['Montserrat',sans-serif]"
+            className="text-4xl sm:text-5xl font-black text-gray-900 dark:text-white tracking-tight font-['Montserrat',sans-serif]"
             segments={[{ text: "We'd Love to Hear From You" }]}
           />
-          <p className="text-base sm:text-lg text-gray-600 leading-relaxed font-normal">
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-normal">
             Have questions about our initiatives, need information, or want to explore collaboration opportunities? Send us a message and we'll be in touch.
           </p>
         </div>
@@ -217,8 +217,8 @@ const ContactUsPage = () => {
 
           {/* LEFT SIDE: Contact info */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-6">
-              <h2 className="text-xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
+            <div className="bg-white dark:bg-[#1f1f23] p-6 sm:p-8 rounded-3xl border border-gray-100 dark:border-white/15 shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-none space-y-6">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white font-['Montserrat',sans-serif]">
                 Contact Information
               </h2>
 
@@ -228,8 +228,8 @@ const ContactUsPage = () => {
                     <FaEnvelope />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 font-['Montserrat',sans-serif]">Email Us</h3>
-                    <a href="mailto:manaraofficial32@gmail.com" className="text-gray-600 hover:text-[#EC8134] transition text-xs sm:text-sm">
+                    <h3 className="font-bold text-gray-900 dark:text-white font-['Montserrat',sans-serif]">Email Us</h3>
+                    <a href="mailto:manaraofficial32@gmail.com" className="text-gray-600 dark:text-gray-300 hover:text-[#EC8134] transition text-xs sm:text-sm">
                       manaraofficial32@gmail.com
                     </a>
                   </div>
@@ -240,8 +240,8 @@ const ContactUsPage = () => {
                     <FaPhoneAlt />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 font-['Montserrat',sans-serif]">Call Us</h3>
-                    <a href="tel:+977014234567" className="text-gray-600 hover:text-[#366A35] transition text-xs sm:text-sm">
+                    <h3 className="font-bold text-gray-900 dark:text-white font-['Montserrat',sans-serif]">Call Us</h3>
+                    <a href="tel:+977014234567" className="text-gray-600 dark:text-gray-300 hover:text-[#366A35] transition text-xs sm:text-sm">
                       +977 1-4234567
                     </a>
                   </div>
@@ -252,38 +252,38 @@ const ContactUsPage = () => {
                     <FaMapMarkerAlt />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 font-['Montserrat',sans-serif]">Main Office</h3>
-                    <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                    <h3 className="font-bold text-gray-900 dark:text-white font-['Montserrat',sans-serif]">Main Office</h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm leading-relaxed">
                       Kathmandu / Gongabu
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-2xl bg-gray-100 text-gray-600 flex items-center justify-center shrink-0 text-base">
+                  <div className="w-10 h-10 rounded-2xl bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 flex items-center justify-center shrink-0 text-base">
                     <FaClock />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 font-['Montserrat',sans-serif]">Working Hours</h3>
-                    <p className="text-gray-600 text-xs sm:text-sm">
+                    <h3 className="font-bold text-gray-900 dark:text-white font-['Montserrat',sans-serif]">Working Hours</h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm">
                       Monday – Friday: 10:00 AM – 5:00 PM
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-gray-100 flex items-center gap-3">
-                <span className="text-xs font-bold text-gray-400 uppercase tracking-wider font-['Montserrat',sans-serif]">
+              <div className="pt-4 border-t border-gray-100 dark:border-white/15 flex items-center gap-3">
+                <span className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider font-['Montserrat',sans-serif]">
                   Follow Us:
                 </span>
                 <div className="flex gap-2">
-                  <a href="#linkedin" className="w-8 h-8 rounded-full bg-slate-100 text-gray-600 hover:bg-[#EC8134] hover:text-white flex items-center justify-center transition text-xs">
+                  <a href="#linkedin" className="w-8 h-8 rounded-full bg-slate-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 hover:bg-[#EC8134] hover:text-white flex items-center justify-center transition text-xs">
                     <FaLinkedin />
                   </a>
-                  <a href="#twitter" className="w-8 h-8 rounded-full bg-slate-100 text-gray-600 hover:bg-[#EC8134] hover:text-white flex items-center justify-center transition text-xs">
+                  <a href="#twitter" className="w-8 h-8 rounded-full bg-slate-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 hover:bg-[#EC8134] hover:text-white flex items-center justify-center transition text-xs">
                     <FaTwitter />
                   </a>
-                  <a href="#facebook" className="w-8 h-8 rounded-full bg-slate-100 text-gray-600 hover:bg-[#EC8134] hover:text-white flex items-center justify-center transition text-xs">
+                  <a href="#facebook" className="w-8 h-8 rounded-full bg-slate-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 hover:bg-[#EC8134] hover:text-white flex items-center justify-center transition text-xs">
                     <FaFacebook />
                   </a>
                 </div>
@@ -312,16 +312,16 @@ const ContactUsPage = () => {
           </div>
 
           {/* RIGHT SIDE: FORM */}
-          <div className="lg:col-span-7 bg-white p-6 sm:p-10 rounded-3xl border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+          <div className="lg:col-span-7 bg-white dark:bg-[#1f1f23] p-6 sm:p-10 rounded-3xl border border-gray-100 dark:border-white/15 shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-none">
             {submitted ? (
               <div className="text-center py-12 space-y-4">
                 <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto text-3xl">
                   <FaCheckCircle />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white font-['Montserrat',sans-serif]">
                   Message Sent Successfully!
                 </h3>
-                <p className="text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
+                <p className="text-sm text-gray-600 dark:text-gray-300 max-w-md mx-auto leading-relaxed">
                   Thank you for reaching out. Your message has been routed to <strong>manaraofficial32@gmail.com</strong>. We will get back to you shortly!
                 </p>
                 <button
@@ -337,7 +337,7 @@ const ContactUsPage = () => {
                       message: "",
                     });
                   }}
-                  className="mt-4 px-6 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-bold rounded-xl transition cursor-pointer"
+                  className="mt-4 px-6 py-2.5 bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 text-gray-800 dark:text-gray-200 text-xs font-bold rounded-xl transition cursor-pointer"
                 >
                   Send Another Message
                 </button>
@@ -345,16 +345,16 @@ const ContactUsPage = () => {
             ) : (
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-6" noValidate>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white font-['Montserrat',sans-serif]">
                     Send Us a Message
                   </h2>
-                  <p className="text-xs sm:text-sm text-gray-500 mt-1">
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
                     Fill out the form below and your message will be emailed directly to our team.
                   </p>
                 </div>
 
                 {errorMessage && (
-                  <div className="p-3.5 bg-red-50 border border-red-200 rounded-xl text-xs text-red-600 font-semibold">
+                  <div className="p-3.5 bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/30 rounded-xl text-xs text-red-600 dark:text-red-400 font-semibold">
                     {errorMessage}
                   </div>
                 )}
@@ -363,7 +363,7 @@ const ContactUsPage = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* FULL NAME */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-gray-700 uppercase tracking-wider font-['Montserrat',sans-serif]">
+                    <label className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider font-['Montserrat',sans-serif]">
                       Full Name *
                     </label>
                     <input
@@ -372,10 +372,10 @@ const ContactUsPage = () => {
                       value={formData.fullName}
                       onChange={handleChange}
                       placeholder="Jane Doe"
-                      className={`w-full px-4 py-3 rounded-xl border text-sm focus:outline-none transition bg-slate-50/50 ${
+                      className={`w-full px-4 py-3 rounded-xl border text-sm focus:outline-none transition bg-slate-50/50 dark:bg-white/5 text-gray-900 dark:text-white ${
                         errors.fullName
                           ? "border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                          : "border-gray-200 focus:border-[#EC8134] focus:ring-1 focus:ring-[#EC8134]"
+                          : "border-gray-200 dark:border-white/15 focus:border-[#EC8134] focus:ring-1 focus:ring-[#EC8134]"
                       }`}
                     />
                     {errors.fullName && (
@@ -387,7 +387,7 @@ const ContactUsPage = () => {
 
                   {/* EMAIL */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-gray-700 uppercase tracking-wider font-['Montserrat',sans-serif]">
+                    <label className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider font-['Montserrat',sans-serif]">
                       Email Address *
                     </label>
                     <input
@@ -396,10 +396,10 @@ const ContactUsPage = () => {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="jane@example.com"
-                      className={`w-full px-4 py-3 rounded-xl border text-sm focus:outline-none transition bg-slate-50/50 ${
+                      className={`w-full px-4 py-3 rounded-xl border text-sm focus:outline-none transition bg-slate-50/50 dark:bg-white/5 text-gray-900 dark:text-white ${
                         errors.email
                           ? "border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                          : "border-gray-200 focus:border-[#EC8134] focus:ring-1 focus:ring-[#EC8134]"
+                          : "border-gray-200 dark:border-white/15 focus:border-[#EC8134] focus:ring-1 focus:ring-[#EC8134]"
                       }`}
                     />
                     {errors.email && (
@@ -414,7 +414,7 @@ const ContactUsPage = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* PHONE */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-gray-700 uppercase tracking-wider font-['Montserrat',sans-serif]">
+                    <label className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider font-['Montserrat',sans-serif]">
                       Phone Number *
                     </label>
                     <input
@@ -423,10 +423,10 @@ const ContactUsPage = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="9841234567 or +977 9841234567"
-                      className={`w-full px-4 py-3 rounded-xl border text-sm focus:outline-none transition bg-slate-50/50 ${
+                      className={`w-full px-4 py-3 rounded-xl border text-sm focus:outline-none transition bg-slate-50/50 dark:bg-white/5 text-gray-900 dark:text-white ${
                         errors.phone
                           ? "border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                          : "border-gray-200 focus:border-[#EC8134] focus:ring-1 focus:ring-[#EC8134]"
+                          : "border-gray-200 dark:border-white/15 focus:border-[#EC8134] focus:ring-1 focus:ring-[#EC8134]"
                       }`}
                     />
                     {errors.phone && (
@@ -438,7 +438,7 @@ const ContactUsPage = () => {
 
                   {/* ADDRESS */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-gray-700 uppercase tracking-wider font-['Montserrat',sans-serif]">
+                    <label className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider font-['Montserrat',sans-serif]">
                       Your Address *
                     </label>
                     <input
@@ -447,10 +447,10 @@ const ContactUsPage = () => {
                       value={formData.address}
                       onChange={handleChange}
                       placeholder="Street, City, District"
-                      className={`w-full px-4 py-3 rounded-xl border text-sm focus:outline-none transition bg-slate-50/50 ${
+                      className={`w-full px-4 py-3 rounded-xl border text-sm focus:outline-none transition bg-slate-50/50 dark:bg-white/5 text-gray-900 dark:text-white ${
                         errors.address
                           ? "border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                          : "border-gray-200 focus:border-[#EC8134] focus:ring-1 focus:ring-[#EC8134]"
+                          : "border-gray-200 dark:border-white/15 focus:border-[#EC8134] focus:ring-1 focus:ring-[#EC8134]"
                       }`}
                     />
                     {errors.address && (
@@ -463,14 +463,14 @@ const ContactUsPage = () => {
 
                 {/* SUBJECT DROPDOWN */}
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-gray-700 uppercase tracking-wider font-['Montserrat',sans-serif]">
+                  <label className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider font-['Montserrat',sans-serif]">
                     Inquiry Topic
                   </label>
                   <select
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#EC8134] focus:ring-1 focus:ring-[#EC8134] transition bg-slate-50/50 text-gray-700"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/15 text-sm focus:outline-none focus:border-[#EC8134] focus:ring-1 focus:ring-[#EC8134] transition bg-slate-50/50 dark:bg-white/5 text-gray-700 dark:text-gray-300"
                   >
                     <option value="General Information Request">
                       General Information Request
@@ -484,7 +484,7 @@ const ContactUsPage = () => {
 
                 {/* MESSAGE TEXTAREA */}
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-gray-700 uppercase tracking-wider font-['Montserrat',sans-serif]">
+                  <label className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider font-['Montserrat',sans-serif]">
                     Your Message *
                   </label>
                   <textarea
@@ -493,10 +493,10 @@ const ContactUsPage = () => {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="How can we help you today?"
-                    className={`w-full px-4 py-3 rounded-xl border text-sm focus:outline-none transition bg-slate-50/50 resize-y ${
+                    className={`w-full px-4 py-3 rounded-xl border text-sm focus:outline-none transition bg-slate-50/50 dark:bg-white/5 text-gray-900 dark:text-white resize-y ${
                       errors.message
                         ? "border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                        : "border-gray-200 focus:border-[#EC8134] focus:ring-1 focus:ring-[#EC8134]"
+                        : "border-gray-200 dark:border-white/15 focus:border-[#EC8134] focus:ring-1 focus:ring-[#EC8134]"
                     }`}
                   ></textarea>
                   {errors.message && (
@@ -524,10 +524,10 @@ const ContactUsPage = () => {
         {/* FAQ ACCORDION */}
         <div className="space-y-6 pt-6">
           <div className="text-center space-y-2">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 font-['Montserrat',sans-serif]">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white font-['Montserrat',sans-serif]">
               Frequently Asked Questions
             </h2>
-            <p className="text-xs sm:text-sm text-gray-500">
+            <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
               Quick answers to common questions about reaching out to us.
             </p>
           </div>
@@ -536,21 +536,21 @@ const ContactUsPage = () => {
             {CONTACT_FAQS.map((faq, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-2xl border border-gray-100 shadow-xs overflow-hidden"
+                className="bg-white dark:bg-[#1f1f23] rounded-2xl border border-gray-100 dark:border-white/15 shadow-xs overflow-hidden"
               >
                 <button
                   onClick={() => toggleFaq(idx)}
-                  className="w-full flex items-center justify-between p-5 text-left font-bold text-sm text-gray-900 cursor-pointer hover:text-[#EC8134] transition-colors font-['Montserrat',sans-serif]"
+                  className="w-full flex items-center justify-between p-5 text-left font-bold text-sm text-gray-900 dark:text-white cursor-pointer hover:text-[#EC8134] transition-colors font-['Montserrat',sans-serif]"
                 >
                   <span className="pr-4">{faq.q}</span>
                   <FaChevronDown
                     className={`text-xs transition-transform duration-200 shrink-0 ${
-                      openFaq === idx ? "rotate-180 text-[#EC8134]" : "text-gray-400"
+                      openFaq === idx ? "rotate-180 text-[#EC8134]" : "text-gray-400 dark:text-gray-500"
                     }`}
                   />
                 </button>
                 {openFaq === idx && (
-                  <div className="px-5 pb-5 text-xs sm:text-sm text-gray-600 border-t border-gray-100 pt-3 leading-relaxed">
+                  <div className="px-5 pb-5 text-xs sm:text-sm text-gray-600 dark:text-gray-300 border-t border-gray-100 dark:border-white/15 pt-3 leading-relaxed">
                     {faq.a}
                   </div>
                 )}

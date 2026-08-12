@@ -82,20 +82,24 @@ const SponsorshipsDetailPage = () => {
             alt="Children in Nepal receiving sponsorship support"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
 
-          <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10 text-white space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EC8134] text-white text-xs font-bold uppercase tracking-wider">
+          {/* Image Overlay Content */}
+          <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8 text-white space-y-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EC8134] text-white text-[11px] font-bold uppercase tracking-wider">
               {t("sponsorshipsDetail.imageBadge")}
             </div>
-            <h2 className="text-2xl sm:text-4xl font-black font-['Montserrat',sans-serif] leading-tight">
+            <h2 className="text-2xl sm:text-4xl font-extrabold font-['Montserrat',sans-serif] text-white leading-tight">
               {t("sponsorshipsDetail.imageTitle")}
             </h2>
-            <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-white/90 pt-1">
-              <span className="flex items-center gap-1.5 font-medium">
+            <p className="text-xs sm:text-sm text-slate-200 max-w-2xl leading-relaxed">
+              {t("sponsorshipsDetail.imageSubtitle")}
+            </p>
+            <div className="flex items-center gap-3 text-xs text-slate-300 pt-1">
+              <span className="flex items-center gap-1.5 font-semibold">
                 <FaUser className="text-[#EC8134]" /> {t("sponsorshipsDetail.initiatedBy")}
               </span>
-              <span className="hidden sm:inline">•</span>
+              <span>•</span>
               <span>{t("sponsorshipsDetail.regionLabel")}</span>
             </div>
           </div>
