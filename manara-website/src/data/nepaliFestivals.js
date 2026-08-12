@@ -6,7 +6,7 @@ import festivals from "./nepaliFestivals.json";
 export const getActiveFestival = (today = new Date()) => {
     // TEMP TEST OVERRIDE — forces Dashain (Ghatasthapana) to always show. Remove this line
   // to restore real date-based behavior before shipping.
-  // return festivals.find((f) => f.names.some((n) => n.includes("दशैं"))) || null;
+  return festivals.find((f) => f.names.some((n) => n.includes("दशैं"))) || null;
 
   // eslint-disable-next-line no-unreachable
 
