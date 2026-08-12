@@ -124,7 +124,7 @@ const Footer = () => {
             </li>
             <li className="flex items-center gap-3">
               <FaPhoneAlt className="text-[#366A35] text-[12px] shrink-0" />
-              <a href="tel:+4900000000" className="hover:text-white transition-colors duration-200">+49 (0) 123 456789</a>
+              <a href="tel:+4900000000" className="hover:text-white transition-colors duration-200">+977 984-6984160 , +977 9860465506</a>
             </li>
             <li className="flex items-start gap-3 leading-relaxed">
               <FaMapMarkerAlt className="text-[#D34A32] text-[13px] mt-0.5 shrink-0" />

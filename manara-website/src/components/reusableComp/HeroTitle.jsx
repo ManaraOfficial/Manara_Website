@@ -51,7 +51,7 @@ export default function HeroTitle({ segments, as, className = "" }) {
         return String(seg.text)
           .split(" ")
           .map((word, wi) => (
-            <span key={`${i}-${wi}`} className="inline-block overflow-hidden pb-1 mr-[0.3em] align-top">
+            <span key={`${i}-${wi}`} className="word-mask inline-block overflow-y-hidden overflow-x-visible pt-1 pb-2 mr-[0.35em] align-top">
               <span
                 className={`word inline-block will-change-transform ${seg.className ? `highlight ${seg.className}` : ""}`}
               >

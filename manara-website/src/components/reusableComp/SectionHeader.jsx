@@ -68,7 +68,7 @@ export default function SectionHeader({ title, subtitle }) {
             className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-none uppercase"
           >
             {words.map((word, idx) => (
-              <span key={idx} className="inline-block overflow-hidden pb-1 mr-[0.3em] align-top">
+              <span key={idx} className="word-mask inline-block overflow-y-hidden overflow-x-visible pt-1 pb-2 mr-[0.35em] align-top">
                 <span className="word inline-block will-change-transform">{word}</span>
               </span>
             ))}

@@ -242,7 +242,7 @@ const ContactUsPage = () => {
                   <div>
                     <h3 className="font-bold text-gray-900 dark:text-white font-['Montserrat',sans-serif]">Call Us</h3>
                     <a href="tel:+977014234567" className="text-gray-600 dark:text-gray-300 hover:text-[#366A35] transition text-xs sm:text-sm">
-                      +977 1-4234567
+                      +977 9846984160 , 9860465506
                     </a>
                   </div>
                 </div>
@@ -283,7 +283,7 @@ const ContactUsPage = () => {
                   <a href="#twitter" className="w-8 h-8 rounded-full bg-slate-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 hover:bg-[#EC8134] hover:text-white flex items-center justify-center transition text-xs">
                     <FaTwitter />
                   </a>
-                  <a href="#facebook" className="w-8 h-8 rounded-full bg-slate-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 hover:bg-[#EC8134] hover:text-white flex items-center justify-center transition text-xs">
+                  <a href="https://www.facebook.com/MenschenDialog" target="_blank" rel="noreferrer" className="w-8 h-8 rounded-full bg-slate-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 hover:bg-[#EC8134] hover:text-white flex items-center justify-center transition text-xs">
                     <FaFacebook />
                   </a>
                 </div>

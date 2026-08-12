@@ -351,12 +351,12 @@ const OtherActivitiesDetail = () => {
                   <FaShareAlt /> {t("otherActivitiesDetail.shareProject")}
                 </button>
 
-                <a
-                  href="mailto:contact@project28.org"
+                <Link
+                  to='/contact'
                   className="w-full flex items-center justify-center gap-2 bg-[#366A35] text-white py-3 rounded-xl font-bold text-sm hover:bg-[#2e592d] transition font-['Montserrat',sans-serif]"
                 >
                   <FaHandHoldingHeart /> {t("otherActivitiesDetail.becomeVolunteer")}
-                </a>
+                </Link>
               </div>
             </div>
 

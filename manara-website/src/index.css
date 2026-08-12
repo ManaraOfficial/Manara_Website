@@ -97,6 +97,28 @@ html[lang="ne"] body * {
   font-family: 'Noto Sans Devanagari', 'Montserrat', sans-serif;
 }
 
+/* Devanagari has no letter case and its matras/conjuncts sit taller and closer together
+   than Latin glyphs, so the tight tracking + forced uppercase used for Latin headings
+   makes Nepali titles look cramped and clipped — relax both for Nepali only. */
+html[lang="ne"] .word,
+html[lang="ne"] [class*="tracking-tight"] {
+  letter-spacing: normal !important;
+}
+
+html[lang="ne"] .uppercase {
+  text-transform: none !important;
+}
+
+/* The word-reveal mask (used for the slide-up title animation) clips its wrapper tightly
+   around Latin cap-height/baseline metrics. Devanagari conjuncts and matras routinely sit
+   taller/lower than that box, so for Nepali drop the clip entirely — the reveal still
+   fades in via GSAP's opacity tween, it just loses the box-wipe polish. */
+html[lang="ne"] .word-mask {
+  overflow: visible !important;
+  padding-top: 0 !important;
+  padding-bottom: 0.15em !important;
+}
+
 /* green: #366A35
 orange: #EC8134
 red: #D34A32

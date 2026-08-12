@@ -134,7 +134,7 @@ const AboutSummarySection = () => {
             {/* Comprehensive Narrative Copy */}
             <div className="space-y-3 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
               <p>
-                <strong className="text-slate-900 font-bold">{t("home.about.tag")}</strong> {t("home.about.p1")}
+                <strong className="text-slate-900 dark:text-white font-bold">{t("home.about.tag")}</strong> {t("home.about.p1")}
               </p>
               <p>
                 {t("home.about.p2")}
