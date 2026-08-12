@@ -13,6 +13,7 @@ import {
   FaTwitter,
   FaFacebook,
 } from "react-icons/fa";
+import HeroTitle from "../components/reusableComp/HeroTitle";
 
 const CONTACT_FAQS = [
   {
@@ -202,9 +203,10 @@ const ContactUsPage = () => {
           <span className="inline-block px-3.5 py-1.5 rounded-full bg-[#EC8134]/10 text-[#EC8134] border border-[#EC8134]/20 text-xs font-extrabold uppercase tracking-widest font-['Montserrat',sans-serif]">
             Get In Touch
           </span>
-          <h1 className="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight font-['Montserrat',sans-serif]">
-            We'd Love to Hear From You
-          </h1>
+          <HeroTitle
+            className="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight font-['Montserrat',sans-serif]"
+            segments={[{ text: "We'd Love to Hear From You" }]}
+          />
           <p className="text-base sm:text-lg text-gray-600 leading-relaxed font-normal">
             Have questions about our initiatives, need information, or want to explore collaboration opportunities? Send us a message and we'll be in touch.
           </p>
