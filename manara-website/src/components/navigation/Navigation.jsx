@@ -10,10 +10,10 @@ import {
   FaChevronDown,
   FaBars,
   FaXmark,
-  FaSun,
-  FaMoon,
 } from "react-icons/fa6";
 import { useTheme } from "../../context/ThemeContext";
+import NavAmbientEffect from "./NavAmbientEffect";
+import { SunCloudIcon, MoonStarIcon } from "../reusableComp/ThemeIcons";
 
 const LANGUAGES = [
   { code: "en", label: "English", flag: "🇬🇧" },
@@ -169,8 +169,10 @@ const Navigation = () => {
             : "bg-gradient-to-b from-black/80 via-black/40 to-transparent py-5 px-6"
         }`}
       >
-        <div className="max-w-7xl mx-auto flex justify-between items-center text-white">
-          
+        <NavAmbientEffect theme={theme} />
+
+        <div className="relative z-10 max-w-7xl mx-auto flex justify-between items-center text-white">
+
           {/* 1. BRAND LOGO */}
           <Link to="/" onClick={handleHomeClick} className="flex items-center gap-3 group shrink-0">
             <img
@@ -282,10 +284,10 @@ const Navigation = () => {
           <div className="hidden lg:flex items-center gap-4">
             <button
               onClick={toggleTheme}
-              className="flex items-center justify-center w-9 h-9 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full text-xs font-bold transition backdrop-blur-sm cursor-pointer"
+              className="flex items-center justify-center w-9 h-9 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full transition backdrop-blur-sm cursor-pointer"
               aria-label="Toggle dark mode"
             >
-              {theme === "dark" ? <FaSun className="text-[#EC8134]" /> : <FaMoon />}
+              {theme === "dark" ? <SunCloudIcon className="w-5 h-5" /> : <MoonStarIcon className="w-5 h-5" />}
             </button>
             <div className="relative" ref={langRef}>
               <button
@@ -325,10 +327,10 @@ const Navigation = () => {
           <div className="flex lg:hidden items-center gap-3">
             <button
               onClick={toggleTheme}
-              className="flex items-center justify-center w-8 h-8 bg-white/10 border border-white/20 rounded-full text-xs cursor-pointer"
+              className="flex items-center justify-center w-8 h-8 bg-white/10 border border-white/20 rounded-full cursor-pointer"
               aria-label="Toggle dark mode"
             >
-              {theme === "dark" ? <FaSun className="text-[#EC8134]" /> : <FaMoon />}
+              {theme === "dark" ? <SunCloudIcon className="w-[18px] h-[18px]" /> : <MoonStarIcon className="w-[18px] h-[18px]" />}
             </button>
             <div className="relative" ref={mobileLangRef}>
               <button
